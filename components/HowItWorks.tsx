@@ -23,8 +23,8 @@ const HowItWorks: React.FC = () => {
                     {i + 1}
                   </div>
                   <div>
-                    <h4 className="text-xl md:text-2xl font-black uppercase tracking-[0.2em] mb-3 md:mb-4">{step.title}</h4>
-                    <p className="text-slate-500 text-sm md:text-lg font-medium leading-relaxed uppercase tracking-tight max-w-md">
+                    <h4 className="text-xl md:text-2xl font-black uppercase tracking-wide sm:tracking-[0.15em] mb-3 md:mb-4 break-words">{step.title}</h4>
+                    <p className="text-slate-500 text-sm md:text-lg font-medium leading-relaxed uppercase tracking-tight max-w-md break-words">
                       {step.desc}
                     </p>
                   </div>
@@ -55,8 +55,8 @@ const HowItWorks: React.FC = () => {
                       </div>
                    </div>
                    <div className="flex flex-col">
-                      <span className="text-xs font-black uppercase tracking-[0.5em] text-white">RelayOpsAI</span>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500">Elite Voice Systems</span>
+                      <span className="text-xs font-black uppercase tracking-wider sm:tracking-[0.3em] text-white break-words">RelayOpsAI</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider sm:tracking-[0.25em] text-slate-500 break-words">Elite Voice Systems</span>
                    </div>
                 </div>
               </div>

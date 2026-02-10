@@ -71,8 +71,8 @@ const Calculator: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           {/* ── STEP 1: Industry selector ── */}
           {step === 1 && (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6 text-center">
+            <div className="opacity-100 transition-opacity duration-300">
+              <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-6 text-center break-words">
                 Step 1 of 3 — Select Your Industry
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
@@ -80,7 +80,7 @@ const Calculator: React.FC = () => {
                   <button
                     key={ind.id}
                     onClick={() => pickIndustry(ind.id)}
-                    className="py-5 px-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-cyan-500/50 hover:bg-white/[0.08] transition-all font-black uppercase text-[10px] tracking-widest text-white"
+                    className="py-5 px-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-cyan-500/50 hover:bg-white/[0.08] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest text-white break-words"
                   >
                     {ind.label}
                   </button>
@@ -91,17 +91,17 @@ const Calculator: React.FC = () => {
 
           {/* ── STEP 2: Sliders ── */}
           {step === 2 && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start opacity-100 transition-opacity duration-300">
               <div className="space-y-10">
-                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-2">
+                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-2 break-words">
                   Step 2 of 3 — Your Numbers
                 </p>
 
                 {/* Calls per day */}
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center uppercase tracking-widest text-[10px] font-black">
+                  <div className="flex justify-between items-center uppercase tracking-wide sm:tracking-widest text-[10px] font-black break-words gap-2">
                     <span>Calls per day</span>
-                    <span className="text-white bg-white/5 px-4 py-1 rounded-full">{callsPerDay}</span>
+                    <span className="text-white bg-white/5 px-4 py-1 rounded-full whitespace-nowrap">{callsPerDay}</span>
                   </div>
                   <input
                     type="range" min="1" max="200" value={callsPerDay}
@@ -112,9 +112,9 @@ const Calculator: React.FC = () => {
 
                 {/* Unanswered % */}
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center uppercase tracking-widest text-[10px] font-black">
+                  <div className="flex justify-between items-center uppercase tracking-wide sm:tracking-widest text-[10px] font-black break-words gap-2">
                     <span>Unanswered calls (%)</span>
-                    <span className="text-white bg-white/5 px-4 py-1 rounded-full">{missedRate}%</span>
+                    <span className="text-white bg-white/5 px-4 py-1 rounded-full whitespace-nowrap">{missedRate}%</span>
                   </div>
                   <input
                     type="range" min="1" max="80" value={missedRate}
@@ -125,9 +125,9 @@ const Calculator: React.FC = () => {
 
                 {/* Average job value */}
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center uppercase tracking-widest text-[10px] font-black">
-                    <span>Avg job / order value ($)</span>
-                    <span className="text-white bg-white/5 px-4 py-1 rounded-full">${avgJobValue.toLocaleString()}</span>
+                  <div className="flex justify-between items-center uppercase tracking-wide sm:tracking-widest text-[10px] font-black break-words gap-2">
+                    <span className="text-[9px] sm:text-[10px]">Avg job / order value ($)</span>
+                    <span className="text-white bg-white/5 px-4 py-1 rounded-full whitespace-nowrap">${avgJobValue.toLocaleString()}</span>
                   </div>
                   <input
                     type="range" min="20" max="10000" step="10" value={avgJobValue}
@@ -138,28 +138,28 @@ const Calculator: React.FC = () => {
 
                 <button
                   onClick={() => setStep(3)}
-                  className="w-full py-5 bg-white text-black font-black uppercase tracking-widest text-xs rounded-2xl hover:scale-[1.02] transition-all shadow-xl mt-4"
+                  className="w-full py-5 bg-white text-black font-black uppercase tracking-wide sm:tracking-widest text-xs rounded-2xl hover:scale-[1.02] transition-all shadow-xl mt-4 break-words"
                 >
                   Calculate My Losses
                 </button>
 
                 <button
                   onClick={() => setStep(1)}
-                  className="text-slate-700 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors block mx-auto"
+                  className="text-slate-700 hover:text-white text-[9px] font-black uppercase tracking-wide sm:tracking-widest transition-colors block mx-auto break-words"
                 >
                   ← Change Industry
                 </button>
               </div>
 
               {/* Live preview */}
-              <div className="bg-white/[0.02] border border-white/5 p-10 rounded-[3rem] text-center">
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mb-2">
+              <div className="bg-white/[0.02] border border-white/5 p-6 sm:p-10 rounded-[3rem] text-center">
+                <p className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] text-cyan-400/70 mb-2 break-words">
                   Live Estimate
                 </p>
-                <h3 className="text-4xl md:text-5xl font-black text-rose-500 tracking-tighter italic">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-rose-500 tracking-tighter italic break-words">
                   -${stats.lostRevenue.toLocaleString()}
                 </h3>
-                <p className="text-[9px] font-bold text-slate-700 uppercase tracking-widest mt-2">
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-2 break-words">
                   Lost per month from {stats.missedCalls} missed calls
                 </p>
               </div>
@@ -168,47 +168,47 @@ const Calculator: React.FC = () => {
 
           {/* ── STEP 3: Results ── */}
           {step === 3 && (
-            <div className="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[4rem] max-w-2xl mx-auto text-center animate-in zoom-in-95 fade-in duration-500 relative overflow-hidden">
+            <div className="bg-white/[0.02] border border-white/5 p-6 sm:p-8 md:p-12 rounded-[4rem] max-w-2xl mx-auto text-center opacity-100 transition-all duration-300 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 to-purple-600" />
 
-              <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-8">
+              <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-8 break-words">
                 Your Results
               </p>
 
               {/* Lost revenue */}
               <div className="mb-10">
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mb-2">
+                <p className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] text-cyan-400/70 mb-2 break-words">
                   Estimated Monthly Loss
                 </p>
-                <h3 className="text-5xl md:text-7xl font-black text-rose-500 tracking-tighter italic">
+                <h3 className="text-4xl sm:text-5xl md:text-7xl font-black text-rose-500 tracking-tighter italic break-words">
                   -${stats.lostRevenue.toLocaleString()}
                 </h3>
-                <p className="text-[9px] font-bold text-slate-700 uppercase tracking-widest mt-3">
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-3 break-words">
                   From {stats.missedCalls} missed calls / month
                 </p>
               </div>
 
               {/* Recoverable */}
-              <div className="p-8 bg-cyan-500/5 border border-cyan-500/20 rounded-3xl mb-10">
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-cyan-500 mb-2">
+              <div className="p-6 sm:p-8 bg-cyan-500/5 border border-cyan-500/20 rounded-3xl mb-10">
+                <p className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] text-cyan-500 mb-2 break-words">
                   Recoverable with RelayOpsAI
                 </p>
-                <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter italic">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter italic break-words">
                   +${stats.recoverable.toLocaleString()}
                 </h3>
               </div>
 
               {/* Extra metrics */}
-              <div className="grid grid-cols-2 gap-6 mb-10">
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5">
-                  <div className="text-2xl font-black text-white italic">{stats.hoursSavedWeek}h</div>
-                  <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-10">
+                <div className="p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/5">
+                  <div className="text-xl sm:text-2xl font-black text-white italic">{stats.hoursSavedWeek}h</div>
+                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-1 break-words">
                     Saved / Week
                   </div>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5">
-                  <div className="text-lg font-black text-cyan-400 italic leading-tight">{stats.suggestedTier}</div>
-                  <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-1">
+                <div className="p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/5">
+                  <div className="text-base sm:text-lg font-black text-cyan-400 italic leading-tight break-words">{stats.suggestedTier}</div>
+                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest mt-1 break-words">
                     Suggested Plan
                   </div>
                 </div>
@@ -216,14 +216,14 @@ const Calculator: React.FC = () => {
 
               <button
                 onClick={scrollToConsultation}
-                className="w-full py-6 bg-white text-black font-black uppercase tracking-widest text-xs rounded-2xl hover:scale-105 transition-all shadow-xl"
+                className="w-full py-6 bg-white text-black font-black uppercase tracking-wide sm:tracking-widest text-xs rounded-2xl hover:scale-105 transition-all shadow-xl break-words"
               >
                 Book My Demo
               </button>
 
               <button
                 onClick={() => setStep(2)}
-                className="mt-6 text-slate-700 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors"
+                className="mt-6 text-slate-700 hover:text-white text-[9px] font-black uppercase tracking-wide sm:tracking-widest transition-colors break-words"
               >
                 ← Adjust Numbers
               </button>
