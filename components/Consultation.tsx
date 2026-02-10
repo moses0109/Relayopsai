@@ -63,7 +63,7 @@ const Consultation: React.FC = () => {
           {step === 1 && (
             <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div>
-                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Step 1 of 2</p>
+                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-4">Step 1 of 2</p>
                 <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">How many calls do you receive weekly?</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -71,7 +71,7 @@ const Consultation: React.FC = () => {
                   <button 
                     key={opt}
                     onClick={() => { setAnswers({...answers, volume: opt}); setStep(2); }}
-                    className="py-5 px-6 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-500/50 hover:bg-white/10 transition-all font-black uppercase text-[10px] tracking-widest"
+                    className="py-5 px-6 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-500/50 hover:bg-white/10 transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words"
                   >
                     {opt}
                   </button>
@@ -83,7 +83,7 @@ const Consultation: React.FC = () => {
           {step === 2 && (
             <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div>
-                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Step 2 of 2</p>
+                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-4">Step 2 of 2</p>
                 <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">What is your primary industry?</h3>
               </div>
               <select
@@ -94,7 +94,7 @@ const Consultation: React.FC = () => {
                   sendEmailNotification(answers.volume, newIndustry);
                   setStep(3);
                 }}
-                className="w-full bg-black border border-white/10 rounded-2xl p-6 text-[10px] font-black uppercase tracking-widest text-white appearance-none cursor-pointer focus:outline-none focus:border-cyan-500"
+                className="w-full bg-black border border-white/10 rounded-2xl p-6 text-[10px] font-black uppercase tracking-wide sm:tracking-widest break-words text-white appearance-none cursor-pointer focus:outline-none focus:border-cyan-500"
               >
                 <option value="" disabled>Select an option...</option>
                 {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
@@ -109,19 +109,19 @@ const Consultation: React.FC = () => {
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </div>
                 <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white mb-2">You're Qualified.</h3>
-                <p className="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Select a 15-minute slot below to finalize your system design.</p>
+                <p className="text-slate-500 text-[9px] font-bold uppercase tracking-wide sm:tracking-widest break-words">Select a 15-minute slot below to finalize your system design.</p>
               </div>
               <div className="pt-6">
                 <button 
                   onClick={() => window.open(CALENDLY_LINK, '_blank')}
-                  className="px-16 py-8 bg-white text-black rounded-full font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase tracking-widest"
+                  className="px-16 py-8 bg-white text-black rounded-full font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase tracking-wide sm:tracking-widest break-words"
                 >
                   Open Scheduler
                 </button>
               </div>
               <button 
                 onClick={() => setStep(1)} 
-                className="text-slate-700 hover:text-white text-[8px] font-black uppercase tracking-widest transition-colors"
+                className="text-slate-700 hover:text-white text-[8px] font-black uppercase tracking-wide sm:tracking-widest break-words transition-colors"
               >
                 [ Back to Questions ]
               </button>
@@ -129,7 +129,7 @@ const Consultation: React.FC = () => {
           )}
         </div>
         
-        <p className="mt-8 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+        <p className="mt-8 text-slate-500 text-[10px] font-bold uppercase tracking-wide sm:tracking-widest break-words">
           Limited implementation slots available each month. No credit card required.
         </p>
       </div>
