@@ -137,7 +137,7 @@ const ChatWidget: React.FC = () => {
 
       {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-28 right-8 w-[90vw] md:w-[380px] max-h-[520px] bg-[#0A0A0A] border border-cyan-500/20 rounded-[2rem] shadow-[0_0_60px_rgba(6,182,212,0.15)] flex flex-col overflow-hidden z-[70] animate-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-28 right-8 w-[90vw] md:w-[380px] max-h-[520px] bg-black/40 backdrop-blur-2xl border border-cyan-500/20 rounded-[2rem] shadow-[0_0_60px_rgba(6,182,212,0.15)] flex flex-col overflow-hidden z-[70] animate-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
           <div className="p-6 border-b border-cyan-500/10 bg-gradient-to-r from-cyan-500/5 to-blue-600/5 flex items-center gap-4">
             <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-black italic shadow-lg border border-cyan-400/30">
