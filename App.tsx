@@ -7,6 +7,7 @@ import Samples from './components/Samples';
 import Calculator from './components/Calculator';
 import HowItWorks from './components/HowItWorks';
 import Consultation from './components/Consultation';
+import ChatWidget from './components/ChatWidget';
 import IncomingCall from './components/IncomingCall';
 
 /* ------------------------------------------------------------------ */
@@ -284,7 +285,10 @@ const App: React.FC = () => {
       {/* ── 9) CONSULTATION ── */}
       <Consultation />
 
-      {/* ── 10) INCOMING CALL POPUP ── */}
+      {/* ── 10) FLOATING CHAT WIDGET ── */}
+      <ChatWidget />
+
+      {/* ── 11) INCOMING CALL POPUP ── */}
       <IncomingCall />
     </div>
   );

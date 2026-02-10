@@ -122,12 +122,12 @@ const ChatWidget: React.FC = () => {
     <>
       {/* Tooltip bubble */}
       {showTooltip && !isOpen && (
-        <div className="fixed bottom-28 right-8 z-[70] animate-bounce pointer-events-none">
-          <div className="bg-white text-black px-6 py-3 rounded-2xl shadow-2xl relative border border-black/10">
-            <p className="text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
-              Have questions? Chat with us
+        <div className="fixed bottom-28 right-8 z-[70] pointer-events-none">
+          <div className="bg-white/90 text-black px-5 py-2.5 rounded-xl shadow-lg relative border border-black/5">
+            <p className="text-[9px] font-bold uppercase tracking-wider whitespace-nowrap">
+              Questions? Chat with us
             </p>
-            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white rotate-45 border-r border-b border-black/10" />
+            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white/90 rotate-45 border-r border-b border-black/5" />
           </div>
         </div>
       )}
@@ -135,9 +135,9 @@ const ChatWidget: React.FC = () => {
       {/* Floating toggle button */}
       <button
         onClick={isOpen ? () => setIsOpen(false) : openChat}
-        className="fixed bottom-8 right-8 w-16 h-16 bg-white text-black rounded-full flex items-center justify-center shadow-2xl z-[70] hover:scale-110 active:scale-95 transition-all group pointer-events-auto"
+        className="fixed bottom-8 right-8 w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-lg z-[70] hover:scale-105 active:scale-95 transition-all group pointer-events-auto"
       >
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-black animate-pulse" />
+        <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
         {isOpen ? (
           <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -203,9 +203,9 @@ const ChatWidget: React.FC = () => {
           <div className="p-4 border-t border-white/5">
             <button
               onClick={() => scrollTo('calculator')}
-              className="w-full py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black rounded-xl font-black uppercase tracking-widest text-[10px] hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="w-full py-3.5 bg-white text-black rounded-xl font-bold uppercase tracking-wider text-[10px] hover:bg-gray-100 active:scale-[0.98] transition-all"
             >
-              Get Your Free Call Volume Estimate
+              Get Free Estimate
             </button>
           </div>
         </div>
