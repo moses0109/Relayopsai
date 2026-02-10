@@ -1,0 +1,9 @@
+
+{
+  "name": "RelayOpsAI Elite",
+  "description": "Elite human-sounding Voice AI Receptionists and business automations. Experience the future of conversational intelligence with RelayAI.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

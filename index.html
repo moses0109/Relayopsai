@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#030303">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>RelayOpsAI | Elite Business Voice Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-cyan: #00f2ff;
+            --accent-purple: #bc13fe;
+            --bg-deep: #030303;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* Scroll-triggered fade in animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        /* Staggered animations for grid items */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Add delays for stagger effect */
+        .stagger-item:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-item:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-item:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-item:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-item:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-item:nth-child(6) { transition-delay: 0.6s; }
+        
+        .relay-bg {
+            position: relative;
+            min-height: 100vh;
+            background: var(--bg-deep);
+        }
+        
+        .relay-bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .gradient-relay {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .clamp-hero {
+            font-size: clamp(2.5rem, 9vw, 6.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+
+        .content-wrap {
+            position: relative;
+            z-index: 10;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Audio bar animation for demo cards */
+        @keyframes audioBar {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            /* Better touch targets */
+            button, a {
+                min-height: 44px;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            /* Improve scrolling on iOS */
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Prevent text resize on orientation change */
+            html {
+                -webkit-text-size-adjust: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        // Scroll animation observer - runs after DOM loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-up, .fade-in, .stagger-item').forEach(el => {
+                    observer.observe(el);
+                });
+            }, 100);
+
+            // Parallax effect for backgrounds
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+                        parallaxElements.forEach(el => {
+                            const speed = el.dataset.parallax || 0.5;
+                            el.style.transform = `translateY(${scrolled * speed}px)`;
+                        });
+
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+    <script type="module" src="index.tsx"></script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="relay-bg">
+    <div id="root" class="content-wrap"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+
+import React from 'react';
+import Navbar from './components/Navbar';
+import ParticleBackground from './components/ParticleBackground';
+import Testimonials from './components/Testimonials';
+import Samples from './components/Samples';
+import Calculator from './components/Calculator';
+import HowItWorks from './components/HowItWorks';
+import Consultation from './components/Consultation';
+import IncomingCall from './components/IncomingCall';
+
+/* ------------------------------------------------------------------ */
+/*  APP LAYOUT                                                         */
+/*  1. Hero  2. Demo  3. Revenue Pain  4. ROI Calculator               */
+/*  5. How It Works  6. Industries  7. Trust  8. Pricing               */
+/*  9. Consultation  10. ChatWidget (floating)                         */
+/* ------------------------------------------------------------------ */
+
+const App: React.FC = () => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <div className="min-h-screen text-white bg-transparent flex flex-col pt-16 md:pt-24 relative">
+      {/* Animated dark-blue particle network */}
+      <ParticleBackground />
+
+      <Navbar />
+
+      {/* ── 1) HERO ── */}
+      <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-hidden">
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/[0.07] blur-[160px] rounded-full pointer-events-none" />
+
+        {/* Live badge — Smith.ai-style trust indicator */}
+        <div className="inline-flex items-center gap-2 px-5 py-2 mb-10 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm animate-in slide-in-from-top-4 duration-700">
+          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+          <span className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.3em]">
+            AI Receptionist — Live 24/7
+          </span>
+        </div>
+
+        <h1 className="clamp-hero font-black mb-6 md:mb-8 tracking-tighter italic uppercase relative z-10">
+          Never Miss <br />
+          <span className="gradient-relay">Another Customer.</span>
+        </h1>
+
+        <p className="text-slate-400 text-base md:text-lg lg:text-2xl max-w-3xl mx-auto mb-10 md:mb-10 font-medium leading-relaxed relative z-10 px-2">
+          AI voice agents that answer your calls 24/7, book appointments, and recover missed leads automatically — fully{' '}
+          <span className="text-white italic font-semibold">done-for-you.</span>
+        </p>
+
+        {/* Stat chips — Synthflow / Bland-style inline metrics */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-10 relative z-10">
+          {[
+            { val: '24/7', label: 'Call Coverage' },
+            { val: '98%',  label: 'Answer Rate' },
+            { val: '<2s',  label: 'Avg Response' },
+          ].map((s, i) => (
+            <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.04] border border-white/[0.06] backdrop-blur-sm">
+              <span className="text-white font-black text-sm">{s.val}</span>
+              <span className="text-slate-500 text-[9px] font-bold uppercase tracking-widest">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-5 w-full max-w-xl justify-center mb-10 md:mb-10 relative z-20 px-4">
+          <button
+            onClick={() => scrollTo('demo')}
+            className="group px-8 md:px-10 py-4 md:py-5 bg-white text-black rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-all shadow-2xl flex items-center justify-center gap-3"
+          >
+            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Hear the AI in Action
+          </button>
+          <button
+            onClick={() => scrollTo('consultation')}
+            className="px-8 md:px-10 py-4 md:py-5 border border-white/10 rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:bg-white/5 hover:border-white/20 transition-all"
+          >
+            Book a Demo
+          </button>
+        </div>
+
+        {/* Testimonials */}
+        <div className="w-full max-w-7xl mx-auto border-t border-white/[0.04] pt-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-700 mb-10">
+            Trusted by Local Businesses
+          </p>
+          <Testimonials />
+        </div>
+      </header>
+
+      {/* ── 2) DEMO ── */}
+      <Samples />
+
+      {/* ── 3) REVENUE PAIN ── */}
+      <section className="py-16 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 leading-none fade-in-up">
+            Every Missed Call <br />
+            <span className="text-rose-500">= Lost Revenue.</span>
+          </h2>
+          <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 fade-in-up">
+            Most businesses miss 15–30% of calls during peak hours or after closing. If you aren't answering, they are calling your competitor.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { label: 'Call Coverage', val: '100%', sub: 'Never go to voicemail' },
+              { label: 'Capture Rate', val: '98%', sub: 'Lead recovery avg' },
+              { label: 'ROI Potential', val: '10X+', sub: 'Relative to salary' },
+            ].map((m, i) => (
+              <div key={i} className="stagger-item group p-10 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-500">
+                <div className="text-cyan-400 text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-105 transition-transform">{m.val}</div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-white mb-1">{m.label}</div>
+                <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">{m.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4) ROI CALCULATOR ── */}
+      <Calculator />
+
+      {/* ── 5) HOW IT WORKS ── */}
+      <HowItWorks />
+
+      {/* ── 6) INDUSTRIES WE SERVE ── */}
+      <section className="py-16 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.2" />
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h2 className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
+            Industries We <span className="gradient-relay">Serve.</span>
+          </h2>
+          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-10 fade-in-up">
+            One AI platform, customized for your business
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {[
+              { label: 'HVAC',        icon: 'M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z' },
+              { label: 'Dental',      icon: 'M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z' },
+              { label: 'Salon',       icon: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z' },
+              { label: 'Restaurant',  icon: 'M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z' },
+              { label: 'Real Estate', icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
+              { label: 'Law Firm',    icon: 'M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z' },
+              { label: 'Auto Repair', icon: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z' },
+              { label: 'Plumbing',    icon: 'M19.28 8.6l-.7-1.21-1.27.51-1.18.47-.33-.88-.18-.47H12.5v2h2.09l.87 2.29c.12.31.18.64.18.97v5.68c0 .4-.33.73-.73.73h-2.09c-.41 0-.73-.33-.73-.73V12.5H9.6L7.5 10.4V7.59L5.41 9.68 4 8.27l3.59-3.59 2.5 2.5V10h2.38l1.5-1.5H19.28z' },
+              { label: 'Fitness',     icon: 'M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z' },
+              { label: 'Med Spa',     icon: 'M17.73 12.02l3.98-3.98-2.2-2.2-3.99 3.98-2.15-2.16 4-3.97-2.22-2.22-3.98 3.98-2.36-2.36-2.2 2.2 12.71 12.71 2.2-2.2-2.15-2.14.36-.37zm-6.71 2.09l-2.12-2.12-4.03 4.03 2.12 2.12 4.03-4.03z' },
+              { label: 'Insurance',   icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z' },
+              { label: 'Roofing',     icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
+            ].map((ind, i) => (
+              <div key={i} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-300 text-center cursor-default">
+                <div className="w-10 h-10 mx-auto mb-3 bg-white/[0.04] rounded-xl flex items-center justify-center group-hover:bg-blue-500/10 transition-all duration-300">
+                  <svg className="w-5 h-5 text-slate-500 group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d={ind.icon} />
+                  </svg>
+                </div>
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors duration-300">{ind.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7) TRUST / METRICS ── */}
+      <section id="customers" className="py-16 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-3 fade-in-up">
+            Performance Standards.
+          </h2>
+          <p className="text-slate-600 text-[10px] font-bold uppercase tracking-[0.4em] fade-in-up">
+            What you get when every call is answered
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
+          {[
+            { val: '24/7',    label: 'Coverage',     sub: 'Always on, never sleeps' },
+            { val: '98%',     label: 'Answer Rate',   sub: 'Industry-leading accuracy' },
+            { val: 'Instant', label: 'Booking + SMS', sub: 'Real-time confirmations' },
+            { val: '48hr',    label: 'Setup Time',    sub: 'Fully done for you' },
+          ].map((item, i) => (
+            <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-500">
+              <div className="text-3xl font-black italic text-white group-hover:text-cyan-400 transition-colors duration-300">{item.val}</div>
+              <div className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-1">{item.label}</div>
+              <div className="text-[8px] font-medium text-slate-700 uppercase tracking-wider mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{item.sub}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 8) PRICING ── */}
+      <section id="pricing" className="py-16 px-6 scroll-mt-32 relative">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
+              Investment.
+            </h2>
+            <p className="text-slate-500 uppercase font-bold text-[10px] tracking-widest max-w-md mx-auto leading-relaxed fade-in-up">
+              One missed job often covers the entire monthly cost. Every plan includes full done-for-you setup and optimization.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Starter',
+                price: '$297',
+                desc: 'For Small Businesses',
+                bestFor: 'Best for businesses with under 300 monthly calls',
+                features: ['300 Minutes Included', 'Standard Booking Flow', 'SMS Follow-ups', 'Full Done-For-You Setup', 'Email Support'],
+              },
+              {
+                name: 'Growth',
+                price: '$597',
+                desc: 'For Busy Businesses',
+                popular: true,
+                bestFor: 'Best for growing teams with 300–700 monthly calls',
+                features: ['700 Minutes Included', 'CRM & Calendar Integration', 'Lead Scoring Logic', 'Priority Setup (48hr)', 'Monthly Optimization'],
+              },
+              {
+                name: 'Elite',
+                price: '$997',
+                desc: 'High-Volume & Enterprise',
+                bestFor: 'Best for high-volume operations with 700+ monthly calls',
+                features: ['1,500 Minutes Included', 'Custom API Workflows', 'Bespoke Voice Mapping', 'Account Strategist', 'Weekly Performance Reviews'],
+              },
+            ].map((t, i) => (
+              <div
+                key={i}
+                className={`stagger-item group p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative ${
+                  t.popular
+                    ? 'bg-white/[0.05] border-cyan-500/30 shadow-[0_0_60px_rgba(6,182,212,0.06)] scale-[1.03] z-10'
+                    : 'bg-white/[0.02] border-white/[0.05] hover:border-white/10 hover:bg-white/[0.03]'
+                }`}
+              >
+                {t.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[9px] font-black uppercase px-5 py-1.5 rounded-full tracking-widest shadow-xl">
+                    Most Popular
+                  </div>
+                )}
+
+                <h3 className="text-xl font-black uppercase italic mb-1">{t.name}</h3>
+                <div className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-6">{t.desc}</div>
+
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-5xl font-black tracking-tighter">{t.price}</span>
+                  <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
+                </div>
+
+                <p className="text-[10px] font-bold text-cyan-400/70 uppercase tracking-widest mb-8">{t.bestFor}</p>
+
+                <ul className="space-y-4 flex-grow mb-10">
+                  {t.features.map((f, j) => (
+                    <li key={j} className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0" /> {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => scrollTo('consultation')}
+                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all duration-300 hover:scale-[1.02] ${
+                    t.popular
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
+                      : 'bg-white text-black hover:shadow-lg'
+                  }`}
+                >
+                  Book Consultation
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-slate-700 text-[10px] font-bold uppercase tracking-widest">
+            Extra minutes billed at discounted tiered rates. No hidden setup fees.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 9) CONSULTATION ── */}
+      <Consultation />
+
+      {/* ── 10) INCOMING CALL POPUP ── */}
+      <IncomingCall />
+    </div>
+  );
+};
+
+export default App;
