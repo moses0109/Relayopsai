@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
 import Testimonials from './components/Testimonials';
@@ -290,6 +291,9 @@ const App: React.FC = () => {
 
       {/* ── 11) INCOMING CALL POPUP ── */}
       <IncomingCall />
+
+      {/* Analytics */}
+      <Analytics />
     </div>
   );
 };
