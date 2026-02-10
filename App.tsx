@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
       {/* ── 1) HERO ── */}
       <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-hidden">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-blue-600/[0.07] blur-[160px] rounded-full pointer-events-none" />
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-br from-cyan-600/10 via-blue-600/[0.07] to-purple-600/5 blur-[160px] rounded-full pointer-events-none animate-pulse" />
 
         {/* Live badge — Smith.ai-style trust indicator */}
         <div className="inline-flex items-center gap-2 px-5 py-2 mb-10 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm animate-in slide-in-from-top-4 duration-700">
@@ -69,14 +69,14 @@ const App: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 md:gap-5 w-full max-w-xl justify-center mb-10 md:mb-10 relative z-20 px-4">
           <button
             onClick={() => scrollTo('demo')}
-            className="group px-8 md:px-10 py-4 md:py-5 bg-white text-black rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-all shadow-2xl flex items-center justify-center gap-3"
+            className="group px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-white to-gray-100 text-black rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 border border-white/20"
           >
-            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             Hear the AI in Action
           </button>
           <button
             onClick={() => scrollTo('consultation')}
-            className="px-8 md:px-10 py-4 md:py-5 border border-white/10 rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:bg-white/5 hover:border-white/20 transition-all"
+            className="px-8 md:px-10 py-4 md:py-5 border-2 border-cyan-500/30 bg-cyan-500/5 rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:bg-cyan-500/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300 backdrop-blur-sm"
           >
             Book a Demo
           </button>
@@ -111,8 +111,8 @@ const App: React.FC = () => {
               { label: 'Capture Rate', val: '98%', sub: 'Lead recovery avg' },
               { label: 'ROI Potential', val: '10X+', sub: 'Relative to salary' },
             ].map((m, i) => (
-              <div key={i} className="stagger-item group p-10 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-500">
-                <div className="text-cyan-400 text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-105 transition-transform">{m.val}</div>
+              <div key={i} className="stagger-item group p-10 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
+                <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300">{m.val}</div>
                 <div className="text-[10px] font-black uppercase tracking-widest text-white mb-1">{m.label}</div>
                 <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">{m.sub}</div>
               </div>
@@ -153,13 +153,13 @@ const App: React.FC = () => {
               { label: 'Insurance',   icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z' },
               { label: 'Roofing',     icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
             ].map((ind, i) => (
-              <div key={i} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-300 text-center cursor-default">
-                <div className="w-10 h-10 mx-auto mb-3 bg-white/[0.04] rounded-xl flex items-center justify-center group-hover:bg-blue-500/10 transition-all duration-300">
-                  <svg className="w-5 h-5 text-slate-500 group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+              <div key={i} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-gradient-to-br hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] transition-all duration-300 text-center cursor-default backdrop-blur-sm">
+                <div className="w-10 h-10 mx-auto mb-3 bg-white/[0.04] rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-cyan-500/20 group-hover:to-blue-600/20 transition-all duration-300">
+                  <svg className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path d={ind.icon} />
                   </svg>
                 </div>
-                <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 group-hover:text-white transition-colors duration-300">{ind.label}</p>
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-500 group-hover:text-cyan-400 transition-colors duration-300">{ind.label}</p>
               </div>
             ))}
           </div>
@@ -184,9 +184,9 @@ const App: React.FC = () => {
             { val: 'Instant', label: 'Booking + SMS', sub: 'Real-time confirmations' },
             { val: '48hr',    label: 'Setup Time',    sub: 'Fully done for you' },
           ].map((item, i) => (
-            <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-500">
-              <div className="text-3xl font-black italic text-white group-hover:text-cyan-400 transition-colors duration-300">{item.val}</div>
-              <div className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-1">{item.label}</div>
+            <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
+              <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white to-cyan-400 group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300 group-hover:scale-110">{item.val}</div>
+              <div className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-1 group-hover:text-cyan-400 transition-colors duration-300">{item.label}</div>
               <div className="text-[8px] font-medium text-slate-700 uppercase tracking-wider mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{item.sub}</div>
             </div>
           ))}
@@ -232,10 +232,10 @@ const App: React.FC = () => {
             ].map((t, i) => (
               <div
                 key={i}
-                className={`stagger-item group p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative ${
+                className={`stagger-item group p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm ${
                   t.popular
-                    ? 'bg-white/[0.05] border-cyan-500/30 shadow-[0_0_60px_rgba(6,182,212,0.06)] scale-[1.03] z-10'
-                    : 'bg-white/[0.02] border-white/[0.05] hover:border-white/10 hover:bg-white/[0.03]'
+                    ? 'bg-gradient-to-br from-cyan-500/10 via-blue-600/5 to-purple-600/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.2)]'
+                    : 'bg-white/[0.02] border-white/[0.05] hover:border-cyan-500/20 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(6,182,212,0.08)]'
                 }`}
               >
                 {t.popular && (
