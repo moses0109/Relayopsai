@@ -71,7 +71,6 @@ const responses: Record<string, BotNode> = {
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentOptions, setCurrentOptions] = useState<Option[]>(responses.greeting.options);
 
@@ -85,7 +84,6 @@ const ChatWidget: React.FC = () => {
 
   const openChat = () => {
     setIsOpen(true);
-    setShowTooltip(false);
     if (messages.length === 0) {
       setMessages([{ from: 'bot', text: responses.greeting.text }]);
       setCurrentOptions(responses.greeting.options);
@@ -120,24 +118,12 @@ const ChatWidget: React.FC = () => {
 
   return (
     <>
-      {/* Tooltip bubble */}
-      {showTooltip && !isOpen && (
-        <div className="fixed bottom-28 right-8 z-[70] pointer-events-none">
-          <div className="bg-white/90 text-black px-5 py-2.5 rounded-xl shadow-lg relative border border-black/5">
-            <p className="text-[9px] font-bold uppercase tracking-wider whitespace-nowrap">
-              Questions? Chat with us
-            </p>
-            <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white/90 rotate-45 border-r border-b border-black/5" />
-          </div>
-        </div>
-      )}
-
-      {/* Floating toggle button */}
+      {/* Floating toggle button - matches site theme */}
       <button
         onClick={isOpen ? () => setIsOpen(false) : openChat}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-lg z-[70] hover:scale-105 active:scale-95 transition-all group pointer-events-auto"
+        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(6,182,212,0.3)] z-[70] hover:scale-110 hover:shadow-[0_0_60px_rgba(6,182,212,0.5)] active:scale-95 transition-all duration-300 group pointer-events-auto border border-cyan-400/30"
       >
-        <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
+        <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white shadow-lg" />
         {isOpen ? (
           <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -151,17 +137,17 @@ const ChatWidget: React.FC = () => {
 
       {/* Chat panel */}
       {isOpen && (
-        <div className="fixed bottom-28 right-8 w-[90vw] md:w-[380px] max-h-[520px] bg-[#0A0A0A] border border-white/10 rounded-[2rem] shadow-2xl flex flex-col overflow-hidden z-[70] animate-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-28 right-8 w-[90vw] md:w-[380px] max-h-[520px] bg-[#0A0A0A] border border-cyan-500/20 rounded-[2rem] shadow-[0_0_60px_rgba(6,182,212,0.15)] flex flex-col overflow-hidden z-[70] animate-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
-          <div className="p-6 border-b border-white/5 bg-white/[0.02] flex items-center gap-4">
-            <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center font-black italic">
+          <div className="p-6 border-b border-cyan-500/10 bg-gradient-to-r from-cyan-500/5 to-blue-600/5 flex items-center gap-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-black italic shadow-lg border border-cyan-400/30">
               R
             </div>
             <div className="flex-1">
               <span className="font-black italic uppercase tracking-tighter block text-sm text-white">
                 RelayOpsAI
               </span>
-              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">
+              <span className="text-[10px] text-cyan-400 font-bold uppercase tracking-widest">
                 Online
               </span>
             </div>
@@ -190,7 +176,7 @@ const ChatWidget: React.FC = () => {
                   <button
                     key={i}
                     onClick={() => handleOption(opt)}
-                    className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-500/50 hover:bg-white/10 transition-all text-[10px] font-black uppercase tracking-widest text-white"
+                    className="px-4 py-2.5 rounded-xl bg-white/5 border border-cyan-500/20 hover:border-cyan-500/60 hover:bg-cyan-500/10 hover:shadow-lg hover:shadow-cyan-500/20 transition-all text-[10px] font-black uppercase tracking-widest text-white"
                   >
                     {opt.label}
                   </button>
@@ -200,10 +186,10 @@ const ChatWidget: React.FC = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div className="p-4 border-t border-white/5">
+          <div className="p-4 border-t border-cyan-500/10">
             <button
               onClick={() => scrollTo('calculator')}
-              className="w-full py-3.5 bg-white text-black rounded-xl font-bold uppercase tracking-wider text-[10px] hover:bg-gray-100 active:scale-[0.98] transition-all"
+              className="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-bold uppercase tracking-wider text-[10px] hover:shadow-lg hover:shadow-cyan-500/30 active:scale-[0.98] transition-all"
             >
               Get Free Estimate
             </button>
