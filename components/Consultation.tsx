@@ -59,19 +59,19 @@ const Consultation: React.FC = () => {
           Capture your <br /><span className="gradient-relay">Growth.</span>
         </h2>
         
-        <div className="mt-10 bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[4rem] max-w-2xl mx-auto">
+        <div className="mt-10 bg-white/[0.02] border border-white/10 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl md:rounded-[4rem] max-w-2xl mx-auto">
           {step === 1 && (
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-10">
               <div>
-                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-4">Step 1 of 2</p>
-                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white px-2">How many calls do you receive weekly?</h3>
+                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-3">Step 1 of 2</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black uppercase italic tracking-tight text-white">How many calls do you receive weekly?</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {["Under 20", "20–50", "50–100", "100+"].map((opt) => (
                   <button
                     key={opt}
                     onClick={() => { setAnswers({...answers, volume: opt}); setStep(2); }}
-                    className="w-full py-6 px-8 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-sm md:text-base tracking-wide text-white shadow-2xl shadow-cyan-500/30 border-2 border-cyan-400/50"
+                    className="w-full py-4 px-3 sm:py-6 sm:px-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-xs sm:text-sm md:text-base tracking-wide text-white shadow-xl shadow-cyan-500/30 border-2 border-cyan-400/50"
                   >
                     {opt}
                   </button>
@@ -81,13 +81,13 @@ const Consultation: React.FC = () => {
           )}
 
           {step === 2 && (
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-10">
               <div>
-                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-4">Step 2 of 2</p>
-                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white px-2">What is your primary industry?</h3>
+                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-3">Step 2 of 2</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black uppercase italic tracking-tight text-white">What is your primary industry?</h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                 {industries.map((ind) => (
                   <button
                     key={ind}
@@ -96,7 +96,7 @@ const Consultation: React.FC = () => {
                       sendEmailNotification(answers.volume, ind);
                       setStep(3);
                     }}
-                    className="w-full py-6 px-8 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-sm md:text-base tracking-wide text-white shadow-2xl shadow-cyan-500/30 border-2 border-cyan-400/50"
+                    className="w-full py-4 px-3 sm:py-5 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-xs sm:text-sm tracking-wide text-white shadow-xl shadow-cyan-500/30 border-2 border-cyan-400/50"
                   >
                     {ind}
                   </button>
@@ -113,18 +113,18 @@ const Consultation: React.FC = () => {
           )}
 
           {step === 3 && (
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-10">
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-emerald-500 text-black rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-500 text-black rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tight text-white mb-4">You're Qualified!</h3>
-                <p className="text-slate-400 text-sm md:text-base font-bold uppercase tracking-wide px-4">Select a 15-minute slot below to finalize your system design.</p>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic tracking-tight text-white mb-3">You're Qualified!</h3>
+                <p className="text-slate-400 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide px-2">Select a 15-minute slot below to finalize your system design.</p>
               </div>
-              <div className="pt-6">
+              <div className="pt-4 sm:pt-6">
                 <button
                   onClick={() => window.open(CALENDLY_LINK, '_blank')}
-                  className="w-full sm:w-auto px-12 py-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full font-black text-lg md:text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-emerald-500/30 uppercase tracking-wide"
+                  className="w-full px-8 py-5 sm:py-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full font-black text-base sm:text-lg md:text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-emerald-500/30 uppercase tracking-wide"
                 >
                   Open Scheduler
                 </button>
@@ -139,7 +139,7 @@ const Consultation: React.FC = () => {
           )}
         </div>
         
-        <p className="mt-8 text-slate-500 text-[10px] font-bold uppercase tracking-wide sm:tracking-widest break-words">
+        <p className="mt-8 text-slate-500 text-xs font-bold uppercase tracking-wide break-words">
           Limited implementation slots available each month. No credit card required.
         </p>
       </div>
