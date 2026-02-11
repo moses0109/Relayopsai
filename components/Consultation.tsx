@@ -61,17 +61,17 @@ const Consultation: React.FC = () => {
         
         <div className="mt-10 bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[4rem] max-w-2xl mx-auto">
           {step === 1 && (
-            <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="space-y-10">
               <div>
-                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-4">Step 1 of 2</p>
-                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">How many calls do you receive weekly?</h3>
+                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-4">Step 1 of 2</p>
+                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white px-2">How many calls do you receive weekly?</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {["Under 20", "20–50", "50–100", "100+"].map((opt) => (
                   <button
                     key={opt}
                     onClick={() => { setAnswers({...answers, volume: opt}); setStep(2); }}
-                    className="py-5 px-6 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-cyan-500 hover:bg-cyan-500/20 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white shadow-lg"
+                    className="w-full py-6 px-8 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-sm md:text-base tracking-wide text-white shadow-2xl shadow-cyan-500/30 border-2 border-cyan-400/50"
                   >
                     {opt}
                   </button>
@@ -81,10 +81,10 @@ const Consultation: React.FC = () => {
           )}
 
           {step === 2 && (
-            <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="space-y-10">
               <div>
-                <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-4">Step 2 of 2</p>
-                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">What is your primary industry?</h3>
+                <p className="text-cyan-400 text-xs md:text-sm font-black uppercase tracking-wide mb-4">Step 2 of 2</p>
+                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white px-2">What is your primary industry?</h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -96,7 +96,7 @@ const Consultation: React.FC = () => {
                       sendEmailNotification(answers.volume, ind);
                       setStep(3);
                     }}
-                    className="py-5 px-6 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-cyan-500 hover:bg-cyan-500/20 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white shadow-lg"
+                    className="w-full py-6 px-8 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-95 transition-all font-black uppercase text-sm md:text-base tracking-wide text-white shadow-2xl shadow-cyan-500/30 border-2 border-cyan-400/50"
                   >
                     {ind}
                   </button>
@@ -105,7 +105,7 @@ const Consultation: React.FC = () => {
 
               <button
                 onClick={() => setStep(1)}
-                className="text-slate-700 hover:text-white text-[8px] font-black uppercase tracking-wide sm:tracking-widest transition-colors break-words"
+                className="text-slate-400 hover:text-white text-xs font-black uppercase tracking-wide transition-colors"
               >
                 ← Back
               </button>
@@ -113,27 +113,27 @@ const Consultation: React.FC = () => {
           )}
 
           {step === 3 && (
-            <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="space-y-10">
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-emerald-500 text-black rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                <div className="w-20 h-20 bg-emerald-500 text-black rounded-full flex items-center justify-center mb-6">
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </div>
-                <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white mb-2">You're Qualified.</h3>
-                <p className="text-slate-500 text-[9px] font-bold uppercase tracking-wide sm:tracking-widest break-words">Select a 15-minute slot below to finalize your system design.</p>
+                <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tight text-white mb-4">You're Qualified!</h3>
+                <p className="text-slate-400 text-sm md:text-base font-bold uppercase tracking-wide px-4">Select a 15-minute slot below to finalize your system design.</p>
               </div>
               <div className="pt-6">
-                <button 
+                <button
                   onClick={() => window.open(CALENDLY_LINK, '_blank')}
-                  className="px-16 py-8 bg-white text-black rounded-full font-black text-xl hover:scale-105 transition-all shadow-2xl uppercase tracking-wide sm:tracking-widest break-words"
+                  className="w-full sm:w-auto px-12 py-6 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full font-black text-lg md:text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-emerald-500/30 uppercase tracking-wide"
                 >
                   Open Scheduler
                 </button>
               </div>
-              <button 
-                onClick={() => setStep(1)} 
-                className="text-slate-700 hover:text-white text-[8px] font-black uppercase tracking-wide sm:tracking-widest break-words transition-colors"
+              <button
+                onClick={() => setStep(1)}
+                className="text-slate-400 hover:text-white text-xs font-black uppercase tracking-wide transition-colors"
               >
-                [ Back to Questions ]
+                [ Start Over ]
               </button>
             </div>
           )}

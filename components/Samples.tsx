@@ -161,7 +161,7 @@ const Samples: React.FC = () => {
 
         {/* Status label with glitch effect */}
         <div className="mb-8 h-8">
-          <p className={`font-black uppercase tracking-wide sm:tracking-widest text-xs md:text-sm transition-all duration-300 break-words px-4 ${
+          <p className={`font-black uppercase tracking-wide text-xs md:text-sm transition-all duration-300 break-words px-4 ${
             isPlaying ? 'text-cyan-400' : 'text-white'
           }`}>
             {isPlaying ? (
@@ -186,7 +186,7 @@ const Samples: React.FC = () => {
         )}
 
         {/* Disclaimer */}
-        <p className="mt-8 text-slate-600 text-[10px] font-bold uppercase tracking-wide sm:tracking-widest max-w-lg mx-auto leading-relaxed break-words px-4">
+        <p className="mt-8 text-slate-600 text-xs font-bold uppercase tracking-wide max-w-lg mx-auto leading-relaxed break-words px-4">
           These are demo recordings. Every AI is fully customized to your business, scripts, and workflow.
         </p>
       </div>

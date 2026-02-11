@@ -37,7 +37,7 @@ const App: React.FC = () => {
         {/* Live badge — Smith.ai-style trust indicator */}
         <div className="inline-flex items-center gap-2 px-5 py-2 mb-10 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm animate-in slide-in-from-top-4 duration-700">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          <span className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.25em] break-words">
+          <span className="text-cyan-400 text-xs font-black uppercase tracking-wide break-words">
             AI Receptionist — Live 24/7
           </span>
         </div>
@@ -60,7 +60,7 @@ const App: React.FC = () => {
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.04] border border-white/[0.06] backdrop-blur-sm">
               <span className="text-white font-black text-sm whitespace-nowrap">{s.val}</span>
-              <span className="text-slate-500 text-[9px] font-bold uppercase tracking-wide sm:tracking-widest break-words">{s.label}</span>
+              <span className="text-slate-500 text-xs font-bold uppercase tracking-wide break-words">{s.label}</span>
             </div>
           ))}
         </div>
@@ -69,14 +69,14 @@ const App: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 md:gap-5 w-full max-w-xl justify-center mb-10 md:mb-10 relative z-20 px-4">
           <button
             onClick={() => scrollTo('demo')}
-            className="group px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-white to-gray-100 text-black rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 border border-white/20"
+            className="group px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-white to-gray-100 text-black rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 border border-white/20"
           >
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             Hear the AI in Action
           </button>
           <button
             onClick={() => scrollTo('consultation')}
-            className="px-8 md:px-10 py-4 md:py-5 border-2 border-cyan-500/30 bg-cyan-500/5 rounded-full font-black uppercase tracking-wide md:tracking-widest text-xs md:text-sm hover:bg-cyan-500/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300 backdrop-blur-sm"
+            className="px-8 md:px-10 py-4 md:py-5 border-2 border-cyan-500/30 bg-cyan-500/5 rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:bg-cyan-500/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300 backdrop-blur-sm"
           >
             Book a Demo
           </button>
@@ -84,7 +84,7 @@ const App: React.FC = () => {
 
         {/* Testimonials */}
         <div className="w-full max-w-7xl mx-auto border-t border-white/[0.04] pt-8">
-          <p className="text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] text-slate-700 mb-10 break-words">
+          <p className="text-xs font-black uppercase tracking-wide text-slate-700 mb-10 break-words">
             Trusted by Local Businesses
           </p>
           <Testimonials />
@@ -116,8 +116,8 @@ const App: React.FC = () => {
             ].map((m, i) => (
               <div key={i} className="stagger-item group p-10 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
                 <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-4xl sm:text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300 break-words">{m.val}</div>
-                <div className="text-[10px] font-black uppercase tracking-wide sm:tracking-widest text-white mb-1 break-words">{m.label}</div>
-                <div className="text-[9px] font-bold text-slate-600 uppercase tracking-wide sm:tracking-widest break-words">{m.sub}</div>
+                <div className="text-xs font-black uppercase tracking-wide text-white mb-1 break-words">{m.label}</div>
+                <div className="text-xs font-bold text-slate-600 uppercase tracking-wide break-words">{m.sub}</div>
               </div>
             ))}
           </div>
@@ -162,7 +162,7 @@ const App: React.FC = () => {
                     <path d={ind.icon} />
                   </svg>
                 </div>
-                <p className="text-[9px] font-black uppercase tracking-wide sm:tracking-widest text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 break-words">{ind.label}</p>
+                <p className="text-xs font-black uppercase tracking-wide text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 break-words">{ind.label}</p>
               </div>
             ))}
           </div>
@@ -176,7 +176,7 @@ const App: React.FC = () => {
           <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-3 fade-in-up">
             Performance Standards.
           </h2>
-          <p className="text-slate-600 text-[10px] font-bold uppercase tracking-wider sm:tracking-[0.3em] fade-in-up break-words">
+          <p className="text-slate-600 text-xs font-bold uppercase tracking-wide fade-in-up break-words">
             What you get when every call is answered
           </p>
         </div>
@@ -190,8 +190,8 @@ const App: React.FC = () => {
           ].map((item, i) => (
             <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
               <div className="text-2xl sm:text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white to-cyan-400 group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300 group-hover:scale-110 break-words">{item.val}</div>
-              <div className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-1 group-hover:text-cyan-400 transition-colors duration-300 break-words">{item.label}</div>
-              <div className="text-[8px] font-medium text-slate-700 uppercase tracking-wide mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 break-words">{item.sub}</div>
+              <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mt-1 group-hover:text-cyan-400 transition-colors duration-300 break-words">{item.label}</div>
+              <div className="text-xs font-medium text-slate-700 uppercase tracking-wide mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 break-words">{item.sub}</div>
             </div>
           ))}
         </div>
@@ -204,7 +204,7 @@ const App: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
               Investment.
             </h2>
-            <p className="text-slate-500 uppercase font-bold text-[10px] tracking-wide sm:tracking-widest max-w-md mx-auto leading-relaxed fade-in-up break-words px-4">
+            <p className="text-slate-500 uppercase font-bold text-xs tracking-wide max-w-md mx-auto leading-relaxed fade-in-up break-words px-4">
               One missed job often covers the entire monthly cost. Every plan includes full done-for-you setup and optimization.
             </p>
           </div>
@@ -243,24 +243,24 @@ const App: React.FC = () => {
                 }`}
               >
                 {t.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[9px] font-black uppercase px-5 py-1.5 rounded-full tracking-wide sm:tracking-widest shadow-xl whitespace-nowrap">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
                     Most Popular
                   </div>
                 )}
 
                 <h3 className="text-xl font-black uppercase italic mb-1 break-words">{t.name}</h3>
-                <div className="text-[9px] font-bold text-slate-500 uppercase tracking-wide sm:tracking-widest mb-6 break-words">{t.desc}</div>
+                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-6 break-words">{t.desc}</div>
 
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-5xl font-black tracking-tighter">{t.price}</span>
                   <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
                 </div>
 
-                <p className="text-[10px] font-bold text-cyan-400/70 uppercase tracking-wide sm:tracking-widest mb-8 break-words">{t.bestFor}</p>
+                <p className="text-xs font-bold text-cyan-400/70 uppercase tracking-wide mb-8 break-words">{t.bestFor}</p>
 
                 <ul className="space-y-4 flex-grow mb-10">
                   {t.features.map((f, j) => (
-                    <li key={j} className="text-[10px] font-bold text-slate-400 uppercase tracking-wide sm:tracking-widest flex items-center gap-3 break-words">
+                    <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-center gap-3 break-words">
                       <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0" /> {f}
                     </li>
                   ))}
@@ -268,7 +268,7 @@ const App: React.FC = () => {
 
                 <button
                   onClick={() => scrollTo('consultation')}
-                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-wide sm:tracking-widest text-[10px] transition-all duration-300 hover:scale-[1.02] break-words ${
+                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] break-words ${
                     t.popular
                       ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
                       : 'bg-white text-black hover:shadow-lg'
@@ -280,7 +280,7 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          <p className="mt-8 text-center text-slate-700 text-[10px] font-bold uppercase tracking-wide sm:tracking-widest break-words px-4">
+          <p className="mt-8 text-center text-slate-700 text-xs font-bold uppercase tracking-wide break-words px-4">
             Extra minutes billed at discounted tiered rates. No hidden setup fees.
           </p>
         </div>
