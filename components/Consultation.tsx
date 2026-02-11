@@ -71,7 +71,7 @@ const Consultation: React.FC = () => {
                   <button
                     key={opt}
                     onClick={() => { setAnswers({...answers, volume: opt}); setStep(2); }}
-                    className="py-5 px-6 rounded-2xl bg-white/10 border border-white/20 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white"
+                    className="py-5 px-6 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-cyan-500 hover:bg-cyan-500/20 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white shadow-lg"
                   >
                     {opt}
                   </button>
@@ -96,7 +96,7 @@ const Consultation: React.FC = () => {
                       sendEmailNotification(answers.volume, ind);
                       setStep(3);
                     }}
-                    className="py-5 px-6 rounded-2xl bg-white/10 border border-white/20 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white"
+                    className="py-5 px-6 rounded-2xl bg-slate-800 border-2 border-slate-600 hover:border-cyan-500 hover:bg-cyan-500/20 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white shadow-lg"
                   >
                     {ind}
                   </button>
