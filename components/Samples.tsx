@@ -40,19 +40,19 @@ const Samples: React.FC = () => {
   }));
 
   return (
-    <section id="demo" className="py-12 md:py-16 px-4 md:px-6 scroll-mt-24 relative overflow-hidden">
+    <section id="demo" className="py-12 md:py-16 px-4 md:px-6 scroll-mt-24 relative overflow-x-hidden">
       {/* Animated background glow */}
       <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] blur-[150px] rounded-full pointer-events-none transition-all duration-1000 ${
         isPlaying ? 'bg-cyan-500/20 scale-125' : 'bg-cyan-500/5'
       }`} />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 leading-tight">
+        <h2 className="text-3xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 leading-tight fade-in-up">
           What Your Customers Hear <br />
           <span className="gradient-relay">When They Call</span>
         </h2>
 
-        <p className="text-slate-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4">
+        <p className="text-slate-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4 fade-in-up">
           Listen to a real example of how RelayOpsAI answers calls, handles questions, and books appointments.
         </p>
 
@@ -60,7 +60,7 @@ const Samples: React.FC = () => {
         <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
 
         {/* FUTURISTIC AUDIO PLAYER */}
-        <div className="relative inline-block mb-8">
+        <div className="relative inline-block mb-8 fade-in-up">
           {/* Outer rotating orbit rings */}
           <div className={`absolute inset-0 transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-0'}`}>
             {/* Ring 1 - slow rotation */}

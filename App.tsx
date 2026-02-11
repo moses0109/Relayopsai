@@ -111,7 +111,7 @@ const App: React.FC = () => {
       <Navbar />
 
       {/* ── 1) HERO ── */}
-      <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-hidden">
+      <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-br from-cyan-600/10 via-blue-600/[0.07] to-purple-600/5 blur-[160px] rounded-full pointer-events-none animate-pulse" />
 
         {/* Interactive Hero Logo */}
@@ -177,6 +177,9 @@ const App: React.FC = () => {
       {/* ── 2) DEMO ── */}
       <Samples />
 
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+
       {/* ── 3) REVENUE PAIN ── */}
       <section className="py-16 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
@@ -210,51 +213,17 @@ const App: React.FC = () => {
       {/* ── 4) ROI CALCULATOR ── */}
       <Calculator />
 
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
       {/* ── 5) HOW IT WORKS ── */}
       <HowItWorks />
 
-      {/* ── 6) INDUSTRIES WE SERVE ── */}
-      <section className="py-16 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.2" />
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h2 className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
-            Built for Service Businesses <span className="gradient-relay">Like Yours</span>
-          </h2>
-          <p className="text-slate-500 text-sm font-medium max-w-md mx-auto mb-10 fade-in-up">
-            If your business relies on phone calls, RelayOpsAI works for you.
-          </p>
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {[
-              { label: 'HVAC',        icon: 'M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z' },
-              { label: 'Dental',      icon: 'M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z' },
-              { label: 'Salon',       icon: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z' },
-              { label: 'Restaurant',  icon: 'M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z' },
-              { label: 'Real Estate', icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
-              { label: 'Law Firm',    icon: 'M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z' },
-              { label: 'Auto Repair', icon: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z' },
-              { label: 'Plumbing',    icon: 'M19.28 8.6l-.7-1.21-1.27.51-1.18.47-.33-.88-.18-.47H12.5v2h2.09l.87 2.29c.12.31.18.64.18.97v5.68c0 .4-.33.73-.73.73h-2.09c-.41 0-.73-.33-.73-.73V12.5H9.6L7.5 10.4V7.59L5.41 9.68 4 8.27l3.59-3.59 2.5 2.5V10h2.38l1.5-1.5H19.28z' },
-              { label: 'Fitness',     icon: 'M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z' },
-              { label: 'Med Spa',     icon: 'M17.73 12.02l3.98-3.98-2.2-2.2-3.99 3.98-2.15-2.16 4-3.97-2.22-2.22-3.98 3.98-2.36-2.36-2.2 2.2 12.71 12.71 2.2-2.2-2.15-2.14.36-.37zm-6.71 2.09l-2.12-2.12-4.03 4.03 2.12 2.12 4.03-4.03z' },
-              { label: 'Insurance',   icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z' },
-              { label: 'Roofing',     icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
-            ].map((ind, i) => (
-              <button key={i} onClick={() => scrollTo('calculator')} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-gradient-to-br hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] transition-all duration-300 text-center cursor-pointer backdrop-blur-sm active:scale-95">
-                <div className="w-10 h-10 mx-auto mb-3 bg-white/[0.04] rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-cyan-500/20 group-hover:to-blue-600/20 transition-all duration-300">
-                  <svg className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-                    <path d={ind.icon} />
-                  </svg>
-                </div>
-                <p className="text-xs font-black uppercase tracking-wide text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 break-words">{ind.label}</p>
-              </button>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 7) TRUST / METRICS ── */}
-      <section id="customers" className="py-16 overflow-hidden">
+      {/* ── 6) TRUST / METRICS ── */}
+      <section id="customers" className="py-16 overflow-x-hidden">
         <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
           <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-3 fade-in-up">
             Performance Standards.
@@ -279,6 +248,9 @@ const App: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
       {/* ── 8) PRICING ── */}
       <section id="pricing" className="py-16 px-6 scroll-mt-32 relative">
@@ -368,6 +340,9 @@ const App: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* ── 9) CONSULTATION ── */}
       <Consultation />

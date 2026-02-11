@@ -55,11 +55,11 @@ const Consultation: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none"></div>
       
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <h2 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none">
+        <h2 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none fade-in-up">
           Capture your <br /><span className="gradient-relay">Growth.</span>
         </h2>
         
-        <div className="mt-10 bg-white/[0.02] border border-white/10 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl md:rounded-[4rem] max-w-2xl mx-auto">
+        <div className="mt-10 bg-white/[0.02] border border-white/10 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl md:rounded-[4rem] max-w-2xl mx-auto fade-in-up">
           {step === 1 && (
             <div className="space-y-6 sm:space-y-10">
               <div>

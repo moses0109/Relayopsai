@@ -13,12 +13,12 @@ const HowItWorks: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-8 md:mb-10 leading-[0.9]">
+            <h2 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-8 md:mb-10 leading-[0.9] fade-in-up">
               Built for <br /><span className="gradient-relay">Velocity.</span>
             </h2>
             <div className="space-y-8 md:space-y-12">
               {steps.map((step, i) => (
-                <div key={i} className="flex gap-8 md:gap-12 group">
+                <div key={i} className="flex gap-8 md:gap-12 group stagger-item">
                   <div className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 bg-white text-black rounded-2xl md:rounded-[1.5rem] flex items-center justify-center font-black italic text-xl md:text-2xl group-hover:bg-cyan-400 transition-all shadow-2xl">
                     {i + 1}
                   </div>
@@ -33,7 +33,7 @@ const HowItWorks: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative group">
+          <div className="relative group fade-in-up">
             <div className="absolute inset-0 bg-cyan-500/10 blur-[180px] rounded-full group-hover:bg-cyan-500/20 transition-all"></div>
             <div className="relative bg-white/[0.03] border border-white/10 p-10 md:p-20 rounded-[3rem] md:rounded-[5rem] backdrop-blur-3xl shadow-2xl">
               <div className="space-y-8 md:space-y-12">
