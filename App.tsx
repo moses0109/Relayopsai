@@ -239,14 +239,14 @@ const App: React.FC = () => {
               { label: 'Insurance',   icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z' },
               { label: 'Roofing',     icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' },
             ].map((ind, i) => (
-              <div key={i} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-gradient-to-br hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] transition-all duration-300 text-center cursor-default backdrop-blur-sm">
+              <button key={i} onClick={() => scrollTo('calculator')} className="group p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-gradient-to-br hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] transition-all duration-300 text-center cursor-pointer backdrop-blur-sm active:scale-95">
                 <div className="w-10 h-10 mx-auto mb-3 bg-white/[0.04] rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-cyan-500/20 group-hover:to-blue-600/20 transition-all duration-300">
                   <svg className="w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path d={ind.icon} />
                   </svg>
                 </div>
                 <p className="text-xs font-black uppercase tracking-wide text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 break-words">{ind.label}</p>
-              </div>
+              </button>
             ))}
           </div>
 
