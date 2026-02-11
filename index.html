@@ -22,7 +22,12 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
+            background: var(--bg-deep);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6,182,212,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(30,58,138,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(88,28,135,0.04) 0%, transparent 50%);
+            background-attachment: fixed;
             color: #ffffff;
             overflow-x: hidden;
             margin: 0;
@@ -79,19 +84,6 @@
         .relay-bg {
             position: relative;
             min-height: 100vh;
-            background: var(--bg-deep);
-        }
-        
-        .relay-bg::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.07) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: -1;
         }
 
         .gradient-relay {
@@ -159,28 +151,30 @@
     </style>
 
     <script>
-        // Mouse-follow glow effect
+        // Mouse-follow glow — only animates while mouse is moving
         document.addEventListener('DOMContentLoaded', () => {
             const glow = document.createElement('div');
             glow.id = 'cursor-glow';
-            glow.style.cssText = 'position:fixed;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s;background:radial-gradient(circle,rgba(6,182,212,0.07) 0%,rgba(6,182,212,0.03) 30%,transparent 70%);transform:translate(-50%,-50%);';
+            glow.style.cssText = 'position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s;background:radial-gradient(circle,rgba(6,182,212,0.06) 0%,transparent 60%);transform:translate(-50%,-50%);will-change:left,top;';
             document.body.appendChild(glow);
 
-            let glowX = 0, glowY = 0, currentX = 0, currentY = 0;
+            let glowX = 0, glowY = 0, currentX = 0, currentY = 0, running = false;
             document.addEventListener('mousemove', (e) => {
                 glowX = e.clientX; glowY = e.clientY;
                 glow.style.opacity = '1';
+                if (!running) { running = true; animateGlow(); }
             });
-            document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+            document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; running = false; });
 
             function animateGlow() {
                 currentX += (glowX - currentX) * 0.15;
                 currentY += (glowY - currentY) * 0.15;
                 glow.style.left = currentX + 'px';
                 glow.style.top = currentY + 'px';
-                requestAnimationFrame(animateGlow);
+                if (Math.abs(glowX - currentX) > 0.5 || Math.abs(glowY - currentY) > 0.5) {
+                    requestAnimationFrame(animateGlow);
+                } else { running = false; }
             }
-            animateGlow();
         });
 
         // Scroll animation observer - runs after DOM loads
@@ -210,14 +204,7 @@
             setTimeout(observeAll, 100);
             setTimeout(observeAll, 500);
             setTimeout(observeAll, 1500);
-            // Re-observe on scroll for dynamically rendered content
-            let observeTick = false;
-            window.addEventListener('scroll', () => {
-                if (!observeTick) {
-                    observeTick = true;
-                    requestAnimationFrame(() => { observeAll(); observeTick = false; });
-                }
-            });
+            setTimeout(observeAll, 3000);
 
             // Parallax effect for backgrounds
             let ticking = false;

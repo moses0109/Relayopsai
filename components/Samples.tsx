@@ -42,8 +42,8 @@ const Samples: React.FC = () => {
   return (
     <section id="demo" className="py-12 md:py-16 px-4 md:px-6 scroll-mt-24 relative overflow-x-hidden">
       {/* Animated background glow */}
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] blur-[150px] rounded-full pointer-events-none transition-all duration-1000 ${
-        isPlaying ? 'bg-cyan-500/20 scale-125' : 'bg-cyan-500/5'
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[400px] blur-[80px] rounded-full pointer-events-none transition-all duration-1000 ${
+        isPlaying ? 'bg-cyan-500/15 scale-110' : 'bg-cyan-500/5'
       }`} />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">

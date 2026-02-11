@@ -50,7 +50,7 @@ const HeroLogo = () => {
       </div>
 
       {/* Ambient glow behind logo */}
-      <div className="absolute inset-[-30px] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full blur-3xl animate-[pulse_4s_ease-in-out_infinite] pointer-events-none" />
+      <div className="absolute inset-[-20px] bg-gradient-to-br from-cyan-500/15 to-blue-600/15 rounded-full blur-2xl pointer-events-none" />
 
       <div
         ref={ref}
@@ -112,7 +112,7 @@ const App: React.FC = () => {
 
       {/* ── 1) HERO ── */}
       <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-br from-cyan-600/10 via-blue-600/[0.07] to-purple-600/5 blur-[160px] rounded-full pointer-events-none animate-pulse" />
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-cyan-600/8 via-blue-600/5 to-purple-600/3 blur-[80px] rounded-full pointer-events-none" />
 
         {/* Interactive Hero Logo */}
         <HeroLogo />

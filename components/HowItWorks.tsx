@@ -34,8 +34,8 @@ const HowItWorks: React.FC = () => {
           </div>
 
           <div className="relative group fade-in-up">
-            <div className="absolute inset-0 bg-cyan-500/10 blur-[180px] rounded-full group-hover:bg-cyan-500/20 transition-all"></div>
-            <div className="relative bg-white/[0.03] border border-white/10 p-10 md:p-20 rounded-[3rem] md:rounded-[5rem] backdrop-blur-3xl shadow-2xl">
+            <div className="absolute inset-0 bg-cyan-500/8 blur-[80px] rounded-full group-hover:bg-cyan-500/15 transition-all"></div>
+            <div className="relative bg-white/[0.03] border border-white/10 p-10 md:p-20 rounded-[3rem] md:rounded-[5rem] backdrop-blur-sm shadow-2xl">
               <div className="space-y-8 md:space-y-12">
                 <div className="flex items-center gap-6">
                    <div className="w-2 h-10 bg-cyan-500 rounded-full"></div>
