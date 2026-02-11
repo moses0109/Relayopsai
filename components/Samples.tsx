@@ -48,12 +48,12 @@ const Samples: React.FC = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-3xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 leading-tight">
-          Hear Your AI <br />
-          <span className="gradient-relay">In Action.</span>
+          What Your Customers Hear <br />
+          <span className="gradient-relay">When They Call</span>
         </h2>
 
-        <p className="text-slate-400 font-bold uppercase tracking-wide sm:tracking-widest text-xs md:text-sm mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed break-words px-4">
-          Listen to a real conversation between a business owner and our AI receptionist.
+        <p className="text-slate-400 text-base md:text-lg font-medium max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4">
+          Listen to a real example of how RelayOpsAI answers calls, handles questions, and books appointments.
         </p>
 
         {/* Audio element */}
