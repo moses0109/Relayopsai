@@ -45,14 +45,13 @@ const HowItWorks: React.FC = () => {
                   "Most businesses lose 30% of their revenue because they can't answer the phone at 8 PM. We solve that by deploying agents that never sleep, never sound robotic, and never miss a booking."
                 </p>
                 <div className="flex items-center gap-6 pt-10 border-t border-white/5">
-                   <div className="relative w-14 h-14 group">
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl blur-md opacity-40"></div>
-                      {/* Logo */}
-                      <div className="relative w-full h-full bg-gradient-to-br from-gray-900 via-black to-gray-900 border-2 border-cyan-400/30 rounded-2xl flex items-center justify-center shadow-xl">
-                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(0,242,255,0.15)_0%,_transparent_50%)]"></div>
-                         <span className="relative text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-cyan-300 to-blue-400 font-black italic text-2xl drop-shadow-[0_0_8px_rgba(0,242,255,0.5)]">R</span>
-                      </div>
+                   <div className="relative w-14 h-14 group/logo">
+                      <div className="absolute inset-[-4px] bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 rounded-2xl blur-lg opacity-60 group-hover/logo:opacity-100 transition-opacity duration-500"></div>
+                      <img
+                        src="/logo.png"
+                        alt="RelayOpsAI"
+                        className="relative w-full h-full object-cover rounded-2xl border-2 border-cyan-400/30 shadow-xl group-hover/logo:border-cyan-400/60 group-hover/logo:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all duration-300"
+                      />
                    </div>
                    <div className="flex flex-col">
                       <span className="text-xs font-black uppercase tracking-wide text-white break-words">RelayOpsAI</span>

@@ -23,8 +23,8 @@ const Testimonials: React.FC = () => {
               "{rev.content}"
             </p>
             <div>
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-white">{rev.name}</h4>
-              <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest">{rev.company}</p>
+              <h4 className="text-xs font-black uppercase tracking-wide text-white">{rev.name}</h4>
+              <p className="text-xs font-bold text-slate-600 uppercase tracking-wide">{rev.company}</p>
             </div>
           </div>
         ))}

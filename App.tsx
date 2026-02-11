@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
@@ -10,6 +10,86 @@ import HowItWorks from './components/HowItWorks';
 import Consultation from './components/Consultation';
 import ChatWidget from './components/ChatWidget';
 import IncomingCall from './components/IncomingCall';
+
+/* ------------------------------------------------------------------ */
+/*  HERO LOGO — Large immersive interactive logo with effects          */
+/* ------------------------------------------------------------------ */
+const HeroLogo = () => {
+  const [ripples, setRipples] = useState<number[]>([]);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isPressed, setIsPressed] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: y * -15, y: x * 15 });
+  }, []);
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
+
+  const handleInteraction = () => {
+    setIsPressed(true);
+    setRipples(prev => [...prev, Date.now()]);
+    setTimeout(() => setIsPressed(false), 200);
+    setTimeout(() => setRipples(prev => prev.slice(1)), 800);
+  };
+
+  return (
+    <div className="relative mb-8 md:mb-10">
+      {/* Outer orbital rings */}
+      <div className="absolute inset-[-30px] md:inset-[-50px] pointer-events-none">
+        <div className="absolute inset-0 border border-cyan-400/10 rounded-full animate-[spin_25s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full blur-[2px]" />
+        </div>
+        <div className="absolute inset-3 border border-blue-500/10 rounded-full animate-[spin_18s_linear_infinite_reverse]">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 bg-blue-400 rounded-full blur-[2px]" />
+        </div>
+      </div>
+
+      {/* Ambient glow behind logo */}
+      <div className="absolute inset-[-20px] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full blur-3xl animate-[pulse_4s_ease-in-out_infinite] pointer-events-none" />
+
+      <div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleInteraction}
+        onTouchStart={handleInteraction}
+        className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 mx-auto cursor-pointer group"
+        style={{ perspective: '800px' }}
+      >
+        {/* 3D tilting container */}
+        <div
+          className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-cyan-400/30 group-hover:border-cyan-400/60 shadow-2xl group-hover:shadow-[0_0_60px_rgba(6,182,212,0.4)] transition-shadow duration-500"
+          style={{
+            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.92 : 1})`,
+            transition: isPressed ? 'transform 0.1s ease' : 'transform 0.15s ease-out',
+          }}
+        >
+          <img
+            src="/logo.png"
+            alt="RelayOpsAI"
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+
+          {/* Shine sweep */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 pointer-events-none" />
+
+          {/* Ripple effects */}
+          {ripples.map((id) => (
+            <div key={id} className="absolute inset-0 pointer-events-none">
+              <div className="absolute inset-0 bg-cyan-400/20 rounded-3xl animate-[heroRipple_0.8s_ease-out_forwards]" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /*  APP LAYOUT                                                         */
@@ -34,8 +114,11 @@ const App: React.FC = () => {
       <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-hidden">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-gradient-to-br from-cyan-600/10 via-blue-600/[0.07] to-purple-600/5 blur-[160px] rounded-full pointer-events-none animate-pulse" />
 
+        {/* Interactive Hero Logo */}
+        <HeroLogo />
+
         {/* Live badge — Smith.ai-style trust indicator */}
-        <div className="inline-flex items-center gap-2 px-5 py-2 mb-10 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm animate-in slide-in-from-top-4 duration-700">
+        <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
           <span className="text-cyan-400 text-xs font-black uppercase tracking-wide break-words">
             AI Receptionist — Live 24/7
@@ -297,6 +380,14 @@ const App: React.FC = () => {
 
       {/* Analytics */}
       <Analytics />
+
+      {/* Hero logo animation */}
+      <style>{`
+        @keyframes heroRipple {
+          0% { transform: scale(0.8); opacity: 0.6; }
+          100% { transform: scale(2); opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 };
