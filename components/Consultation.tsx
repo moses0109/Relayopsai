@@ -68,10 +68,10 @@ const Consultation: React.FC = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {["Under 20", "20–50", "50–100", "100+"].map((opt) => (
-                  <button 
+                  <button
                     key={opt}
                     onClick={() => { setAnswers({...answers, volume: opt}); setStep(2); }}
-                    className="py-5 px-6 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-500/50 hover:bg-white/10 transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words"
+                    className="py-5 px-6 rounded-2xl bg-white/10 border border-white/20 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white"
                   >
                     {opt}
                   </button>
@@ -86,19 +86,29 @@ const Consultation: React.FC = () => {
                 <p className="text-cyan-400 text-[10px] font-black uppercase tracking-wider sm:tracking-[0.3em] mb-4">Step 2 of 2</p>
                 <h3 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-white">What is your primary industry?</h3>
               </div>
-              <select
-                value={answers.industry}
-                onChange={(e) => {
-                  const newIndustry = e.target.value;
-                  setAnswers({...answers, industry: newIndustry});
-                  sendEmailNotification(answers.volume, newIndustry);
-                  setStep(3);
-                }}
-                className="w-full bg-black border border-white/10 rounded-2xl p-6 text-[10px] font-black uppercase tracking-wide sm:tracking-widest break-words text-white appearance-none cursor-pointer focus:outline-none focus:border-cyan-500"
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {industries.map((ind) => (
+                  <button
+                    key={ind}
+                    onClick={() => {
+                      setAnswers({...answers, industry: ind});
+                      sendEmailNotification(answers.volume, ind);
+                      setStep(3);
+                    }}
+                    className="py-5 px-6 rounded-2xl bg-white/10 border border-white/20 hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:scale-[1.02] transition-all font-black uppercase text-[10px] tracking-wide sm:tracking-widest break-words text-white"
+                  >
+                    {ind}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={() => setStep(1)}
+                className="text-slate-700 hover:text-white text-[8px] font-black uppercase tracking-wide sm:tracking-widest transition-colors break-words"
               >
-                <option value="" disabled>Select an option...</option>
-                {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
-              </select>
+                ← Back
+              </button>
             </div>
           )}
 

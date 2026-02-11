@@ -133,10 +133,10 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.2" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <h2 className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
-            Industries We <span className="gradient-relay">Serve.</span>
+            Examples of Industries <span className="gradient-relay">We Serve.</span>
           </h2>
           <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider sm:tracking-[0.3em] mb-10 fade-in-up break-words">
-            One AI platform, customized for your business
+            One AI platform, customized for any business
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -163,6 +163,16 @@ const App: React.FC = () => {
                 <p className="text-[9px] font-black uppercase tracking-wide sm:tracking-widest text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 break-words">{ind.label}</p>
               </div>
             ))}
+          </div>
+
+          {/* Clarification - serves all industries */}
+          <div className="mt-10 max-w-2xl mx-auto text-center">
+            <p className="text-slate-600 text-xs font-bold uppercase tracking-wide sm:tracking-widest leading-relaxed break-words px-4">
+              + Many more industries
+            </p>
+            <p className="text-slate-700 text-[10px] font-medium uppercase tracking-wide sm:tracking-wider mt-2 leading-relaxed break-words px-4">
+              We customize our AI for any business that handles customer calls
+            </p>
           </div>
         </div>
       </section>
