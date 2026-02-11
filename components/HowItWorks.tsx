@@ -45,7 +45,7 @@ const HowItWorks: React.FC = () => {
                   "Most businesses lose 30% of their revenue because they can't answer the phone at 8 PM. We solve that by deploying agents that never sleep, never sound robotic, and never miss a booking."
                 </p>
                 <div className="flex items-center gap-6 pt-10 border-t border-white/5">
-                   <div className="relative w-14 h-14 group/logo">
+                   <div className="relative w-16 h-16 group/logo">
                       <div className="absolute inset-[-4px] bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 rounded-2xl blur-lg opacity-60 group-hover/logo:opacity-100 transition-opacity duration-500"></div>
                       <img
                         src="/logo.png"

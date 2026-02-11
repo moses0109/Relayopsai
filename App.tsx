@@ -40,7 +40,7 @@ const HeroLogo = () => {
   return (
     <div className="relative mb-8 md:mb-10">
       {/* Outer orbital rings */}
-      <div className="absolute inset-[-30px] md:inset-[-50px] pointer-events-none">
+      <div className="absolute inset-[-40px] md:inset-[-70px] pointer-events-none">
         <div className="absolute inset-0 border border-cyan-400/10 rounded-full animate-[spin_25s_linear_infinite]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full blur-[2px]" />
         </div>
@@ -50,7 +50,7 @@ const HeroLogo = () => {
       </div>
 
       {/* Ambient glow behind logo */}
-      <div className="absolute inset-[-20px] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full blur-3xl animate-[pulse_4s_ease-in-out_infinite] pointer-events-none" />
+      <div className="absolute inset-[-30px] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full blur-3xl animate-[pulse_4s_ease-in-out_infinite] pointer-events-none" />
 
       <div
         ref={ref}
@@ -58,7 +58,7 @@ const HeroLogo = () => {
         onMouseLeave={handleMouseLeave}
         onClick={handleInteraction}
         onTouchStart={handleInteraction}
-        className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 mx-auto cursor-pointer group"
+        className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 mx-auto cursor-pointer group"
         style={{ perspective: '800px' }}
       >
         {/* 3D tilting container */}

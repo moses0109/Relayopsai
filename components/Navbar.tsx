@@ -4,7 +4,7 @@ import React, { useState, useRef, useCallback } from 'react';
 /* ------------------------------------------------------------------ */
 /*  INTERACTIVE LOGO with 3D tilt, ripple, and glow effects           */
 /* ------------------------------------------------------------------ */
-const InteractiveLogo = ({ size = "w-10 h-10 md:w-12 md:h-12" }: { size?: string }) => {
+const InteractiveLogo = ({ size = "w-12 h-12 md:w-14 md:h-14" }: { size?: string }) => {
   const [ripple, setRipple] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLDivElement>(null);
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16 md:h-24 px-4 md:px-12 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
           <button onClick={() => scrollTo('top')} className="flex items-center space-x-3 md:space-x-5 group cursor-pointer h-full">
             <InteractiveLogo />
-            <span className="text-base md:text-xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">RelayOpsAI</span>
+            <span className="text-lg md:text-2xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">RelayOpsAI</span>
           </button>
 
           <div className="hidden lg:flex items-center space-x-14 h-full">
