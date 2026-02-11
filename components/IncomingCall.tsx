@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  INCOMING CALL POPUP                                                */
-/*  Appears after deep scroll, plays demo when accepted                */
+/*  INCOMING CALL NOTIFICATION                                         */
+/*  Compact banner slides from top like a real phone notification       */
 /* ------------------------------------------------------------------ */
 
 const IncomingCall: React.FC = () => {
@@ -16,11 +16,9 @@ const IncomingCall: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (callDismissed) return;
-
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
 
-      // Show call popup after scrolling 3.5 viewports (much later)
       if (scrollPosition > windowHeight * 3.5 && !showCall && !isCallActive) {
         setShowCall(true);
         setIsRinging(true);
@@ -34,12 +32,9 @@ const IncomingCall: React.FC = () => {
   const acceptCall = () => {
     setIsRinging(false);
     setIsCallActive(true);
-
     if (audioRef.current) {
       audioRef.current.src = '/demo.mp3';
-      audioRef.current.play().catch(err => {
-        console.error('Audio playback error:', err);
-      });
+      audioRef.current.play().catch(err => console.error('Audio error:', err));
     }
   };
 
@@ -53,7 +48,6 @@ const IncomingCall: React.FC = () => {
     setIsCallActive(false);
     setShowCall(false);
     setCallDismissed(true);
-
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -66,134 +60,94 @@ const IncomingCall: React.FC = () => {
     <>
       <audio ref={audioRef} onEnded={endCall} />
 
-      {/* Overlay */}
-      <div className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-500 ${
-        showCall || isCallActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`} onClick={isCallActive ? endCall : declineCall} />
+      {/* Slim overlay — only when active call */}
+      {isCallActive && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] transition-opacity duration-500" onClick={endCall} />
+      )}
 
-      {/* Phone UI */}
-      <div className={`fixed bottom-0 left-1/2 -translate-x-1/2 z-[101] w-full max-w-md transition-transform duration-700 ease-out ${
-        showCall || isCallActive ? 'translate-y-0' : 'translate-y-full'
+      {/* TOP NOTIFICATION BANNER */}
+      <div className={`fixed top-0 left-0 right-0 z-[101] transition-transform duration-500 ease-out ${
+        showCall || isCallActive ? 'translate-y-0' : '-translate-y-full'
       }`}>
-        <div className="mx-4 mb-8 bg-gradient-to-b from-gray-900 to-black rounded-[3rem] border-4 border-gray-800 shadow-2xl overflow-hidden">
+        <div className="mx-3 mt-3 md:mx-auto md:max-w-md">
 
-          {/* INCOMING CALL SCREEN */}
+          {/* RINGING STATE — compact notification */}
           {isRinging && (
-            <div className="p-8 pb-12">
-              <div className="text-center mb-8">
-                <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">
-                  Incoming Call
-                </p>
-                <h3 className="text-white text-2xl font-black tracking-tight">
-                  RelayOpsAI
-                </h3>
-                <p className="text-gray-500 text-sm mt-1">AI Receptionist</p>
-              </div>
-
-              {/* Animated Avatar with ring ripples */}
-              <div className="flex justify-center mb-12">
-                <div className="relative w-28 h-28">
-                  {/* Expanding ring ripples */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="absolute w-28 h-28 rounded-full border-2 border-cyan-400/60 ring-expand" style={{ animationDelay: '0s' }} />
-                    <div className="absolute w-28 h-28 rounded-full border-2 border-cyan-400/40 ring-expand" style={{ animationDelay: '0.6s' }} />
-                    <div className="absolute w-28 h-28 rounded-full border-2 border-cyan-400/20 ring-expand" style={{ animationDelay: '1.2s' }} />
-                  </div>
-
-                  {/* Avatar circle with subtle vibrate */}
-                  <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border-4 border-gray-800 shadow-[0_0_40px_rgba(6,182,212,0.3)] phone-vibrate">
-                    <svg className="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl shadow-black/50 p-4 call-slide-in">
+              <div className="flex items-center gap-4">
+                {/* Avatar */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border-2 border-cyan-400/30 shadow-lg shadow-cyan-500/20 phone-vibrate">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
+                  {/* Ring ripple */}
+                  <div className="absolute inset-0 rounded-full border-2 border-cyan-400/40 ring-expand" />
+                </div>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Incoming Call</p>
+                  <p className="text-white text-sm font-black tracking-tight truncate">RelayOpsAI Demo</p>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <button onClick={declineCall} className="w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center active:scale-90 transition-all">
+                    <svg className="w-4 h-4 text-white rotate-135" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                  </button>
+                  <button onClick={acceptCall} className="w-10 h-10 rounded-full bg-emerald-500 hover:bg-emerald-600 flex items-center justify-center active:scale-90 transition-all shadow-lg shadow-emerald-500/30 accept-pulse">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                  </button>
                 </div>
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex justify-center gap-8">
-                <button
-                  onClick={declineCall}
-                  className="group w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center shadow-lg transition-all active:scale-95"
-                >
-                  <svg className="w-6 h-6 text-white rotate-135" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                  </svg>
-                </button>
-
-                <button
-                  onClick={acceptCall}
-                  className="group w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/50 transition-all active:scale-95 accept-pulse"
-                >
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                  </svg>
-                </button>
-              </div>
-
-              <p className="text-center text-gray-500 text-xs mt-8 font-bold uppercase tracking-widest">
-                Tap to answer
-              </p>
             </div>
           )}
 
-          {/* ACTIVE CALL SCREEN */}
+          {/* ACTIVE CALL STATE — compact bar */}
           {isCallActive && (
-            <div className="p-8 pb-12 bg-gradient-to-b from-emerald-900/20 to-transparent">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 rounded-full mb-4">
+            <div className="bg-emerald-900/90 backdrop-blur-xl rounded-2xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 p-4">
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0 flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  <span className="text-emerald-400 text-[10px] font-black uppercase tracking-wider">
-                    Call in Progress
-                  </span>
                 </div>
-                <h3 className="text-white text-2xl font-black tracking-tight">
-                  RelayOpsAI
-                </h3>
-                <p className="text-gray-400 text-sm mt-1">AI Receptionist Demo</p>
-              </div>
 
-              {/* Audio Waveform */}
-              <div className="flex justify-center items-center gap-1 h-24 mb-12">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-1 bg-gradient-to-t from-cyan-400 to-emerald-400 rounded-full"
-                    style={{
-                      height: '40px',
-                      animation: 'audioWave 0.8s ease-in-out infinite',
-                      animationDelay: `${i * 0.05}s`,
-                    }}
-                  />
-                ))}
-              </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-emerald-300 text-[10px] font-black uppercase tracking-widest">Live — RelayOpsAI</p>
+                  <div className="flex items-center gap-[2px] h-4 mt-1">
+                    {Array.from({ length: 16 }).map((_, i) => (
+                      <div key={i} className="w-[2px] bg-emerald-400/80 rounded-full" style={{
+                        height: '12px',
+                        animation: 'miniWave 0.6s ease-in-out infinite',
+                        animationDelay: `${i * 0.04}s`,
+                      }} />
+                    ))}
+                  </div>
+                </div>
 
-              <div className="flex justify-center">
-                <button
-                  onClick={endCall}
-                  className="w-20 h-20 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center shadow-lg shadow-red-500/50 transition-all active:scale-95"
-                >
-                  <svg className="w-8 h-8 text-white rotate-135" fill="currentColor" viewBox="0 0 24 24">
+                <button onClick={endCall} className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center active:scale-90 transition-all">
+                  <svg className="w-4 h-4 text-white rotate-135" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                   </svg>
                 </button>
               </div>
-
-              <p className="text-center text-gray-500 text-xs mt-8 font-bold uppercase tracking-widest">
-                Tap to end call
-              </p>
             </div>
           )}
         </div>
       </div>
 
-      {/* Animations */}
       <style>{`
         @keyframes ringExpand {
-          0% { transform: scale(1); opacity: 0.6; border-width: 2px; }
-          100% { transform: scale(2.2); opacity: 0; border-width: 1px; }
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(1.8); opacity: 0; }
         }
         @keyframes phoneVibrate {
           0%, 100% { transform: rotate(0deg); }
@@ -204,22 +158,21 @@ const IncomingCall: React.FC = () => {
           50% { transform: rotate(0deg); }
         }
         @keyframes acceptPulse {
-          0%, 100% { box-shadow: 0 10px 15px -3px rgba(34,197,94,0.5); }
-          50% { box-shadow: 0 10px 30px -3px rgba(34,197,94,0.7), 0 0 40px rgba(34,197,94,0.3); }
+          0%, 100% { box-shadow: 0 4px 6px -1px rgba(16,185,129,0.3); }
+          50% { box-shadow: 0 4px 15px -1px rgba(16,185,129,0.6); }
         }
-        @keyframes audioWave {
-          0%, 100% { height: 8px; opacity: 0.4; }
-          50% { height: 64px; opacity: 1; }
+        @keyframes miniWave {
+          0%, 100% { height: 3px; opacity: 0.4; }
+          50% { height: 14px; opacity: 1; }
         }
-        .ring-expand {
-          animation: ringExpand 1.8s ease-out infinite;
+        @keyframes callSlideIn {
+          0% { transform: translateY(-20px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 1; }
         }
-        .phone-vibrate {
-          animation: phoneVibrate 1s ease-in-out infinite;
-        }
-        .accept-pulse {
-          animation: acceptPulse 1.5s ease-in-out infinite;
-        }
+        .ring-expand { animation: ringExpand 1.5s ease-out infinite; }
+        .phone-vibrate { animation: phoneVibrate 0.8s ease-in-out infinite; }
+        .accept-pulse { animation: acceptPulse 1.2s ease-in-out infinite; }
+        .call-slide-in { animation: callSlideIn 0.4s ease-out; }
       `}</style>
     </>
   );

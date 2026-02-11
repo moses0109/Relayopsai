@@ -2,9 +2,8 @@
 import React, { useEffect, useRef } from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  ANIMATED PARTICLE BACKGROUND                                       */
-/*  Dark-blue dots drifting on a black canvas with faint connections.   */
-/*  Renders behind all content via position: fixed + z-index: 0.       */
+/*  INTERACTIVE PARTICLE BACKGROUND                                    */
+/*  Particles drift + react to mouse cursor (repel + glow near cursor) */
 /* ------------------------------------------------------------------ */
 
 interface Particle {
@@ -18,6 +17,7 @@ interface Particle {
 
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,7 +38,6 @@ const ParticleBackground: React.FC = () => {
     };
 
     const createParticles = () => {
-      /* ~1 dot per 12 000 px² — enough density without killing perf */
       const count = Math.min(Math.floor((w * h) / 12000), 200);
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
@@ -51,21 +50,35 @@ const ParticleBackground: React.FC = () => {
     };
 
     const CONNECTION_DIST = 140;
+    const MOUSE_RADIUS = 200;
+    const MOUSE_FORCE = 0.8;
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y + window.scrollY;
 
       /* --- connections --- */
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = dx * dx + dy * dy;                     // skip sqrt for perf
+          const dist = dx * dx + dy * dy;
           if (dist < CONNECTION_DIST * CONNECTION_DIST) {
-            const alpha = 0.06 * (1 - Math.sqrt(dist) / CONNECTION_DIST);
+            const d = Math.sqrt(dist);
+            const alpha = 0.06 * (1 - d / CONNECTION_DIST);
+
+            /* Glow connections near cursor */
+            const midX = (particles[i].x + particles[j].x) / 2;
+            const midY = (particles[i].y + particles[j].y) / 2;
+            const mouseDist = Math.sqrt((midX - mx) ** 2 + (midY - my) ** 2);
+            const nearMouse = mouseDist < MOUSE_RADIUS;
+
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(30, 58, 138, ${alpha})`;  // dark blue lines
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = nearMouse
+              ? `rgba(6, 182, 212, ${alpha * 3})`
+              : `rgba(30, 58, 138, ${alpha})`;
+            ctx.lineWidth = nearMouse ? 1 : 0.6;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -75,34 +88,69 @@ const ParticleBackground: React.FC = () => {
 
       /* --- dots --- */
       for (const p of particles) {
+        /* Mouse repulsion */
+        const dxm = p.x - mx;
+        const dym = p.y - my;
+        const distMouse = Math.sqrt(dxm * dxm + dym * dym);
+        if (distMouse < MOUSE_RADIUS && distMouse > 0) {
+          const force = (1 - distMouse / MOUSE_RADIUS) * MOUSE_FORCE;
+          p.vx += (dxm / distMouse) * force;
+          p.vy += (dym / distMouse) * force;
+        }
+
+        /* Dampen velocity */
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+
+        /* Clamp speed */
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > 2) {
+          p.vx = (p.vx / speed) * 2;
+          p.vy = (p.vy / speed) * 2;
+        }
+
         p.x += p.vx;
         p.y += p.vy;
 
-        /* wrap around */
         if (p.x < 0) p.x = w;
         if (p.x > w) p.x = 0;
         if (p.y < 0) p.y = h;
         if (p.y > h) p.y = 0;
 
+        /* Glow dots near cursor */
+        const nearCursor = distMouse < MOUSE_RADIUS;
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(30, 64, 175, ${p.opacity})`;    // dark blue dots
+        ctx.arc(p.x, p.y, nearCursor ? p.size * 1.5 : p.size, 0, Math.PI * 2);
+        ctx.fillStyle = nearCursor
+          ? `rgba(6, 182, 212, ${p.opacity * 2})`
+          : `rgba(30, 64, 175, ${p.opacity})`;
         ctx.fill();
       }
 
       animationId = requestAnimationFrame(draw);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
     resize();
     createParticles();
     draw();
 
-    const handleResize = () => { resize(); createParticles(); };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', () => { resize(); createParticles(); });
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
