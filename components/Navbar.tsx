@@ -105,10 +105,15 @@ const Navbar: React.FC = () => {
           <div className="flex items-center h-full">
             <button
               onClick={() => scrollTo('consultation')}
-              className="inline-flex items-center justify-center px-5 md:px-10 py-2.5 md:py-3.5 bg-white text-black rounded-full text-xs font-black uppercase tracking-wide hover:bg-cyan-400 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/5"
+              className="group/cta relative inline-flex items-center justify-center gap-2 px-5 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full text-xs font-black uppercase tracking-wide hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:shadow-xl overflow-hidden border border-cyan-400/30"
             >
-              <span className="hidden sm:inline">Consultation</span>
-              <span className="sm:hidden">Book</span>
+              <span className="relative z-10 hidden sm:inline">Book a Demo</span>
+              <span className="relative z-10 sm:hidden">Demo</span>
+              <svg className="relative z-10 w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
+              {/* Shimmer sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700 pointer-events-none" />
             </button>
           </div>
         </div>
