@@ -262,12 +262,12 @@ const App: React.FC = () => {
       {/* ── 8) PRICING ── */}
       <section id="pricing" className="py-16 px-6 scroll-mt-32 relative">
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
               Investment.
             </h2>
-            <p className="text-slate-500 uppercase font-bold text-xs tracking-wide max-w-md mx-auto leading-relaxed fade-in-up break-words px-4">
-              One missed job often covers the entire monthly cost. Every plan includes full done-for-you setup and optimization.
+            <p className="text-slate-500 uppercase font-bold text-xs tracking-wide max-w-lg mx-auto leading-relaxed fade-in-up break-words px-4">
+              One missed job covers the entire monthly cost. Every plan includes full done-for-you setup, a 14-day free trial, and no long-term contracts.
             </p>
           </div>
 
@@ -275,30 +275,63 @@ const App: React.FC = () => {
             {[
               {
                 name: 'Starter',
-                price: '$297',
+                price: '$349',
                 desc: 'For Small Businesses',
-                bestFor: 'Best for businesses with under 300 monthly calls',
-                features: ['300 Minutes Included', 'Standard Booking Flow', 'SMS Follow-ups', 'Full Done-For-You Setup', 'Email Support'],
+                bestFor: 'Ideal for businesses under 300 calls/mo',
+                features: [
+                  '300 Minutes Included',
+                  '1 AI Receptionist',
+                  '1 Dedicated Phone Number',
+                  '24/7 Call Answering',
+                  'Appointment Booking + Calendar Sync',
+                  'SMS Confirmations',
+                  'Lead Capture & Client Profiles',
+                  'Call Transcripts & Summaries',
+                  'Industry-Specific Setup',
+                  'Email Support',
+                ],
               },
               {
                 name: 'Growth',
-                price: '$597',
-                desc: 'For Busy Businesses',
+                price: '$697',
+                desc: 'For Growing Teams',
                 popular: true,
-                bestFor: 'Best for growing teams with 300–700 monthly calls',
-                features: ['700 Minutes Included', 'CRM & Calendar Integration', 'Lead Scoring Logic', 'Priority Setup (48hr)', 'Monthly Optimization'],
+                bestFor: 'Best for 300–700 calls/mo',
+                features: [
+                  '700 Minutes Included',
+                  '3 AI Receptionists',
+                  '3 Phone Numbers',
+                  'Everything in Starter',
+                  'CRM Integration (Salesforce, HubSpot, etc.)',
+                  'Call Transfer to Live Staff',
+                  'Returning Caller Recognition',
+                  'Outbound Follow-up Calls',
+                  'Analytics Dashboard & Reporting',
+                  'Priority Setup (48hr)',
+                ],
               },
               {
                 name: 'Elite',
-                price: '$997',
-                desc: 'High-Volume & Enterprise',
-                bestFor: 'Best for high-volume operations with 700+ monthly calls',
-                features: ['1,500 Minutes Included', 'Custom API Workflows', 'Bespoke Voice Mapping', 'Account Strategist', 'Weekly Performance Reviews'],
+                price: '$1,297',
+                desc: 'High-Volume & Multi-Location',
+                bestFor: 'Built for 700+ calls/mo',
+                features: [
+                  '1,500 Minutes Included',
+                  'Unlimited AI Receptionists',
+                  '5 Phone Numbers',
+                  'Everything in Growth',
+                  '16-Language Support (Auto-Detect)',
+                  'Custom Voice & Personality',
+                  'Outbound Calling Campaigns',
+                  'Custom API & Webhook Integrations',
+                  'Dedicated Account Manager',
+                  'Weekly Performance Reviews',
+                ],
               },
             ].map((t, i) => (
               <div
                 key={i}
-                className={`stagger-item group p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm ${
+                className={`stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm ${
                   t.popular
                     ? 'bg-gradient-to-br from-cyan-500/10 via-blue-600/5 to-purple-600/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.2)]'
                     : 'bg-white/[0.02] border-white/[0.05] hover:border-cyan-500/20 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(6,182,212,0.08)]'
@@ -320,10 +353,10 @@ const App: React.FC = () => {
 
                 <p className="text-xs font-bold text-cyan-400/70 uppercase tracking-wide mb-8 break-words">{t.bestFor}</p>
 
-                <ul className="space-y-4 flex-grow mb-10">
+                <ul className="space-y-3 flex-grow mb-10">
                   {t.features.map((f, j) => (
-                    <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-center gap-3 break-words">
-                      <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0" /> {f}
+                    <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
+                      <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0 mt-1.5" /> {f}
                     </li>
                   ))}
                 </ul>
@@ -336,14 +369,33 @@ const App: React.FC = () => {
                       : 'bg-white text-black hover:shadow-lg'
                   }`}
                 >
-                  Book Consultation
+                  Start 14-Day Free Trial
                 </button>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-center text-slate-700 text-xs font-bold uppercase tracking-wide break-words px-4">
-            Extra minutes billed at discounted tiered rates. No hidden setup fees.
+          {/* Add-ons */}
+          <div className="mt-14 fade-in-up">
+            <h3 className="text-center text-sm font-black uppercase tracking-wide text-white mb-6">Available Add-Ons</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Cold/warm calling with lead lists & sales AI' },
+                { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Additional dedicated numbers for departments' },
+                { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom integrations' },
+                { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own — full reseller dashboard' },
+              ].map((addon, i) => (
+                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] text-center">
+                  <p className="text-xs font-black uppercase tracking-wide text-white mb-1 break-words">{addon.name}</p>
+                  <p className="text-sm font-black text-cyan-400 mb-2">{addon.price}</p>
+                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide leading-relaxed break-words">{addon.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-10 text-center text-slate-700 text-xs font-bold uppercase tracking-wide break-words px-4">
+            Extra minutes billed at discounted tiered rates. No hidden fees. No long-term contracts. Cancel anytime.
           </p>
         </div>
       </section>
