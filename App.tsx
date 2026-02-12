@@ -267,7 +267,7 @@ const App: React.FC = () => {
               Investment.
             </h2>
             <p className="text-slate-500 uppercase font-bold text-xs tracking-wide max-w-lg mx-auto leading-relaxed fade-in-up break-words px-4">
-              One missed job covers the entire monthly cost. Every plan includes full done-for-you setup, a 14-day free trial, and no long-term contracts.
+              One missed job covers the entire monthly cost. Every plan includes full done-for-you setup, dedicated support, and no long-term contracts.
             </p>
           </div>
 
@@ -283,20 +283,21 @@ const App: React.FC = () => {
                 <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
               </div>
 
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-8 break-words">Ideal for businesses under 300 calls/mo</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 break-words">Ideal for businesses under 300 calls/mo</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
               <ul className="space-y-3 flex-grow mb-10">
                 {[
                   '300 Minutes Included',
-                  '1 AI Receptionist',
+                  '1 Fully Custom AI Receptionist',
                   '1 Dedicated Phone Number',
                   '24/7 Call Answering',
                   'Appointment Booking + Calendar Sync',
                   'SMS Confirmations',
                   'Lead Capture & Client Profiles',
                   'Call Transcripts & Summaries',
-                  'Industry-Specific Setup',
-                  'Email Support',
+                  'Dedicated Account Manager',
+                  '24/7 Priority Support',
                 ].map((f, j) => (
                   <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
                     <div className="w-1.5 h-1.5 bg-slate-500 rounded-full flex-shrink-0 mt-1.5" /> {f}
@@ -308,7 +309,7 @@ const App: React.FC = () => {
                 onClick={() => scrollTo('consultation')}
                 className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-white/10 text-white border border-white/10 hover:bg-white/20 hover:shadow-lg"
               >
-                Start 14-Day Free Trial
+                Get Started
               </button>
             </div>
 
@@ -326,18 +327,19 @@ const App: React.FC = () => {
                 <span className="text-cyan-400/50 text-xs font-bold uppercase">/mo</span>
               </div>
 
-              <p className="text-xs font-bold text-cyan-400/60 uppercase tracking-wide mb-8 break-words">Best for 300-700 calls/mo</p>
+              <p className="text-xs font-bold text-cyan-400/60 uppercase tracking-wide mb-2 break-words">Best for 300-700 calls/mo</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
               <ul className="space-y-3 flex-grow mb-10">
                 {[
                   '700 Minutes Included',
-                  '3 AI Receptionists',
+                  '3 Fully Custom AI Receptionists',
                   '3 Phone Numbers',
                   'Everything in Starter',
                   'CRM Integration (Salesforce, HubSpot, etc.)',
                   'Call Transfer to Live Staff',
                   'Returning Caller Recognition',
-                  'Outbound Follow-up Calls',
+                  '36-Language Support (Auto-Detect)',
                   'Analytics Dashboard & Reporting',
                   'Priority Setup (48hr)',
                 ].map((f, j) => (
@@ -351,7 +353,7 @@ const App: React.FC = () => {
                 onClick={() => scrollTo('consultation')}
                 className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
               >
-                Start 14-Day Free Trial
+                Get Started
               </button>
             </div>
 
@@ -369,20 +371,21 @@ const App: React.FC = () => {
                 <span className="text-purple-400/50 text-xs font-bold uppercase">/mo</span>
               </div>
 
-              <p className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-8 break-words">Built for 700+ calls/mo</p>
+              <p className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-2 break-words">Built for 700+ calls/mo</p>
+              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
               <ul className="space-y-3 flex-grow mb-10">
                 {[
                   '1,500 Minutes Included',
-                  'Unlimited AI Receptionists',
+                  'Unlimited Custom AI Receptionists',
                   '5 Phone Numbers',
                   'Everything in Growth',
-                  '16-Language Support (Auto-Detect)',
+                  '36-Language Support (Auto-Detect)',
                   'Custom Voice & Personality',
-                  'Outbound Calling Campaigns',
                   'Custom API & Webhook Integrations',
-                  'Dedicated Account Manager',
+                  'White-Glove Onboarding',
                   'Weekly Performance Reviews',
+                  'Dedicated Slack/Teams Channel',
                 ].map((f, j) => (
                   <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
                     <div className="w-1.5 h-1.5 bg-purple-400 rounded-full flex-shrink-0 mt-1.5" /> {f}
@@ -394,7 +397,7 @@ const App: React.FC = () => {
                 onClick={() => scrollTo('consultation')}
                 className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-purple-500 to-amber-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
               >
-                Start 14-Day Free Trial
+                Get Started
               </button>
             </div>
 
