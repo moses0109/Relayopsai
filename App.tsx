@@ -10,6 +10,7 @@ import HowItWorks from './components/HowItWorks';
 import Consultation from './components/Consultation';
 import ChatWidget from './components/ChatWidget';
 import IncomingCall from './components/IncomingCall';
+import Integrations from './components/Integrations';
 
 /* ------------------------------------------------------------------ */
 /*  HERO LOGO — Large immersive interactive logo with effects          */
@@ -251,6 +252,12 @@ const App: React.FC = () => {
 
       {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+
+      {/* ── 7) INTEGRATIONS ── */}
+      <Integrations />
+
+      {/* Section divider */}
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* ── 8) PRICING ── */}
       <section id="pricing" className="py-16 px-6 scroll-mt-32 relative">
