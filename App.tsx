@@ -139,7 +139,8 @@ const App: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-10 relative z-10">
           {[
             { val: '24/7', label: 'Call Coverage' },
-            { val: '98%',  label: 'Answer Rate' },
+            { val: '70+',  label: 'AI Voices' },
+            { val: '16',   label: 'Languages' },
             { val: '<2s',  label: 'Avg Response' },
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.04] border border-white/[0.06] backdrop-blur-sm">
@@ -290,10 +291,12 @@ const App: React.FC = () => {
                 {[
                   '300 Minutes Included',
                   '1 Fully Custom AI Receptionist',
+                  '70+ Studio-Grade AI Voices',
                   '1 Dedicated Phone Number',
                   '24/7 Call Answering',
                   'Appointment Booking + Calendar Sync',
                   'SMS Confirmations',
+                  'Smart Knowledge Base & FAQs',
                   'Lead Capture & Client Profiles',
                   'Call Transcripts & Summaries',
                   'Dedicated Account Manager',
@@ -340,6 +343,7 @@ const App: React.FC = () => {
                   'Call Transfer to Live Staff',
                   'Returning Caller Recognition',
                   '16-Language Support (Auto-Detect)',
+                  'Industry-Specific Templates',
                   'Analytics Dashboard & Reporting',
                   'Priority Setup (48hr)',
                 ].map((f, j) => (
