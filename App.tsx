@@ -339,7 +339,7 @@ const App: React.FC = () => {
                   'CRM Integration (Salesforce, HubSpot, etc.)',
                   'Call Transfer to Live Staff',
                   'Returning Caller Recognition',
-                  '36-Language Support (Auto-Detect)',
+                  '16-Language Support (Auto-Detect)',
                   'Analytics Dashboard & Reporting',
                   'Priority Setup (48hr)',
                 ].map((f, j) => (
@@ -380,7 +380,7 @@ const App: React.FC = () => {
                   'Unlimited Custom AI Receptionists',
                   '5 Phone Numbers',
                   'Everything in Growth',
-                  '36-Language Support (Auto-Detect)',
+                  '16-Language Support (Auto-Detect)',
                   'Custom Voice & Personality',
                   'Custom API & Webhook Integrations',
                   'White-Glove Onboarding',
