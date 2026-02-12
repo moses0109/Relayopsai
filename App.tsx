@@ -271,14 +271,22 @@ const App: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: 'Starter',
-                price: '$349',
-                desc: 'For Small Businesses',
-                bestFor: 'Ideal for businesses under 300 calls/mo',
-                features: [
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+
+            {/* ── STARTER — neutral/white, "safe entry" ── */}
+            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-white/[0.02] border-white/[0.06] hover:border-slate-400/30 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]">
+              <h3 className="text-xl font-black uppercase italic mb-1 text-slate-300">Starter</h3>
+              <div className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-6">For Small Businesses</div>
+
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-5xl font-black tracking-tighter text-white">$349</span>
+                <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
+              </div>
+
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-8 break-words">Ideal for businesses under 300 calls/mo</p>
+
+              <ul className="space-y-3 flex-grow mb-10">
+                {[
                   '300 Minutes Included',
                   '1 AI Receptionist',
                   '1 Dedicated Phone Number',
@@ -289,15 +297,39 @@ const App: React.FC = () => {
                   'Call Transcripts & Summaries',
                   'Industry-Specific Setup',
                   'Email Support',
-                ],
-              },
-              {
-                name: 'Growth',
-                price: '$697',
-                desc: 'For Growing Teams',
-                popular: true,
-                bestFor: 'Best for 300–700 calls/mo',
-                features: [
+                ].map((f, j) => (
+                  <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
+                    <div className="w-1.5 h-1.5 bg-slate-500 rounded-full flex-shrink-0 mt-1.5" /> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => scrollTo('consultation')}
+                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-white/10 text-white border border-white/10 hover:bg-white/20 hover:shadow-lg"
+              >
+                Start 14-Day Free Trial
+              </button>
+            </div>
+
+            {/* ── GROWTH — cyan/blue, dominant "best value" ── */}
+            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-cyan-500/10 via-blue-600/8 to-cyan-400/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.25)]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
+                Most Popular
+              </div>
+
+              <h3 className="text-xl font-black uppercase italic mb-1 text-cyan-400">Growth</h3>
+              <div className="text-xs font-bold text-cyan-400/50 uppercase tracking-wide mb-6">For Growing Teams</div>
+
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">$697</span>
+                <span className="text-cyan-400/50 text-xs font-bold uppercase">/mo</span>
+              </div>
+
+              <p className="text-xs font-bold text-cyan-400/60 uppercase tracking-wide mb-8 break-words">Best for 300-700 calls/mo</p>
+
+              <ul className="space-y-3 flex-grow mb-10">
+                {[
                   '700 Minutes Included',
                   '3 AI Receptionists',
                   '3 Phone Numbers',
@@ -308,14 +340,39 @@ const App: React.FC = () => {
                   'Outbound Follow-up Calls',
                   'Analytics Dashboard & Reporting',
                   'Priority Setup (48hr)',
-                ],
-              },
-              {
-                name: 'Elite',
-                price: '$1,297',
-                desc: 'High-Volume & Multi-Location',
-                bestFor: 'Built for 700+ calls/mo',
-                features: [
+                ].map((f, j) => (
+                  <li key={j} className="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-start gap-3 break-words">
+                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full flex-shrink-0 mt-1.5" /> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => scrollTo('consultation')}
+                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+              >
+                Start 14-Day Free Trial
+              </button>
+            </div>
+
+            {/* ── ELITE — purple/gold, premium exclusive ── */}
+            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-purple-500/8 via-purple-900/5 to-amber-500/5 border-purple-500/30 hover:border-purple-400/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.15)]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
+                Premium
+              </div>
+
+              <h3 className="text-xl font-black uppercase italic mb-1 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">Elite</h3>
+              <div className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-6">High-Volume & Multi-Location</div>
+
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">$1,297</span>
+                <span className="text-purple-400/50 text-xs font-bold uppercase">/mo</span>
+              </div>
+
+              <p className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-8 break-words">Built for 700+ calls/mo</p>
+
+              <ul className="space-y-3 flex-grow mb-10">
+                {[
                   '1,500 Minutes Included',
                   'Unlimited AI Receptionists',
                   '5 Phone Numbers',
@@ -326,53 +383,21 @@ const App: React.FC = () => {
                   'Custom API & Webhook Integrations',
                   'Dedicated Account Manager',
                   'Weekly Performance Reviews',
-                ],
-              },
-            ].map((t, i) => (
-              <div
-                key={i}
-                className={`stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm ${
-                  t.popular
-                    ? 'bg-gradient-to-br from-cyan-500/10 via-blue-600/5 to-purple-600/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.2)]'
-                    : 'bg-white/[0.02] border-white/[0.05] hover:border-cyan-500/20 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(6,182,212,0.08)]'
-                }`}
+                ].map((f, j) => (
+                  <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
+                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full flex-shrink-0 mt-1.5" /> {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => scrollTo('consultation')}
+                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-purple-500 to-amber-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
               >
-                {t.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
-                    Most Popular
-                  </div>
-                )}
+                Start 14-Day Free Trial
+              </button>
+            </div>
 
-                <h3 className="text-xl font-black uppercase italic mb-1 break-words">{t.name}</h3>
-                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-6 break-words">{t.desc}</div>
-
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-5xl font-black tracking-tighter">{t.price}</span>
-                  <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
-                </div>
-
-                <p className="text-xs font-bold text-cyan-400/70 uppercase tracking-wide mb-8 break-words">{t.bestFor}</p>
-
-                <ul className="space-y-3 flex-grow mb-10">
-                  {t.features.map((f, j) => (
-                    <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
-                      <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full flex-shrink-0 mt-1.5" /> {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => scrollTo('consultation')}
-                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] break-words ${
-                    t.popular
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/20'
-                      : 'bg-white text-black hover:shadow-lg'
-                  }`}
-                >
-                  Start 14-Day Free Trial
-                </button>
-              </div>
-            ))}
           </div>
 
           {/* Add-ons */}
