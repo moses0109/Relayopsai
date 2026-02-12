@@ -272,134 +272,138 @@ const App: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          {/* ── COMPACT PRICING CARDS ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
 
-            {/* ── STARTER — neutral/white, "safe entry" ── */}
-            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-white/[0.02] border-white/[0.06] hover:border-slate-400/30 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]">
-              <h3 className="text-xl font-black uppercase italic mb-1 text-slate-300">Starter</h3>
-              <div className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-6">For Small Businesses</div>
+            {/* ── STARTER ── */}
+            <div className="stagger-item group p-6 md:p-8 rounded-[2rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-white/[0.02] border-white/[0.06] hover:border-slate-400/30 hover:bg-white/[0.04] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]">
+              <h3 className="text-lg font-black uppercase italic mb-1 text-slate-300">Starter</h3>
+              <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wide mb-4">For Small Businesses</div>
 
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black tracking-tighter text-white">$349</span>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black tracking-tighter text-white">$349</span>
                 <span className="text-slate-500 text-xs font-bold uppercase">/mo</span>
               </div>
+              <p className="text-[10px] font-bold uppercase tracking-wide mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2 break-words">Ideal for businesses under 300 calls/mo</p>
-              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+              {/* Key metrics */}
+              <div className="grid grid-cols-3 gap-2 mb-5">
+                <div className="text-center p-2 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+                  <div className="text-sm font-black text-white">300</div>
+                  <div className="text-[8px] font-bold text-slate-600 uppercase">Min/mo</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+                  <div className="text-sm font-black text-white">1</div>
+                  <div className="text-[8px] font-bold text-slate-600 uppercase">Agent</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-white/[0.03] border border-white/[0.04]">
+                  <div className="text-sm font-black text-white">1</div>
+                  <div className="text-[8px] font-bold text-slate-600 uppercase">Number</div>
+                </div>
+              </div>
 
-              <ul className="space-y-3 flex-grow mb-10">
-                {[
-                  '300 Minutes Included',
-                  '1 Fully Custom AI Receptionist',
-                  '70+ Studio-Grade AI Voices',
-                  '1 Dedicated Phone Number',
-                  '24/7 Call Answering',
-                  'Appointment Booking + Calendar Sync',
-                  'SMS Confirmations',
-                  'Smart Knowledge Base & FAQs',
-                  'Lead Capture & Client Profiles',
-                  'Call Transcripts & Summaries',
-                  'Dedicated Account Manager',
-                  '24/7 Priority Support',
-                ].map((f, j) => (
-                  <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
-                    <div className="w-1.5 h-1.5 bg-slate-500 rounded-full flex-shrink-0 mt-1.5" /> {f}
-                  </li>
+              {/* Highlights */}
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {['70+ AI Voices', 'Knowledge Base', '24/7 Answering', 'SMS + Booking', 'Account Manager', 'Priority Support'].map((t, j) => (
+                  <span key={j} className="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[9px] font-bold text-slate-400 uppercase tracking-wide">{t}</span>
                 ))}
-              </ul>
+              </div>
 
               <button
                 onClick={() => scrollTo('consultation')}
-                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-white/10 text-white border border-white/10 hover:bg-white/20 hover:shadow-lg"
+                className="w-full py-4 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-white/10 text-white border border-white/10 hover:bg-white/20 hover:shadow-lg"
               >
                 Get Started
               </button>
             </div>
 
-            {/* ── GROWTH — cyan/blue, dominant "best value" ── */}
-            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-cyan-500/10 via-blue-600/8 to-cyan-400/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.25)]">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
+            {/* ── GROWTH ── */}
+            <div className="stagger-item group p-6 md:p-8 rounded-[2rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-cyan-500/10 via-blue-600/8 to-cyan-400/10 border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] lg:scale-[1.03] z-10 hover:shadow-[0_0_100px_rgba(6,182,212,0.25)]">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-black uppercase px-4 py-1 rounded-full tracking-wide shadow-xl whitespace-nowrap">
                 Most Popular
               </div>
 
-              <h3 className="text-xl font-black uppercase italic mb-1 text-cyan-400">Growth</h3>
-              <div className="text-xs font-bold text-cyan-400/50 uppercase tracking-wide mb-6">For Growing Teams</div>
+              <h3 className="text-lg font-black uppercase italic mb-1 text-cyan-400">Growth</h3>
+              <div className="text-[10px] font-bold text-cyan-400/50 uppercase tracking-wide mb-4">For Growing Teams</div>
 
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">$697</span>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">$697</span>
                 <span className="text-cyan-400/50 text-xs font-bold uppercase">/mo</span>
               </div>
+              <p className="text-[10px] font-bold uppercase tracking-wide mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
-              <p className="text-xs font-bold text-cyan-400/60 uppercase tracking-wide mb-2 break-words">Best for 300-700 calls/mo</p>
-              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+              {/* Key metrics */}
+              <div className="grid grid-cols-3 gap-2 mb-5">
+                <div className="text-center p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                  <div className="text-sm font-black text-cyan-400">700</div>
+                  <div className="text-[8px] font-bold text-cyan-400/50 uppercase">Min/mo</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                  <div className="text-sm font-black text-cyan-400">3</div>
+                  <div className="text-[8px] font-bold text-cyan-400/50 uppercase">Agents</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                  <div className="text-sm font-black text-cyan-400">3</div>
+                  <div className="text-[8px] font-bold text-cyan-400/50 uppercase">Numbers</div>
+                </div>
+              </div>
 
-              <ul className="space-y-3 flex-grow mb-10">
-                {[
-                  '700 Minutes Included',
-                  '3 Fully Custom AI Receptionists',
-                  '3 Phone Numbers',
-                  'Everything in Starter',
-                  'CRM Integration (Salesforce, HubSpot, etc.)',
-                  'Call Transfer to Live Staff',
-                  'Returning Caller Recognition',
-                  '16-Language Support (Auto-Detect)',
-                  'Industry-Specific Templates',
-                  'Analytics Dashboard & Reporting',
-                  'Priority Setup (48hr)',
-                ].map((f, j) => (
-                  <li key={j} className="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-start gap-3 break-words">
-                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full flex-shrink-0 mt-1.5" /> {f}
-                  </li>
+              {/* Highlights */}
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {['Everything in Starter', 'CRM Integration', 'Call Transfer', '16 Languages', 'Industry Templates', 'Analytics', '48hr Setup'].map((t, j) => (
+                  <span key={j} className="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[9px] font-bold text-cyan-400/80 uppercase tracking-wide">{t}</span>
                 ))}
-              </ul>
+              </div>
 
               <button
                 onClick={() => scrollTo('consultation')}
-                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+                className="w-full py-4 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
               >
                 Get Started
               </button>
             </div>
 
-            {/* ── ELITE — purple/gold, premium exclusive ── */}
-            <div className="stagger-item group p-8 md:p-10 rounded-[2.5rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-purple-500/8 via-purple-900/5 to-amber-500/5 border-purple-500/30 hover:border-purple-400/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.15)]">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-xs font-black uppercase px-5 py-1.5 rounded-full tracking-wide shadow-xl whitespace-nowrap">
+            {/* ── ELITE ── */}
+            <div className="stagger-item group p-6 md:p-8 rounded-[2rem] border flex flex-col transition-all duration-500 relative backdrop-blur-sm bg-gradient-to-br from-purple-500/8 via-purple-900/5 to-amber-500/5 border-purple-500/30 hover:border-purple-400/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.15)]">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-[10px] font-black uppercase px-4 py-1 rounded-full tracking-wide shadow-xl whitespace-nowrap">
                 Premium
               </div>
 
-              <h3 className="text-xl font-black uppercase italic mb-1 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">Elite</h3>
-              <div className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-6">High-Volume & Multi-Location</div>
+              <h3 className="text-lg font-black uppercase italic mb-1 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">Elite</h3>
+              <div className="text-[10px] font-bold text-purple-400/50 uppercase tracking-wide mb-4">High-Volume & Multi-Location</div>
 
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">$1,297</span>
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">$1,297</span>
                 <span className="text-purple-400/50 text-xs font-bold uppercase">/mo</span>
               </div>
+              <p className="text-[10px] font-bold uppercase tracking-wide mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
-              <p className="text-xs font-bold text-purple-400/50 uppercase tracking-wide mb-2 break-words">Built for 700+ calls/mo</p>
-              <p className="text-xs font-bold uppercase tracking-wide mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+              {/* Key metrics */}
+              <div className="grid grid-cols-3 gap-2 mb-5">
+                <div className="text-center p-2 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <div className="text-sm font-black text-purple-400">1,500</div>
+                  <div className="text-[8px] font-bold text-purple-400/50 uppercase">Min/mo</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <div className="text-sm font-black text-purple-400 text-[11px]">Unlimited</div>
+                  <div className="text-[8px] font-bold text-purple-400/50 uppercase">Agents</div>
+                </div>
+                <div className="text-center p-2 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                  <div className="text-sm font-black text-purple-400">5</div>
+                  <div className="text-[8px] font-bold text-purple-400/50 uppercase">Numbers</div>
+                </div>
+              </div>
 
-              <ul className="space-y-3 flex-grow mb-10">
-                {[
-                  '1,500 Minutes Included',
-                  'Unlimited Custom AI Receptionists',
-                  '5 Phone Numbers',
-                  'Everything in Growth',
-                  '16-Language Support (Auto-Detect)',
-                  'Custom Voice & Personality',
-                  'Custom API & Webhook Integrations',
-                  'White-Glove Onboarding',
-                  'Weekly Performance Reviews',
-                  'Dedicated Slack/Teams Channel',
-                ].map((f, j) => (
-                  <li key={j} className="text-xs font-bold text-slate-400 uppercase tracking-wide flex items-start gap-3 break-words">
-                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full flex-shrink-0 mt-1.5" /> {f}
-                  </li>
+              {/* Highlights */}
+              <div className="flex flex-wrap gap-1.5 mb-6">
+                {['Everything in Growth', 'Custom Voice', 'API & Webhooks', 'White-Glove Setup', 'Weekly Reviews', 'Slack/Teams Channel'].map((t, j) => (
+                  <span key={j} className="px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[9px] font-bold text-purple-400/80 uppercase tracking-wide">{t}</span>
                 ))}
-              </ul>
+              </div>
 
               <button
                 onClick={() => scrollTo('consultation')}
-                className="w-full py-5 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-purple-500 to-amber-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
+                className="w-full py-4 rounded-2xl font-black uppercase tracking-wide text-xs transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-purple-500 to-amber-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
               >
                 Get Started
               </button>
@@ -407,20 +411,80 @@ const App: React.FC = () => {
 
           </div>
 
+          {/* ── FEATURE COMPARISON TABLE ── */}
+          <div className="mt-16 fade-in-up">
+            <h3 className="text-center text-sm font-black uppercase tracking-wide text-white mb-8">Compare All Features</h3>
+            <div className="overflow-x-auto rounded-2xl border border-white/[0.06] bg-white/[0.01] backdrop-blur-sm">
+              <table className="w-full min-w-[600px]">
+                <thead>
+                  <tr className="border-b border-white/[0.06]">
+                    <th className="text-left p-4 text-[10px] font-bold text-slate-600 uppercase tracking-wide w-[40%]">Feature</th>
+                    <th className="text-center p-4 text-[10px] font-bold text-slate-400 uppercase tracking-wide">Starter</th>
+                    <th className="text-center p-4 text-[10px] font-bold text-cyan-400 uppercase tracking-wide">Growth</th>
+                    <th className="text-center p-4 text-[10px] font-bold text-purple-400 uppercase tracking-wide">Elite</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { feature: 'Minutes Included', starter: '300', growth: '700', elite: '1,500' },
+                    { feature: 'AI Receptionists', starter: '1', growth: '3', elite: 'Unlimited' },
+                    { feature: 'Phone Numbers', starter: '1', growth: '3', elite: '5' },
+                    { feature: '70+ Studio-Grade AI Voices', starter: true, growth: true, elite: true },
+                    { feature: '24/7 Call Answering', starter: true, growth: true, elite: true },
+                    { feature: 'Appointment Booking + Calendar', starter: true, growth: true, elite: true },
+                    { feature: 'SMS Confirmations', starter: true, growth: true, elite: true },
+                    { feature: 'Smart Knowledge Base & FAQs', starter: true, growth: true, elite: true },
+                    { feature: 'Lead Capture & Client Profiles', starter: true, growth: true, elite: true },
+                    { feature: 'Call Transcripts & Summaries', starter: true, growth: true, elite: true },
+                    { feature: 'Dedicated Account Manager', starter: true, growth: true, elite: true },
+                    { feature: '24/7 Priority Support', starter: true, growth: true, elite: true },
+                    { feature: 'CRM Integration', starter: false, growth: true, elite: true },
+                    { feature: 'Call Transfer to Live Staff', starter: false, growth: true, elite: true },
+                    { feature: 'Returning Caller Recognition', starter: false, growth: true, elite: true },
+                    { feature: '16-Language Support', starter: false, growth: true, elite: true },
+                    { feature: 'Industry-Specific Templates', starter: false, growth: true, elite: true },
+                    { feature: 'Analytics Dashboard', starter: false, growth: true, elite: true },
+                    { feature: 'Priority Setup (48hr)', starter: false, growth: true, elite: true },
+                    { feature: 'Custom Voice & Personality', starter: false, growth: false, elite: true },
+                    { feature: 'Custom API & Webhooks', starter: false, growth: false, elite: true },
+                    { feature: 'White-Glove Onboarding', starter: false, growth: false, elite: true },
+                    { feature: 'Weekly Performance Reviews', starter: false, growth: false, elite: true },
+                    { feature: 'Dedicated Slack/Teams Channel', starter: false, growth: false, elite: true },
+                  ].map((row, i) => (
+                    <tr key={i} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
+                      <td className="p-3 md:p-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wide">{row.feature}</td>
+                      {[row.starter, row.growth, row.elite].map((val, j) => (
+                        <td key={j} className="text-center p-3 md:p-4">
+                          {typeof val === 'string' ? (
+                            <span className={`text-xs font-black ${j === 0 ? 'text-white' : j === 1 ? 'text-cyan-400' : 'text-purple-400'}`}>{val}</span>
+                          ) : val ? (
+                            <svg className={`w-4 h-4 mx-auto ${j === 0 ? 'text-emerald-400' : j === 1 ? 'text-cyan-400' : 'text-purple-400'}`} fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                          ) : (
+                            <span className="text-slate-700 text-xs">—</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           {/* Add-ons */}
           <div className="mt-14 fade-in-up">
             <h3 className="text-center text-sm font-black uppercase tracking-wide text-white mb-6">Available Add-Ons</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
               {[
                 { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Cold/warm calling with lead lists & sales AI' },
-                { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Additional dedicated numbers for departments' },
+                { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Additional dedicated numbers' },
                 { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom integrations' },
-                { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own — full reseller dashboard' },
+                { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own' },
               ].map((addon, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] text-center">
-                  <p className="text-xs font-black uppercase tracking-wide text-white mb-1 break-words">{addon.name}</p>
-                  <p className="text-sm font-black text-cyan-400 mb-2">{addon.price}</p>
-                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wide leading-relaxed break-words">{addon.desc}</p>
+                <div key={i} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04] text-center">
+                  <p className="text-[10px] font-black uppercase tracking-wide text-white mb-1 break-words">{addon.name}</p>
+                  <p className="text-xs font-black text-cyan-400 mb-1">{addon.price}</p>
+                  <p className="text-[9px] font-bold text-slate-600 uppercase tracking-wide leading-relaxed break-words">{addon.desc}</p>
                 </div>
               ))}
             </div>
