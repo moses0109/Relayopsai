@@ -275,22 +275,21 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
 
             {/* ── STARTER ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl bg-[#f5f5f6] overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1">
-              {/* Top accent bar */}
+            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-white/[0.03] border border-white/[0.06] hover:border-slate-400/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-sm">
               <div className="h-1 bg-gradient-to-r from-slate-400 to-slate-500" />
 
               <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-800 mb-1">Starter</h3>
-                <p className="text-xs font-semibold text-slate-500 mb-6">For Small Businesses</p>
+                <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-300 mb-1">Starter</h3>
+                <p className="text-xs font-semibold text-slate-600 mb-6">For Small Businesses</p>
 
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-[#0cc652]">349</span>
-                  <span className="text-sm font-bold text-slate-400 ml-1">/mo</span>
+                  <span className="text-5xl font-black tracking-tight text-white">349</span>
+                  <span className="text-sm font-bold text-slate-500 ml-1">/mo</span>
                 </div>
 
                 <p className="text-xs font-semibold text-slate-500 mb-1">Ideal for businesses under 300 calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-400">$497 Setup</span> <span className="text-emerald-600 ml-1">WAIVED</span></p>
+                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
@@ -307,8 +306,8 @@ const App: React.FC = () => {
                     'Dedicated Account Manager',
                     '24/7 Priority Support',
                   ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-600 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-[#0cc652] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
+                      <svg className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
                     </li>
                   ))}
@@ -316,7 +315,7 @@ const App: React.FC = () => {
 
                 <button
                   onClick={() => scrollTo('consultation')}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-slate-800 hover:bg-slate-700"
+                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-white/10 border border-white/10 hover:bg-white/20 hover:shadow-lg"
                 >
                   Start Now
                 </button>
@@ -324,27 +323,25 @@ const App: React.FC = () => {
             </div>
 
             {/* ── GROWTH — featured card ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl bg-white overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_12px_50px_rgba(6,182,212,0.25)] hover:-translate-y-1 lg:scale-[1.04] z-10">
-              {/* Top accent bar */}
+            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 lg:scale-[1.04] z-10 bg-gradient-to-br from-cyan-500/10 via-blue-600/8 to-cyan-400/10 border border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] hover:shadow-[0_0_100px_rgba(6,182,212,0.25)] backdrop-blur-sm">
               <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
 
-              {/* Popular badge */}
-              <div className="absolute top-5 right-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <div className="absolute top-5 right-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide shadow-xl">
                 Most Popular
               </div>
 
               <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-800 mb-1">Growth</h3>
-                <p className="text-xs font-semibold text-slate-500 mb-6">For Growing Teams</p>
+                <h3 className="text-lg font-extrabold uppercase tracking-wide text-cyan-400 mb-1">Growth</h3>
+                <p className="text-xs font-semibold text-cyan-400/50 mb-6">For Growing Teams</p>
 
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-[#0cc652]">697</span>
-                  <span className="text-sm font-bold text-slate-400 ml-1">/mo</span>
+                  <span className="text-xs font-bold text-cyan-400/60 relative -top-4">$</span>
+                  <span className="text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">697</span>
+                  <span className="text-sm font-bold text-cyan-400/50 ml-1">/mo</span>
                 </div>
 
-                <p className="text-xs font-semibold text-slate-500 mb-1">Best for 300–700 calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-400">$497 Setup</span> <span className="text-emerald-600 ml-1">WAIVED</span></p>
+                <p className="text-xs font-semibold text-cyan-400/60 mb-1">Best for 300–700 calls/mo</p>
+                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
@@ -360,8 +357,8 @@ const App: React.FC = () => {
                     'Analytics Dashboard & Reporting',
                     'Priority Setup (48hr)',
                   ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-600 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-[#0cc652] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <li key={j} className="text-xs font-semibold text-slate-300 flex items-start gap-3">
+                      <svg className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
                     </li>
                   ))}
@@ -369,7 +366,7 @@ const App: React.FC = () => {
 
                 <button
                   onClick={() => scrollTo('consultation')}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 shadow-lg shadow-cyan-500/25"
+                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
                 >
                   Start Now
                 </button>
@@ -377,27 +374,25 @@ const App: React.FC = () => {
             </div>
 
             {/* ── ELITE ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl bg-[#f5f5f6] overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(168,85,247,0.2)] hover:-translate-y-1">
-              {/* Top accent bar */}
+            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-purple-500/8 via-purple-900/5 to-amber-500/5 border border-purple-500/30 hover:border-purple-400/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.15)] backdrop-blur-sm">
               <div className="h-1 bg-gradient-to-r from-purple-500 to-amber-500" />
 
-              {/* Premium badge */}
-              <div className="absolute top-5 right-5 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <div className="absolute top-5 right-5 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide shadow-xl">
                 Premium
               </div>
 
               <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-800 mb-1">Elite</h3>
-                <p className="text-xs font-semibold text-slate-500 mb-6">High-Volume & Multi-Location</p>
+                <h3 className="text-lg font-extrabold uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400 mb-1">Elite</h3>
+                <p className="text-xs font-semibold text-purple-400/50 mb-6">High-Volume & Multi-Location</p>
 
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-[#0cc652]">1,297</span>
-                  <span className="text-sm font-bold text-slate-400 ml-1">/mo</span>
+                  <span className="text-xs font-bold text-purple-400/60 relative -top-4">$</span>
+                  <span className="text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">1,297</span>
+                  <span className="text-sm font-bold text-purple-400/50 ml-1">/mo</span>
                 </div>
 
-                <p className="text-xs font-semibold text-slate-500 mb-1">Built for 700+ calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-400">$497 Setup</span> <span className="text-emerald-600 ml-1">WAIVED</span></p>
+                <p className="text-xs font-semibold text-purple-400/50 mb-1">Built for 700+ calls/mo</p>
+                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
@@ -412,8 +407,8 @@ const App: React.FC = () => {
                     'Weekly Performance Reviews',
                     'Dedicated Slack/Teams Channel',
                   ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-600 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-[#0cc652] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
+                      <svg className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
                     </li>
                   ))}
@@ -421,7 +416,7 @@ const App: React.FC = () => {
 
                 <button
                   onClick={() => scrollTo('consultation')}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-gradient-to-r from-purple-500 to-amber-500 hover:from-purple-400 hover:to-amber-400 shadow-lg shadow-purple-500/20"
+                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-purple-500 to-amber-500 hover:from-purple-400 hover:to-amber-400 shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
                 >
                   Start Now
                 </button>
