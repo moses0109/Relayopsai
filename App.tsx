@@ -100,6 +100,7 @@ const HeroLogo = () => {
 /* ------------------------------------------------------------------ */
 
 const App: React.FC = () => {
+  const [addonsOpen, setAddonsOpen] = useState(false);
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -425,21 +426,38 @@ const App: React.FC = () => {
 
           </div>
 
-          {/* Add-ons strip */}
-          <div className="mt-14 fade-in-up">
-            <h3 className="text-center text-sm font-black uppercase tracking-wide text-white mb-6">Available Add-Ons</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
-              {[
-                { name: 'Outbound Campaigns', price: '+$297/mo' },
-                { name: 'Extra Phone Numbers', price: '+$25/mo each' },
-                { name: 'Custom API Workflows', price: '+$197/mo' },
-                { name: 'White-Label Reseller', price: 'Custom' },
-              ].map((addon, i) => (
-                <div key={i} className="flex items-center justify-between gap-3 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wide">{addon.name}</span>
-                  <span className="text-xs font-black text-cyan-400 whitespace-nowrap">{addon.price}</span>
-                </div>
-              ))}
+          {/* Add-ons accordion */}
+          <div className="mt-14 max-w-4xl mx-auto fade-in-up">
+            <button
+              onClick={() => setAddonsOpen(!addonsOpen)}
+              className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-500/30 hover:bg-white/[0.05] transition-all duration-300 group"
+            >
+              <span className="text-sm font-black uppercase tracking-wide text-white">Available Add-Ons</span>
+              <svg
+                className={`w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-all duration-300 ${addonsOpen ? 'rotate-180' : ''}`}
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${addonsOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Cold/warm calling with lead lists & sales AI' },
+                  { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Additional dedicated numbers for departments' },
+                  { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom integrations' },
+                  { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own — full reseller dashboard' },
+                ].map((addon, i) => (
+                  <div key={i} className="flex items-start justify-between gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-300">
+                    <div>
+                      <p className="text-xs font-black text-white uppercase tracking-wide mb-1">{addon.name}</p>
+                      <p className="text-[10px] font-semibold text-slate-600 leading-relaxed">{addon.desc}</p>
+                    </div>
+                    <span className="text-xs font-black text-cyan-400 whitespace-nowrap mt-0.5">{addon.price}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
