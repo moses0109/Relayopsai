@@ -101,6 +101,7 @@ const HeroLogo = () => {
 
 const App: React.FC = () => {
   const [addonsOpen, setAddonsOpen] = useState(false);
+  const [openTier, setOpenTier] = useState<string | null>(null);
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -290,11 +291,40 @@ const App: React.FC = () => {
                 </div>
 
                 <p className="text-xs font-semibold text-slate-500 mb-1">Ideal for businesses under 300 calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+
+                {/* Minutes pill */}
+                <div className="mb-8 relative">
+                  <button
+                    onClick={() => setOpenTier(openTier === 'starter' ? null : 'starter')}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-slate-400 hover:border-slate-300 transition-all duration-300"
+                  >
+                    <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                    <span className="text-sm font-bold text-white flex-grow text-left">300 minutes / month</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide mr-1">Included</span>
+                    <svg className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'starter' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/[0.04]">
+                        <span className="text-xs font-semibold text-white flex-grow">300 minutes / month</span>
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                        <div>
+                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.35/min overage</span>
+                        </div>
+                      </div>
+                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
-                    '300 Minutes Included',
                     '1 Fully Custom AI Receptionist',
                     '70+ Studio-Grade AI Voices',
                     '1 Dedicated Phone Number',
@@ -342,11 +372,40 @@ const App: React.FC = () => {
                 </div>
 
                 <p className="text-xs font-semibold text-cyan-400/60 mb-1">Best for 300–700 calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+
+                {/* Minutes pill */}
+                <div className="mb-8 relative">
+                  <button
+                    onClick={() => setOpenTier(openTier === 'growth' ? null : 'growth')}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-cyan-400 hover:border-cyan-300 transition-all duration-300"
+                  >
+                    <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                    <span className="text-sm font-bold text-white flex-grow text-left">700 minutes / month</span>
+                    <span className="text-[10px] font-bold text-cyan-400/50 uppercase tracking-wide mr-1">Included</span>
+                    <svg className={`w-4 h-4 text-cyan-400/50 transition-transform duration-300 ${openTier === 'growth' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'growth' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-cyan-500/10">
+                        <span className="text-xs font-semibold text-white flex-grow">700 minutes / month</span>
+                        <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                        <div>
+                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.30/min overage</span>
+                        </div>
+                      </div>
+                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
-                    '700 Minutes Included',
                     '3 Fully Custom AI Receptionists',
                     '3 Phone Numbers',
                     'Everything in Starter',
@@ -393,11 +452,40 @@ const App: React.FC = () => {
                 </div>
 
                 <p className="text-xs font-semibold text-purple-400/50 mb-1">Built for 700+ calls/mo</p>
-                <p className="text-xs font-bold mb-8"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+
+                {/* Minutes pill */}
+                <div className="mb-8 relative">
+                  <button
+                    onClick={() => setOpenTier(openTier === 'elite' ? null : 'elite')}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-purple-400 hover:border-purple-300 transition-all duration-300"
+                  >
+                    <svg className="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                    <span className="text-sm font-bold text-white flex-grow text-left">1,500 minutes / month</span>
+                    <span className="text-[10px] font-bold text-purple-400/50 uppercase tracking-wide mr-1">Included</span>
+                    <svg className={`w-4 h-4 text-purple-400/50 transition-transform duration-300 ${openTier === 'elite' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'elite' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-purple-500/10">
+                        <span className="text-xs font-semibold text-white flex-grow">1,500 minutes / month</span>
+                        <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                        <div>
+                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.25/min overage</span>
+                        </div>
+                      </div>
+                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
-                    '1,500 Minutes Included',
                     'Unlimited Custom AI Receptionists',
                     '5 Phone Numbers',
                     'Everything in Growth',
