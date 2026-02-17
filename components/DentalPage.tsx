@@ -171,12 +171,12 @@ const DentalPage = () => {
 
                             <h1 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.8] text-white mb-12">
                                 Never Miss <br />
-                                <span className="text-blue-500 italic block mt-2">A Single Call.</span> <br />
+                                <span className="text-blue-500 italic block mt-2">A New Patient.</span> <br />
                                 Fill Every Chair.
                             </h1>
 
                             <p className="text-slate-400 text-xl md:text-3xl font-medium max-w-xl mb-14 leading-relaxed">
-                                Relay handles every call, books appointments, and confirms visits 24/7 — so you <span className="text-white font-black underline decoration-blue-500 underline-offset-4">never leak revenue</span> to your competitors again.
+                                Relay handles every inbound call, triages emergencies, and books restorative cases 24/7 — so Doctor, you <span className="text-white font-black underline decoration-blue-500 underline-offset-4">never leak production</span> to the clinic across the street.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-10">
@@ -236,39 +236,42 @@ const DentalPage = () => {
             </section>
 
             {/* ── 3) ROI AUDIT ── */}
-            <section className="py-40 px-6 bg-[#030303] relative overflow-hidden">
-                <div className="max-w-4xl mx-auto relative z-10">
-                    <div className="bg-[#0a0a0f] border border-blue-500/20 p-20 rounded-[5rem] shadow-[0_0_100px_rgba(59,130,246,0.1)] relative overflow-hidden">
-                        <div className="absolute -top-10 -right-10 opacity-20">
+            <section className="py-20 md:py-40 px-4 md:px-6 bg-[#030303] relative overflow-hidden">
+                <div className="max-w-5xl mx-auto relative z-10">
+                    <div className="bg-[#0a0a0f] border border-blue-500/20 p-8 md:p-20 rounded-[3rem] md:rounded-[5rem] shadow-[0_0_100px_rgba(59,130,246,0.1)] relative overflow-hidden">
+                        <div className="absolute -top-10 -right-10 opacity-10 pointer-events-none">
                             <DentalLogoSVG className="h-48 w-48" />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-                            <div className="space-y-16">
-                                <div>
-                                    <div className="flex justify-between mb-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
+                            <div className="space-y-12">
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-end">
                                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Daily Inbound Calls</span>
                                         <span className="text-blue-400 font-black text-2xl">{callsPerDay}</span>
                                     </div>
-                                    <input type="range" min="10" max="200" value={callsPerDay} onChange={e => setCallsPerDay(Number(e.target.value))} className="w-full h-3 bg-white/5 rounded-full appearance-none cursor-pointer accent-blue-600" />
+                                    <input type="range" min="10" max="200" value={callsPerDay} onChange={e => setCallsPerDay(Number(e.target.value))} className="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-blue-600" />
                                 </div>
-                                <div>
-                                    <div className="flex justify-between mb-8">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Missed Rate</span>
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-end">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Unanswered Rate</span>
                                         <span className="text-rose-500 font-black text-2xl">{missedPercentage}%</span>
                                     </div>
-                                    <input type="range" min="5" max="60" value={missedPercentage} onChange={e => setMissedPercentage(Number(e.target.value))} className="w-full h-3 bg-white/5 rounded-full appearance-none cursor-pointer accent-rose-500" />
+                                    <input type="range" min="5" max="60" value={missedPercentage} onChange={e => setMissedPercentage(Number(e.target.value))} className="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-rose-500" />
                                 </div>
+                                <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest italic">Calculated based on average restorative production per operative hour.</p>
                             </div>
 
-                            <div className="relative text-center p-14 bg-white/5 rounded-[4rem] border border-blue-500/40 backdrop-blur-3xl shadow-2xl">
+                            <div className="relative text-center p-8 md:p-14 bg-white/[0.03] rounded-[3rem] md:rounded-[4rem] border border-blue-500/40 backdrop-blur-3xl shadow-2xl overflow-hidden">
                                 <p className="text-[10px] font-black uppercase tracking-[0.5em] mb-6 text-blue-400">Monthly Revenue Leakage</p>
-                                <h3 className="text-6xl md:text-8xl font-black tracking-tighter mb-10 text-white">${monthlyLoss.toLocaleString()}</h3>
+                                <h3 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-10 text-white break-words">
+                                    ${monthlyLoss.toLocaleString()}
+                                </h3>
                                 <button
                                     onClick={() => window.open('https://calendly.com/elironebusiness/15-minute-call-capture-setup', '_blank')}
                                     className="w-full py-6 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-blue-500 transition-all shadow-[0_0_30px_rgba(37,99,235,0.4)]"
                                 >
-                                    Stop the Bleeding
+                                    Recover My Production
                                 </button>
                             </div>
                         </div>
@@ -277,7 +280,7 @@ const DentalPage = () => {
             </section>
 
             {/* ── 4) THE "EVERYWHERE" BRANDING ── */}
-            <section className="py-40 px-6 bg-[#030303] text-white">
+            <section className="py-40 px-6 bg-[#030303] text-white border-t border-white/5">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                         <div>
@@ -285,7 +288,7 @@ const DentalPage = () => {
                                 AI Built For <br /><span className="text-blue-600 italic">Dental Reality.</span>
                             </h2>
                             <p className="text-slate-400 text-xl md:text-2xl font-medium mb-16 leading-relaxed">
-                                Most AI receptionists are generic bots. Relay is hard-coded for dentistry. It knows the difference between a prophy and a root canal.
+                                Most AI receptionists are generic bots. Relay is hard-coded for dentistry. It knows the difference between a prophy and a root canal. It manages your operative hours like a professional.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                                 {[
