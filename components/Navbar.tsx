@@ -143,11 +143,15 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
           <button onClick={handleLogoClick} className="flex items-center space-x-3 md:space-x-5 group cursor-pointer h-full">
             <InteractiveLogo src={isDentalPage ? "/dental-logo.png" : "/logo.png"} isDentalPage={isDentalPage} />
             <div className="flex flex-col items-start text-left">
-              <span className="text-lg md:text-2xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">
-                Relay{isDentalPage ? <span className="text-blue-500">OpsAI</span> : 'OpsAI'}
+              <span className="text-lg md:text-3xl font-black tracking-tighter italic uppercase text-white group-hover:text-blue-400 transition-colors">
+                {isDentalPage ? (
+                  <>Relay<span className="text-blue-500">Dental</span></>
+                ) : (
+                  <>Relay<span className="text-blue-500">OpsAI</span></>
+                )}
               </span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">
-                {isDentalPage ? 'Dental Practice Solution' : 'Intelligence Agency'}
+              <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] leading-none mt-1 group-hover:text-white/60 transition-colors">
+                {isDentalPage ? 'AI Dental Concierge' : 'Intelligence Agency'}
               </span>
             </div>
           </button>

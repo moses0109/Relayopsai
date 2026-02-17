@@ -21,12 +21,17 @@ const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1, showReflection = 
                     <stop offset="0%" stopColor="#0ea5e9" />
                     <stop offset="100%" stopColor="#2563eb" />
                 </linearGradient>
+                <linearGradient id="glassGloss" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#fff" stopOpacity="0.4" />
+                    <stop offset="50%" stopColor="#fff" stopOpacity="0.05" />
+                    <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+                </linearGradient>
             </defs>
 
             {/* Background Disk */}
             <circle cx="200" cy="200" r="190" fill="#020617" />
 
-            {/* Outer Node Network */}
+            {/* SaaS Node Network */}
             <g>
                 {[...Array(24)].map((_, i) => {
                     const angle = (i * 15) * (Math.PI / 180);
@@ -40,51 +45,38 @@ const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1, showReflection = 
                         </g>
                     );
                 })}
-                {[...Array(24)].map((_, i) => {
-                    const angle1 = (i * 15) * (Math.PI / 180);
-                    const angle2 = ((i + 1) % 24) * 15 * (Math.PI / 180);
-                    const x1 = 200 + 175 * Math.cos(angle1);
-                    const y1 = 200 + 175 * Math.sin(angle1);
-                    const x2 = 200 + 175 * Math.cos(angle2);
-                    const y2 = 200 + 175 * Math.sin(angle2);
-                    const angle3 = ((i + 2) % 24) * 15 * (Math.PI / 180);
-                    const x3 = 200 + 175 * Math.cos(angle3);
-                    const y3 = 200 + 175 * Math.sin(angle3);
-                    return (
-                        <g key={i}>
-                            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#3b82f6" strokeWidth="1" strokeOpacity="0.4" />
-                            <line x1={x1} y1={y1} x2={x3} y2={y3} stroke="#1e40af" strokeWidth="0.5" strokeOpacity="0.2" />
-                        </g>
-                    );
-                })}
             </g>
 
-            {/* Inner Rings */}
+            {/* Premium Rings */}
             <circle cx="200" cy="200" r="145" fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.5" />
-            <circle cx="200" cy="200" r="138" fill="none" stroke="#60a5fa" strokeWidth="2.5" />
+            <circle cx="200" cy="200" r="138" fill="none" stroke="#60a5fa" strokeWidth="3" />
 
-            {/* TOOTH */}
+            {/* THE TOOTH (Iconic SaaS Shape) */}
             <path
                 id="toothMirror"
-                d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
-                fill="#020617"
+                d="M200 110 C260 110 290 145 290 200 C290 255 265 295 235 315 C215 330 200 350 200 350 C200 350 185 330 165 315 C135 295 110 255 110 200 C110 145 140 110 200 110 Z"
+                fill="#050b1a"
                 stroke="url(#toothGradient)"
-                strokeWidth="5"
+                strokeWidth="7"
                 strokeLinejoin="round"
             />
+            {/* SaaS Gloss Layer */}
+            <path
+                d="M200 110 C260 110 290 145 290 200 C290 255 265 295 235 315 C215 330 200 350 200 350 C200 350 185 330 165 315 C135 295 110 255 110 200 C110 145 140 110 200 110 Z"
+                fill="url(#glassGloss)"
+                stroke="none"
+            />
 
-            {/* Inside Circuitry */}
-            <g stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" fill="none">
-                <path d="M165 170 H235 M165 200 H205 M165 230 H235" opacity="0.6" />
-                <path d="M185 140 V280" opacity="0.4" />
-                <path d="M215 140 V280" opacity="0.4" />
-                <circle cx="200" cy="200" r="5" fill="#60a5fa" />
+            {/* Software Logic Symbols inside Tooth */}
+            <g stroke="#60a5fa" strokeWidth="3" strokeLinecap="round" fill="none">
+                <path d="M165 170 H235 M165 200 H205 M165 230 H235" opacity="0.9" />
+                <circle cx="200" cy="200" r="6" fill="#fff" />
             </g>
         </svg>
 
-        {/* The Reflection - matching the user's bitmap style */}
+        {/* The Reflection - matching bitmap exactly */}
         {showReflection && (
-            <div className="w-full h-1/2 mt-4 opacity-20 [mask-image:linear-gradient(to_bottom,black,transparent)] scale-y-[-1] grayscale">
+            <div className="w-full h-1/2 mt-4 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)] scale-y-[-1] grayscale">
                 <svg viewBox="0 0 400 400" className="w-full h-full">
                     <use href="#toothMirror" />
                 </svg>
@@ -171,8 +163,10 @@ const DentalPage = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="relative">
                             <div className="mb-10 flex items-center gap-4">
-                                <span className="px-4 py-1.5 bg-blue-600 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-[0_0_20px_rgba(37,99,235,0.4)]">Dental Solution 2.0</span>
-                                <div className="h-[1px] w-20 bg-blue-600/30"></div>
+                                <div className="flex items-center gap-3 px-4 py-2 bg-blue-600/10 border border-blue-500/20 rounded-full">
+                                    <DentalLogoSVG className="h-6 w-6" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Relay Dental SaaS v2.0</span>
+                                </div>
                             </div>
 
                             <h1 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.8] text-white mb-12">
