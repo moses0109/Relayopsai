@@ -8,10 +8,10 @@ import IncomingCall from './IncomingCall';
 /* ------------------------------------------------------------------ */
 /*  REFINED DENTAL LOGO (ULTRA-FIDELITY SVG)                          */
 /* ------------------------------------------------------------------ */
-const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1 }) => (
-    <div className={`relative flex items-center justify-center ${className}`} style={{ opacity }}>
+const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1, showReflection = false }) => (
+    <div className={`relative flex flex-col items-center justify-center ${className}`} style={{ opacity }}>
         <div className="absolute inset-0 bg-blue-500/10 blur-[80px] rounded-full"></div>
-        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">
+        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_25px_rgba(59,130,246,0.9)] relative z-10">
             <defs>
                 <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
                     <stop offset="0%" stopColor="#60a5fa" />
@@ -65,6 +65,7 @@ const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1 }) => (
 
             {/* TOOTH */}
             <path
+                id="toothMirror"
                 d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
                 fill="#020617"
                 stroke="url(#toothGradient)"
@@ -80,6 +81,15 @@ const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1 }) => (
                 <circle cx="200" cy="200" r="5" fill="#60a5fa" />
             </g>
         </svg>
+
+        {/* The Reflection - matching the user's bitmap style */}
+        {showReflection && (
+            <div className="w-full h-1/2 mt-4 opacity-20 [mask-image:linear-gradient(to_bottom,black,transparent)] scale-y-[-1] grayscale">
+                <svg viewBox="0 0 400 400" className="w-full h-full">
+                    <use href="#toothMirror" />
+                </svg>
+            </div>
+        )}
     </div>
 );
 
@@ -141,12 +151,19 @@ const DentalPage = () => {
             <header className="relative pt-32 pb-40 lg:pt-64 lg:pb-80 px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[#030303]"></div>
-                    <div className="absolute -top-[20%] -right-[10%] opacity-20 rotate-[15deg]">
+                    {/* Immersive Dental Office Background */}
+                    <div className="absolute inset-0 opacity-20 grayscale saturate-0 mix-blend-overlay scale-110">
+                        <img
+                            src="https://images.unsplash.com/photo-1629909608135-ca40a60965d1?auto=format&fit=crop&q=80&w=2000"
+                            alt="Dental Clinic"
+                            className="w-full h-full object-cover blur-[8px]"
+                        />
+                    </div>
+                    <div className="absolute -top-[20%] -right-[10%] opacity-10 rotate-[15deg]">
                         <DentalLogoSVG className="h-[1200px] w-[1200px]" opacity={0.3} />
                     </div>
                     <div className="absolute top-1/4 left-1/4 w-[1000px] h-[1000px] bg-blue-600/10 blur-[250px] rounded-full"></div>
                     <div className="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-cyan-600/5 blur-[200px] rounded-full"></div>
-                    <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
@@ -293,12 +310,18 @@ const DentalPage = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-8 relative">
-                            {[...Array(4)].map((_, i) => (
-                                <div key={i} className="relative aspect-square bg-[#0a0a0f] rounded-[4rem] flex flex-col items-center justify-center p-12 border border-blue-500/10 hover:border-blue-500/40 hover:shadow-[0_0_50px_rgba(59,130,246,0.1)] transition-all group overflow-hidden">
-                                    <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div className="absolute top-8 left-8 text-[10px] font-black text-slate-800 uppercase tracking-widest">Module 0{i + 1}</div>
+                            {[
+                                "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+                                "https://images.unsplash.com/photo-1629909608135-ca40a60965d1?auto=format&fit=crop&q=80&w=800",
+                                "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800",
+                                "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800"
+                            ].map((img, i) => (
+                                <div key={i} className="relative aspect-square bg-[#0a0a0f] rounded-[4rem] flex flex-col items-center justify-center p-2 border border-blue-500/10 hover:border-blue-500/40 transition-all group overflow-hidden">
+                                    <div className="absolute inset-0 opacity-20 grayscale group-hover:opacity-40 transition-opacity">
+                                        <img src={img} className="w-full h-full object-cover" alt="dental clinical" />
+                                    </div>
+                                    <div className="absolute top-8 left-8 text-[10px] font-black text-white/40 uppercase tracking-widest z-10">Module 0{i + 1}</div>
                                     <DentalLogoSVG className="h-24 w-24 relative z-10 group-hover:scale-110 transition-transform" />
-                                    <div className="mt-6 text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">Integrated</div>
                                 </div>
                             ))}
                         </div>
