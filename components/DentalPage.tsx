@@ -151,19 +151,20 @@ const DentalPage = () => {
             <header className="relative pt-32 pb-40 lg:pt-64 lg:pb-80 px-6 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[#030303]"></div>
-                    {/* Immersive Dental Office Background */}
-                    <div className="absolute inset-0 opacity-20 grayscale saturate-0 mix-blend-overlay scale-110">
-                        <img
-                            src="https://images.unsplash.com/photo-1629909608135-ca40a60965d1?auto=format&fit=crop&q=80&w=2000"
-                            alt="Dental Clinic"
-                            className="w-full h-full object-cover blur-[8px]"
-                        />
-                    </div>
+                    {/* Abstract Tech Grid Background */}
+                    <div className="absolute inset-0 opacity-[0.08]" style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
+                        backgroundSize: '40px 40px'
+                    }}></div>
+
+                    <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-blue-600/10 to-transparent"></div>
+
                     <div className="absolute -top-[20%] -right-[10%] opacity-10 rotate-[15deg]">
                         <DentalLogoSVG className="h-[1200px] w-[1200px]" opacity={0.3} />
                     </div>
-                    <div className="absolute top-1/4 left-1/4 w-[1000px] h-[1000px] bg-blue-600/10 blur-[250px] rounded-full"></div>
-                    <div className="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-cyan-600/5 blur-[200px] rounded-full"></div>
+
+                    <div className="absolute top-1/4 left-1/4 w-[1200px] h-[1200px] bg-blue-600/5 blur-[300px] rounded-full"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-[1000px] h-[1000px] bg-cyan-600/5 blur-[250px] rounded-full"></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
@@ -311,17 +312,24 @@ const DentalPage = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-8 relative">
                             {[
-                                "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
-                                "https://images.unsplash.com/photo-1629909608135-ca40a60965d1?auto=format&fit=crop&q=80&w=800",
-                                "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800",
-                                "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800"
-                            ].map((img, i) => (
-                                <div key={i} className="relative aspect-square bg-[#0a0a0f] rounded-[4rem] flex flex-col items-center justify-center p-2 border border-blue-500/10 hover:border-blue-500/40 transition-all group overflow-hidden">
-                                    <div className="absolute inset-0 opacity-20 grayscale group-hover:opacity-40 transition-opacity">
-                                        <img src={img} className="w-full h-full object-cover" alt="dental clinical" />
+                                "Schedule Sync",
+                                "Emergency Triage",
+                                "Insurance Logic",
+                                "Patient Recall"
+                            ].map((label, i) => (
+                                <div key={i} className="relative aspect-square bg-[#08080c] rounded-[4rem] flex flex-col items-center justify-center p-8 border border-white/5 hover:border-blue-500/40 hover:bg-blue-600/[0.02] transition-all group overflow-hidden shadow-2xl">
+                                    <div className="absolute top-8 left-0 right-0 text-center text-[9px] font-black text-blue-500/30 uppercase tracking-[0.5em] z-10">{label}</div>
+
+                                    {/* CSS Reflection Effect to match bitmap */}
+                                    <div className="relative group-hover:scale-110 transition-transform duration-500" style={{
+                                        WebkitBoxReflect: 'below 0px linear-gradient(transparent, rgba(0,0,0,0.2))'
+                                    }}>
+                                        <DentalLogoSVG className="h-28 w-28 md:h-36 md:w-36" />
                                     </div>
-                                    <div className="absolute top-8 left-8 text-[10px] font-black text-white/40 uppercase tracking-widest z-10">Module 0{i + 1}</div>
-                                    <DentalLogoSVG className="h-24 w-24 relative z-10 group-hover:scale-110 transition-transform" />
+
+                                    <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div className="px-4 py-1.5 bg-blue-600/20 rounded-full border border-blue-500/30 text-[8px] font-black text-blue-400 uppercase tracking-widest">Active Module</div>
+                                    </div>
                                 </div>
                             ))}
                         </div>
