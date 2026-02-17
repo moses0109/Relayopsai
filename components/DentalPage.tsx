@@ -6,68 +6,87 @@ import ChatWidget from './ChatWidget';
 import IncomingCall from './IncomingCall';
 
 /* ------------------------------------------------------------------ */
-/*  HIGH-FIDELITY DENTAL LOGO (SVG RECREATION)                        */
+/*  REFINED DENTAL LOGO (ULTRA-FIDELITY SVG)                          */
 /* ------------------------------------------------------------------ */
 const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1 }) => (
     <div className={`relative flex items-center justify-center ${className}`} style={{ opacity }}>
-        <div className="absolute inset-0 bg-blue-500/10 blur-[60px] rounded-full"></div>
-        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]">
-            {/* Outer Circuit Rings */}
-            <circle cx="200" cy="200" r="180" fill="none" stroke="#1e40af" strokeWidth="0.5" strokeDasharray="4 4" />
-            <circle cx="200" cy="200" r="160" fill="none" stroke="#2563eb" strokeWidth="1" strokeOpacity="0.3" />
+        <div className="absolute inset-0 bg-blue-500/10 blur-[80px] rounded-full"></div>
+        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]">
+            <defs>
+                <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#60a5fa" />
+                    <stop offset="100%" stopColor="transparent" />
+                </radialGradient>
+                <linearGradient id="toothGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#0ea5e9" />
+                    <stop offset="100%" stopColor="#2563eb" />
+                </linearGradient>
+            </defs>
 
-            {/* Complex Node Network Circle */}
-            <g className="animate-pulse">
+            {/* Background Disk (matching image glow) */}
+            <circle cx="200" cy="200" r="190" fill="#020617" />
+
+            {/* Outer Node Network - EXACT REPLICA OF IMAGE */}
+            <g>
                 {[...Array(24)].map((_, i) => {
                     const angle = (i * 15) * (Math.PI / 180);
-                    const x = 200 + 170 * Math.cos(angle);
-                    const y = 200 + 170 * Math.sin(angle);
+                    const r = 175;
+                    const x = 200 + r * Math.cos(angle);
+                    const y = 200 + r * Math.sin(angle);
                     return (
-                        <circle key={i} cx={x} cy={y} r="2.5" fill="#60a5fa" />
+                        <g key={i}>
+                            {/* Glow behind node */}
+                            <circle cx={x} cy={y} r="8" fill="url(#nodeGlow)" opacity="0.6" />
+                            <circle cx={x} cy={y} r="3" fill="#93c5fd" />
+                        </g>
                     );
                 })}
-                {/* Connecting lines */}
+                {/* Connecting lines like the image */}
                 {[...Array(24)].map((_, i) => {
                     const angle1 = (i * 15) * (Math.PI / 180);
-                    const angle2 = ((i + 1) * 15) * (Math.PI / 180);
-                    const x1 = 200 + 170 * Math.cos(angle1);
-                    const y1 = 200 + 170 * Math.sin(angle1);
-                    const x2 = 200 + 170 * Math.cos(angle2);
-                    const y2 = 200 + 170 * Math.sin(angle2);
+                    const angle2 = ((i + 1) % 24) * 15 * (Math.PI / 180);
+                    const r1 = 175;
+                    const x1 = 200 + r1 * Math.cos(angle1);
+                    const y1 = 200 + r1 * Math.sin(angle1);
+                    const x2 = 200 + r1 * Math.cos(angle2);
+                    const y2 = 200 + r1 * Math.sin(angle2);
+
+                    // Add cross-lines
+                    const angle3 = ((i + 2) % 24) * 15 * (Math.PI / 180);
+                    const x3 = 200 + 175 * Math.cos(angle3);
+                    const y3 = 200 + 175 * Math.sin(angle3);
+
                     return (
-                        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.4" />
+                        <g key={i}>
+                            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#3b82f6" strokeWidth="1" strokeOpacity="0.4" />
+                            <line x1={x1} y1={y1} x2={x3} y2={y3} stroke="#1e40af" strokeWidth="0.5" strokeOpacity="0.2" />
+                        </g>
                     );
                 })}
             </g>
 
-            {/* Inner Glowing Ring */}
-            <circle cx="200" cy="200" r="140" fill="url(#gradLogo)" fillOpacity="0.05" stroke="#3b82f6" strokeWidth="3" />
+            {/* Double Inner Rings */}
+            <circle cx="200" cy="200" r="145" fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle cx="200" cy="200" r="138" fill="none" stroke="#60a5fa" strokeWidth="2.5" />
 
-            {/* THE TOOTH (Main Shape) */}
+            {/* THE TOOTH - REFINED TO IMAGE SHAPE */}
             <path
-                d="M200 100 C260 100 290 140 290 200 C290 260 260 300 230 320 C200 330 200 350 200 350 C200 350 200 330 170 320 C140 300 110 260 110 200 C110 140 140 100 200 100 Z"
-                fill="#0a0a0f"
-                stroke="#60a5fa"
-                strokeWidth="4"
+                d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
+                fill="#020617"
+                stroke="url(#toothGradient)"
+                strokeWidth="5"
                 strokeLinejoin="round"
             />
 
-            {/* Circuit Board Patterns inside Tooth */}
-            <g stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" fill="none" className="opacity-80">
-                <path d="M160 150 H240 M160 180 H200 V230 M240 210 V160 H210" />
-                <path d="M180 260 V220 H220 V190" />
-                <circle cx="200" cy="180" r="4" fill="#3b82f6" />
-                <circle cx="160" cy="150" r="3" fill="#60a5fa" />
-                <circle cx="240" cy="210" r="3" fill="#60a5fa" />
-                <circle cx="200" cy="300" r="2" fill="#3b82f6" />
+            {/* Circuitry (Exact image style) */}
+            <g stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" fill="none">
+                <path d="M165 170 H235 M165 200 H205 M165 230 H235" opacity="0.6" />
+                <path d="M185 140 V280" opacity="0.4" />
+                <path d="M215 140 V280" opacity="0.4" />
+                <circle cx="200" cy="200" r="5" fill="#60a5fa" />
+                <circle cx="165" cy="170" r="3" fill="#fff" />
+                <circle cx="235" cy="230" r="3" fill="#fff" />
             </g>
-
-            <defs>
-                <radialGradient id="gradLogo" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#1e3a8a" />
-                </radialGradient>
-            </defs>
         </svg>
     </div>
 );
