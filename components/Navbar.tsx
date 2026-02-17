@@ -7,31 +7,42 @@ import { useNavigate, useLocation } from 'react-router-dom';
 /* ------------------------------------------------------------------ */
 const DentalLogoSVG = ({ className = "h-8 w-8" }) => (
   <div className={`relative flex items-center justify-center ${className}`}>
-    <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+    <svg viewBox="0 0 500 500" className="w-full h-full drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">
       <defs>
-        <linearGradient id="toothGradientNav" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#0ea5e9" />
-          <stop offset="100%" stopColor="#2563eb" />
+        <linearGradient id="cyanGlowNav" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#22d3ee" />
+          <stop offset="100%" stopColor="#0ea5e9" />
         </linearGradient>
       </defs>
-      <circle cx="200" cy="200" r="190" fill="#020617" />
-      <g>
+      <circle cx="250" cy="250" r="240" fill="#020617" />
+      <g stroke="#22d3ee" strokeWidth="2" strokeOpacity="0.8">
         {[...Array(12)].map((_, i) => {
           const angle = (i * 30) * (Math.PI / 180);
-          const r = 175;
-          const x = 200 + r * Math.cos(angle);
-          const y = 200 + r * Math.sin(angle);
-          return <circle key={i} cx={x} cy={y} r="4" fill="#60a5fa" />;
+          const r = 220;
+          const x = 250 + r * Math.cos(angle);
+          const y = 250 + r * Math.sin(angle);
+          const nextAngle = ((i + 1) % 12) * 30 * (Math.PI / 180);
+          const nextX = 250 + 220 * Math.cos(nextAngle);
+          const nextY = 250 + 220 * Math.sin(nextAngle);
+          return (
+            <g key={i}>
+              <line x1={x} y1={y} x2={nextX} y2={nextY} />
+              <circle cx={x} cy={y} r="8" fill="#22d3ee" />
+            </g>
+          );
         })}
       </g>
-      <circle cx="200" cy="200" r="140" fill="none" stroke="#60a5fa" strokeWidth="3" />
+      <circle cx="250" cy="250" r="170" fill="none" stroke="#22d3ee" strokeWidth="6" />
       <path
-        d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
+        d="M250 140 C320 140 360 180 360 250 C360 350 320 420 280 440 C265 448 255 420 250 420 C245 420 235 448 220 440 C180 420 140 350 140 250 C140 180 180 140 250 140 Z"
         fill="#020617"
-        stroke="url(#toothGradientNav)"
-        strokeWidth="6"
+        stroke="url(#cyanGlowNav)"
+        strokeWidth="12"
         strokeLinejoin="round"
       />
+      <g stroke="#22d3ee" strokeWidth="6" strokeLinecap="round" fill="none">
+        <path d="M200 230 H300 M200 270 H270 M200 310 H300" opacity="0.8" />
+      </g>
     </svg>
   </div>
 );

@@ -10,75 +10,107 @@ import IncomingCall from './IncomingCall';
 /* ------------------------------------------------------------------ */
 const DentalLogoSVG = ({ className = "h-40 w-40", opacity = 1, showReflection = false }) => (
     <div className={`relative flex flex-col items-center justify-center ${className}`} style={{ opacity }}>
-        <div className="absolute inset-0 bg-blue-500/10 blur-[80px] rounded-full"></div>
-        <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_25px_rgba(59,130,246,0.9)] relative z-10">
+        <div className="absolute inset-0 bg-cyan-500/10 blur-[80px] rounded-full"></div>
+        <svg viewBox="0 0 500 500" className="w-full h-full drop-shadow-[0_0_30px_rgba(34,211,238,0.8)] relative z-10">
             <defs>
-                <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#60a5fa" />
-                    <stop offset="100%" stopColor="transparent" />
-                </radialGradient>
-                <linearGradient id="toothGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#0ea5e9" />
-                    <stop offset="100%" stopColor="#2563eb" />
+                <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#22d3ee" />
+                    <stop offset="100%" stopColor="#0ea5e9" />
                 </linearGradient>
-                <linearGradient id="glassGloss" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#fff" stopOpacity="0.4" />
-                    <stop offset="50%" stopColor="#fff" stopOpacity="0.05" />
-                    <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
             </defs>
 
             {/* Background Disk */}
-            <circle cx="200" cy="200" r="190" fill="#020617" />
+            <circle cx="250" cy="250" r="240" fill="#020617" />
 
-            {/* SaaS Node Network */}
-            <g>
+            {/* OUTER MESH RING (Triangular Node Network) */}
+            <g stroke="#22d3ee" strokeWidth="1.5" strokeOpacity="0.8" filter="url(#glow)">
                 {[...Array(24)].map((_, i) => {
                     const angle = (i * 15) * (Math.PI / 180);
-                    const r = 175;
-                    const x = 200 + r * Math.cos(angle);
-                    const y = 200 + r * Math.sin(angle);
+                    const r = 220;
+                    const x = 250 + r * Math.cos(angle);
+                    const y = 250 + r * Math.sin(angle);
+
+                    const nextAngle = ((i + 1) % 24) * 15 * (Math.PI / 180);
+                    const nextX = 250 + 220 * Math.cos(nextAngle);
+                    const nextY = 250 + 220 * Math.sin(nextAngle);
+
+                    const innerR = 180;
+                    const innerX = 250 + innerR * Math.cos(angle + (7.5 * Math.PI / 180));
+                    const innerY = 250 + innerR * Math.sin(angle + (7.5 * Math.PI / 180));
+
                     return (
                         <g key={i}>
-                            <circle cx={x} cy={y} r="8" fill="url(#nodeGlow)" opacity="0.6" />
-                            <circle cx={x} cy={y} r="3" fill="#93c5fd" />
+                            {/* Outer Connections */}
+                            <line x1={x} y1={y} x2={nextX} y2={nextY} />
+                            {/* Triangle Mesh Connections */}
+                            <line x1={x} y1={y} x2={innerX} y2={innerY} strokeOpacity="0.4" />
+                            <line x1={nextX} y1={nextY} x2={innerX} y2={innerY} strokeOpacity="0.4" />
+                            {/* Nodes */}
+                            <circle cx={x} cy={y} r="5" fill="#22d3ee" />
                         </g>
                     );
                 })}
             </g>
 
-            {/* Premium Rings */}
-            <circle cx="200" cy="200" r="145" fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.5" />
-            <circle cx="200" cy="200" r="138" fill="none" stroke="#60a5fa" strokeWidth="3" />
+            {/* INNER SOLID RING */}
+            <circle cx="250" cy="250" r="170" fill="none" stroke="#22d3ee" strokeWidth="5" strokeOpacity="0.9" filter="url(#glow)" />
 
-            {/* THE TOOTH (Iconic SaaS Shape) */}
-            <path
-                id="toothMirror"
-                d="M200 110 C260 110 290 145 290 200 C290 255 265 295 235 315 C215 330 200 350 200 350 C200 350 185 330 165 315 C135 295 110 255 110 200 C110 145 140 110 200 110 Z"
-                fill="#050b1a"
-                stroke="url(#toothGradient)"
-                strokeWidth="7"
-                strokeLinejoin="round"
-            />
-            {/* SaaS Gloss Layer */}
-            <path
-                d="M200 110 C260 110 290 145 290 200 C290 255 265 295 235 315 C215 330 200 350 200 350 C200 350 185 330 165 315 C135 295 110 255 110 200 C110 145 140 110 200 110 Z"
-                fill="url(#glassGloss)"
-                stroke="none"
-            />
+            {/* THE MOLAR (Exact Shape) */}
+            <g filter="url(#glow)">
+                <path
+                    id="toothMolarShape"
+                    d="M250 140 
+                       C320 140 360 180 360 250 
+                       C360 350 320 420 280 440 
+                       C265 448 255 420 250 420 
+                       C245 420 235 448 220 440 
+                       C180 420 140 350 140 250 
+                       C140 180 180 140 250 140 Z"
+                    fill="#050b1a"
+                    stroke="url(#cyanGlow)"
+                    strokeWidth="8"
+                    strokeLinejoin="round"
+                />
 
-            {/* Software Logic Symbols inside Tooth */}
-            <g stroke="#60a5fa" strokeWidth="3" strokeLinecap="round" fill="none">
-                <path d="M165 170 H235 M165 200 H205 M165 230 H235" opacity="0.9" />
-                <circle cx="200" cy="200" r="6" fill="#fff" />
+                {/* INTERNAL CIRCUIT BOARD TRACES */}
+                <g stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round" fill="none" strokeOpacity="0.9">
+                    {/* Horizontal Main Bus */}
+                    <path d="M190 230 H310" />
+                    <path d="M190 260 H280" />
+                    <path d="M190 290 H310" />
+
+                    {/* Vertical Branching */}
+                    <path d="M210 180 V230" />
+                    <path d="M240 180 V210 H280 V180" />
+                    <path d="M310 230 V320" />
+                    <path d="M220 290 V360" />
+                    <path d="M250 260 V330 H190 V360" />
+                    <path d="M280 290 V360" />
+
+                    {/* Circuit Nodes (Dots) */}
+                    <circle cx="210" cy="180" r="4" fill="#22d3ee" />
+                    <circle cx="240" cy="180" r="4" fill="#22d3ee" />
+                    <circle cx="280" cy="180" r="4" fill="#22d3ee" />
+                    <circle cx="310" cy="320" r="4" fill="#22d3ee" />
+                    <circle cx="220" cy="360" r="4" fill="#22d3ee" />
+                    <circle cx="190" cy="360" r="4" fill="#22d3ee" />
+                    <circle cx="280" cy="360" r="4" fill="#22d3ee" />
+                </g>
             </g>
         </svg>
 
         {/* The Reflection - matching bitmap exactly */}
         {showReflection && (
             <div className="w-full h-1/2 mt-4 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)] scale-y-[-1] grayscale">
-                <svg viewBox="0 0 400 400" className="w-full h-full">
-                    <use href="#toothMirror" />
+                <svg viewBox="0 0 500 500" className="w-full h-full">
+                    <use href="#toothMolarShape" />
                 </svg>
             </div>
         )}
