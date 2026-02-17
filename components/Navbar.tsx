@@ -136,8 +136,8 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
                     onClick={() => { navigate('/dentists'); }}
                     className="w-full text-left px-4 py-3 rounded-xl hover:bg-cyan-500/10 group/item transition-all flex items-center gap-4"
                   >
-                    <div className="w-12 h-12 rounded-xl border border-white/10 overflow-hidden flex-shrink-0">
-                      <Logo hideText className="scale-75" />
+                    <div className="w-12 h-12 rounded-xl border border-white/10 overflow-hidden flex-shrink-0 bg-black/40 p-1.5 flex items-center justify-center">
+                      <img src="/dental-logo.png" alt="Dental" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <span className="block text-xs font-black uppercase tracking-wide text-slate-300 group-hover/item:text-cyan-400">Dental Practices</span>

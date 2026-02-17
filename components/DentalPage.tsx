@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './Navbar';
+import Logo from './Logo';
 import ChatWidget from './ChatWidget';
 import IncomingCall from './IncomingCall';
 
@@ -141,7 +142,13 @@ const DentalPage = () => {
 
             {/* ── HERO ── */}
             <header className="relative pt-20 pb-40 px-6 bg-[#030303] overflow-hidden">
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <img
+                        src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2070"
+                        alt="Dental Office Background"
+                        className="w-full h-full object-cover opacity-30 grayscale-[0.5]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#030303]/80 via-[#030303]/40 to-[#030303]/90"></div>
                     <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-blue-600/10 blur-[180px] rounded-full translate-x-1/4 -translate-y-1/4"></div>
                 </div>
 
