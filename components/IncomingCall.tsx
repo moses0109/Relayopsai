@@ -2,10 +2,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  INCOMING CALL NOTIFICATION                                         */
-/*  Compact banner slides from top like a real phone notification       */
+/*  DENTAL LOGO SVG (REPLICA)                                         */
 /* ------------------------------------------------------------------ */
+const DentalLogoSVG = ({ className = "h-8 w-8" }) => (
+  <div className={`relative flex items-center justify-center ${className}`}>
+    <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+      <defs>
+        <linearGradient id="toothGradientCall" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#0ea5e9" />
+          <stop offset="100%" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="200" r="190" fill="#020617" />
+      <g>
+        {[...Array(12)].map((_, i) => {
+          const angle = (i * 30) * (Math.PI / 180);
+          const r = 175;
+          const x = 200 + r * Math.cos(angle);
+          const y = 200 + r * Math.sin(angle);
+          return <circle key={i} cx={x} cy={y} r="4" fill="#60a5fa" />;
+        })}
+      </g>
+      <circle cx="200" cy="200" r="140" fill="none" stroke="#60a5fa" strokeWidth="3" />
+      <path
+        d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
+        fill="#020617"
+        stroke="url(#toothGradientCall)"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
 
+/* ------------------------------------------------------------------ */
+/*  INCOMING CALL NOTIFICATION                                         */
+/* ------------------------------------------------------------------ */
 const IncomingCall: React.FC = () => {
   const [showCall, setShowCall] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
@@ -60,36 +92,29 @@ const IncomingCall: React.FC = () => {
     <>
       <audio ref={audioRef} onEnded={endCall} />
 
-      {/* Slim overlay — only when active call */}
       {isCallActive && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] transition-opacity duration-500" onClick={endCall} />
       )}
 
-      {/* TOP NOTIFICATION BANNER */}
       <div className={`fixed top-0 left-0 right-0 z-[101] transition-transform duration-500 ease-out ${showCall || isCallActive ? 'translate-y-0' : '-translate-y-full'
         }`}>
         <div className="mx-3 mt-3 md:mx-auto md:max-w-xl md:mt-4">
 
-          {/* RINGING STATE — compact notification */}
           {isRinging && (
             <div className="bg-[#0a0a0f]/95 backdrop-blur-3xl rounded-33 border border-blue-500/20 shadow-2xl shadow-blue-500/10 p-4 call-slide-in">
               <div className="flex items-center gap-4">
-                {/* Avatar */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden border-2 border-blue-400/30 shadow-lg shadow-blue-500/20 phone-vibrate bg-black p-1">
-                    <img src="/dental-logo.png" alt="Relay Dental" className="w-full h-full object-contain" />
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden border-2 border-blue-400/30 shadow-lg shadow-blue-500/20 phone-vibrate bg-black flex items-center justify-center p-1.5">
+                    <DentalLogoSVG className="w-full h-full" />
                   </div>
-                  {/* Ring ripple */}
                   <div className="absolute inset-0 rounded-2xl border-2 border-blue-400/40 ring-expand" />
                 </div>
 
-                {/* Info */}
                 <div className="flex-1 min-w-0">
                   <p className="text-[10px] text-blue-400 font-black uppercase tracking-widest">New Patient Call</p>
                   <p className="text-white text-base font-black tracking-tight truncate">Appointment Request</p>
                 </div>
 
-                {/* Action buttons */}
                 <div className="flex items-center gap-3 flex-shrink-0">
                   <button onClick={declineCall} className="w-10 h-10 rounded-full bg-rose-500/20 border border-rose-500/50 text-rose-500 hover:bg-rose-500 hover:text-white flex items-center justify-center active:scale-90 transition-all">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -106,7 +131,6 @@ const IncomingCall: React.FC = () => {
             </div>
           )}
 
-          {/* ACTIVE CALL STATE — compact bar */}
           {isCallActive && (
             <div className="bg-[#0a192f]/90 backdrop-blur-2xl rounded-2xl border border-blue-500/30 shadow-2xl shadow-blue-500/20 p-4">
               <div className="flex items-center gap-4">
@@ -142,33 +166,12 @@ const IncomingCall: React.FC = () => {
       </div>
 
       <style>{`
-        @keyframes ringExpand {
-          0% { transform: scale(1); opacity: 0.6; }
-          100% { transform: scale(1.8); opacity: 0; }
-        }
-        @keyframes phoneVibrate {
-          0%, 100% { transform: rotate(0deg); }
-          10% { transform: rotate(-3deg); }
-          20% { transform: rotate(3deg); }
-          30% { transform: rotate(-2deg); }
-          40% { transform: rotate(2deg); }
-          50% { transform: rotate(0deg); }
-        }
-        @keyframes acceptPulse {
-          0%, 100% { box-shadow: 0 4px 6px -1px rgba(16,185,129,0.3); }
-          50% { box-shadow: 0 4px 15px -1px rgba(16,185,129,0.6); }
-        }
-        @keyframes miniWave {
-          0%, 100% { height: 3px; opacity: 0.4; }
-          50% { height: 14px; opacity: 1; }
-        }
-        @keyframes callSlideIn {
-          0% { transform: translateY(-20px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 1; }
-        }
+        @keyframes ringExpand { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+        @keyframes phoneVibrate { 0%, 100% { transform: rotate(0deg); } 10% { transform: rotate(-3deg); } 20% { transform: rotate(3deg); } 30% { transform: rotate(-2deg); } 40% { transform: rotate(2deg); } 50% { transform: rotate(0deg); } }
+        @keyframes miniWave { 0%, 100% { height: 3px; opacity: 0.4; } 50% { height: 14px; opacity: 1; } }
+        @keyframes callSlideIn { 0% { transform: translateY(-20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
         .ring-expand { animation: ringExpand 1.5s ease-out infinite; }
         .phone-vibrate { animation: phoneVibrate 0.8s ease-in-out infinite; }
-        .accept-pulse { animation: acceptPulse 1.2s ease-in-out infinite; }
         .call-slide-in { animation: callSlideIn 0.4s ease-out; }
       `}</style>
     </>

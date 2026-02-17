@@ -1,12 +1,42 @@
 
 import React, { useState, useRef, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Logo from './Logo';
 
 /* ------------------------------------------------------------------ */
-/*  INTERACTIVE LOGO with 3D tilt, ripple, and glow effects           */
+/*  DENTAL LOGO SVG (REPLICA)                                         */
 /* ------------------------------------------------------------------ */
-const InteractiveLogo = ({ size = "w-12 h-12 md:w-14 md:h-14", src = "/logo.png" }: { size?: string, src?: string }) => {
+const DentalLogoSVG = ({ className = "h-8 w-8" }) => (
+  <div className={`relative flex items-center justify-center ${className}`}>
+    <svg viewBox="0 0 400 400" className="w-full h-full drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+      <defs>
+        <linearGradient id="toothGradientNav" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#0ea5e9" />
+          <stop offset="100%" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="200" r="190" fill="#020617" />
+      <g>
+        {[...Array(12)].map((_, i) => {
+          const angle = (i * 30) * (Math.PI / 180);
+          const r = 175;
+          const x = 200 + r * Math.cos(angle);
+          const y = 200 + r * Math.sin(angle);
+          return <circle key={i} cx={x} cy={y} r="4" fill="#60a5fa" />;
+        })}
+      </g>
+      <circle cx="200" cy="200" r="140" fill="none" stroke="#60a5fa" strokeWidth="3" />
+      <path
+        d="M200 115 C250 115 280 150 280 200 C280 250 255 290 225 310 C205 325 200 345 200 345 C200 345 195 325 175 310 C145 290 120 250 120 200 C120 150 150 115 200 115 Z"
+        fill="#020617"
+        stroke="url(#toothGradientNav)"
+        strokeWidth="6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
+
+const InteractiveLogo = ({ src, isDentalPage }: { src: string; isDentalPage: boolean }) => {
   const [ripple, setRipple] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLDivElement>(null);
@@ -32,7 +62,7 @@ const InteractiveLogo = ({ size = "w-12 h-12 md:w-14 md:h-14", src = "/logo.png"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
-      className={`relative ${size} cursor-pointer group`}
+      className="relative w-12 h-12 md:w-14 md:h-14 cursor-pointer group"
       style={{ perspective: '600px' }}
     >
       <div className="absolute inset-[-6px] bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-glow" />
@@ -43,7 +73,13 @@ const InteractiveLogo = ({ size = "w-12 h-12 md:w-14 md:h-14", src = "/logo.png"
           transition: ripple ? 'transform 0.1s ease' : 'transform 0.2s ease-out',
         }}
       >
-        <img src={src} alt="RelayOpsAI" className="w-full h-full object-cover" />
+        {isDentalPage ? (
+          <div className="w-full h-full bg-[#020617] p-1.5 flex items-center justify-center">
+            <DentalLogoSVG className="w-full h-full" />
+          </div>
+        ) : (
+          <img src={src} alt="RelayOpsAI" className="w-full h-full object-cover" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-700" />
         {ripple && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -65,15 +101,9 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
   const isDentalPage = location.pathname === '/dentists';
 
   const scrollTo = (id: string) => {
-    // If on dental page and clicking a main nav link, go home first ideally, 
-    // but for now let's just assumes nav links are for the current page structure 
-    // or we hide them on dental page if they don't apply.
-    // For simplicity, we'll keep them but if on dental, maybe we navigate home.
-
     if (isDentalPage && id !== 'top') {
       navigate('/');
       setTimeout(() => {
@@ -82,7 +112,6 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
       }, 100);
       return;
     }
-
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -103,7 +132,6 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
     if (onCtaClick) {
       onCtaClick();
     } else {
-      // Default behavior if no handler (e.g. on dental page)
       window.open('https://calendly.com/elironebusiness/15-minute-call-capture-setup', '_blank');
     }
   };
@@ -113,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
       <div className="max-w-6xl mx-auto px-3 md:px-6">
         <div className="flex justify-between items-center h-16 md:h-24 px-4 md:px-12 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-full shadow-2xl">
           <button onClick={handleLogoClick} className="flex items-center space-x-3 md:space-x-5 group cursor-pointer h-full">
-            <InteractiveLogo src={isDentalPage ? "/dental-logo.png" : "/logo.png"} />
+            <InteractiveLogo src={isDentalPage ? "/dental-logo.png" : "/logo.png"} isDentalPage={isDentalPage} />
             <div className="flex flex-col items-start text-left">
               <span className="text-lg md:text-2xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">
                 Relay{isDentalPage ? <span className="text-blue-500">OpsAI</span> : 'OpsAI'}
@@ -127,7 +155,6 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
           <div className="hidden lg:flex items-center space-x-14 h-full">
             {!isDentalPage && (
               <>
-                {/* Solutions Dropdown */}
                 <div className="relative group h-full flex items-center">
                   <button className="text-xs font-black uppercase tracking-wide text-slate-400 group-hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none">
                     Solutions
@@ -135,7 +162,6 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-
                   <div className="absolute top-[80%] left-[-20px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[70]">
                     <div className="bg-[#0a0a0f] border border-white/10 rounded-2xl p-2 w-64 shadow-2xl backdrop-blur-3xl">
                       <button
@@ -143,7 +169,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
                         className="w-full text-left px-4 py-3 rounded-xl hover:bg-cyan-500/10 group/item transition-all flex items-center gap-4"
                       >
                         <div className="w-12 h-12 rounded-xl border border-white/10 overflow-hidden flex-shrink-0 bg-black/40 p-1.5 flex items-center justify-center">
-                          <img src="/dental-logo.png" alt="Dental" className="w-full h-full object-contain" />
+                          <DentalLogoSVG className="w-full h-full" />
                         </div>
                         <div>
                           <span className="block text-xs font-black uppercase tracking-wide text-slate-300 group-hover/item:text-cyan-400">Dental Practices</span>
@@ -153,36 +179,21 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
                     </div>
                   </div>
                 </div>
-
-                {[
-                  { label: 'Demo', id: 'demo' },
-                  { label: 'About', id: 'about' },
-                  { label: 'Pricing', id: 'pricing' }
-                ].map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => scrollTo(item.id)}
-                    className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
-                  >
+                {[{ label: 'Demo', id: 'demo' }, { label: 'About', id: 'about' }, { label: 'Pricing', id: 'pricing' }].map((item) => (
+                  <button key={item.label} onClick={() => scrollTo(item.id)} className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center">
                     {item.label}
                   </button>
                 ))}
               </>
             )}
-
             {isDentalPage && (
               <span className="text-xs font-black uppercase tracking-[0.2em] text-blue-500">Exclusively for Dental Practices</span>
             )}
           </div>
 
           <div className="flex items-center h-full">
-            <button
-              onClick={handleCta}
-              className="group/cta relative inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
-            >
-              <span className="relative z-10">
-                {isDentalPage ? 'Book 30-Minute Setup Call' : 'Book a Demo'}
-              </span>
+            <button onClick={handleCta} className="group/cta relative inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40">
+              <span className="relative z-10">{isDentalPage ? 'Book 30-Minute Setup Call' : 'Book a Demo'}</span>
               <svg className="relative z-10 w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
               </svg>
@@ -190,16 +201,9 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
           </div>
         </div>
       </div>
-
       <style>{`
-        @keyframes ripple-out {
-          0% { transform: scale(0); opacity: 1; }
-          100% { transform: scale(2.5); opacity: 0; }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.7; }
-        }
+        @keyframes ripple-out { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
         .animate-ripple-out { animation: ripple-out 0.6s ease-out forwards; }
         .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
       `}</style>
