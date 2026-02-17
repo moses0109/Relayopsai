@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
+// Version: 1.0.1 - Pushed at 11:05 PM
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './Navbar';
 import ChatWidget from './ChatWidget';
