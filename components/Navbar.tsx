@@ -111,12 +111,16 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
   return (
     <nav className="fixed top-4 md:top-8 left-0 right-0 z-[60]">
       <div className="max-w-6xl mx-auto px-3 md:px-6">
-        <div className="flex justify-between items-center h-16 md:h-24 px-4 md:px-12 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
-          <button onClick={() => navigate('/')} className="flex items-center space-x-3 md:space-x-5 group cursor-pointer h-full">
-            <InteractiveLogo src="/logo.png" />
+        <div className="flex justify-between items-center h-16 md:h-24 px-4 md:px-12 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-full shadow-2xl">
+          <button onClick={handleLogoClick} className="flex items-center space-x-3 md:space-x-5 group cursor-pointer h-full">
+            <InteractiveLogo src={isDentalPage ? "/dental-logo.png" : "/logo.png"} />
             <div className="flex flex-col items-start text-left">
-              <span className="text-lg md:text-2xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">RelayOpsAI</span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">Intelligence Agency</span>
+              <span className="text-lg md:text-2xl font-black tracking-tighter italic uppercase text-white group-hover:text-cyan-400 transition-colors">
+                Relay{isDentalPage ? <span className="text-blue-500">OpsAI</span> : 'OpsAI'}
+              </span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">
+                {isDentalPage ? 'Dental Practice Solution' : 'Intelligence Agency'}
+              </span>
             </div>
           </button>
 
