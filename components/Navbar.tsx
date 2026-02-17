@@ -121,59 +121,67 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick }) => {
           </button>
 
           <div className="hidden lg:flex items-center space-x-14 h-full">
-            {/* Solutions Dropdown */}
-            <div className="relative group h-full flex items-center">
-              <button className="text-xs font-black uppercase tracking-wide text-slate-400 group-hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none">
-                Solutions
-                <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              <div className="absolute top-[80%] left-[-20px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[70]">
-                <div className="bg-[#0a0a0f] border border-white/10 rounded-2xl p-2 w-64 shadow-2xl backdrop-blur-3xl">
-                  <button
-                    onClick={() => { navigate('/dentists'); }}
-                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-cyan-500/10 group/item transition-all flex items-center gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-xl border border-white/10 overflow-hidden flex-shrink-0 bg-black/40 p-1.5 flex items-center justify-center">
-                      <img src="/dental-logo.png" alt="Dental" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <span className="block text-xs font-black uppercase tracking-wide text-slate-300 group-hover/item:text-cyan-400">Dental Practices</span>
-                      <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">AI Front Desk</span>
-                    </div>
+            {!isDentalPage && (
+              <>
+                {/* Solutions Dropdown */}
+                <div className="relative group h-full flex items-center">
+                  <button className="text-xs font-black uppercase tracking-wide text-slate-400 group-hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none">
+                    Solutions
+                    <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                    </svg>
                   </button>
-                </div>
-              </div>
-            </div>
 
-            {[
-              { label: 'Demo', id: 'demo' },
-              { label: 'About', id: 'about' },
-              { label: 'Pricing', id: 'pricing' }
-            ].map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollTo(item.id)}
-                className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
-              >
-                {item.label}
-              </button>
-            ))}
+                  <div className="absolute top-[80%] left-[-20px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[70]">
+                    <div className="bg-[#0a0a0f] border border-white/10 rounded-2xl p-2 w-64 shadow-2xl backdrop-blur-3xl">
+                      <button
+                        onClick={() => { navigate('/dentists'); }}
+                        className="w-full text-left px-4 py-3 rounded-xl hover:bg-cyan-500/10 group/item transition-all flex items-center gap-4"
+                      >
+                        <div className="w-12 h-12 rounded-xl border border-white/10 overflow-hidden flex-shrink-0 bg-black/40 p-1.5 flex items-center justify-center">
+                          <img src="/dental-logo.png" alt="Dental" className="w-full h-full object-contain" />
+                        </div>
+                        <div>
+                          <span className="block text-xs font-black uppercase tracking-wide text-slate-300 group-hover/item:text-cyan-400">Dental Practices</span>
+                          <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">AI Front Desk</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {[
+                  { label: 'Demo', id: 'demo' },
+                  { label: 'About', id: 'about' },
+                  { label: 'Pricing', id: 'pricing' }
+                ].map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => scrollTo(item.id)}
+                    className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </>
+            )}
+
+            {isDentalPage && (
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-blue-500">Exclusively for Dental Practices</span>
+            )}
           </div>
 
           <div className="flex items-center h-full">
             <button
               onClick={handleCta}
-              className="group/cta relative inline-flex items-center justify-center gap-2 px-5 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full text-xs font-black uppercase tracking-wide hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:shadow-xl overflow-hidden border border-cyan-400/30"
+              className="group/cta relative inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
             >
-              <span className="relative z-10 hidden sm:inline">Book a Demo</span>
-              <span className="relative z-10 sm:hidden">Demo</span>
+              <span className="relative z-10">
+                {isDentalPage ? 'Book 30-Minute Setup Call' : 'Book a Demo'}
+              </span>
               <svg className="relative z-10 w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
               </svg>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700 pointer-events-none" />
             </button>
           </div>
         </div>
