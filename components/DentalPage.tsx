@@ -3,6 +3,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './Navbar';
 import Logo from './Logo';
+import ChatWidget from './ChatWidget';
+import IncomingCall from './IncomingCall';
 
 /* ------------------------------------------------------------------ */
 /*  PHONE MOCKUP COMPONENT                                             */
@@ -33,7 +35,7 @@ const PhoneMockup = () => {
                         <p className="text-[11px] text-white font-medium prose-sm">"I need an emergency crown repair today, do you have room?"</p>
                     </div>
                     <div className="bg-blue-600 p-3 rounded-2xl rounded-br-none max-w-[90%] ml-auto">
-                        <p className="text-[10px] text-blue-100 font-black mb-1">Belle AI</p>
+                        <p className="text-[10px] text-blue-100 font-black mb-1">Relay AI</p>
                         <p className="text-[11px] text-white font-medium">"I can fit you in at 2 PM today. I've sent a text to confirm your info!"</p>
                     </div>
                     <div className="bg-emerald-500/10 border border-emerald-500/20 p-2 rounded-xl text-center">
@@ -69,20 +71,25 @@ const DentalPage = () => {
             <Navbar />
 
             {/* ── 1) HERO SECTION ── */}
-            <header className="relative pt-32 pb-40 lg:pt-48 lg:pb-64 px-6 bg-slate-50 overflow-hidden">
-                {/* Background Visual (Dental Office) */}
+            <header className="relative pt-32 pb-40 lg:pt-48 lg:pb-64 px-6 bg-white overflow-hidden">
+                {/* Background Visual (Medical Gradients) */}
                 <div className="absolute inset-0 z-0">
+                    <div className="absolute top-0 left-1/4 w-[1000px] h-[1000px] bg-blue-50/50 blur-[120px] rounded-full -translate-y-1/2"></div>
+                    <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-cyan-50/30 blur-[100px] rounded-full translate-y-1/2"></div>
                     <img
                         src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2070"
                         alt="Modern Dental Office"
-                        className="w-full h-full object-cover opacity-[0.07] grayscale"
+                        className="w-full h-full object-cover opacity-[0.04] grayscale"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white"></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div>
+                            {/* Logo Visual Overlay */}
+                            <div className="mb-12 inline-block">
+                                <Logo className="h-16 md:h-20" hideText />
+                            </div>
                             {/* Headline */}
                             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.9] text-slate-900 mb-8">
                                 Stop Missing Calls. <br />
@@ -113,15 +120,29 @@ const DentalPage = () => {
                             </div>
 
                             {/* CTA */}
-                            <button
-                                onClick={() => window.open('https://calendly.com/elironebusiness/15-minute-call-capture-setup', '_blank')}
-                                className="px-12 py-6 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-sm hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-blue-600/30"
-                            >
-                                Book 30-Minute Setup Call
-                            </button>
+                            <div className="flex flex-col sm:flex-row items-center gap-6">
+                                <button
+                                    onClick={() => window.open('https://calendly.com/elironebusiness/15-minute-call-capture-setup', '_blank')}
+                                    className="w-full sm:w-auto px-12 py-6 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-sm hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-blue-600/30"
+                                >
+                                    Book 30-Minute Setup Call
+                                </button>
+                                <div className="flex -space-x-4">
+                                    {[1, 2, 3, 4].map(i => (
+                                        <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                                            <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="doctor" />
+                                        </div>
+                                    ))}
+                                    <div className="pl-6 flex items-center">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Trusted by 50+ Practices</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="hidden lg:flex justify-end p-8">
+                        <div className="hidden lg:flex justify-end p-8 relative">
+                            {/* Glow effect for phone */}
+                            <div className="absolute inset-0 bg-blue-400/10 blur-[100px] rounded-full translate-x-12 translate-y-12"></div>
                             <PhoneMockup />
                         </div>
                     </div>
@@ -141,8 +162,8 @@ const DentalPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         {[
                             { title: "The Emergency Exit", desc: "A patient with acute pain calls after 5 PM. If you don't answer, they find the next practice on Google. That's a $1,500 case gone in 30 seconds." },
-                            { title: "No-Show Waste", desc: "Empty chairs are the silent killers of practice production. Belle AI sends multi-touch SMS reminders that cut no-shows by 40%." },
-                            { title: "Insurance FAQ Drain", desc: "Your experienced staff spends 2 hours a day answering 'Do you take my insurance?'. Let Belle handle the basic questions while your staff handles the patients." }
+                            { title: "No-Show Waste", desc: "Empty chairs are the silent killers of practice production. Relay AI sends multi-touch SMS reminders that cut no-shows by 40%." },
+                            { title: "Insurance FAQ Drain", desc: "Your experienced staff spends 2 hours a day answering 'Do you take my insurance?'. Let Relay handle the basic questions while your staff handles the patients." }
                         ].map((pain, i) => (
                             <div key={i} className="group p-10 rounded-[3rem] bg-slate-50 border border-slate-100 transition-all hover:shadow-xl hover:-translate-y-2">
                                 <h3 className="text-xl font-black uppercase tracking-tight mb-6 text-slate-900">{pain.title}</h3>
@@ -212,7 +233,7 @@ const DentalPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             { step: "01", title: "Map Logic", desc: "We sync with your Dentrix, Open Dental, or EagleSoft schedule and learn your rules." },
-                            { step: "02", title: "Deploy Belle", desc: "Your custom AI receptionist goes live, answering calls 24/7 with studio-grade voice quality." },
+                            { step: "02", title: "Deploy Relay", desc: "Your custom AI receptionist goes live, answering calls 24/7 with studio-grade voice quality." },
                             { step: "03", title: "Fill Chairs", desc: "New bookings appear directly in your PMS. Your staff arrives to a full schedule every day." }
                         ].map((s, i) => (
                             <div key={i} className="relative p-12 bg-slate-50 rounded-[3rem] border border-slate-100 overflow-hidden">
