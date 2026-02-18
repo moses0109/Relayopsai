@@ -85,46 +85,47 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
       {/* Removed gradient overlay to match page background */}
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <h2 className="text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none fade-in-up">
-          Capture your <br /><span className="gradient-relay">Growth.</span>
+        <h2 className={`text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none fade-in-up ${isMedSpa ? 'text-slate-800' : ''}`}>
+          Capture your <br />
+          <span className={isMedSpa ? 'bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent' : 'gradient-relay'}>Growth.</span>
         </h2>
 
-        <div className="mt-10 bg-white/[0.02] border border-white/10 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl max-w-2xl mx-auto fade-in-up">
+        <div className={`mt-10 ${isMedSpa ? 'bg-white/50 border border-rose-200/60 backdrop-blur-xl' : 'bg-white/[0.02] border border-white/10'} p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl max-w-2xl mx-auto fade-in-up`}>
           {step === 1 && (
             <form onSubmit={handleSubmit} className="space-y-5 text-left">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">Name</label>
+                  <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>Name</label>
                   <input
                     type="text" required placeholder="Your name"
                     value={formData.name} onChange={(e) => updateField('name', e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-slate-600 focus:border-sky-400/50 focus:outline-none transition-all"
+                    className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 placeholder:text-slate-500 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-600 focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all`}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">Email</label>
+                  <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>Email</label>
                   <input
                     type="email" required placeholder="you@business.com"
                     value={formData.email} onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-slate-600 focus:border-sky-400/50 focus:outline-none transition-all"
+                    className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 placeholder:text-slate-500 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-600 focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all`}
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">Phone</label>
+                  <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>Phone</label>
                   <input
                     type="tel" required placeholder="Your phone number"
                     value={formData.phone} onChange={(e) => updateField('phone', e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-slate-600 focus:border-sky-400/50 focus:outline-none transition-all"
+                    className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 placeholder:text-slate-500 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-600 focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all`}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">{businessLabel}</label>
+                  <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>{businessLabel}</label>
                   <select
                     required value={formData.businessType} onChange={(e) => updateField('businessType', e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white focus:border-sky-400/50 focus:outline-none transition-all appearance-none cursor-pointer"
+                    className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all appearance-none cursor-pointer`}
                     style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
                   >
                     <option value="" disabled className="bg-gray-900">{isMedSpa ? "Select your primary services" : "Select your industry"}</option>
@@ -136,7 +137,7 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">{volumeLabel}</label>
+                <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>{volumeLabel}</label>
                 <div className={`grid ${isMedSpa ? 'grid-cols-2' : 'grid-cols-4'} gap-2`}>
                   {volumes.map(vol => (
                     <button
@@ -144,8 +145,12 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
                       onClick={() => updateField('volume', vol)}
                       className={`py-3 rounded-xl text-xs font-black uppercase tracking-wide transition-all ${
                         formData.volume === vol
-                          ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/30'
-                          : 'bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:border-sky-400/30 hover:text-white'
+                          ? isMedSpa
+                            ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/30'
+                            : 'bg-sky-500 text-white shadow-lg shadow-sky-500/30'
+                          : isMedSpa
+                            ? 'bg-white/[0.04] border border-white/[0.08] text-slate-700 hover:border-rose-400/30 hover:text-slate-900'
+                            : 'bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:border-sky-400/30 hover:text-white'
                       }`}
                     >
                       {vol}
@@ -155,18 +160,18 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
               </div>
 
               <div>
-                <label className="block text-xs font-black uppercase tracking-wide text-sky-400 mb-2">Message {!isMedSpa && '(Optional)'}</label>
+                <label className={`block text-xs font-black uppercase tracking-wide ${isMedSpa ? 'text-rose-600' : 'text-sky-400'} mb-2`}>Message {!isMedSpa && '(Optional)'}</label>
                 <textarea
                   placeholder={isMedSpa ? "Tell us about your med spa: location, services, biggest challenges with missed calls..." : "Tell us about your business and what you're looking for..."}
                   value={formData.message} onChange={(e) => updateField('message', e.target.value)}
                   rows={3}
-                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-slate-600 focus:border-sky-400/50 focus:outline-none transition-all resize-none"
+                  className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 placeholder:text-slate-500 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-600 focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all resize-none`}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-2xl font-black uppercase tracking-wide text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-sky-500/20 flex items-center justify-center gap-2"
+                className={`w-full py-5 ${isMedSpa ? 'bg-gradient-to-r from-rose-500 to-pink-600 shadow-xl shadow-rose-500/20' : 'bg-gradient-to-r from-sky-500 to-blue-600 shadow-xl shadow-sky-500/20'} text-white rounded-2xl font-black uppercase tracking-wide text-sm hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2`}
               >
                 Book My Free Consultation
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
