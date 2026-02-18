@@ -128,9 +128,9 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
                     className={`w-full ${isMedSpa ? 'bg-white/70 border border-rose-200/40 text-slate-900 focus:border-rose-400/70' : 'bg-white/[0.04] border border-white/[0.08] text-white focus:border-sky-400/50'} rounded-xl px-4 py-3.5 text-sm focus:outline-none transition-all appearance-none cursor-pointer`}
                     style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
                   >
-                    <option value="" disabled className="bg-gray-900">{isMedSpa ? "Select your primary services" : "Select your industry"}</option>
+                    <option value="" disabled className={isMedSpa ? "bg-white text-slate-900" : "bg-gray-900 text-white"}>{isMedSpa ? "Select your primary services" : "Select your industry"}</option>
                     {industries.map(ind => (
-                      <option key={ind} value={ind} className="bg-gray-900">{ind}</option>
+                      <option key={ind} value={ind} className={isMedSpa ? "bg-white text-slate-900" : "bg-gray-900 text-white"}>{ind}</option>
                     ))}
                   </select>
                 </div>
