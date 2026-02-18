@@ -59,7 +59,7 @@ const HeroLogo = () => {
         onMouseLeave={handleMouseLeave}
         onClick={handleInteraction}
         onTouchStart={handleInteraction}
-        className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 mx-auto cursor-pointer group"
+        className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
         style={{ perspective: '800px' }}
       >
         <div
@@ -74,6 +74,7 @@ const HeroLogo = () => {
             alt="RelayOpsAI"
             className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(6,182,212,0.6)] group-hover:drop-shadow-[0_0_60px_rgba(6,182,212,0.8)] transition-all duration-500"
             draggable={false}
+            style={{ mixBlendMode: 'screen' }}
           />
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">

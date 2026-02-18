@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 /* ------------------------------------------------------------------ */
 /*  SIMPLE LOGO - Clean and functional                                */
 /* ------------------------------------------------------------------ */
-const SimpleLogo = ({ size = "w-10 h-10", isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
+const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
   return (
     <div className={`relative ${size} flex items-center justify-center`}>
       {!isMedSpa && (
@@ -14,6 +14,7 @@ const SimpleLogo = ({ size = "w-10 h-10", isMedSpa = false }: { size?: string; i
           alt="RelayOpsAI"
           className="w-full h-full object-contain"
           draggable={false}
+          style={{ mixBlendMode: 'screen' }}
         />
       )}
       {isMedSpa && (
