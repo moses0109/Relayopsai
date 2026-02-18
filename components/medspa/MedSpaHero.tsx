@@ -26,20 +26,20 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           </div>
         </div>
 
-        {/* Value prop - specific, outcome-driven */}
+        {/* Value prop - aspirational, premium */}
         <h1 className="text-center text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8">
-          <span className="block text-slate-900">$18,000/Month</span>
-          <span className="block text-slate-900">Slipping Through</span>
+          <span className="block text-slate-900">Every Call.</span>
+          <span className="block text-slate-900">Every Client.</span>
           <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-            Your Fingers
+            Captured.
           </span>
         </h1>
 
-        {/* Specific pain + solution */}
+        {/* Clean, professional value prop */}
         <p className="text-center text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-          NYC med spas lose <span className="font-bold text-slate-900">127 calls per month</span> on average.
-          Each missed call = <span className="font-bold text-rose-600">$1,800 lost</span>.
-          <span className="block mt-4 text-slate-900 font-bold">We capture 98% of them. Automatically.</span>
+          AI voice agent that answers every call, books every consultation,
+          and brings every client back—
+          <span className="block mt-3 text-slate-900 font-bold">24/7. Automatically. Perfectly.</span>
         </p>
 
         {/* Social proof - early trust signal */}
@@ -80,23 +80,20 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           </p>
         </div>
 
-        {/* Specific stats - pattern interrupt */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto pt-12 border-t border-slate-200">
+        {/* Clean stats - premium presentation */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto pt-12 border-t border-slate-200">
           {[
-            { value: '127', label: 'Avg Monthly Missed Calls', sublabel: '(NYC med spas)' },
-            { value: '$1,800', label: 'Lost Per Missed Call', sublabel: '(consultation value)' },
-            { value: '98%', label: 'Our Capture Rate', sublabel: '(24/7 AI agent)' },
-            { value: '3 days', label: 'Average ROI Payback', sublabel: '(Premium plan)' },
+            { value: '24/7', label: 'Always Available' },
+            { value: '98%', label: 'Capture Rate' },
+            { value: '$27k', label: 'Avg Monthly Lift' },
+            { value: '<1s', label: 'Response Time' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1">
+              <div className="text-4xl md:text-5xl font-black text-slate-900 mb-2">
                 {stat.value}
               </div>
-              <div className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">
+              <div className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
                 {stat.label}
-              </div>
-              <div className="text-xs text-slate-500">
-                {stat.sublabel}
               </div>
             </div>
           ))}
