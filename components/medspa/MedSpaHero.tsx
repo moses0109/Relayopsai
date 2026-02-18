@@ -50,11 +50,11 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           </p>
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-black text-sm">SC</span>
+              <span className="text-white font-black text-sm">M</span>
             </div>
             <div>
-              <p className="font-bold text-slate-900">Dr. Sarah Chen</p>
-              <p className="text-sm text-slate-600">Glow Med Spa, Manhattan</p>
+              <p className="font-bold text-slate-900">Med Spa Owner</p>
+              <p className="text-sm text-slate-600">Manhattan, NY</p>
             </div>
           </div>
         </div>

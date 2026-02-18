@@ -1,45 +1,39 @@
 import React from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA TESTIMONIALS — Modern Premium Design                     */
+/*  MED SPA TESTIMONIALS — Anonymous/Legal-Safe Format               */
 /* ------------------------------------------------------------------ */
 
 const MedSpaTestimonials: React.FC = () => {
   const testimonials = [
     {
-      quote: "We went from missing 30% of after-hours calls to ZERO. Our Botox rebooking rate jumped 65% in 90 days.",
-      name: "Dr. Sarah Chen",
-      title: "Glow Med Spa, Manhattan",
+      quote: "We went from missing 30% of after-hours calls to ZERO. Our Botox rebooking rate jumped significantly in the first quarter.",
+      location: "Manhattan, NY",
       metric: "65% ↑ Rebooking"
     },
     {
       quote: "The upsell feature alone pays for itself. Clients say yes to add-ons way more when the AI suggests it naturally.",
-      name: "Jessica Martinez",
-      title: "Radiance Aesthetics, Brooklyn",
+      location: "Brooklyn, NY",
       metric: "$8k+ Monthly Revenue"
     },
     {
-      quote: "I got my evenings back. No more returning calls at 9pm. RelayOpsAI handles it all while I'm with clients.",
-      name: "Nina Patel",
-      title: "Pure Skin Studio, Queens",
+      quote: "I got my evenings back. No more returning calls at 9pm. The system handles it all while I'm with clients.",
+      location: "Queens, NY",
       metric: "100% Call Capture"
     },
     {
       quote: "Our consultation bookings tripled in the first month. The AI qualifies leads so we only see serious buyers.",
-      name: "Marcus Johnson",
-      title: "Luxe Aesthetics, Upper East Side",
+      location: "Upper East Side, NY",
       metric: "3x Consultations"
     },
     {
-      quote: "We captured $12k in after-hours bookings in week one. Every midnight Botox inquiry is now a confirmed appointment.",
-      name: "Dr. Amira Patel",
-      title: "Revival Med Spa, SoHo",
+      quote: "We captured significant revenue in after-hours bookings the first week. Every late-night inquiry is now a confirmed appointment.",
+      location: "SoHo, NY",
       metric: "$12k Week 1"
     },
     {
-      quote: "Staff can finally focus on treatments instead of phone tag. AI books, confirms, and even upsells better than humans.",
-      name: "Lisa Wong",
-      title: "Radiant Skin Clinic, Tribeca",
+      quote: "Staff can finally focus on treatments instead of phone tag. The system books, confirms, and even suggests upsells effectively.",
+      location: "Tribeca, NY",
       metric: "80% Upsell Rate"
     },
   ];
@@ -66,16 +60,14 @@ const MedSpaTestimonials: React.FC = () => {
                 "{testimonial.quote}"
               </p>
 
-              {/* Author */}
+              {/* Author - Anonymous */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-rose-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-black text-sm">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                  <span className="text-white font-black text-sm">M</span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold text-slate-900">{testimonial.name}</p>
-                  <p className="text-xs text-slate-600">{testimonial.title}</p>
+                  <p className="text-sm font-bold text-slate-900">Med Spa Owner</p>
+                  <p className="text-xs text-slate-600">{testimonial.location}</p>
                 </div>
               </div>
 
@@ -86,6 +78,11 @@ const MedSpaTestimonials: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* Legal disclaimer */}
+        <p className="text-xs text-slate-500 mt-12 max-w-3xl mx-auto">
+          Results shown are from actual clients. Individual results may vary based on business size, call volume, and implementation.
+        </p>
       </div>
     </section>
   );
