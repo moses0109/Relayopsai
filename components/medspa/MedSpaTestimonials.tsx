@@ -10,37 +10,37 @@ const MedSpaTestimonials: React.FC = () => {
       quote: "We went from missing 30% of after-hours calls to ZERO. Our Botox rebooking rate jumped significantly in the first quarter.",
       location: "Manhattan, NY",
       metric: "65% ↑ Rebooking",
-      avatar: "manhattan-spa"
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&q=80"
     },
     {
       quote: "The upsell feature alone pays for itself. Clients say yes to add-ons way more when the AI suggests it naturally.",
       location: "Brooklyn, NY",
       metric: "$8k+ Monthly Revenue",
-      avatar: "brooklyn-aesthetics"
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop&q=80"
     },
     {
       quote: "I got my evenings back. No more returning calls at 9pm. The system handles it all while I'm with clients.",
       location: "Queens, NY",
       metric: "100% Call Capture",
-      avatar: "queens-beauty"
+      image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=200&h=200&fit=crop&q=80"
     },
     {
       quote: "Our consultation bookings tripled in the first month. The AI qualifies leads so we only see serious buyers.",
       location: "Upper East Side, NY",
       metric: "3x Consultations",
-      avatar: "ues-medspa"
+      image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=200&h=200&fit=crop&q=80"
     },
     {
       quote: "We captured significant revenue in after-hours bookings the first week. Every late-night inquiry is now a confirmed appointment.",
       location: "SoHo, NY",
       metric: "$12k Week 1",
-      avatar: "soho-clinic"
+      image: "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=200&h=200&fit=crop&q=80"
     },
     {
       quote: "Staff can finally focus on treatments instead of phone tag. The system books, confirms, and even suggests upsells effectively.",
       location: "Tribeca, NY",
       metric: "80% Upsell Rate",
-      avatar: "tribeca-skin"
+      image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=200&h=200&fit=crop&q=80"
     },
   ];
 
@@ -66,12 +66,12 @@ const MedSpaTestimonials: React.FC = () => {
                 "{testimonial.quote}"
               </p>
 
-              {/* Author - Anonymous with AI Avatar */}
+              {/* Author - Anonymous with NYC Building Photo */}
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src={`https://api.dicebear.com/7.x/notionists-neutral/svg?seed=${testimonial.avatar}&backgroundColor=fecaca,fca5a5,f87171`}
-                  alt="Med Spa Owner"
-                  className="w-10 h-10 rounded-full ring-2 ring-rose-200 flex-shrink-0"
+                  src={testimonial.image}
+                  alt={`${testimonial.location} Building`}
+                  className="w-10 h-10 rounded-lg object-cover ring-2 ring-slate-200 flex-shrink-0"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-slate-900">Med Spa Owner</p>

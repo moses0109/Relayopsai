@@ -50,9 +50,9 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           </p>
           <div className="flex items-center gap-3">
             <img
-              src="https://api.dicebear.com/7.x/notionists-neutral/svg?seed=manhattan-owner&backgroundColor=fecaca,fca5a5,f87171"
-              alt="Med Spa Owner"
-              className="w-12 h-12 rounded-full ring-2 ring-rose-200"
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&q=80"
+              alt="Manhattan Building"
+              className="w-12 h-12 rounded-lg object-cover ring-2 ring-slate-200"
             />
             <div>
               <p className="font-bold text-slate-900">Med Spa Owner</p>
