@@ -49,9 +49,11 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
             This paid for itself in week one."
           </p>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-black text-sm">M</span>
-            </div>
+            <img
+              src="https://api.dicebear.com/7.x/notionists-neutral/svg?seed=manhattan-owner&backgroundColor=fecaca,fca5a5,f87171"
+              alt="Med Spa Owner"
+              className="w-12 h-12 rounded-full ring-2 ring-rose-200"
+            />
             <div>
               <p className="font-bold text-slate-900">Med Spa Owner</p>
               <p className="text-sm text-slate-600">Manhattan, NY</p>
