@@ -60,7 +60,7 @@ const MedSpaTestimonials: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="group relative rounded-3xl bg-slate-50 border-2 border-slate-200 hover:border-slate-300 p-8 transition-all duration-300 hover:shadow-xl text-left">
+            <div key={i} className="diagonal-fly-in group relative rounded-3xl bg-slate-50 border-2 border-slate-200 hover:border-slate-300 p-8 transition-all duration-300 hover:shadow-xl text-left" style={{ animationDelay: `${i * 0.15}s` }}>
               {/* Quote */}
               <p className="text-sm text-slate-700 leading-relaxed mb-8">
                 "{testimonial.quote}"
@@ -92,6 +92,24 @@ const MedSpaTestimonials: React.FC = () => {
           Results shown are from actual clients. Individual results may vary based on business size, call volume, and implementation.
         </p>
       </div>
+
+      {/* Diagonal flying animation */}
+      <style>{`
+        @keyframes diagonalFlyIn {
+          0% {
+            opacity: 0;
+            transform: translate(-80px, 80px) rotate(-5deg);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(0, 0) rotate(0deg);
+          }
+        }
+        .diagonal-fly-in {
+          opacity: 0;
+          animation: diagonalFlyIn 0.8s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };

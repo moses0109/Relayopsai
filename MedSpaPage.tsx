@@ -8,6 +8,7 @@ import MedSpaFeatures from './components/medspa/MedSpaFeatures';
 import MedSpaPricing from './components/medspa/MedSpaPricing';
 import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
+import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
 import MedSpaIncomingCall from './components/medspa/MedSpaIncomingCall';
 
 /* ------------------------------------------------------------------ */
@@ -56,6 +57,8 @@ const MedSpaPage: React.FC = () => {
       />
 
       <MedSpaPainPoints />
+
+      <MedSpaPhoneDemo />
 
       <MedSpaROI onBookDemo={handleBookDemo} />
 
