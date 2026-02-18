@@ -8,6 +8,7 @@ import MedSpaFeatures from './components/medspa/MedSpaFeatures';
 import MedSpaPricing from './components/medspa/MedSpaPricing';
 import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
+import MedSpaIncomingCall from './components/medspa/MedSpaIncomingCall';
 
 /* ------------------------------------------------------------------ */
 /*  MED SPA PAGE — Conversion Psychology Optimized Flow             */
@@ -102,6 +103,9 @@ const MedSpaPage: React.FC = () => {
       </section>
 
       <Consultation leadSource={leadSource} />
+
+      {/* Pain Point Animation - Shows missed calls */}
+      <MedSpaIncomingCall />
 
       <Analytics />
     </div>
