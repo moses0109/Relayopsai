@@ -69,26 +69,32 @@ const MedSpaPage: React.FC = () => {
       <MedSpaPricing onBookSetup={() => handleBookSetup('premium')} />
 
       {/* Final CTA Section */}
-      <section className="py-24 px-6 md:px-8 text-center bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-            <span className="text-slate-900">Ready to Stop</span><br />
-            <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
+      <section className="py-24 px-6 md:px-8 text-center bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden">
+        {/* Background orbs */}
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-rose-100/30 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-purple-100/30 to-transparent blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-5xl md:text-7xl font-black tracking-[-0.03em] leading-tight mb-8">
+            <span className="text-slate-900 drop-shadow-sm">Ready to Stop</span><br />
+            <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
               Losing Money?
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed tracking-[-0.01em]">
             127 missed calls per month = $228,600 lost annually.
-            <span className="block mt-2 text-slate-900 font-bold">See your exact numbers below.</span>
+            <span className="block mt-3 text-slate-900 font-bold text-xl md:text-2xl">See your exact numbers below.</span>
           </p>
 
           <button
             type="button"
             onClick={handleBookDemo}
-            className="px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-[1.03] active:scale-[0.98] mb-8"
+            className="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-900/30 hover:shadow-3xl hover:shadow-slate-900/40 hover:scale-[1.03] active:scale-[0.98] mb-8 overflow-hidden"
           >
-            Calculate My Lost Revenue (Free)
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <span className="relative z-10">Calculate My Lost Revenue (Free)</span>
           </button>
 
           {/* Trust Indicators */}

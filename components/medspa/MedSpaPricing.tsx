@@ -12,26 +12,32 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
   const [openTier, setOpenTier] = useState<string | null>(null);
 
   return (
-    <section id="pricing" className="py-24 px-6 md:px-8 scroll-mt-32 relative bg-gradient-to-b from-white via-slate-50/50 to-white">
+    <section id="pricing" className="py-24 px-6 md:px-8 scroll-mt-32 relative bg-gradient-to-b from-white via-slate-50/30 to-white overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-br from-rose-100/20 to-transparent blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-purple-100/20 to-transparent blur-3xl" />
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header with Urgency */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50 border border-rose-200 mb-6">
-            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 mb-6 hover:shadow-xl hover:shadow-rose-500/20 transition-all duration-300">
+            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-sm shadow-rose-500" />
             <span className="text-sm font-semibold text-rose-700">
               February Special: Save $200 on Setup (3 slots left)
             </span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-            <span className="text-slate-900">$1,800 Per Call.</span><br />
-            <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-7xl font-black tracking-[-0.03em] leading-tight mb-6">
+            <span className="text-slate-900 drop-shadow-sm">$1,800 Per Call.</span><br />
+            <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
               $599 to Capture Them All.
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium tracking-[-0.01em] leading-relaxed">
             Recover one missed consultation. The entire month is paid for.
-            <span className="block mt-2 text-slate-900 font-bold">Most clients ROI in 3 days.</span>
+            <span className="block mt-3 text-slate-900 font-bold text-xl md:text-2xl">Most clients ROI in 3 days.</span>
           </p>
         </div>
 
@@ -39,7 +45,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
 
           {/* STARTER */}
-          <div className="group relative rounded-3xl bg-white border-2 border-slate-200 hover:border-slate-300 transition-all duration-300 overflow-hidden hover:shadow-xl">
+          <div className="group relative rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/60 hover:border-slate-300/80 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-slate-900/10 hover:-translate-y-1">
             <div className="p-10 md:p-12">
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
@@ -97,17 +103,18 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
               <button
                 type="button"
                 onClick={onBookSetup}
-                className="w-full py-4 px-6 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+                className="group/btn relative w-full py-4 px-6 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-slate-900/30 hover:shadow-2xl hover:shadow-slate-900/40 overflow-hidden"
               >
-                Get Started
+                <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <span className="relative z-10">Get Started</span>
               </button>
             </div>
           </div>
 
           {/* PREMIUM */}
-          <div className="group relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-slate-700">
+          <div className="group relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden shadow-2xl hover:shadow-3xl hover:shadow-slate-900/30 transition-all duration-500 border border-slate-700/60 hover:border-slate-600/80 hover:-translate-y-1">
             {/* Popular Badge */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-xl shadow-rose-500/30 group-hover:shadow-2xl group-hover:shadow-rose-500/40 transition-all duration-300">
               Most Popular
             </div>
 
@@ -169,9 +176,10 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
               <button
                 type="button"
                 onClick={onBookSetup}
-                className="w-full py-4 px-6 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
+                className="group/btn relative w-full py-4 px-6 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full font-semibold hover:from-rose-600 hover:to-pink-600 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-rose-500/40 hover:shadow-3xl hover:shadow-rose-500/50 overflow-hidden"
               >
-                Get Premium
+                <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <span className="relative z-10">Get Premium</span>
               </button>
             </div>
           </div>

@@ -45,24 +45,28 @@ const MedSpaTestimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-8 bg-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-          <span className="text-slate-900">NYC Med Spas</span><br />
-          <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+    <section className="py-24 px-6 md:px-8 bg-gradient-to-b from-white via-slate-50/30 to-white relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-rose-100/20 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-purple-100/20 to-transparent blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto text-center relative z-10">
+        <h2 className="text-5xl md:text-7xl font-black tracking-[-0.03em] leading-tight mb-6">
+          <span className="text-slate-900 drop-shadow-sm">NYC Med Spas</span><br />
+          <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
             Already Winning
           </span>
         </h2>
 
-        <p className="text-lg md:text-xl text-slate-600 mb-20 font-medium">
+        <p className="text-lg md:text-xl text-slate-600 mb-20 font-semibold tracking-[-0.01em]">
           Join 100+ med spas capturing $20,000+ monthly with AI
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="diagonal-fly-in group relative rounded-3xl bg-slate-50 border-2 border-slate-200 hover:border-slate-300 p-8 transition-all duration-300 hover:shadow-xl text-left" style={{ animationDelay: `${i * 0.15}s` }}>
+            <div key={i} className="diagonal-fly-in group relative rounded-3xl bg-white/70 backdrop-blur-md border border-slate-200/60 hover:border-slate-300/80 p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-900/10 hover:-translate-y-2 text-left" style={{ animationDelay: `${i * 0.15}s` }}>
               {/* Quote */}
-              <p className="text-sm text-slate-700 leading-relaxed mb-8">
+              <p className="text-sm text-slate-700 leading-relaxed mb-8 italic">
                 "{testimonial.quote}"
               </p>
 
@@ -71,7 +75,7 @@ const MedSpaTestimonials: React.FC = () => {
                 <img
                   src={testimonial.image}
                   alt={`${testimonial.location} Building`}
-                  className="w-10 h-10 rounded-lg object-cover ring-2 ring-slate-200 flex-shrink-0"
+                  className="w-12 h-12 rounded-xl object-cover ring-2 ring-slate-200/60 shadow-md flex-shrink-0 group-hover:scale-110 group-hover:ring-rose-300/60 transition-all duration-300"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-slate-900">Med Spa Owner</p>
@@ -80,7 +84,7 @@ const MedSpaTestimonials: React.FC = () => {
               </div>
 
               {/* Metric Badge */}
-              <div className="inline-flex px-3 py-1.5 bg-rose-500 text-white text-xs font-bold rounded-full">
+              <div className="inline-flex px-4 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-bold rounded-full shadow-lg shadow-rose-500/30 group-hover:shadow-xl group-hover:shadow-rose-500/40 transition-all duration-300">
                 {testimonial.metric}
               </div>
             </div>

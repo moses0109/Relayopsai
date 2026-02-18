@@ -71,7 +71,7 @@ const MedSpaIncomingCall: React.FC = () => {
       }`}
     >
       {/* Phone Card - Med Spa Theme */}
-      <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-6 shadow-2xl border-2 border-rose-500/30 w-80">
+      <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-6 shadow-2xl shadow-slate-900/50 border border-rose-500/40 hover:border-rose-500/60 w-80 backdrop-blur-xl transition-all duration-300 hover:shadow-3xl hover:shadow-slate-900/60">
         {/* Pulsing ring indicator */}
         <div className="absolute -top-1 -right-1 w-4 h-4">
           <div className="absolute inset-0 bg-rose-500 rounded-full animate-ping opacity-75" />
