@@ -66,19 +66,19 @@ const MedSpaTestimonials: React.FC = () => {
               'from-pink-400 to-purple-500',
             ];
             return (
-              <div key={i} className="diagonal-fly-in group p-6 rounded-2xl bg-slate-900/40 border border-rose-400/20 hover:border-rose-400/40 hover:bg-slate-900/60 hover:shadow-[0_0_40px_rgba(244,114,182,0.15)] transition-all duration-500 backdrop-blur-xl text-left" style={{ animationDelay: `${i * 0.15}s` }}>
+              <div key={i} className="diagonal-fly-in group p-6 rounded-2xl bg-white/60 border border-rose-400/30 hover:border-rose-400/50 hover:bg-white/80 hover:shadow-xl transition-all duration-500 backdrop-blur-xl text-left" style={{ animationDelay: `${i * 0.15}s` }}>
                 {/* Profile Image */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-12 h-12 bg-gradient-to-br ${gradients[i]} rounded-full flex items-center justify-center flex-shrink-0`}>
                     <span className="text-white font-black text-lg">{testimonial.name.split(' ').map(n => n[0]).join('')}</span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-white font-black text-sm break-words">{testimonial.name}</p>
-                    <p className="text-slate-500 text-xs font-semibold break-words">{testimonial.title}</p>
+                    <p className="text-slate-900 font-black text-sm break-words">{testimonial.name}</p>
+                    <p className="text-slate-600 text-xs font-semibold break-words">{testimonial.title}</p>
                   </div>
                 </div>
 
-                <p className="text-white text-xs md:text-sm leading-relaxed mb-6 break-words">
+                <p className="text-slate-700 text-xs md:text-sm leading-relaxed mb-6 break-words">
                   "{testimonial.quote}"
                 </p>
 

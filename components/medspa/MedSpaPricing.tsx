@@ -21,7 +21,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
               Fill Your Calendar.
             </span>
           </h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed fade-in-up break-words px-4">
+          <p className="text-slate-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed fade-in-up break-words px-4">
             One recovered consultation pays for the entire month. Done-for-you setup, dedicated support, no long-term contracts.
           </p>
         </div>
@@ -64,10 +64,10 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
               </ul>
 
               {/* Add-on Minutes */}
-              <div className="mb-6 pt-4 border-t border-white/5">
+              <div className="mb-6 pt-4 border-t border-rose-200/30">
                 <button
                   onClick={() => setOpenTier(openTier === 'starter' ? null : 'starter')}
-                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-400 hover:text-white transition-colors"
+                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
                 >
                   <span>+ Add-On Minutes</span>
                   <svg className={`w-4 h-4 transition-transform ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,9 +75,9 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
                   </svg>
                 </button>
                 {openTier === 'starter' && (
-                  <div className="mt-3 space-y-2 text-xs text-slate-500">
-                    <p>+200 min: <span className="text-white font-bold">$99/mo</span></p>
-                    <p>+500 min: <span className="text-white font-bold">$219/mo</span></p>
+                  <div className="mt-3 space-y-2 text-xs text-slate-600">
+                    <p>+200 min: <span className="text-slate-900 font-bold">$99/mo</span></p>
+                    <p>+500 min: <span className="text-slate-900 font-bold">$219/mo</span></p>
                   </div>
                 )}
               </div>
@@ -92,7 +92,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
           </div>
 
           {/* ── PREMIUM ── */}
-          <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-white/[0.04] border-2 border-rose-400/40 hover:border-rose-400/60 hover:shadow-[0_0_50px_rgba(244,114,182,0.15)] backdrop-blur-sm">
+          <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-rose-50/80 to-pink-50/80 border-2 border-rose-400/40 hover:border-rose-400/60 hover:shadow-[0_0_50px_rgba(244,114,182,0.25)] backdrop-blur-xl">
             <div className="h-1 bg-gradient-to-r from-rose-400 to-pink-500" />
 
             {/* Most Popular Badge */}
@@ -101,20 +101,20 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
             </div>
 
             <div className="p-8 md:p-10 flex flex-col flex-grow">
-              <h3 className="text-lg font-extrabold uppercase tracking-wide text-rose-300 mb-1">Premium</h3>
-              <p className="text-xs font-semibold text-slate-600 mb-6">Multi-Provider & High-Volume</p>
+              <h3 className="text-lg font-extrabold uppercase tracking-wide text-rose-600 mb-1">Premium</h3>
+              <p className="text-xs font-semibold text-slate-700 mb-6">Multi-Provider & High-Volume</p>
 
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
-                <span className="text-5xl font-black tracking-tight text-white">999</span>
-                <span className="text-sm font-bold text-slate-500 ml-1">/mo</span>
+                <span className="text-xs font-bold text-slate-600 relative -top-4">$</span>
+                <span className="text-5xl font-black tracking-tight text-slate-900">999</span>
+                <span className="text-sm font-bold text-slate-600 ml-1">/mo</span>
               </div>
 
-              <p className="text-xs font-semibold text-slate-500 mb-1">800 minutes (~200 calls/mo)</p>
-              <p className="text-xs font-bold text-amber-400 mb-6">$697 one-time setup</p>
+              <p className="text-xs font-semibold text-slate-700 mb-1">800 minutes (~200 calls/mo)</p>
+              <p className="text-xs font-bold text-rose-600 mb-6">$697 one-time setup</p>
 
               {/* Features */}
-              <p className="text-xs font-bold text-rose-300 mb-3 uppercase tracking-wide">Everything in Starter, PLUS:</p>
+              <p className="text-xs font-bold text-rose-600 mb-3 uppercase tracking-wide">Everything in Starter, PLUS:</p>
               <ul className="space-y-3 mb-8 flex-grow">
                 {[
                   '✨ Outbound rebooking calls (90-day Botox/filler reminders)',
@@ -125,18 +125,18 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
                   '✨ Bi-weekly strategy calls',
                   '✨ Priority support (24/7 escalation)',
                 ].map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                    <span className="text-rose-400 flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                    <span className="text-rose-600 flex-shrink-0 mt-0.5">✓</span>
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
               {/* Add-on Minutes */}
-              <div className="mb-6 pt-4 border-t border-white/5">
+              <div className="mb-6 pt-4 border-t border-rose-200/30">
                 <button
                   onClick={() => setOpenTier(openTier === 'premium' ? null : 'premium')}
-                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-400 hover:text-white transition-colors"
+                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
                 >
                   <span>+ Add-On Minutes</span>
                   <svg className={`w-4 h-4 transition-transform ${openTier === 'premium' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,9 +144,9 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
                   </svg>
                 </button>
                 {openTier === 'premium' && (
-                  <div className="mt-3 space-y-2 text-xs text-slate-500">
-                    <p>+300 min: <span className="text-white font-bold">$129/mo</span></p>
-                    <p>+700 min: <span className="text-white font-bold">$249/mo</span></p>
+                  <div className="mt-3 space-y-2 text-xs text-slate-700">
+                    <p>+300 min: <span className="text-slate-900 font-bold">$129/mo</span></p>
+                    <p>+700 min: <span className="text-slate-900 font-bold">$249/mo</span></p>
                   </div>
                 )}
               </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
-import ParticleBackground from './components/ParticleBackground';
 import Consultation from './components/Consultation';
 import MedSpaHero from './components/medspa/MedSpaHero';
 import MedSpaPainPoints from './components/medspa/MedSpaPainPoints';
@@ -39,8 +38,7 @@ const MedSpaPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-slate-900 bg-gradient-to-b from-[#cbbdb3] via-[#bfb0a6] to-[#b3a499] flex flex-col pt-20 md:pt-24 relative">
-      <ParticleBackground />
+    <div className="min-h-screen text-slate-900 bg-gradient-to-b from-[#f8f4f1] via-[#f4ebe7] to-[#f0e1dc] flex flex-col pt-20 md:pt-24 relative">
       <Navbar />
 
       {/* ── 1) HERO ── */}
@@ -49,47 +47,47 @@ const MedSpaPage: React.FC = () => {
         onCalculateROI={handleCalculateROI}
       />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
 
       {/* ── 2) PAIN POINTS ── */}
       <MedSpaPainPoints />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
 
       {/* ── 3) PHONE DEMO ── */}
       <MedSpaPhoneDemo />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
 
       {/* ── 4) BEFORE/AFTER REVENUE ── */}
       <MedSpaBeforeAfter />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
 
       {/* ── 5) FEATURES ── */}
       <MedSpaFeatures />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
 
       {/* ── 6) ROI CALCULATOR ── */}
       <MedSpaROI onBookDemo={handleBookDemo} />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
 
       {/* ── 7) DASHBOARD ── */}
       <MedSpaDashboard />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
 
       {/* ── 8) TESTIMONIALS ── */}
       <MedSpaTestimonials />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
 
       {/* ── 9) PRICING ── */}
       <MedSpaPricing onBookSetup={() => handleBookSetup('premium')} />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
 
       {/* ── 10) FINAL CTA / CONSULTATION ── */}
       <section className="py-16 px-4 md:px-6 text-center">
@@ -135,7 +133,7 @@ const MedSpaPage: React.FC = () => {
         </div>
       </section>
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-8" />
+      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
 
       {/* ── 11) CONSULTATION FORM ── */}
       <Consultation leadSource={leadSource} />

@@ -111,49 +111,49 @@ const MedSpaROI: React.FC<MedSpaROIProps> = ({ onBookDemo }) => {
           </div>
 
           {/* ── RIGHT: Live Results ── */}
-          <div className="bg-gradient-to-br from-rose-500/10 to-purple-500/10 border border-rose-400/20 rounded-3xl p-6 md:p-8 backdrop-blur-sm relative overflow-hidden">
+          <div className="bg-gradient-to-br from-white/70 to-rose-50/70 border border-rose-400/30 rounded-3xl p-6 md:p-8 backdrop-blur-xl relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 w-64 h-64 bg-rose-400/10 rounded-full blur-3xl pointer-events-none" />
 
             <h3 className="text-rose-400 font-black text-sm uppercase tracking-wide mb-6 relative z-10">Your Revenue Recovery</h3>
 
             <div className="space-y-6 relative z-10">
               {/* Lost Revenue */}
-              <div className="pb-4 border-b border-white/10">
-                <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">Monthly Lost Revenue</p>
-                <p className="text-4xl md:text-5xl font-black text-white italic">
+              <div className="pb-4 border-b border-rose-200/30">
+                <p className="text-xs text-slate-600 uppercase tracking-wide mb-2">Monthly Lost Revenue</p>
+                <p className="text-4xl md:text-5xl font-black text-slate-900 italic">
                   ${monthlyLostRevenue.toLocaleString()}
                 </p>
               </div>
 
               {/* Recoverable */}
-              <div className="pb-4 border-b border-white/10">
-                <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">Recoverable with AI (80% capture)</p>
-                <p className="text-4xl md:text-5xl font-black text-rose-400 italic">
+              <div className="pb-4 border-b border-rose-200/30">
+                <p className="text-xs text-slate-600 uppercase tracking-wide mb-2">Recoverable with AI (80% capture)</p>
+                <p className="text-4xl md:text-5xl font-black text-rose-600 italic">
                   ${recoverableRevenue.toLocaleString()}
                 </p>
               </div>
 
               {/* ROI */}
-              <div className="pb-4 border-b border-white/10">
-                <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">ROI vs. Premium Plan ($999)</p>
-                <p className="text-4xl md:text-5xl font-black text-rose-400 italic">
+              <div className="pb-4 border-b border-rose-200/30">
+                <p className="text-xs text-slate-600 uppercase tracking-wide mb-2">ROI vs. Premium Plan ($999)</p>
+                <p className="text-4xl md:text-5xl font-black text-rose-600 italic">
                   {roi}x
                 </p>
               </div>
 
               {/* Breakeven */}
               <div>
-                <p className="text-xs text-slate-400 uppercase tracking-wide mb-2">Breakeven</p>
-                <p className="text-2xl font-black text-white">
+                <p className="text-xs text-slate-600 uppercase tracking-wide mb-2">Breakeven</p>
+                <p className="text-2xl font-black text-slate-900">
                   {breakeven} recovered consultation
                 </p>
               </div>
             </div>
 
             {/* Live Preview Text */}
-            <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10 relative z-10">
-              <p className="text-sm text-slate-300 leading-relaxed">
-                With RelayOpsAI, you'd capture <span className="text-rose-400 font-black">{Math.round(monthlyMissedCalls * 0.8)} more consultations</span> this month = <span className="text-rose-400 font-black">${recoverableRevenue.toLocaleString()}</span> in revenue.
+            <div className="mt-8 p-4 bg-white/60 rounded-xl border border-rose-200/40 relative z-10 backdrop-blur-sm">
+              <p className="text-sm text-slate-700 leading-relaxed">
+                With RelayOpsAI, you'd capture <span className="text-rose-600 font-black">{Math.round(monthlyMissedCalls * 0.8)} more consultations</span> this month = <span className="text-rose-600 font-black">${recoverableRevenue.toLocaleString()}</span> in revenue.
               </p>
             </div>
 
