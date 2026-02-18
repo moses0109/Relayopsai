@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useCallback } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
@@ -11,6 +10,9 @@ import Consultation from './components/Consultation';
 import ChatWidget from './components/ChatWidget';
 import IncomingCall from './components/IncomingCall';
 import Integrations from './components/Integrations';
+import Features from './components/Features';
+import PhoneMockup from './components/PhoneMockup';
+import FAQ from './components/FAQ';
 
 /* ------------------------------------------------------------------ */
 /*  HERO LOGO — Large immersive interactive logo with effects          */
@@ -40,7 +42,6 @@ const HeroLogo = () => {
 
   return (
     <div className="relative mb-8 md:mb-10">
-      {/* Outer orbital rings */}
       <div className="absolute inset-[-40px] md:inset-[-70px] pointer-events-none">
         <div className="absolute inset-0 border border-cyan-400/10 rounded-full animate-[spin_25s_linear_infinite]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full blur-[2px]" />
@@ -50,7 +51,6 @@ const HeroLogo = () => {
         </div>
       </div>
 
-      {/* Ambient glow behind logo */}
       <div className="absolute inset-[-20px] bg-gradient-to-br from-cyan-500/15 to-blue-600/15 rounded-full blur-2xl pointer-events-none" />
 
       <div
@@ -62,7 +62,6 @@ const HeroLogo = () => {
         className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 mx-auto cursor-pointer group"
         style={{ perspective: '800px' }}
       >
-        {/* 3D tilting container */}
         <div
           className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-cyan-400/30 group-hover:border-cyan-400/60 shadow-2xl group-hover:shadow-[0_0_60px_rgba(6,182,212,0.4)] transition-shadow duration-500"
           style={{
@@ -76,11 +75,7 @@ const HeroLogo = () => {
             className="w-full h-full object-cover"
             draggable={false}
           />
-
-          {/* Shine sweep */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 pointer-events-none" />
-
-          {/* Ripple effects */}
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
               <div className="absolute inset-0 bg-cyan-400/20 rounded-3xl animate-[heroRipple_0.8s_ease-out_forwards]" />
@@ -94,33 +89,28 @@ const HeroLogo = () => {
 
 /* ------------------------------------------------------------------ */
 /*  APP LAYOUT                                                         */
-/*  1. Hero  2. Demo  3. Revenue Pain  4. ROI Calculator               */
-/*  5. How It Works  6. Industries  7. Trust  8. Pricing               */
-/*  9. Consultation  10. ChatWidget (floating)                         */
 /* ------------------------------------------------------------------ */
 
 const App: React.FC = () => {
   const [addonsOpen, setAddonsOpen] = useState(false);
   const [openTier, setOpenTier] = useState<string | null>(null);
+  const [leadSource, setLeadSource] = useState('general');
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <div className="min-h-screen text-white bg-transparent flex flex-col pt-16 md:pt-24 relative">
-      {/* Animated dark-blue particle network */}
+    <div className="min-h-screen text-white bg-[#0f172a] flex flex-col pt-16 md:pt-24 relative">
       <ParticleBackground />
-
       <Navbar />
 
       {/* ── 1) HERO ── */}
       <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-cyan-600/8 via-blue-600/5 to-purple-600/3 blur-[80px] rounded-full pointer-events-none" />
 
-        {/* Interactive Hero Logo */}
         <HeroLogo />
 
-        {/* Live badge — Smith.ai-style trust indicator */}
         <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
           <span className="text-cyan-400 text-xs font-black uppercase tracking-wide break-words">
@@ -134,16 +124,15 @@ const App: React.FC = () => {
         </h1>
 
         <p className="text-slate-400 text-base md:text-lg lg:text-2xl max-w-3xl mx-auto mb-10 md:mb-10 font-medium leading-relaxed relative z-10 px-2">
-          RelayOpsAI answers your calls 24/7, books appointments, and follows up automatically — so you never lose business again.
+          RelayOpsAI answers every call, books every appointment, and captures every dollar — so you make more money starting today.
         </p>
 
-        {/* Stat chips — Synthflow / Bland-style inline metrics */}
         <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-10 relative z-10">
           {[
             { val: '24/7', label: 'Call Coverage' },
             { val: '70+',  label: 'AI Voices' },
             { val: '16',   label: 'Languages' },
-            { val: '<2s',  label: 'Avg Response' },
+            { val: '<1s',  label: 'Avg Response' },
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.04] border border-white/[0.06] backdrop-blur-sm">
               <span className="text-white font-black text-sm whitespace-nowrap">{s.val}</span>
@@ -152,7 +141,6 @@ const App: React.FC = () => {
           ))}
         </div>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-5 w-full max-w-xl justify-center mb-10 md:mb-10 relative z-20 px-4">
           <button
             onClick={() => scrollTo('demo')}
@@ -162,29 +150,30 @@ const App: React.FC = () => {
             Hear the AI in Action
           </button>
           <button
-            onClick={() => scrollTo('consultation')}
+            onClick={() => { setLeadSource('hero'); scrollTo('consultation'); }}
             className="px-8 md:px-10 py-4 md:py-5 border-2 border-cyan-500/30 bg-cyan-500/5 rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:bg-cyan-500/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300 backdrop-blur-sm"
           >
             Book a Demo
           </button>
         </div>
 
-        {/* Testimonials */}
+        {/* Features grid replaces Testimonials in hero */}
         <div className="w-full max-w-7xl mx-auto border-t border-white/[0.04] pt-8">
-          <p className="text-xs font-black uppercase tracking-wide text-slate-700 mb-10 break-words">
-            Trusted by Local Businesses
-          </p>
-          <Testimonials />
+          <Features />
         </div>
       </header>
 
       {/* ── 2) DEMO ── */}
       <Samples />
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
-      {/* ── 3) REVENUE PAIN ── */}
+      {/* ── 3) PHONE MOCKUP ── */}
+      <PhoneMockup />
+
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+
+      {/* ── 4) REVENUE PAIN ── */}
       <section className="py-16 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -195,14 +184,17 @@ const App: React.FC = () => {
           <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 fade-in-up">
             If you miss just 5 calls per day and your average job is $200, that's over $30,000 per year in lost revenue.
           </p>
+          <p className="text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-4 fade-in-up uppercase tracking-wide">
+            Capture $1,500+ in one week with RelayOpsAI.
+          </p>
           <p className="text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-10 fade-in-up">
-            RelayOpsAI makes sure every call is answered, every lead is captured, and every opportunity is followed up.
+            We make sure every call is answered, every lead is captured, and every opportunity turns into cash.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: 'Call Coverage', val: '100%', sub: 'Never go to voicemail' },
-              { label: 'Capture Rate', val: '98%', sub: 'Lead recovery avg' },
-              { label: 'ROI Potential', val: '10X+', sub: 'Relative to salary' },
+              { label: 'Weekly Revenue', val: '$1,500+', sub: 'Captured in week one' },
+              { label: 'Capture Rate', val: '98%', sub: 'Every lead secured' },
+              { label: 'ROI Potential', val: '10X+', sub: 'Return on investment' },
             ].map((m, i) => (
               <div key={i} className="stagger-item group p-10 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
                 <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-4xl sm:text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300 break-words">{m.val}</div>
@@ -214,19 +206,17 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4) ROI CALCULATOR ── */}
-      <Calculator />
+      {/* ── 5) ROI CALCULATOR ── */}
+      <Calculator onBookDemo={() => { setLeadSource('calculator'); scrollTo('consultation'); }} />
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* ── 5) HOW IT WORKS ── */}
+      {/* ── 6) HOW IT WORKS ── */}
       <HowItWorks />
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
-      {/* ── 6) TRUST / METRICS ── */}
+      {/* ── 7) TRUST / METRICS ── */}
       <section id="customers" className="py-16 overflow-x-hidden">
         <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
           <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-3 fade-in-up">
@@ -242,7 +232,7 @@ const App: React.FC = () => {
             { val: '24/7',    label: 'Coverage',     sub: 'Always on, never sleeps' },
             { val: '98%',     label: 'Answer Rate',   sub: 'Industry-leading accuracy' },
             { val: 'Instant', label: 'Booking + SMS', sub: 'Real-time confirmations' },
-            { val: '48hr',    label: 'Setup Time',    sub: 'Fully done for you' },
+            { val: '5min',    label: 'Setup Time',    sub: 'Fully done for you' },
           ].map((item, i) => (
             <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
               <div className="text-2xl sm:text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white to-cyan-400 group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300 group-hover:scale-110 break-words">{item.val}</div>
@@ -253,16 +243,27 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
-      {/* ── 7) INTEGRATIONS ── */}
+      {/* ── 8) INTEGRATIONS ── */}
       <Integrations />
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* ── 8) PRICING ── */}
+      {/* ── 9) TESTIMONIALS (moved here — social proof before pricing) ── */}
+      <section className="py-16 px-4 md:px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-4 fade-in-up">What Our Clients Say</p>
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-12 fade-in-up">
+            Trusted by <span className="gradient-relay">Local Businesses</span>
+          </h2>
+          <Testimonials />
+        </div>
+      </section>
+
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      {/* ── 10) PRICING ── */}
       <section id="pricing" className="py-20 px-4 md:px-6 scroll-mt-32 relative">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-14">
@@ -270,7 +271,7 @@ const App: React.FC = () => {
               Investment.
             </h2>
             <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed fade-in-up break-words px-4">
-              One missed job covers the entire monthly cost. Full done-for-you setup, dedicated support, no long-term contracts.
+              One recovered job pays for the entire month. Done-for-you setup, dedicated support, no long-term contracts.
             </p>
           </div>
 
@@ -282,7 +283,7 @@ const App: React.FC = () => {
 
               <div className="p-8 md:p-10 flex flex-col flex-grow">
                 <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-300 mb-1">Starter</h3>
-                <p className="text-xs font-semibold text-slate-600 mb-6">For Small Businesses</p>
+                <p className="text-xs font-semibold text-slate-600 mb-6">For Solo & Small Businesses</p>
 
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
@@ -290,8 +291,8 @@ const App: React.FC = () => {
                   <span className="text-sm font-bold text-slate-500 ml-1">/mo</span>
                 </div>
 
-                <p className="text-xs font-semibold text-slate-500 mb-1">Ideal for businesses under 300 calls/mo</p>
-                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
+                <p className="text-xs font-semibold text-slate-500 mb-1">Best for under 300 calls/mo</p>
+                <p className="text-xs font-bold text-amber-400 mb-5">$497 one-time setup fee</p>
 
                 {/* Minutes pill */}
                 <div className="mb-8 relative">
@@ -304,19 +305,27 @@ const App: React.FC = () => {
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide mr-1">Included</span>
                     <svg className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'starter' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'starter' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
                     <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
                       <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/[0.04]">
                         <span className="text-xs font-semibold text-white flex-grow">300 minutes / month</span>
                         <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-sky-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+200 minutes</span>
+                        <span className="text-xs font-bold text-sky-400">+$59/mo</span>
+                      </button>
+                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-sky-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+500 minutes</span>
+                        <span className="text-xs font-bold text-sky-400">+$129/mo</span>
+                      </button>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
                         <div>
                           <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.35/min overage</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.40/min overage</span>
                         </div>
                       </div>
-                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
                         Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                       </button>
                     </div>
@@ -325,17 +334,22 @@ const App: React.FC = () => {
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
-                    '1 Fully Custom AI Receptionist',
-                    '70+ Studio-Grade AI Voices',
+                    'Done-for-You Setup',
+                    'Custom Knowledge Base',
+                    'Custom System Prompt',
+                    '1 Custom AI Receptionist',
                     '1 Dedicated Phone Number',
+                    '70+ Studio-Grade AI Voices',
                     '24/7 Call Answering',
                     'Appointment Booking + Calendar Sync',
                     'SMS Confirmations',
-                    'Smart Knowledge Base & FAQs',
+                    'Missed Call Text-Back',
                     'Lead Capture & Client Profiles',
                     'Call Transcripts & Summaries',
-                    'Dedicated Account Manager',
-                    '24/7 Priority Support',
+                    'Voicemail Transcription',
+                    'Email Notifications',
+                    'Basic Analytics Dashboard',
+                    'Monthly Support Call',
                   ].map((f, j) => (
                     <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
                       <svg className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -345,10 +359,10 @@ const App: React.FC = () => {
                 </ul>
 
                 <button
-                  onClick={() => scrollTo('consultation')}
+                  onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }}
                   className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-white/10 border border-white/10 hover:bg-white/20 hover:shadow-lg"
                 >
-                  Start Now
+                  Book Your Setup Call
                 </button>
               </div>
             </div>
@@ -385,19 +399,27 @@ const App: React.FC = () => {
                     <span className="text-[10px] font-bold text-cyan-400/50 uppercase tracking-wide mr-1">Included</span>
                     <svg className={`w-4 h-4 text-cyan-400/50 transition-transform duration-300 ${openTier === 'growth' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'growth' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'growth' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
                     <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
                       <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-cyan-500/10">
                         <span className="text-xs font-semibold text-white flex-grow">700 minutes / month</span>
                         <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+300 minutes</span>
+                        <span className="text-xs font-bold text-cyan-400">+$79/mo</span>
+                      </button>
+                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+700 minutes</span>
+                        <span className="text-xs font-bold text-cyan-400">+$169/mo</span>
+                      </button>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
                         <div>
                           <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.30/min overage</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.35/min overage</span>
                         </div>
                       </div>
-                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
                         Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                       </button>
                     </div>
@@ -406,16 +428,22 @@ const App: React.FC = () => {
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
-                    '3 Fully Custom AI Receptionists',
-                    '3 Phone Numbers',
-                    'Everything in Starter',
+                    'Done-for-You Setup',
+                    'Custom Knowledge Base',
+                    'Custom System Prompt',
+                    '3 Custom AI Receptionists',
+                    '3 Dedicated Phone Numbers',
+                    'Everything in Starter, plus:',
                     'CRM Integration (Salesforce, HubSpot, etc.)',
                     'Call Transfer to Live Staff',
                     'Returning Caller Recognition',
+                    'Automated Review Requests (Google/Yelp)',
                     '16-Language Support (Auto-Detect)',
-                    'Industry-Specific Templates',
-                    'Analytics Dashboard & Reporting',
-                    'Priority Setup (48hr)',
+                    'Industry-Specific Call Scripts',
+                    'Advanced Analytics & Reporting',
+                    'Automated Follow-Up Sequences',
+                    'Dedicated Account Manager',
+                    'Bi-Weekly Support Calls',
                   ].map((f, j) => (
                     <li key={j} className="text-xs font-semibold text-slate-300 flex items-start gap-3">
                       <svg className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -425,10 +453,10 @@ const App: React.FC = () => {
                 </ul>
 
                 <button
-                  onClick={() => scrollTo('consultation')}
+                  onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }}
                   className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
                 >
-                  Start Now
+                  Book Your Setup Call
                 </button>
               </div>
             </div>
@@ -465,19 +493,27 @@ const App: React.FC = () => {
                     <span className="text-[10px] font-bold text-purple-400/50 uppercase tracking-wide mr-1">Included</span>
                     <svg className={`w-4 h-4 text-purple-400/50 transition-transform duration-300 ${openTier === 'elite' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'elite' ? 'max-h-[200px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'elite' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
                     <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
                       <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-purple-500/10">
                         <span className="text-xs font-semibold text-white flex-grow">1,500 minutes / month</span>
                         <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       </div>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/[0.03] transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-purple-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+500 minutes</span>
+                        <span className="text-xs font-bold text-purple-400">+$99/mo</span>
+                      </button>
+                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-purple-500/10 transition-colors cursor-pointer">
+                        <span className="text-xs font-semibold text-slate-300">+1,000 minutes</span>
+                        <span className="text-xs font-bold text-purple-400">+$179/mo</span>
+                      </button>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
                         <div>
                           <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.25/min overage</span>
+                          <span className="text-[10px] text-slate-600 ml-2">$0.30/min overage</span>
                         </div>
                       </div>
-                      <button onClick={() => scrollTo('consultation')} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
                         Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                       </button>
                     </div>
@@ -486,15 +522,22 @@ const App: React.FC = () => {
 
                 <ul className="space-y-3 flex-grow mb-8">
                   {[
+                    'Done-for-You Setup',
+                    'Custom Knowledge Base',
+                    'Custom System Prompt',
                     'Unlimited Custom AI Receptionists',
-                    '5 Phone Numbers',
-                    'Everything in Growth',
-                    '16-Language Support (Auto-Detect)',
-                    'Custom Voice & Personality',
+                    '5 Dedicated Phone Numbers',
+                    'Everything in Growth, plus:',
+                    'Custom Voice Cloning & Personality',
                     'Custom API & Webhook Integrations',
+                    'Outbound AI Campaigns (Recall/Follow-up)',
+                    'No-Show Recovery Automation',
+                    'Multi-Location Routing',
+                    'HIPAA-Compliant Call Handling',
                     'White-Glove Onboarding',
                     'Weekly Performance Reviews',
                     'Dedicated Slack/Teams Channel',
+                    '24/7 Priority Support',
                   ].map((f, j) => (
                     <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
                       <svg className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -504,10 +547,10 @@ const App: React.FC = () => {
                 </ul>
 
                 <button
-                  onClick={() => scrollTo('consultation')}
+                  onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }}
                   className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-purple-500 to-amber-500 hover:from-purple-400 hover:to-amber-400 shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
                 >
-                  Start Now
+                  Book Your Setup Call
                 </button>
               </div>
             </div>
@@ -529,12 +572,14 @@ const App: React.FC = () => {
               </svg>
             </button>
 
-            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${addonsOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${addonsOpen ? 'max-h-[600px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Cold/warm calling with lead lists & sales AI' },
-                  { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Additional dedicated numbers for departments' },
-                  { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom integrations' },
+                  { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Recall, reactivation & lead nurture calling' },
+                  { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Dedicated numbers for departments or locations' },
+                  { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom system integrations' },
+                  { name: 'Review Booster', price: '+$97/mo', desc: 'Automated Google & Yelp review requests post-call' },
+                  { name: 'SMS Marketing Campaigns', price: '+$147/mo', desc: 'Promotional texts, recall reminders, announcements' },
                   { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own — full reseller dashboard' },
                 ].map((addon, i) => (
                   <div key={i} className="flex items-start justify-between gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-300">
@@ -555,22 +600,22 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Section divider */}
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* ── 9) CONSULTATION ── */}
-      <Consultation />
+      {/* ── 11) CONSULTATION ── */}
+      <Consultation leadSource={leadSource} />
 
-      {/* ── 10) FLOATING CHAT WIDGET ── */}
+      {/* ── 12) FAQ (under Capture your Growth) ── */}
+      <FAQ />
+
+      {/* ── 13) FLOATING CHAT WIDGET ── */}
       <ChatWidget />
 
-      {/* ── 11) INCOMING CALL POPUP ── */}
+      {/* ── 14) INCOMING CALL POPUP ── */}
       <IncomingCall />
 
-      {/* Analytics */}
       <Analytics />
 
-      {/* Hero logo animation */}
       <style>{`
         @keyframes heroRipple {
           0% { transform: scale(0.8); opacity: 0.6; }

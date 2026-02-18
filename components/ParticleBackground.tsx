@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 /* ------------------------------------------------------------------ */
 /*  PARTICLE BACKGROUND — optimized for performance                    */
@@ -18,6 +19,8 @@ interface Particle {
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
+  const location = useLocation();
+  const isMedSpa = location.pathname === '/medspa';
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -70,7 +73,8 @@ const ParticleBackground: React.FC = () => {
           if (distSq < CONNECTION_DIST_SQ) {
             const alpha = 0.06 * (1 - Math.sqrt(distSq) / CONNECTION_DIST);
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(30, 58, 138, ${alpha})`;
+            // Soft rose for med spa (visible on light bg), blue for main site
+            ctx.strokeStyle = isMedSpa ? `rgba(225, 120, 145, ${alpha * 1.5})` : `rgba(56, 130, 200, ${alpha})`;
             ctx.lineWidth = 0.6;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -112,7 +116,8 @@ const ParticleBackground: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(30, 64, 175, ${p.opacity})`;
+        // Soft rose for med spa (visible on light bg), blue for main site
+        ctx.fillStyle = isMedSpa ? `rgba(225, 120, 145, ${p.opacity * 0.8})` : `rgba(56, 150, 220, ${p.opacity})`;
         ctx.fill();
       }
 
@@ -140,7 +145,7 @@ const ParticleBackground: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [isMedSpa]);
 
   return (
     <canvas

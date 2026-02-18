@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="theme-color" content="#030303">
+    <meta name="theme-color" content="#0f172a">
     <meta name="mobile-web-app-capable" content="yes">
     <title>RelayOpsAI | Elite Business Voice Systems</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent-cyan: #00f2ff;
-            --accent-purple: #bc13fe;
-            --bg-deep: #030303;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #a78bfa;
+            --bg-deep: #0f172a;
+            --bg-warm: #1e293b;
         }
         html {
             scroll-behavior: smooth;
+            height: 100%;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -26,6 +28,20 @@
             color: #ffffff;
             overflow-x: hidden;
             margin: 0;
+            min-height: 100%;
+            position: relative;
+        }
+
+        /* Prevent layout shift from fixed elements */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Force GPU acceleration for smooth transforms */
+        .fixed {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
 
         /* Fixed background layer — works on all browsers including iOS Safari */
@@ -35,10 +51,10 @@
             z-index: 0;
             pointer-events: none;
             background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(6,182,212,0.25) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 90% 40%, rgba(30,58,138,0.20) 0%, transparent 55%),
-                radial-gradient(ellipse 60% 50% at 10% 65%, rgba(88,28,135,0.18) 0%, transparent 55%),
-                radial-gradient(ellipse 80% 40% at 50% 110%, rgba(6,182,212,0.15) 0%, transparent 50%);
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56,189,248,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 90% 40%, rgba(99,102,241,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 50% at 10% 65%, rgba(167,139,250,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 40% at 50% 110%, rgba(56,189,248,0.08) 0%, transparent 50%);
         }
 
         /* Scroll-triggered fade in animations */
@@ -118,7 +134,7 @@
             background: var(--bg-deep);
         }
         ::-webkit-scrollbar-thumb {
-            background: #222;
+            background: #1e3a5f;
         }
 
         @keyframes marquee {
@@ -138,6 +154,55 @@
             50% { transform: scaleY(1); }
         }
 
+        /* Hero ripple animation for immersive logos */
+        @keyframes heroRipple {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        /* ===== MED SPA PAGE LUXURY STYLES ===== */
+        /* Playfair Display serif for elegant headlines */
+        .medspa-serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Glass morphism cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.25);
+        }
+
+        /* Soft luxury gradient for med spa sections */
+        .medspa-gradient-bg {
+            background: linear-gradient(135deg, #faf7f4 0%, #f3e8f0 50%, #e8edf5 100%);
+        }
+
+        /* Elegant accent colors */
+        .accent-rose-gold {
+            color: #d4af8a;
+        }
+
+        .accent-soft-lavender {
+            color: #c4b5d6;
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
             /* Better touch targets */
@@ -155,6 +220,37 @@
             html {
                 -webkit-text-size-adjust: 100%;
             }
+
+            /* Much tighter mobile spacing */
+            section {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            header {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            /* Reduce excessive padding on mobile */
+            .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            /* Tighter gaps */
+            .gap-6, .gap-8, .gap-10 {
+                gap: 1rem !important;
+            }
+
+            /* Reduce vertical margins */
+            .mb-10, .mb-12 {
+                margin-bottom: 2rem !important;
+            }
+
+            .mt-10, .mt-12 {
+                margin-top: 2rem !important;
+            }
         }
     </style>
 
@@ -163,7 +259,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const glow = document.createElement('div');
             glow.id = 'cursor-glow';
-            glow.style.cssText = 'position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s;background:radial-gradient(circle,rgba(6,182,212,0.06) 0%,transparent 60%);transform:translate(-50%,-50%);will-change:left,top;';
+            glow.style.cssText = 'position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 0.3s;background:radial-gradient(circle,rgba(56,189,248,0.05) 0%,transparent 60%);transform:translate(-50%,-50%);will-change:left,top;';
             document.body.appendChild(glow);
 
             let glowX = 0, glowY = 0, currentX = 0, currentY = 0, running = false;

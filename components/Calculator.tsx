@@ -8,7 +8,6 @@ import React, { useState, useMemo } from 'react';
 
 const industries = [
   { id: 'hvac',       label: 'HVAC',        icon: 'M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z', defaults: { calls: 30, missed: 25, value: 1200 } },
-  { id: 'dental',     label: 'Dental',      icon: 'M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z', defaults: { calls: 40, missed: 20, value: 800  } },
   { id: 'salon',      label: 'Salon',       icon: 'M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z', defaults: { calls: 25, missed: 30, value: 150  } },
   { id: 'restaurant', label: 'Restaurant',  icon: 'M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z', defaults: { calls: 60, missed: 35, value: 80   } },
   { id: 'realestate', label: 'Real Estate', icon: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z', defaults: { calls: 20, missed: 20, value: 5000 } },
@@ -22,7 +21,11 @@ const industries = [
   { id: 'other',      label: 'Other',       icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z', defaults: { calls: 25, missed: 20, value: 500  } },
 ];
 
-const Calculator: React.FC = () => {
+interface CalculatorProps {
+  onBookDemo?: () => void;
+}
+
+const Calculator: React.FC<CalculatorProps> = ({ onBookDemo }) => {
   const [step, setStep] = useState(1);
   const [industry, setIndustry] = useState('');
   const [callsPerDay, setCallsPerDay] = useState(25);
@@ -49,14 +52,15 @@ const Calculator: React.FC = () => {
     const recoverable     = Math.round(lostRevenue * 0.9);
     const hoursSavedWeek  = Math.round((missedCalls / 4) * 3 / 60);    // ~3 min/call
     const suggestedTier   =
-      monthlyCalls <= 300  ? 'Starter ($297/mo)' :
-      monthlyCalls <= 700  ? 'Growth ($597/mo)'  :
-                             'Elite ($997/mo)';
+      monthlyCalls <= 300  ? 'Starter ($349/mo)' :
+      monthlyCalls <= 700  ? 'Growth ($697/mo)'  :
+                             'Elite ($1,297/mo)';
     return { missedCalls, lostRevenue, recoverable, hoursSavedWeek, suggestedTier };
   }, [callsPerDay, missedRate, avgJobValue]);
 
   const scrollToConsultation = () => {
-    document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (onBookDemo) onBookDemo();
+    else document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -66,8 +70,11 @@ const Calculator: React.FC = () => {
           <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
             The Missed <span className="text-cyan-400">Call Tax.</span>
           </h2>
-          <p className="text-slate-500 font-bold text-xs uppercase tracking-wide leading-relaxed max-w-md mx-auto fade-in-up">
+          <p className="text-slate-500 font-bold text-xs uppercase tracking-wide leading-relaxed max-w-md mx-auto mb-3 fade-in-up">
             See exactly how much revenue your phone line is leaking every month.
+          </p>
+          <p className="text-emerald-400 font-black text-sm md:text-base uppercase tracking-wide max-w-xl mx-auto fade-in-up">
+            Recover it all with RelayOpsAI.
           </p>
         </div>
 
@@ -160,16 +167,25 @@ const Calculator: React.FC = () => {
               </div>
 
               {/* Live preview */}
-              <div className="bg-white/[0.02] border border-white/5 p-6 sm:p-10 rounded-2xl sm:rounded-3xl text-center">
+              <div className="bg-white/[0.02] border border-white/5 p-6 sm:p-10 rounded-2xl sm:rounded-3xl text-center flex flex-col">
                 <p className="text-xs font-black uppercase tracking-wide text-cyan-400/70 mb-2 break-words">
                   Live Estimate
                 </p>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-rose-500 tracking-tighter italic break-words">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-rose-500 tracking-tighter italic break-words mb-2">
                   -${stats.lostRevenue.toLocaleString()}
                 </h3>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mt-2 break-words">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-6 break-words">
                   Lost per month from {stats.missedCalls} missed calls
                 </p>
+                <div className="mt-auto pt-4 border-t border-white/5">
+                  <p className="text-emerald-400 font-black text-sm uppercase tracking-wide mb-3">Get Your Business Calling Now</p>
+                  <button
+                    onClick={scrollToConsultation}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl font-black uppercase tracking-wide text-xs hover:scale-[1.02] transition-all shadow-lg shadow-emerald-500/20"
+                  >
+                    Book Free Setup Call
+                  </button>
+                </div>
               </div>
             </div>
           )}

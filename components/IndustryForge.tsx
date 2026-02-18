@@ -37,14 +37,6 @@ const PRESET_SCENARIOS: Scenario[] = [
     systemPrompt: `You are the AI dispatcher for CoolAir HVAC. Handle emergency AC/heating repairs, schedule maintenance, and answer billing questions. Emergency service available 24/7. Regular maintenance $199. Emergency calls prioritized within 2 hours. Get customer name, address, issue description, and callback number.`
   },
   {
-    id: 'dental',
-    icon: '🦷',
-    industry: 'Dental Office',
-    case: 'Patient Scheduling',
-    intents: ['Book Cleaning', 'Emergency Help', 'Insurance Check'],
-    systemPrompt: `You are the AI receptionist for Bright Smile Dental. Schedule cleanings, handle dental emergencies, verify insurance. Services: Cleaning ($150, 1hr), Exam ($75), Emergency same-day available. Hours: Mon-Fri 8am-5pm. Get patient name, insurance, preferred appointment time, and contact info.`
-  },
-  {
     id: 'fitness',
     icon: '💪',
     industry: 'Fitness Gym',

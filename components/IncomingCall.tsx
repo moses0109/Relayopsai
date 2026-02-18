@@ -62,18 +62,28 @@ const IncomingCall: React.FC = () => {
 
       {/* Slim overlay — only when active call */}
       {isCallActive && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] transition-opacity duration-500" onClick={endCall} />
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] pointer-events-auto"
+          onClick={endCall}
+          style={{ opacity: 1, transition: 'opacity 300ms ease-out' }}
+        />
       )}
 
       {/* TOP NOTIFICATION BANNER */}
-      <div className={`fixed top-0 left-0 right-0 z-[101] transition-transform duration-500 ease-out ${
-        showCall || isCallActive ? 'translate-y-0' : '-translate-y-full'
-      }`}>
-        <div className="mx-3 mt-3 md:mx-auto md:max-w-xl md:mt-4">
+      <div
+        className="fixed top-0 left-0 right-0 z-[101] pointer-events-none"
+        style={{
+          transform: showCall || isCallActive ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'transform 500ms ease-out',
+          backfaceVisibility: 'hidden',
+          willChange: 'transform',
+        }}
+      >
+        <div className="mx-3 mt-3 md:mx-auto md:max-w-xl md:mt-4 pointer-events-auto">
 
           {/* RINGING STATE — compact notification */}
           {isRinging && (
-            <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl shadow-black/50 p-3 md:p-4 call-slide-in">
+            <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl shadow-black/50 p-3 md:p-4 call-slide-in pointer-events-auto">
               <div className="flex items-center gap-3 md:gap-4">
                 {/* Avatar */}
                 <div className="relative flex-shrink-0">
@@ -109,7 +119,7 @@ const IncomingCall: React.FC = () => {
 
           {/* ACTIVE CALL STATE — compact bar */}
           {isCallActive && (
-            <div className="bg-emerald-900/90 backdrop-blur-xl rounded-2xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 p-4">
+            <div className="bg-emerald-900/90 backdrop-blur-xl rounded-2xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 p-4 pointer-events-auto">
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 flex items-center gap-2">
                   <span className="relative flex h-2 w-2">

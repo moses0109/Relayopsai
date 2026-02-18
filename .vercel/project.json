@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_jniv1817L3oKcfuBxAWiLYoZO7Ag",
+  "orgId": "team_rZcvQY2sMXAFsHkbGb3yJJB6",
+  "projectName": "relayopsai",
+  "settings": {
+    "createdAt": 1770758140935,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
