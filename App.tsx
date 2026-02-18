@@ -74,7 +74,6 @@ const HeroLogo = () => {
             alt="RelayOpsAI"
             className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(6,182,212,0.6)] group-hover:drop-shadow-[0_0_60px_rgba(6,182,212,0.8)] transition-all duration-500"
             draggable={false}
-            style={{ mixBlendMode: 'screen' }}
           />
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
