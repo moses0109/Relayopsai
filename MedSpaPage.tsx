@@ -8,12 +8,9 @@ import MedSpaFeatures from './components/medspa/MedSpaFeatures';
 import MedSpaPricing from './components/medspa/MedSpaPricing';
 import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
-import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
-import MedSpaDashboard from './components/medspa/MedSpaDashboard';
-import MedSpaBeforeAfter from './components/medspa/MedSpaBeforeAfter';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA PAGE — Full subpage for NYC med spa owners               */
+/*  MED SPA PAGE — Conversion Psychology Optimized Flow             */
 /* ------------------------------------------------------------------ */
 
 const MedSpaPage: React.FC = () => {
@@ -41,104 +38,71 @@ const MedSpaPage: React.FC = () => {
     <div className="min-h-screen text-slate-900 bg-white flex flex-col relative">
       <Navbar />
 
-      {/* ── 1) HERO ── */}
+      {/* CONVERSION FLOW:
+          1. Hero - Attention + Loss Aversion ($18k/month slipping away)
+          2. Pain Points - Agitate the problem
+          3. ROI Calculator - Show them their specific loss
+          4. Social Proof - Build trust with testimonials
+          5. Features - Show how we solve it
+          6. Pricing - Make the offer
+          7. Final CTA - Last chance conversion
+          8. Consultation Form - Capture the lead
+      */}
+
       <MedSpaHero
         onBookDemo={handleBookDemo}
         onCalculateROI={handleCalculateROI}
       />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
-
-      {/* ── 2) PAIN POINTS ── */}
       <MedSpaPainPoints />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
-
-      {/* ── 3) PHONE DEMO ── */}
-      <MedSpaPhoneDemo />
-
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
-
-      {/* ── 4) BEFORE/AFTER REVENUE ── */}
-      <MedSpaBeforeAfter />
-
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
-
-      {/* ── 5) FEATURES ── */}
-      <MedSpaFeatures />
-
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
-
-      {/* ── 6) ROI CALCULATOR ── */}
       <MedSpaROI onBookDemo={handleBookDemo} />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
-
-      {/* ── 7) DASHBOARD ── */}
-      <MedSpaDashboard />
-
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
-
-      {/* ── 8) TESTIMONIALS ── */}
       <MedSpaTestimonials />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
+      <MedSpaFeatures />
 
-      {/* ── 9) PRICING ── */}
       <MedSpaPricing onBookSetup={() => handleBookSetup('premium')} />
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-purple-200/40 to-transparent my-16" />
+      {/* Final CTA Section */}
+      <section className="py-24 px-6 md:px-8 text-center bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+            <span className="text-slate-900">Ready to Stop</span><br />
+            <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">
+              Losing Money?
+            </span>
+          </h2>
 
-      {/* ── 10) FINAL CTA / CONSULTATION ── */}
-      <section className="py-16 px-4 md:px-6 text-center">
-        <h2 className="medspa-serif text-4xl md:text-6xl mb-8 leading-tight text-slate-800">
-          Ready to Capture <br />
-          <span className="bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent break-words">
-            $15,000+ Per Month
-          </span>{' '}in Lost Revenue?
-        </h2>
-        <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          Book a strategy call or calculate your exact ROI below.
-        </p>
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
+            127 missed calls per month = $228,600 lost annually.
+            <span className="block mt-2 text-slate-900 font-bold">See your exact numbers below.</span>
+          </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto justify-center mb-16">
           <button
+            type="button"
             onClick={handleBookDemo}
-            className="px-10 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold uppercase tracking-wide text-sm hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-rose-500/30"
+            className="px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-[1.03] active:scale-[0.98] mb-8"
           >
-            Book Strategy Call
+            Calculate My Lost Revenue (Free)
           </button>
-          <button
-            onClick={handleCalculateROI}
-            className="px-10 py-5 border-2 border-rose-400/40 bg-white/60 backdrop-blur-sm rounded-full font-bold uppercase tracking-wide text-sm text-slate-800 hover:bg-white/80 hover:border-rose-400/60 transition-all shadow-lg"
-          >
-            Calculate My Med Spa ROI
-          </button>
-        </div>
 
-        {/* Trust Badges */}
-        <div className="flex flex-wrap justify-center gap-8 text-sm font-bold uppercase tracking-wide text-slate-500">
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-500">✓</span> HIPAA-Compliant
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-500">✓</span> 5-Minute Setup
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-500">✓</span> No Long-Term Contract
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-500">✓</span> 30-Day Money-Back Guarantee
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-600">
+            {['HIPAA-Compliant', '5-Min Setup', 'No Contract', '30-Day Guarantee'].map((badge, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{badge}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="h-px w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-rose-300/40 to-transparent my-16" />
-
-      {/* ── 11) CONSULTATION FORM ── */}
       <Consultation leadSource={leadSource} />
 
-      {/* ── ANALYTICS ── */}
       <Analytics />
     </div>
   );

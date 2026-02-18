@@ -14,16 +14,24 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
   return (
     <section id="pricing" className="py-24 px-6 md:px-8 scroll-mt-32 relative bg-gradient-to-b from-white via-slate-50/50 to-white">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+        {/* Header with Urgency */}
         <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50 border border-rose-200 mb-6">
+            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-rose-700">
+              February Special: Save $200 on Setup (3 slots left)
+            </span>
+          </div>
+
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
-            <span className="text-slate-900">Simple Pricing.</span><br />
+            <span className="text-slate-900">$1,800 Per Call.</span><br />
             <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
-              Massive Returns.
+              $599 to Capture Them All.
             </span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
-            One recovered consultation pays for the entire month.
+            Recover one missed consultation. The entire month is paid for.
+            <span className="block mt-2 text-slate-900 font-bold">Most clients ROI in 3 days.</span>
           </p>
         </div>
 
