@@ -1,58 +1,68 @@
 import React from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA PAIN POINTS — Lost revenue visualization (Luxury Light)  */
+/*  MED SPA PAIN POINTS — Modern Clean Design                        */
 /* ------------------------------------------------------------------ */
 
 const MedSpaPainPoints: React.FC = () => {
   const painPoints = [
     {
-      icon: '🚫',
-      title: 'Missed After-Hours Calls',
-      cost: '$3,000/week',
+      stat: '$3k/week',
+      title: 'Lost Revenue',
+      problem: 'Missed after-hours calls',
       solution: 'AI answers 24/7, even at 11pm when prospects research Botox'
     },
     {
-      icon: '📞',
-      title: 'Staff Tied Up During Treatments',
-      cost: '15-20 calls/day',
-      solution: 'AI handles all inbound + outbound while you focus on clients'
+      stat: '20 calls/day',
+      title: 'Staff Overload',
+      problem: 'Team tied up during treatments',
+      solution: 'AI handles all inbound while you focus on clients in the chair'
     },
     {
-      icon: '🔁',
-      title: 'No Rebooking Automation',
-      cost: '40% dont rebook',
-      solution: 'Auto-reminds Botox clients at 3-month mark via SMS'
+      stat: '40%',
+      title: 'Client Churn',
+      problem: 'No rebooking automation',
+      solution: 'Auto-reminds clients at 3-month mark for Botox touch-ups'
     },
   ];
 
   return (
-    <section className="py-10 px-4 md:px-6 relative">
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <h2 className="medspa-serif text-4xl md:text-6xl mb-8 leading-tight text-slate-800 fade-in-up">
-          Your Med Spa Is Losing Money <br />
-          <span className="text-rose-600">Every Day.</span>
+    <section className="py-24 px-6 md:px-8 relative bg-slate-50/50">
+      <div className="max-w-7xl mx-auto text-center relative z-10">
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-6">
+          <span className="text-slate-900">Stop Losing Money</span><br />
+          <span className="text-rose-600">Every Single Day</span>
         </h2>
 
-        <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto mb-16 fade-in-up leading-relaxed">
-          Missed appointments cost $500+ per client. Clients forget repeat treatments. <br className="hidden md:block" />
-          Staff spends hours on calls instead of serving clients. <span className="font-bold text-slate-800">This stops now.</span>
+        <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-20 font-medium leading-relaxed">
+          Missed consultations cost $500+ each. Clients forget rebookings.
+          <br className="hidden md:block" />
+          Staff waste hours on phone tag. <span className="text-slate-900 font-semibold">This ends now.</span>
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {painPoints.map((point, i) => (
-            <div key={i} className="stagger-item group p-10 md:p-12 rounded-3xl bg-white/60 border border-rose-200/60 hover:border-rose-300/80 hover:bg-white/80 hover:shadow-2xl transition-all duration-500 backdrop-blur-xl">
-              <div className="text-5xl mb-6">{point.icon}</div>
-              <h3 className="text-slate-800 font-bold text-xl mb-3 uppercase tracking-tight">{point.title}</h3>
-              <div className="text-rose-600 font-black text-3xl mb-5">{point.cost}</div>
-              <p className="text-slate-600 text-sm leading-relaxed">{point.solution}</p>
+            <div key={i} className="group relative rounded-3xl bg-white border-2 border-slate-200 hover:border-slate-300 p-10 transition-all duration-300 hover:shadow-xl text-left">
+              {/* Stat Badge */}
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-rose-500 text-white font-black text-xl mb-6">
+                {point.stat}
+              </div>
+
+              <h3 className="text-2xl font-black text-slate-900 mb-3">{point.title}</h3>
+              <p className="text-sm text-slate-600 mb-6 font-medium">{point.problem}</p>
+
+              <div className="pt-6 border-t border-slate-200">
+                <p className="text-sm text-slate-700 leading-relaxed">{point.solution}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        <p className="text-rose-600 text-2xl md:text-3xl font-black mt-16 uppercase tracking-wide fade-in-up">
-          Capture $15,000+ Every Month with RelayOpsAI
-        </p>
+        <div className="mt-20">
+          <p className="text-2xl md:text-4xl font-black text-rose-600">
+            Recover $15,000+ Monthly with AI
+          </p>
+        </div>
       </div>
     </section>
   );

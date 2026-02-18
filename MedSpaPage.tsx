@@ -38,7 +38,7 @@ const MedSpaPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-slate-900 bg-gradient-to-b from-[#f8f4f1] via-[#f4ebe7] to-[#f0e1dc] flex flex-col pt-20 md:pt-24 relative">
+    <div className="min-h-screen text-slate-900 bg-white flex flex-col relative">
       <Navbar />
 
       {/* ── 1) HERO ── */}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA PRICING — $599 Starter / $999 Premium                    */
+/*  MED SPA PRICING — Modern Premium Design (2026)                   */
 /* ------------------------------------------------------------------ */
 
 interface MedSpaPricingProps {
@@ -12,150 +12,158 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
   const [openTier, setOpenTier] = useState<string | null>(null);
 
   return (
-    <section id="pricing" className="py-10 px-4 md:px-6 scroll-mt-32 relative">
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
-            Two Tiers. One Goal: <br />
-            <span className="bg-gradient-to-r from-rose-400 to-purple-500 bg-clip-text text-transparent">
-              Fill Your Calendar.
+    <section id="pricing" className="py-24 px-6 md:px-8 scroll-mt-32 relative bg-gradient-to-b from-white via-slate-50/50 to-white">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+            <span className="text-slate-900">Simple Pricing.</span><br />
+            <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+              Massive Returns.
             </span>
           </h2>
-          <p className="text-slate-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed fade-in-up break-words px-4">
-            One recovered consultation pays for the entire month. Done-for-you setup, dedicated support, no long-term contracts.
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+            One recovered consultation pays for the entire month.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch max-w-5xl mx-auto pt-8">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
 
-          {/* ── STARTER ── */}
-          <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-white/50 border border-rose-200/60 hover:border-rose-300/80 hover:shadow-xl backdrop-blur-xl">
-            <div className="h-1 bg-gradient-to-r from-slate-500 to-slate-600" />
-
-            <div className="p-8 md:p-10 flex flex-col flex-grow">
-              <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-700 mb-1">Starter</h3>
-              <p className="text-xs font-semibold text-slate-600 mb-6">Solo Providers & Small Spas</p>
-
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-xs font-bold text-slate-600 relative -top-4">$</span>
-                <span className="text-5xl font-black tracking-tight text-slate-800">599</span>
-                <span className="text-sm font-bold text-slate-600 ml-1">/mo</span>
+          {/* STARTER */}
+          <div className="group relative rounded-3xl bg-white border-2 border-slate-200 hover:border-slate-300 transition-all duration-300 overflow-hidden hover:shadow-xl">
+            <div className="p-10 md:p-12">
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
+                <p className="text-sm text-slate-600">Solo Providers & Small Spas</p>
               </div>
 
-              <p className="text-xs font-semibold text-slate-600 mb-1">400 minutes (~100 calls/mo)</p>
-              <p className="text-xs font-bold text-rose-600 mb-6">$697 one-time setup</p>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-6xl font-black text-slate-900">$599</span>
+                <span className="text-lg text-slate-600 font-medium">/month</span>
+              </div>
+
+              <div className="text-sm text-slate-600 mb-2">400 minutes (~100 calls/mo)</div>
+              <div className="text-sm font-semibold text-rose-600 mb-10">+ $697 one-time setup</div>
 
               {/* Features */}
-              <ul className="space-y-3 mb-8 flex-grow">
+              <ul className="space-y-4 mb-10">
                 {[
                   '24/7 inbound call answering',
-                  'Real-time booking (Acuity, Vagaro, Square)',
+                  'Real-time booking integration',
                   'SMS appointment confirmations',
-                  'Basic rebooking reminders (30-day)',
+                  'Basic rebooking reminders',
                   'Custom knowledge base',
                   'Monthly support call',
                   'HIPAA-compliant infrastructure',
                 ].map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                    <span className="text-rose-600 flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                    <svg className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Add-on Minutes */}
-              <div className="mb-6 pt-4 border-t border-rose-200/30">
+              {/* Add-on */}
+              <div className="mb-8 pb-8 border-t border-slate-200 pt-6">
                 <button
+                  type="button"
                   onClick={() => setOpenTier(openTier === 'starter' ? null : 'starter')}
-                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
+                  className="w-full text-left flex items-center justify-between text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
                 >
-                  <span>+ Add-On Minutes</span>
-                  <svg className={`w-4 h-4 transition-transform ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <span>Add-On Minutes</span>
+                  <svg className={`w-4 h-4 transition-transform ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {openTier === 'starter' && (
-                  <div className="mt-3 space-y-2 text-xs text-slate-600">
-                    <p>+200 min: <span className="text-slate-900 font-bold">$99/mo</span></p>
-                    <p>+500 min: <span className="text-slate-900 font-bold">$219/mo</span></p>
+                  <div className="mt-4 space-y-2 text-sm text-slate-600">
+                    <p>+200 min: <span className="text-slate-900 font-semibold">$99/mo</span></p>
+                    <p>+500 min: <span className="text-slate-900 font-semibold">$219/mo</span></p>
                   </div>
                 )}
               </div>
 
               <button
+                type="button"
                 onClick={onBookSetup}
-                className="w-full py-4 bg-gradient-to-r from-slate-400 to-slate-500 text-black rounded-full font-black uppercase tracking-wide text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-lg"
+                className="w-full py-4 px-6 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
               >
-                Start Capturing After-Hours Revenue
+                Get Started
               </button>
             </div>
           </div>
 
-          {/* ── PREMIUM ── */}
-          <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-rose-50/80 to-pink-50/80 border-2 border-rose-400/40 hover:border-rose-400/60 hover:shadow-[0_0_50px_rgba(244,114,182,0.25)] backdrop-blur-xl">
-            <div className="h-1 bg-gradient-to-r from-rose-400 to-pink-500" />
-
-            {/* Most Popular Badge */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-rose-400 to-pink-500 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">
-              ⭐ Most Popular
+          {/* PREMIUM */}
+          <div className="group relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-slate-700">
+            {/* Popular Badge */}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg">
+              Most Popular
             </div>
 
-            <div className="p-8 md:p-10 flex flex-col flex-grow">
-              <h3 className="text-lg font-extrabold uppercase tracking-wide text-rose-600 mb-1">Premium</h3>
-              <p className="text-xs font-semibold text-slate-700 mb-6">Multi-Provider & High-Volume</p>
-
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-xs font-bold text-slate-600 relative -top-4">$</span>
-                <span className="text-5xl font-black tracking-tight text-slate-900">999</span>
-                <span className="text-sm font-bold text-slate-600 ml-1">/mo</span>
+            <div className="p-10 md:p-12">
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-white mb-2">Premium</h3>
+                <p className="text-sm text-slate-400">Multi-Provider & High-Volume</p>
               </div>
 
-              <p className="text-xs font-semibold text-slate-700 mb-1">800 minutes (~200 calls/mo)</p>
-              <p className="text-xs font-bold text-rose-600 mb-6">$697 one-time setup</p>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-6xl font-black text-white">$999</span>
+                <span className="text-lg text-slate-400 font-medium">/month</span>
+              </div>
+
+              <div className="text-sm text-slate-400 mb-2">800 minutes (~200 calls/mo)</div>
+              <div className="text-sm font-semibold text-rose-400 mb-10">+ $697 one-time setup</div>
 
               {/* Features */}
-              <p className="text-xs font-bold text-rose-600 mb-3 uppercase tracking-wide">Everything in Starter, PLUS:</p>
-              <ul className="space-y-3 mb-8 flex-grow">
+              <p className="text-xs font-bold text-rose-400 mb-4 uppercase tracking-wider">Everything in Starter, PLUS:</p>
+              <ul className="space-y-4 mb-10">
                 {[
-                  '✨ Outbound rebooking calls (90-day Botox/filler reminders)',
-                  '✨ Upsell automation during booking',
-                  '✨ Post-treatment engagement (aftercare texts)',
-                  '✨ Package sales guidance',
-                  '✨ Advanced analytics dashboard',
-                  '✨ Bi-weekly strategy calls',
-                  '✨ Priority support (24/7 escalation)',
+                  'Outbound rebooking calls (90-day reminders)',
+                  'Upsell automation during booking',
+                  'Post-treatment engagement texts',
+                  'Package sales guidance',
+                  'Advanced analytics dashboard',
+                  'Bi-weekly strategy calls',
+                  'Priority support (24/7 escalation)',
                 ].map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                    <span className="text-rose-600 flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Add-on Minutes */}
-              <div className="mb-6 pt-4 border-t border-rose-200/30">
+              {/* Add-on */}
+              <div className="mb-8 pb-8 border-t border-slate-700 pt-6">
                 <button
+                  type="button"
                   onClick={() => setOpenTier(openTier === 'premium' ? null : 'premium')}
-                  className="w-full text-left flex items-center justify-between text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
+                  className="w-full text-left flex items-center justify-between text-sm font-semibold text-slate-300 hover:text-white transition-colors"
                 >
-                  <span>+ Add-On Minutes</span>
-                  <svg className={`w-4 h-4 transition-transform ${openTier === 'premium' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <span>Add-On Minutes</span>
+                  <svg className={`w-4 h-4 transition-transform ${openTier === 'premium' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {openTier === 'premium' && (
-                  <div className="mt-3 space-y-2 text-xs text-slate-700">
-                    <p>+300 min: <span className="text-slate-900 font-bold">$129/mo</span></p>
-                    <p>+700 min: <span className="text-slate-900 font-bold">$249/mo</span></p>
+                  <div className="mt-4 space-y-2 text-sm text-slate-400">
+                    <p>+300 min: <span className="text-white font-semibold">$129/mo</span></p>
+                    <p>+700 min: <span className="text-white font-semibold">$249/mo</span></p>
                   </div>
                 )}
               </div>
 
               <button
+                type="button"
                 onClick={onBookSetup}
-                className="w-full py-4 bg-gradient-to-r from-rose-400 to-pink-500 text-white rounded-full font-black uppercase tracking-wide text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-rose-500/30"
+                className="w-full py-4 px-6 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full font-semibold hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
               >
-                Unlock Full Revenue Automation
+                Get Premium
               </button>
             </div>
           </div>
@@ -163,19 +171,15 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
         </div>
 
         {/* Trust Badges */}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 mt-12 text-xs font-bold uppercase tracking-wide text-slate-500">
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-400">✓</span> HIPAA-Compliant
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-400">✓</span> 5-Minute Setup
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-400">✓</span> No Long-Term Contract
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-emerald-400">✓</span> 30-Day Money-Back
-          </div>
+        <div className="flex flex-wrap justify-center gap-8 text-sm font-semibold text-slate-600">
+          {['HIPAA-Compliant', '5-Minute Setup', 'No Long-Term Contract', '30-Day Money-Back'].map((badge, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{badge}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

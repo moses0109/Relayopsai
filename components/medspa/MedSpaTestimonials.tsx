@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA TESTIMONIALS — NYC spa owners                            */
+/*  MED SPA TESTIMONIALS — Modern Premium Design                     */
 /* ------------------------------------------------------------------ */
 
 const MedSpaTestimonials: React.FC = () => {
@@ -45,49 +45,46 @@ const MedSpaTestimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-8 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <p className="text-rose-400 text-xs font-black uppercase tracking-widest mb-4 fade-in-up">Real Results</p>
-        <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 fade-in-up leading-tight">
-          NYC Med Spas Already Capturing <br />
-          <span className="bg-gradient-to-r from-rose-400 to-purple-500 bg-clip-text text-transparent break-words">
-            $20,000+ Per Month
+    <section className="py-24 px-6 md:px-8 bg-white">
+      <div className="max-w-7xl mx-auto text-center">
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+          <span className="text-slate-900">NYC Med Spas</span><br />
+          <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+            Already Winning
           </span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, i) => {
-            const gradients = [
-              'from-rose-400 to-pink-500',
-              'from-purple-400 to-pink-500',
-              'from-pink-400 to-rose-500',
-              'from-rose-400 to-purple-500',
-              'from-fuchsia-400 to-pink-500',
-              'from-pink-400 to-purple-500',
-            ];
-            return (
-              <div key={i} className="diagonal-fly-in group p-6 rounded-2xl bg-white/60 border border-rose-400/30 hover:border-rose-400/50 hover:bg-white/80 hover:shadow-xl transition-all duration-500 backdrop-blur-xl text-left" style={{ animationDelay: `${i * 0.15}s` }}>
-                {/* Profile Image */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${gradients[i]} rounded-full flex items-center justify-center flex-shrink-0`}>
-                    <span className="text-white font-black text-lg">{testimonial.name.split(' ').map(n => n[0]).join('')}</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-slate-900 font-black text-sm break-words">{testimonial.name}</p>
-                    <p className="text-slate-600 text-xs font-semibold break-words">{testimonial.title}</p>
-                  </div>
+        <p className="text-lg md:text-xl text-slate-600 mb-20 font-medium">
+          Join 100+ med spas capturing $20,000+ monthly with AI
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, i) => (
+            <div key={i} className="group relative rounded-3xl bg-slate-50 border-2 border-slate-200 hover:border-slate-300 p-8 transition-all duration-300 hover:shadow-xl text-left">
+              {/* Quote */}
+              <p className="text-sm text-slate-700 leading-relaxed mb-8">
+                "{testimonial.quote}"
+              </p>
+
+              {/* Author */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-rose-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-black text-sm">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </span>
                 </div>
-
-                <p className="text-slate-700 text-xs md:text-sm leading-relaxed mb-6 break-words">
-                  "{testimonial.quote}"
-                </p>
-
-                <div className="inline-block px-3 py-1 bg-rose-500/10 border border-rose-500/30 rounded-full">
-                  <p className="text-rose-400 font-black text-xs whitespace-nowrap">{testimonial.metric}</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-slate-900">{testimonial.name}</p>
+                  <p className="text-xs text-slate-600">{testimonial.title}</p>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Metric Badge */}
+              <div className="inline-flex px-3 py-1.5 bg-rose-500 text-white text-xs font-bold rounded-full">
+                {testimonial.metric}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
