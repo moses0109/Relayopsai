@@ -63,22 +63,21 @@ const HeroLogo = () => {
         style={{ perspective: '800px' }}
       >
         <div
-          className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-cyan-400/30 group-hover:border-cyan-400/60 shadow-2xl group-hover:shadow-[0_0_60px_rgba(6,182,212,0.4)] transition-shadow duration-500"
+          className="relative w-full h-full flex items-center justify-center"
           style={{
             transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.92 : 1})`,
             transition: isPressed ? 'transform 0.1s ease' : 'transform 0.15s ease-out',
           }}
         >
           <img
-            src="/logo.png"
+            src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(6,182,212,0.6)] group-hover:drop-shadow-[0_0_60px_rgba(6,182,212,0.8)] transition-all duration-500"
             draggable={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-1000 pointer-events-none" />
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-0 bg-cyan-400/20 rounded-3xl animate-[heroRipple_0.8s_ease-out_forwards]" />
+              <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
             </div>
           ))}
         </div>

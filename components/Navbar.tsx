@@ -7,21 +7,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 /* ------------------------------------------------------------------ */
 const SimpleLogo = ({ size = "w-10 h-10", isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
   return (
-    <div className={`relative ${size} rounded-xl overflow-hidden ${
-      isMedSpa
-        ? 'bg-gradient-to-br from-rose-500 to-pink-600'
-        : 'bg-gradient-to-br from-cyan-500 to-blue-600'
-    } shadow-lg flex items-center justify-center`}>
+    <div className={`relative ${size} flex items-center justify-center`}>
       {!isMedSpa && (
         <img
-          src="/logo.png"
+          src="/logo-icon.png"
           alt="RelayOpsAI"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           draggable={false}
         />
       )}
       {isMedSpa && (
-        <span className="text-white font-black text-lg">R</span>
+        <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-rose-500 to-pink-600 shadow-lg flex items-center justify-center">
+          <span className="text-white font-black text-lg">R</span>
+        </div>
       )}
     </div>
   );
