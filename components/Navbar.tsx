@@ -49,7 +49,12 @@ const Navbar: React.FC = () => {
           {/* Logo with Dropdown */}
           <div className="relative flex items-center">
             <button
-              onClick={() => setShowDropdown(!showDropdown)}
+              onClick={() => {
+                if (!showDropdown) {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                setShowDropdown(!showDropdown);
+              }}
               className="flex items-center gap-3 group cursor-pointer"
             >
               <SimpleLogo isMedSpa={isMedSpa} />
@@ -70,18 +75,18 @@ const Navbar: React.FC = () => {
 
             {/* Dropdown Menu */}
             {showDropdown && (
-              <div className="absolute top-full left-0 mt-4 w-56 bg-[#0f172a]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+              <div className="absolute top-full left-0 mt-4 w-52 bg-[#0f172a]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
                 <button
-                  onClick={() => { navigate('/'); setShowDropdown(false); }}
-                  className="w-full px-6 py-4 text-left text-sm font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5"
+                  onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
+                  className="w-full px-5 py-4 text-left text-sm font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 whitespace-nowrap"
                 >
                   🏠 Main Site
                 </button>
                 <button
-                  onClick={() => { navigate('/medspa'); setShowDropdown(false); }}
-                  className="w-full px-6 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors"
+                  onClick={() => { navigate('/medspa'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
+                  className="w-full px-5 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors whitespace-nowrap"
                 >
-                  💉 Med Spa by RelayOpsAI
+                  💉 Med Spa
                 </button>
               </div>
             )}

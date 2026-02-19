@@ -109,38 +109,35 @@ const HeroLogo = () => {
         className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
         style={{ perspective: '1000px' }}
       >
-        {/* Fast scan sweep clockwise */}
-        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden" style={{ borderRadius: '50%', background: 'conic-gradient(from 0deg, transparent 280deg, rgba(6,182,212,0.22) 340deg, rgba(6,182,212,0.08) 360deg)', animation: 'scanRotate 2.5s linear infinite' }} />
-        {/* Slower counter-scan */}
-        <div className="absolute inset-[8%] pointer-events-none z-10 overflow-hidden" style={{ borderRadius: '50%', background: 'conic-gradient(from 180deg, transparent 280deg, rgba(99,179,237,0.18) 340deg, transparent 360deg)', animation: 'scanRotateReverse 4s linear infinite' }} />
-
-        {/* Core pulsing glow - strong */}
-        <div className="absolute inset-0 pointer-events-none z-10" style={{ borderRadius: '50%', background: 'radial-gradient(circle at center, rgba(6,182,212,0.45) 0%, rgba(59,130,246,0.2) 35%, transparent 65%)', animation: 'corePulse 1.8s ease-in-out infinite' }} />
-
-        {/* Sparks at circuit endpoints */}
+        {/* Sparks at circuit endpoints — OUTSIDE image, z-20 */}
         {[
-          { top: '12%', left: '50%', delay: '0s',   dur: '1.6s', color: 'rgba(6,182,212,1)' },
-          { top: '30%', left: '85%', delay: '0.4s', dur: '1.8s', color: 'rgba(147,197,253,1)' },
-          { top: '70%', left: '82%', delay: '0.8s', dur: '1.5s', color: 'rgba(6,182,212,1)' },
-          { top: '85%', left: '50%', delay: '1.2s', dur: '2.0s', color: 'rgba(99,179,237,1)' },
-          { top: '70%', left: '18%', delay: '0.6s', dur: '1.7s', color: 'rgba(6,182,212,1)' },
-          { top: '30%', left: '15%', delay: '1.0s', dur: '1.9s', color: 'rgba(147,197,253,1)' },
+          { top: '8%',  left: '50%', delay: '0s',   dur: '1.4s', color: 'rgba(6,182,212,1)',   size: 10 },
+          { top: '28%', left: '88%', delay: '0.3s', dur: '1.6s', color: 'rgba(147,197,253,1)', size: 8  },
+          { top: '65%', left: '88%', delay: '0.7s', dur: '1.3s', color: 'rgba(6,182,212,1)',   size: 10 },
+          { top: '88%', left: '55%', delay: '1.0s', dur: '1.7s', color: 'rgba(99,179,237,1)',  size: 8  },
+          { top: '88%', left: '42%', delay: '0.5s', dur: '1.5s', color: 'rgba(6,182,212,1)',   size: 9  },
+          { top: '65%', left: '12%', delay: '0.9s', dur: '1.4s', color: 'rgba(147,197,253,1)', size: 8  },
+          { top: '28%', left: '12%', delay: '0.2s', dur: '1.8s', color: 'rgba(6,182,212,1)',   size: 10 },
+          { top: '50%', left: '5%',  delay: '1.2s', dur: '1.6s', color: 'rgba(99,179,237,1)',  size: 7  },
+          { top: '50%', left: '94%', delay: '0.6s', dur: '1.5s', color: 'rgba(6,182,212,1)',   size: 7  },
         ].map((s, i) => (
-          <div key={i} className="absolute pointer-events-none z-20" style={{ top: s.top, left: s.left, width: '8px', height: '8px', marginLeft: '-4px', marginTop: '-4px', borderRadius: '50%', background: s.color, boxShadow: `0 0 10px 4px ${s.color}`, animation: `spark ${s.dur} ease-in-out infinite ${s.delay}` }} />
+          <div key={i} className="absolute pointer-events-none z-20" style={{ top: s.top, left: s.left, width: `${s.size}px`, height: `${s.size}px`, marginLeft: `-${s.size/2}px`, marginTop: `-${s.size/2}px`, borderRadius: '50%', background: s.color, boxShadow: `0 0 14px 5px ${s.color}`, animation: `spark ${s.dur} ease-in-out infinite ${s.delay}` }} />
         ))}
 
-        {/* Floating signal particles — more, faster */}
+        {/* Floating signal particles */}
         {[
-          { left: '22%', bot: '38%', delay: '0s',    dur: '1.8s' },
-          { left: '35%', bot: '42%', delay: '0.3s',  dur: '2.2s' },
-          { left: '48%', bot: '40%', delay: '0.7s',  dur: '1.6s' },
-          { left: '60%', bot: '36%', delay: '0.2s',  dur: '2.0s' },
-          { left: '72%', bot: '40%', delay: '0.9s',  dur: '1.9s' },
-          { left: '30%', bot: '55%', delay: '1.1s',  dur: '2.3s' },
-          { left: '55%', bot: '58%', delay: '0.5s',  dur: '1.7s' },
-          { left: '65%', bot: '52%', delay: '1.4s',  dur: '2.1s' },
+          { left: '20%', bot: '35%', delay: '0s',   dur: '1.6s' },
+          { left: '33%', bot: '40%', delay: '0.25s',dur: '2.0s' },
+          { left: '46%', bot: '38%', delay: '0.6s', dur: '1.5s' },
+          { left: '58%', bot: '34%', delay: '0.15s',dur: '1.8s' },
+          { left: '71%', bot: '38%', delay: '0.8s', dur: '1.7s' },
+          { left: '28%', bot: '54%', delay: '1.0s', dur: '2.1s' },
+          { left: '52%', bot: '57%', delay: '0.4s', dur: '1.6s' },
+          { left: '67%', bot: '50%', delay: '1.3s', dur: '1.9s' },
+          { left: '40%', bot: '62%', delay: '0.7s', dur: '2.2s' },
+          { left: '60%', bot: '62%', delay: '1.5s', dur: '1.8s' },
         ].map((p, i) => (
-          <div key={i} className="absolute pointer-events-none z-20" style={{ left: p.left, bottom: p.bot, width: '5px', height: '5px', borderRadius: '50%', background: 'rgba(6,182,212,1)', boxShadow: '0 0 6px 2px rgba(6,182,212,0.9)', animation: `floatUp ${p.dur} ease-out infinite ${p.delay}` }} />
+          <div key={i} className="absolute pointer-events-none z-20" style={{ left: p.left, bottom: p.bot, width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(6,182,212,1)', boxShadow: '0 0 8px 3px rgba(6,182,212,0.95)', animation: `floatUp ${p.dur} ease-out infinite ${p.delay}` }} />
         ))}
 
         <div
@@ -153,13 +150,21 @@ const HeroLogo = () => {
           <img
             src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-contain drop-shadow-[0_0_100px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_140px_rgba(6,182,212,1)] transition-all duration-500"
+            className="w-full h-full object-contain drop-shadow-[0_0_100px_rgba(6,182,212,0.95)] group-hover:drop-shadow-[0_0_150px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
-            style={{ filter: 'brightness(1.2) saturate(1.4) contrast(1.05)' }}
+            style={{ filter: 'brightness(1.25) saturate(1.5) contrast(1.08)' }}
           />
+
+          {/* Scan sweeps ON TOP of image */}
+          <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: '4px', background: 'conic-gradient(from 0deg, transparent 270deg, rgba(6,182,212,0.3) 330deg, rgba(6,182,212,0.1) 360deg)', animation: 'scanRotate 2s linear infinite', mixBlendMode: 'screen' }} />
+          <div className="absolute inset-[5%] pointer-events-none" style={{ borderRadius: '4px', background: 'conic-gradient(from 90deg, transparent 270deg, rgba(99,179,237,0.25) 330deg, transparent 360deg)', animation: 'scanRotateReverse 3s linear infinite', mixBlendMode: 'screen' }} />
+
+          {/* Core pulse ON TOP of image */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 48%, rgba(6,182,212,0.5) 0%, rgba(59,130,246,0.25) 30%, transparent 60%)', animation: 'corePulse 1.6s ease-in-out infinite', mixBlendMode: 'screen' }} />
+
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-0 bg-cyan-400/30 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
+              <div className="absolute inset-0 bg-cyan-400/40 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
             </div>
           ))}
         </div>
