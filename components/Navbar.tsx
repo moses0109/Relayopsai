@@ -15,6 +15,7 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
           alt="RelayOpsAI"
           className="w-full h-full object-contain"
           draggable={false}
+          style={{ mixBlendMode: 'screen' }}
         />
       )}
       {isMedSpa && (
