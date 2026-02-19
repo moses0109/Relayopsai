@@ -11,7 +11,7 @@ interface MedSpaHeroProps {
 
 const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) => {
   return (
-    <header id="top" className="relative pt-32 pb-20 px-6 md:px-8 overflow-hidden bg-gradient-to-b from-white via-rose-50/20 to-white">
+    <header id="top" className="relative pt-20 pb-12 md:pt-28 md:pb-16 px-4 md:px-6 overflow-hidden bg-gradient-to-b from-white via-rose-50/20 to-white">
       {/* Layered Sophisticated Backgrounds */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Primary gradient orb - top center */}
@@ -67,7 +67,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Scarcity badge */}
-        <div className="flex justify-center mb-8 animate-fade-in-down">
+        <div className="flex justify-center mb-6 animate-fade-in-down">
           <div className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 hover:shadow-xl hover:shadow-rose-500/20 hover:border-rose-300/80 transition-all duration-300">
             <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-sm shadow-rose-500" />
             <span className="text-sm font-semibold text-rose-700 group-hover:text-rose-800 transition-colors">
@@ -77,7 +77,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         </div>
 
         {/* Value prop - aspirational, premium */}
-        <h1 className="text-center text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-[-0.04em] leading-[0.9] mb-10 animate-fade-in-up">
+        <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] leading-[0.9] mb-6 md:mb-8 animate-fade-in-up px-2">
           <span className="block text-slate-900 drop-shadow-sm">Every Call.</span>
           <span className="block text-slate-900 drop-shadow-sm">Every Client.</span>
           <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
@@ -86,15 +86,15 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         </h1>
 
         {/* Clean, professional value prop */}
-        <p className="text-center text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto mb-14 leading-relaxed font-medium tracking-[-0.01em]">
+        <p className="text-center text-lg md:text-xl text-slate-700 max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed font-medium tracking-[-0.01em] px-2">
           AI voice agent that answers every call, books every consultation,
           and brings every client back—
-          <span className="block mt-4 text-slate-900 font-bold text-2xl md:text-3xl">24/7. Automatically. Perfectly.</span>
+          <span className="block mt-2 md:mt-3 text-slate-900 font-bold text-xl md:text-2xl">24/7. Automatically. Perfectly.</span>
         </p>
 
         {/* Social proof - early trust signal */}
-        <div className="max-w-2xl mx-auto mb-12 p-8 rounded-3xl bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-2xl shadow-slate-900/5 hover:shadow-3xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-1">
-          <p className="text-slate-700 italic mb-6 leading-relaxed text-lg">
+        <div className="max-w-2xl mx-auto mb-8 md:mb-10 p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-2xl shadow-slate-900/5 hover:shadow-3xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-1">
+          <p className="text-slate-700 italic mb-4 md:mb-6 leading-relaxed text-base md:text-lg">
             "We went from missing 30% of after-hours calls to ZERO. Botox rebookings jumped 65% in 90 days.
             This paid for itself in week one."
           </p>
@@ -117,11 +117,11 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         </div>
 
         {/* Single clear CTA */}
-        <div className="flex flex-col items-center gap-4 mb-16">
+        <div className="flex flex-col items-center gap-3 mb-10 md:mb-12">
           <button
             type="button"
             onClick={onBookDemo}
-            className="group relative px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-900/30 hover:shadow-3xl hover:shadow-slate-900/40 hover:scale-[1.03] active:scale-[0.98] overflow-hidden"
+            className="group relative px-6 py-4 md:px-10 md:py-5 bg-slate-900 text-white rounded-full font-bold text-base md:text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-900/30 hover:shadow-3xl hover:shadow-slate-900/40 hover:scale-[1.03] active:scale-[0.98] overflow-hidden w-full sm:w-auto max-w-md"
           >
             {/* Shimmer effect on hover */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -142,18 +142,18 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         </div>
 
         {/* Clean stats - premium presentation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto pt-12 border-t border-slate-200/60">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto pt-8 md:pt-10 border-t border-slate-200/60">
           {[
             { value: '24/7', label: 'Always Available' },
             { value: '98%', label: 'Capture Rate' },
             { value: '$27k', label: 'Avg Monthly Lift' },
             { value: '<1s', label: 'Response Time' },
           ].map((stat, i) => (
-            <div key={i} className="text-center group p-4 rounded-2xl hover:bg-white/60 hover:backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div key={i} className="text-center group p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/60 hover:backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
-              <div className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
+              <div className="text-xs md:text-sm font-semibold text-slate-600 uppercase tracking-wide">
                 {stat.label}
               </div>
             </div>

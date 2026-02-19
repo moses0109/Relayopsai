@@ -41,9 +41,9 @@ const HeroLogo = () => {
   };
 
   return (
-    <div className="relative mb-12 md:mb-16">
+    <div className="relative mb-6 md:mb-8">
       {/* Animated rotating rings */}
-      <div className="absolute inset-[-60px] md:inset-[-80px] pointer-events-none">
+      <div className="absolute inset-[-40px] md:inset-[-60px] pointer-events-none">
         <div className="absolute inset-0 border border-cyan-400/20 rounded-full animate-[spin_20s_linear_infinite]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full blur-[3px] shadow-lg shadow-cyan-400/50" />
         </div>
@@ -114,28 +114,28 @@ const App: React.FC = () => {
       <Navbar />
 
       {/* ── 1) HERO ── */}
-      <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
+      <header id="top" className="py-8 md:py-12 lg:py-16 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-cyan-600/8 via-blue-600/5 to-purple-600/3 blur-[80px] rounded-full pointer-events-none" />
 
         <HeroLogo />
 
-        <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
           <span className="text-cyan-400 text-xs font-black uppercase tracking-wide break-words">
             AI Receptionist — Live 24/7
           </span>
         </div>
 
-        <h1 className="clamp-hero font-black mb-6 md:mb-8 tracking-tighter italic uppercase relative z-10">
+        <h1 className="clamp-hero font-black mb-4 md:mb-6 tracking-tighter italic uppercase relative z-10 px-2">
           Never Miss Another <br />
           <span className="gradient-relay">Customer Call</span>
         </h1>
 
-        <p className="text-slate-400 text-base md:text-lg lg:text-2xl max-w-3xl mx-auto mb-10 md:mb-10 font-medium leading-relaxed relative z-10 px-2">
+        <p className="text-slate-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 md:mb-8 font-medium leading-relaxed relative z-10 px-4">
           RelayOpsAI answers every call, books every appointment, and captures every dollar — so you make more money starting today.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-10 relative z-10">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 relative z-10 px-2">
           {[
             { val: '24/7', label: 'Call Coverage' },
             { val: '70+',  label: 'AI Voices' },
@@ -149,7 +149,7 @@ const App: React.FC = () => {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 md:gap-5 w-full max-w-xl justify-center mb-10 md:mb-10 relative z-20 px-4">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full max-w-xl justify-center mb-8 md:mb-10 relative z-20 px-4">
           <button
             onClick={() => scrollTo('demo')}
             className="group px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-white to-gray-100 text-black rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 border border-white/20"
