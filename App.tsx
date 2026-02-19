@@ -59,20 +59,24 @@ const HeroLogo = () => {
         onMouseLeave={handleMouseLeave}
         onClick={handleInteraction}
         onTouchStart={handleInteraction}
-        className="relative w-[500px] h-[500px] sm:w-[540px] sm:h-[540px] md:w-[600px] md:h-[600px] lg:w-[660px] lg:h-[660px] mx-auto cursor-pointer group"
-        style={{ perspective: '800px' }}
+        className="relative w-[90%] max-w-[420px] mx-auto cursor-pointer group"
+        style={{
+          perspective: '800px',
+          aspectRatio: '1 / 1'
+        }}
       >
         <div
-          className="relative w-full h-full flex items-center justify-center"
+          className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden"
           style={{
             transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.92 : 1})`,
             transition: isPressed ? 'transform 0.1s ease' : 'transform 0.15s ease-out',
           }}
         >
           <img
+            id="main-banner-image"
             src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-cover rounded-full drop-shadow-[0_0_60px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_80px_rgba(6,182,212,1)] transition-all duration-500"
+            className="w-full h-full object-cover drop-shadow-[0_0_60px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_80px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
             style={{
               filter: 'brightness(1.2) saturate(1.15) contrast(1.05)',

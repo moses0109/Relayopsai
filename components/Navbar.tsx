@@ -10,6 +10,7 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
     <div className={`relative ${size} flex items-center justify-center`}>
       {!isMedSpa && (
         <img
+          id="mini-profile-image"
           src="/logo-icon.png"
           alt="RelayOpsAI"
           className="w-full h-full object-contain"
