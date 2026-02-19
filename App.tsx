@@ -43,20 +43,17 @@ const HeroLogo = () => {
   return (
     <div className="relative mb-6 md:mb-8">
       {/* Animated rotating rings */}
-      <div className="absolute inset-[-40px] md:inset-[-60px] pointer-events-none">
-        <div className="absolute inset-0 border border-cyan-400/20 rounded-full animate-[spin_20s_linear_infinite]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full blur-[3px] shadow-lg shadow-cyan-400/50" />
+      <div className="absolute inset-[-18px] md:inset-[-22px] pointer-events-none">
+        <div className="absolute inset-0 border border-cyan-400/25 rounded-full animate-[spin_20s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full blur-[3px] shadow-lg shadow-cyan-400/50" />
         </div>
-        <div className="absolute inset-6 border border-blue-500/15 rounded-full animate-[spin_15s_linear_infinite_reverse]">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2.5 h-2.5 bg-blue-400 rounded-full blur-[3px] shadow-lg shadow-blue-400/50" />
-        </div>
-        <div className="absolute inset-12 border border-purple-500/10 rounded-full animate-[spin_25s_linear_infinite]">
-          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-purple-400 rounded-full blur-[2px] shadow-lg shadow-purple-400/50" />
+        <div className="absolute inset-5 border border-blue-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full blur-[3px] shadow-lg shadow-blue-400/50" />
         </div>
       </div>
 
       {/* Glow effect */}
-      <div className="absolute inset-[-30px] bg-gradient-to-br from-cyan-500/20 via-blue-600/15 to-purple-600/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+      <div className="absolute inset-[-15px] bg-gradient-to-br from-cyan-500/20 via-blue-600/15 to-purple-600/10 rounded-full blur-2xl pointer-events-none" />
 
       {/* Logo container with 3D effects */}
       <div
