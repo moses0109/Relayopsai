@@ -81,8 +81,7 @@ const HeroLogo = () => {
             className="w-full h-full object-contain drop-shadow-[0_0_80px_rgba(6,182,212,0.8)] group-hover:drop-shadow-[0_0_120px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
             style={{
-              mixBlendMode: 'screen',
-              filter: 'brightness(1.3) saturate(1.4) contrast(1.1)',
+              filter: 'brightness(1.1) saturate(1.2)',
             }}
           />
           {ripples.map((id) => (
