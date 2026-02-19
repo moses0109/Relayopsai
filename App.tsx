@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
@@ -13,6 +13,87 @@ import Integrations from './components/Integrations';
 import Features from './components/Features';
 import PhoneMockup from './components/PhoneMockup';
 import FAQ from './components/FAQ';
+
+/* ------------------------------------------------------------------ */
+/*  IMMERSIVE HERO LOGO                                                */
+/* ------------------------------------------------------------------ */
+const HeroLogo = () => {
+  const [ripples, setRipples] = useState<number[]>([]);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isPressed, setIsPressed] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: y * -15, y: x * 15 });
+  }, []);
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
+
+  const handleInteraction = () => {
+    setIsPressed(true);
+    setRipples(prev => [...prev, Date.now()]);
+    setTimeout(() => setIsPressed(false), 200);
+    setTimeout(() => setRipples(prev => prev.slice(1)), 800);
+  };
+
+  return (
+    <div className="relative mb-12 md:mb-16">
+      {/* Animated rotating rings */}
+      <div className="absolute inset-[-60px] md:inset-[-80px] pointer-events-none">
+        <div className="absolute inset-0 border border-cyan-400/20 rounded-full animate-[spin_20s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full blur-[3px] shadow-lg shadow-cyan-400/50" />
+        </div>
+        <div className="absolute inset-6 border border-blue-500/15 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2.5 h-2.5 bg-blue-400 rounded-full blur-[3px] shadow-lg shadow-blue-400/50" />
+        </div>
+        <div className="absolute inset-12 border border-purple-500/10 rounded-full animate-[spin_25s_linear_infinite]">
+          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-purple-400 rounded-full blur-[2px] shadow-lg shadow-purple-400/50" />
+        </div>
+      </div>
+
+      {/* Glow effect */}
+      <div className="absolute inset-[-30px] bg-gradient-to-br from-cyan-500/20 via-blue-600/15 to-purple-600/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+
+      {/* Logo container with 3D effects */}
+      <div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleInteraction}
+        onTouchStart={handleInteraction}
+        className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
+        style={{ perspective: '1000px' }}
+      >
+        <div
+          className="relative w-full h-full flex items-center justify-center"
+          style={{
+            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.95 : 1})`,
+            transition: isPressed ? 'transform 0.1s ease' : 'transform 0.2s ease-out',
+          }}
+        >
+          <img
+            src="/logo-icon.png"
+            alt="RelayOpsAI"
+            className="w-full h-full object-contain drop-shadow-[0_0_80px_rgba(6,182,212,0.6)] group-hover:drop-shadow-[0_0_100px_rgba(6,182,212,0.8)] transition-all duration-500"
+            draggable={false}
+            style={{
+              filter: 'brightness(1.1) saturate(1.1)',
+            }}
+          />
+          {ripples.map((id) => (
+            <div key={id} className="absolute inset-0 pointer-events-none">
+              <div className="absolute inset-0 bg-cyan-400/30 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /*  APP LAYOUT                                                         */
@@ -35,6 +116,8 @@ const App: React.FC = () => {
       {/* ── 1) HERO ── */}
       <header id="top" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-cyan-600/8 via-blue-600/5 to-purple-600/3 blur-[80px] rounded-full pointer-events-none" />
+
+        <HeroLogo />
 
         <div className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
