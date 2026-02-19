@@ -42,18 +42,43 @@ const HeroLogo = () => {
 
   return (
     <div className="relative mb-6 md:mb-8">
+      <style>{`
+        @keyframes scanRotate {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        @keyframes floatUp {
+          0%   { opacity: 0; transform: translateY(0px) scale(0.5); }
+          20%  { opacity: 1; }
+          100% { opacity: 0; transform: translateY(-60px) scale(0.2); }
+        }
+        @keyframes circuitPulse {
+          0%, 100% { opacity: 0.12; }
+          50%       { opacity: 0.35; }
+        }
+        @keyframes heroRipple {
+          from { transform: scale(1); opacity: 0.4; }
+          to   { transform: scale(1.6); opacity: 0; }
+        }
+        @keyframes dashMove {
+          from { stroke-dashoffset: 200; }
+          to   { stroke-dashoffset: 0; }
+        }
+      `}</style>
+
+      {/* Outer ambient glow */}
+      <div className="absolute inset-[-50px] rounded-full pointer-events-none bg-cyan-500/10 blur-3xl animate-pulse" />
+
       {/* Animated rotating rings */}
       <div className="absolute inset-[-18px] md:inset-[-22px] pointer-events-none">
-        <div className="absolute inset-0 border border-cyan-400/25 rounded-full animate-[spin_20s_linear_infinite]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full blur-[3px] shadow-lg shadow-cyan-400/50" />
+        <div className="absolute inset-0 border border-cyan-400/30 rounded-full animate-[spin_20s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full blur-[2px] shadow-[0_0_8px_rgba(6,182,212,1)]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full opacity-70" />
         </div>
-        <div className="absolute inset-5 border border-blue-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full blur-[3px] shadow-lg shadow-blue-400/50" />
+        <div className="absolute inset-5 border border-blue-400/20 rounded-full animate-[spin_12s_linear_infinite_reverse]">
+          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-300 rounded-full blur-[2px] shadow-[0_0_6px_rgba(147,197,253,1)]" />
         </div>
       </div>
-
-      {/* Glow effect */}
-      <div className="absolute inset-[-15px] bg-gradient-to-br from-cyan-500/20 via-blue-600/15 to-purple-600/10 rounded-full blur-2xl pointer-events-none" />
 
       {/* Logo container with 3D effects */}
       <div
@@ -65,6 +90,45 @@ const HeroLogo = () => {
         className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
         style={{ perspective: '1000px' }}
       >
+        {/* Scanning light sweep over the brain circuits */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none z-10 overflow-hidden"
+          style={{
+            background: 'conic-gradient(from 0deg, transparent 300deg, rgba(6,182,212,0.15) 345deg, rgba(6,182,212,0.06) 360deg)',
+            animation: 'scanRotate 3.5s linear infinite',
+          }}
+        />
+
+        {/* Pulsing circuit glow from center */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none z-10"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(6,182,212,0.25) 0%, rgba(59,130,246,0.1) 40%, transparent 70%)',
+            animation: 'circuitPulse 2.5s ease-in-out infinite',
+          }}
+        />
+
+        {/* Floating signal particles rising from brain */}
+        {[
+          { left: '28%', delay: '0s',    dur: '2.2s' },
+          { left: '42%', delay: '0.5s',  dur: '2.8s' },
+          { left: '55%', delay: '1.0s',  dur: '2.4s' },
+          { left: '68%', delay: '0.3s',  dur: '3.0s' },
+          { left: '35%', delay: '1.5s',  dur: '2.6s' },
+          { left: '60%', delay: '0.8s',  dur: '2.0s' },
+        ].map((p, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-cyan-400 rounded-full pointer-events-none z-20"
+            style={{
+              left: p.left,
+              bottom: '35%',
+              boxShadow: '0 0 4px 1px rgba(6,182,212,0.8)',
+              animation: `floatUp ${p.dur} ease-out infinite ${p.delay}`,
+            }}
+          />
+        ))}
+
         <div
           className="relative w-full h-full flex items-center justify-center"
           style={{
@@ -77,9 +141,7 @@ const HeroLogo = () => {
             alt="RelayOpsAI"
             className="w-full h-full object-contain drop-shadow-[0_0_80px_rgba(6,182,212,0.8)] group-hover:drop-shadow-[0_0_120px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
-            style={{
-              filter: 'brightness(1.1) saturate(1.2)',
-            }}
+            style={{ filter: 'brightness(1.15) saturate(1.3)' }}
           />
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
