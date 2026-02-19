@@ -72,10 +72,11 @@ const HeroLogo = () => {
           <img
             src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_80px_rgba(6,182,212,1)] transition-all duration-500"
+            className="w-full h-full object-cover rounded-full drop-shadow-[0_0_60px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_80px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
             style={{
               filter: 'brightness(1.2) saturate(1.15) contrast(1.05)',
+              objectPosition: 'center center'
             }}
           />
           {ripples.map((id) => (
