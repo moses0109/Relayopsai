@@ -47,36 +47,55 @@ const HeroLogo = () => {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
         }
-        @keyframes floatUp {
-          0%   { opacity: 0; transform: translateY(0px) scale(0.5); }
-          20%  { opacity: 1; }
-          100% { opacity: 0; transform: translateY(-60px) scale(0.2); }
+        @keyframes scanRotateReverse {
+          from { transform: rotate(360deg); }
+          to   { transform: rotate(0deg); }
         }
-        @keyframes circuitPulse {
-          0%, 100% { opacity: 0.12; }
-          50%       { opacity: 0.35; }
+        @keyframes floatUp {
+          0%   { opacity: 0; transform: translateY(0px) scale(1); }
+          15%  { opacity: 1; }
+          100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+        }
+        @keyframes spark {
+          0%   { opacity: 0; transform: scale(0); }
+          30%  { opacity: 1; transform: scale(1.5); }
+          100% { opacity: 0; transform: scale(0); }
+        }
+        @keyframes corePulse {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50%       { opacity: 0.55; transform: scale(1.08); }
+        }
+        @keyframes outerPulse {
+          0%, 100% { opacity: 0.08; transform: scale(1); }
+          50%       { opacity: 0.22; transform: scale(1.05); }
         }
         @keyframes heroRipple {
-          from { transform: scale(1); opacity: 0.4; }
-          to   { transform: scale(1.6); opacity: 0; }
+          from { transform: scale(1); opacity: 0.5; }
+          to   { transform: scale(1.8); opacity: 0; }
         }
-        @keyframes dashMove {
-          from { stroke-dashoffset: 200; }
-          to   { stroke-dashoffset: 0; }
+        @keyframes ringPing {
+          0%   { transform: scale(1); opacity: 0.4; }
+          100% { transform: scale(1.4); opacity: 0; }
         }
       `}</style>
 
-      {/* Outer ambient glow */}
-      <div className="absolute inset-[-50px] rounded-full pointer-events-none bg-cyan-500/10 blur-3xl animate-pulse" />
+      {/* Deep outer ambient layers */}
+      <div className="absolute inset-[-80px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, rgba(59,130,246,0.06) 50%, transparent 70%)', animation: 'outerPulse 4s ease-in-out infinite' }} />
+      <div className="absolute inset-[-40px] rounded-full pointer-events-none bg-cyan-400/8 blur-2xl animate-[pulse_3s_ease-in-out_infinite_0.5s]" />
+
+      {/* Periodic ping rings */}
+      <div className="absolute inset-[-18px] md:inset-[-22px] rounded-full border border-cyan-400/20 pointer-events-none animate-[ringPing_3s_ease-out_infinite]" />
+      <div className="absolute inset-[-18px] md:inset-[-22px] rounded-full border border-cyan-400/15 pointer-events-none animate-[ringPing_3s_ease-out_infinite_1.5s]" />
 
       {/* Animated rotating rings */}
       <div className="absolute inset-[-18px] md:inset-[-22px] pointer-events-none">
-        <div className="absolute inset-0 border border-cyan-400/30 rounded-full animate-[spin_20s_linear_infinite]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full blur-[2px] shadow-[0_0_8px_rgba(6,182,212,1)]" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full opacity-70" />
+        <div className="absolute inset-0 border border-cyan-400/35 rounded-full animate-[spin_18s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-300 rounded-full blur-[1px] shadow-[0_0_12px_4px_rgba(6,182,212,0.9)]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
         </div>
-        <div className="absolute inset-5 border border-blue-400/20 rounded-full animate-[spin_12s_linear_infinite_reverse]">
-          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-300 rounded-full blur-[2px] shadow-[0_0_6px_rgba(147,197,253,1)]" />
+        <div className="absolute inset-4 border border-blue-400/25 rounded-full animate-[spin_11s_linear_infinite_reverse]">
+          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-blue-300 rounded-full blur-[1px] shadow-[0_0_10px_rgba(147,197,253,1)]" />
+          <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full opacity-80" />
         </div>
       </div>
 
@@ -90,43 +109,38 @@ const HeroLogo = () => {
         className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
         style={{ perspective: '1000px' }}
       >
-        {/* Scanning light sweep over the brain circuits */}
-        <div
-          className="absolute inset-0 rounded-full pointer-events-none z-10 overflow-hidden"
-          style={{
-            background: 'conic-gradient(from 0deg, transparent 300deg, rgba(6,182,212,0.15) 345deg, rgba(6,182,212,0.06) 360deg)',
-            animation: 'scanRotate 3.5s linear infinite',
-          }}
-        />
+        {/* Fast scan sweep clockwise */}
+        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden" style={{ borderRadius: '50%', background: 'conic-gradient(from 0deg, transparent 280deg, rgba(6,182,212,0.22) 340deg, rgba(6,182,212,0.08) 360deg)', animation: 'scanRotate 2.5s linear infinite' }} />
+        {/* Slower counter-scan */}
+        <div className="absolute inset-[8%] pointer-events-none z-10 overflow-hidden" style={{ borderRadius: '50%', background: 'conic-gradient(from 180deg, transparent 280deg, rgba(99,179,237,0.18) 340deg, transparent 360deg)', animation: 'scanRotateReverse 4s linear infinite' }} />
 
-        {/* Pulsing circuit glow from center */}
-        <div
-          className="absolute inset-0 rounded-full pointer-events-none z-10"
-          style={{
-            background: 'radial-gradient(circle at center, rgba(6,182,212,0.25) 0%, rgba(59,130,246,0.1) 40%, transparent 70%)',
-            animation: 'circuitPulse 2.5s ease-in-out infinite',
-          }}
-        />
+        {/* Core pulsing glow - strong */}
+        <div className="absolute inset-0 pointer-events-none z-10" style={{ borderRadius: '50%', background: 'radial-gradient(circle at center, rgba(6,182,212,0.45) 0%, rgba(59,130,246,0.2) 35%, transparent 65%)', animation: 'corePulse 1.8s ease-in-out infinite' }} />
 
-        {/* Floating signal particles rising from brain */}
+        {/* Sparks at circuit endpoints */}
         {[
-          { left: '28%', delay: '0s',    dur: '2.2s' },
-          { left: '42%', delay: '0.5s',  dur: '2.8s' },
-          { left: '55%', delay: '1.0s',  dur: '2.4s' },
-          { left: '68%', delay: '0.3s',  dur: '3.0s' },
-          { left: '35%', delay: '1.5s',  dur: '2.6s' },
-          { left: '60%', delay: '0.8s',  dur: '2.0s' },
+          { top: '12%', left: '50%', delay: '0s',   dur: '1.6s', color: 'rgba(6,182,212,1)' },
+          { top: '30%', left: '85%', delay: '0.4s', dur: '1.8s', color: 'rgba(147,197,253,1)' },
+          { top: '70%', left: '82%', delay: '0.8s', dur: '1.5s', color: 'rgba(6,182,212,1)' },
+          { top: '85%', left: '50%', delay: '1.2s', dur: '2.0s', color: 'rgba(99,179,237,1)' },
+          { top: '70%', left: '18%', delay: '0.6s', dur: '1.7s', color: 'rgba(6,182,212,1)' },
+          { top: '30%', left: '15%', delay: '1.0s', dur: '1.9s', color: 'rgba(147,197,253,1)' },
+        ].map((s, i) => (
+          <div key={i} className="absolute pointer-events-none z-20" style={{ top: s.top, left: s.left, width: '8px', height: '8px', marginLeft: '-4px', marginTop: '-4px', borderRadius: '50%', background: s.color, boxShadow: `0 0 10px 4px ${s.color}`, animation: `spark ${s.dur} ease-in-out infinite ${s.delay}` }} />
+        ))}
+
+        {/* Floating signal particles — more, faster */}
+        {[
+          { left: '22%', bot: '38%', delay: '0s',    dur: '1.8s' },
+          { left: '35%', bot: '42%', delay: '0.3s',  dur: '2.2s' },
+          { left: '48%', bot: '40%', delay: '0.7s',  dur: '1.6s' },
+          { left: '60%', bot: '36%', delay: '0.2s',  dur: '2.0s' },
+          { left: '72%', bot: '40%', delay: '0.9s',  dur: '1.9s' },
+          { left: '30%', bot: '55%', delay: '1.1s',  dur: '2.3s' },
+          { left: '55%', bot: '58%', delay: '0.5s',  dur: '1.7s' },
+          { left: '65%', bot: '52%', delay: '1.4s',  dur: '2.1s' },
         ].map((p, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400 rounded-full pointer-events-none z-20"
-            style={{
-              left: p.left,
-              bottom: '35%',
-              boxShadow: '0 0 4px 1px rgba(6,182,212,0.8)',
-              animation: `floatUp ${p.dur} ease-out infinite ${p.delay}`,
-            }}
-          />
+          <div key={i} className="absolute pointer-events-none z-20" style={{ left: p.left, bottom: p.bot, width: '5px', height: '5px', borderRadius: '50%', background: 'rgba(6,182,212,1)', boxShadow: '0 0 6px 2px rgba(6,182,212,0.9)', animation: `floatUp ${p.dur} ease-out infinite ${p.delay}` }} />
         ))}
 
         <div
@@ -139,9 +153,9 @@ const HeroLogo = () => {
           <img
             src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-contain drop-shadow-[0_0_80px_rgba(6,182,212,0.8)] group-hover:drop-shadow-[0_0_120px_rgba(6,182,212,1)] transition-all duration-500"
+            className="w-full h-full object-contain drop-shadow-[0_0_100px_rgba(6,182,212,0.9)] group-hover:drop-shadow-[0_0_140px_rgba(6,182,212,1)] transition-all duration-500"
             draggable={false}
-            style={{ filter: 'brightness(1.15) saturate(1.3)' }}
+            style={{ filter: 'brightness(1.2) saturate(1.4) contrast(1.05)' }}
           />
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
