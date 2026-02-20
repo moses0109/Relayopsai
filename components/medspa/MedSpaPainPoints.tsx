@@ -6,19 +6,19 @@ const MedSpaPainPoints: React.FC = () => {
       stat: '$1,200',
       title: 'Per Missed Call',
       problem: 'Every unanswered call after 6 PM',
-      solution: 'That\'s a filler appointment, a Botox package, or a laser treatment walking straight to your competitor.',
+      solution: 'That\'s a Botox package, a laser series, or a filler appointment — gone. Our AI answers in under a second, qualifies the lead, and books them before they dial the next spa.',
     },
     {
       stat: '60%',
-      title: 'Calls After Hours',
-      problem: 'Clients research at 9, 10, 11 PM',
-      solution: 'Your front desk clocks out. Our AI clocks in. It answers, qualifies, and books — before they find someone else.',
+      title: 'Calls Happen After Hours',
+      problem: 'Clients research at 9, 10, 11 PM — when you\'re closed',
+      solution: 'Your front desk clocks out at 6. Our AI never does. It answers every call, handles every question, and fills your calendar — while you sleep.',
     },
     {
       stat: '97%',
-      title: 'Visitors Ghost You',
-      problem: 'Anonymous traffic with buying intent',
-      solution: 'We unmask them, fire a personalized outreach in under 3 minutes, and recover revenue you never knew you were losing.',
+      title: 'Visitors Leave Silently',
+      problem: 'Anonymous traffic with real buying intent',
+      solution: 'We identify who they are, trigger a personalized AI outreach within 30 seconds, and convert browsers into booked consultations — revenue you\'d never capture otherwise.',
     },
   ];
 
@@ -35,15 +35,20 @@ const MedSpaPainPoints: React.FC = () => {
         <path d="M0 175 C30 145 78 100 168 65 C176 82 152 100 122 118 C82 142 40 170 0 175Z" opacity="0.65"/>
       </svg>
       <div className="max-w-7xl mx-auto text-center relative z-10">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-rose-200/60 mb-6 shadow-sm">
+          <span className="text-rose-500 text-sm">💡</span>
+          <span className="text-sm font-semibold text-slate-600">My mom faced every one of these. Now her clients don't have to.</span>
+        </div>
+
         <h2 className="medspa-serif text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-          <span className="text-slate-900">Your Front Desk is</span><br />
-          <span className="text-rose-600">Overwhelmed and Leaking Cash.</span>
+          <span className="text-slate-900">The Revenue Is Already There.</span><br />
+          <span className="text-rose-600">It's Just Slipping Through the Cracks.</span>
         </h2>
 
         <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
-          Every missed call, every unanswered DM, every client who waited on hold and hung up —
-          is a <span className="text-slate-900 font-bold">$1,200 filler appointment going to your competitor.</span>{' '}
-          <span className="text-rose-600 font-semibold">This is fixable. Today.</span>
+          Your front desk is human — it closes at 6 PM, misses calls during facials, and can't follow up with 97% of visitors who leave without booking.
+          Every one of those moments is a <span className="text-slate-900 font-bold">$1,200+ consultation going to your competitor.</span>{' '}
+          <span className="text-rose-600 font-semibold">AI closes that gap — automatically.</span>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -66,9 +71,9 @@ const MedSpaPainPoints: React.FC = () => {
 
         <div className="mt-12">
           <p className="text-2xl md:text-4xl font-black text-rose-600">
-            Average Recovery: $15,000–$27,000/Month.
+            Our clients recover $15,000–$27,000/month on average.
           </p>
-          <p className="text-base text-slate-500 mt-3 font-semibold">Speed to Lead wins the booking. We respond in 30 seconds.</p>
+          <p className="text-base text-slate-500 mt-3 font-semibold">The first spa to respond wins the booking. We respond in under 30 seconds.</p>
         </div>
       </div>
     </section>

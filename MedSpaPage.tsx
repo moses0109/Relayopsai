@@ -129,27 +129,43 @@ const MedSpaPage: React.FC = () => {
         </svg>
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 border border-rose-200 mb-8">
+
+          {/* Founder quote */}
+          <div className="mb-8 p-6 rounded-2xl bg-white/70 border border-rose-200/60 shadow-lg shadow-rose-200/20 backdrop-blur-sm text-left max-w-xl mx-auto">
+            <p className="text-slate-700 italic text-base leading-relaxed mb-4">
+              "I built this after watching my mom — a med spa owner for 15 years — lose over $180,000 a year to missed calls and anonymous visitors. She deserved better. So does your spa."
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-100 to-pink-200 border border-rose-200 flex items-center justify-center flex-shrink-0">
+                <span className="text-lg">👤</span>
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 text-sm">Founder, RelayOpsAI</p>
+                <p className="text-xs text-slate-500">Built for med spa owners — from one</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 border border-rose-200 mb-6">
             <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-rose-700">Only 3 Setup Slots Left This Month</span>
           </div>
 
-          <h2 className="medspa-serif text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
-            <span className="text-slate-900">See How We Can</span><br />
+          <h2 className="medspa-serif text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-4">
+            <span className="text-slate-900">Stop Losing Revenue.</span><br />
             <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-              Build Your Business
-            </span><br />
-            <span className="text-slate-900">on AI.</span>
+              Start Growing on AI.
+            </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
-            Book a free 30-minute call. We'll show you exactly how much revenue your med spa is losing — and how to recover it starting this week.
+          <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-8 leading-relaxed font-medium">
+            Book a free 30-minute call. We'll calculate your exact revenue leak and build your recovery plan — live, on the call, no strings attached.
           </p>
 
           <button
             type="button"
             onClick={handleBookDemo}
-            className="group relative px-10 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-lg hover:from-rose-600 hover:to-pink-700 transition-all duration-300 shadow-2xl shadow-rose-500/30 hover:shadow-rose-500/50 hover:scale-[1.03] active:scale-[0.98] mb-10 overflow-hidden"
+            className="group relative px-10 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-lg hover:from-rose-600 hover:to-pink-700 transition-all duration-300 shadow-2xl shadow-rose-500/30 hover:shadow-rose-500/50 hover:scale-[1.03] active:scale-[0.98] mb-8 overflow-hidden"
           >
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
             <span className="relative z-10">Get My Free Revenue Audit →</span>

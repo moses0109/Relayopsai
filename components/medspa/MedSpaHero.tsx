@@ -37,27 +37,26 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
       <div className="relative z-10 max-w-5xl mx-auto">
 
-        {/* Scarcity badge */}
+        {/* Founder story badge */}
         <div className="flex justify-center mb-5">
-          <div className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 hover:shadow-xl hover:shadow-rose-500/20 hover:border-rose-300/80 transition-all duration-300">
-            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-sm shadow-rose-500" />
-            <span className="text-sm font-semibold text-rose-700 group-hover:text-rose-800 transition-colors">
-              Only 3 Setup Slots Left This Month
+          <div className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 hover:shadow-xl hover:shadow-rose-500/20 hover:border-rose-300/80 transition-all duration-300">
+            <span className="text-rose-500 text-base">💛</span>
+            <span className="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors">
+              Built after my mom's med spa lost $180K/year to missed calls
             </span>
           </div>
         </div>
 
         {/* Headline */}
-        <h1 className="medspa-serif text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.02em] leading-tight mb-6 px-2">
-          <span className="block text-slate-900">STOP GIVING AWAY</span>
+        <h1 className="medspa-serif text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.02em] leading-tight mb-4 px-2">
+          <span className="block text-slate-900">Your Med Spa Deserves</span>
           <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-            $15,000/MONTH
+            a Receptionist That Never Sleeps.
           </span>
-          <span className="block text-slate-900">TO VOICEMAIL.</span>
         </h1>
 
         {/* Stars */}
-        <div className="flex justify-center items-center gap-3 mb-5">
+        <div className="flex justify-center items-center gap-3 mb-4">
           <div className="flex items-center gap-0.5">
             {[0,1,2,3,4].map(i => (
               <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
@@ -70,28 +69,28 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
         {/* Sub-copy */}
         <p className="text-center text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-7 leading-relaxed font-medium px-2">
-          Identify the <span className="text-slate-900 font-bold">97% of visitors</span> who leave your site without booking. Our AI unmasks their data, triggers a voice call in 30 seconds, and fills your calendar while you sleep.
+          I watched my mom lose <span className="text-slate-900 font-bold">$15,000+ every month</span> to voicemail and ghost traffic. So we built the AI that answers every call, recovers every visitor, and books every consultation — automatically.
         </p>
 
         {/* Social proof card */}
         <div className="max-w-2xl mx-auto mb-8 md:mb-10 p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/90 backdrop-blur-md border border-rose-200/70 shadow-xl shadow-rose-200/30 hover:shadow-2xl hover:shadow-rose-300/30 transition-all duration-500 hover:-translate-y-1">
           <p className="text-slate-700 italic mb-4 md:mb-6 leading-relaxed text-base md:text-lg">
-            "We went from missing 30% of after-hours calls to ZERO. Botox rebookings jumped 65% in 90 days. This paid for itself in week one."
+            "We went from missing 30% of after-hours calls to zero — and Botox rebookings jumped 65% in 90 days. It paid for itself in the first week."
           </p>
           <div className="flex items-center gap-4">
-            <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&q=80"
-              alt="Manhattan Building"
-              className="w-14 h-14 rounded-xl object-cover ring-2 ring-slate-200/60 shadow-md"
-            />
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-100 to-pink-100 border border-rose-200/60 flex items-center justify-center shadow-md flex-shrink-0">
+              <span className="text-2xl">🌸</span>
+            </div>
             <div>
-              <p className="font-bold text-slate-900 text-base">Med Spa Owner</p>
-              <p className="text-sm text-slate-600 flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-                Manhattan, NY
-              </p>
+              <p className="font-bold text-slate-900 text-base">Christina R., Owner</p>
+              <p className="text-sm text-slate-500">Lumière Med Spa · Manhattan, NY</p>
+              <div className="flex items-center gap-1 mt-1">
+                {[0,1,2,3,4].map(i => (
+                  <svg key={i} className="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +104,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           >
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <span className="relative z-10 flex items-center justify-center gap-2">
-              [ DEPLOY RECOVERY ENGINE ]
+              Recover My Revenue Now
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -117,7 +116,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
             onClick={onCalculateROI}
             className="px-8 py-4 rounded-full font-bold text-base text-slate-700 border border-rose-200/60 hover:border-rose-300 hover:bg-white/60 bg-white/40 backdrop-blur-sm transition-all duration-300 w-full sm:w-auto max-w-sm"
           >
-            See My Revenue Leak (Free Audit)
+            Calculate My Revenue Leak →
           </button>
         </div>
 
