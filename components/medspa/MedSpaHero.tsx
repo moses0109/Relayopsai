@@ -1,7 +1,7 @@
 import React from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA HERO — Conversion Psychology Optimized                   */
+/*  MED SPA HERO — Luxury Cream + Botanical                           */
 /* ------------------------------------------------------------------ */
 
 interface MedSpaHeroProps {
@@ -11,98 +11,78 @@ interface MedSpaHeroProps {
 
 const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) => {
   return (
-    <header id="top" className="relative pt-20 pb-12 md:pt-28 md:pb-16 px-4 md:px-6 overflow-hidden bg-gradient-to-b from-white via-rose-50/20 to-white">
-      {/* Layered Sophisticated Backgrounds */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Primary gradient orb - top center */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-to-br from-rose-200/30 via-pink-100/20 to-transparent blur-3xl animate-pulse-slow" />
+    <header id="top" className="relative pt-20 pb-12 md:pt-28 md:pb-16 px-4 md:px-6 bg-[#fdf8f5]">
 
-        {/* Secondary gradient orb - bottom right */}
-        <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-gradient-to-tl from-purple-200/25 via-violet-100/15 to-transparent blur-3xl" />
+      {/* Backgrounds */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#fdf8f5] via-rose-50/80 to-pink-100/60" />
 
-        {/* Tertiary accent - top left */}
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-gradient-to-br from-sky-100/20 to-transparent blur-2xl" />
+        {/* Top-right botanical — gently drifting */}
+        <svg className="absolute -top-6 -right-6 w-72 h-72 md:w-96 md:h-96 text-rose-200/80 leaf-float-a" viewBox="0 0 200 200" fill="currentColor">
+          <path d="M200 0 C155 25 105 70 65 160 C85 172 105 145 120 115 C148 68 175 28 200 0Z"/>
+          <path d="M200 25 C168 48 125 90 95 175 C112 184 128 158 140 130 C162 88 183 52 200 25Z" opacity="0.75"/>
+          <path d="M175 0 C145 35 105 82 80 170 C95 178 110 152 122 124 C144 80 162 38 175 0Z" opacity="0.55"/>
+          <path d="M200 55 C178 75 145 110 120 185 C134 191 146 170 156 148 C170 123 188 95 200 55Z" opacity="0.4"/>
+        </svg>
 
-        {/* Mesh gradient overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(251,207,232,0.1),transparent_50%)]" />
+        {/* Bottom-left botanical — drifting opposite phase */}
+        <svg className="absolute -bottom-6 -left-6 w-56 h-56 md:w-72 md:h-72 text-pink-200/70 leaf-float-b" viewBox="0 0 200 200" fill="currentColor">
+          <path d="M0 200 C25 162 68 115 155 75 C165 92 140 112 110 132 C68 158 28 182 0 200Z"/>
+          <path d="M0 175 C30 145 78 100 168 65 C176 82 152 100 122 118 C82 142 40 170 0 175Z" opacity="0.7"/>
+          <path d="M0 200 C40 165 92 112 178 62 C185 80 162 98 132 118 C92 142 45 175 0 200Z" opacity="0.5"/>
+        </svg>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gradient-to-br from-rose-100/50 via-pink-50/30 to-transparent blur-3xl" />
       </div>
 
-      <style>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.5; }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 8s ease-in-out infinite;
-        }
-
-        @keyframes fade-in-down {
-          0% {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-down {
-          animation: fade-in-down 0.6s ease-out;
-        }
-
-        @keyframes fade-in-up {
-          0% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out;
-        }
-      `}</style>
-
       <div className="relative z-10 max-w-5xl mx-auto">
+
         {/* Scarcity badge */}
-        <div className="flex justify-center mb-6 animate-fade-in-down">
+        <div className="flex justify-center mb-5">
           <div className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 hover:shadow-xl hover:shadow-rose-500/20 hover:border-rose-300/80 transition-all duration-300">
             <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse shadow-sm shadow-rose-500" />
             <span className="text-sm font-semibold text-rose-700 group-hover:text-rose-800 transition-colors">
-              Only 3 February Setup Slots Left
+              Only 3 Setup Slots Left This Month
             </span>
           </div>
         </div>
 
-        {/* Value prop - aspirational, premium */}
-        <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.04em] leading-[0.9] mb-6 md:mb-8 animate-fade-in-up px-2">
-          <span className="block text-slate-900 drop-shadow-sm">Every Call.</span>
-          <span className="block text-slate-900 drop-shadow-sm">Every Client.</span>
-          <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
-            Captured.
+        {/* Headline */}
+        <h1 className="medspa-serif text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.02em] leading-tight mb-6 px-2">
+          <span className="block text-slate-900">STOP GIVING AWAY</span>
+          <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+            $15,000/MONTH
           </span>
+          <span className="block text-slate-900">TO VOICEMAIL.</span>
         </h1>
 
-        {/* Clean, professional value prop */}
-        <p className="text-center text-lg md:text-xl text-slate-700 max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed font-medium tracking-[-0.01em] px-2">
-          AI voice agent that answers every call, books every consultation,
-          and brings every client back—
-          <span className="block mt-2 md:mt-3 text-slate-900 font-bold text-xl md:text-2xl">24/7. Automatically. Perfectly.</span>
+        {/* Stars */}
+        <div className="flex justify-center items-center gap-3 mb-5">
+          <div className="flex items-center gap-0.5">
+            {[0,1,2,3,4].map(i => (
+              <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+          <span className="text-slate-500 text-sm font-semibold">4.9/5 — 80+ med spas nationwide</span>
+        </div>
+
+        {/* Sub-copy */}
+        <p className="text-center text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-7 leading-relaxed font-medium px-2">
+          Identify the <span className="text-slate-900 font-bold">97% of visitors</span> who leave your site without booking. Our AI unmasks their data, triggers a voice call in 30 seconds, and fills your calendar while you sleep.
         </p>
 
-        {/* Social proof - early trust signal */}
-        <div className="max-w-2xl mx-auto mb-8 md:mb-10 p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-2xl shadow-slate-900/5 hover:shadow-3xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-1">
+        {/* Social proof card */}
+        <div className="max-w-2xl mx-auto mb-8 md:mb-10 p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/90 backdrop-blur-md border border-rose-200/70 shadow-xl shadow-rose-200/30 hover:shadow-2xl hover:shadow-rose-300/30 transition-all duration-500 hover:-translate-y-1">
           <p className="text-slate-700 italic mb-4 md:mb-6 leading-relaxed text-base md:text-lg">
-            "We went from missing 30% of after-hours calls to ZERO. Botox rebookings jumped 65% in 90 days.
-            This paid for itself in week one."
+            "We went from missing 30% of after-hours calls to ZERO. Botox rebookings jumped 65% in 90 days. This paid for itself in week one."
           </p>
           <div className="flex items-center gap-4">
             <img
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&q=80"
               alt="Manhattan Building"
-              className="w-14 h-14 rounded-xl object-cover ring-2 ring-slate-200/60 shadow-md transition-transform duration-300 hover:scale-105"
+              className="w-14 h-14 rounded-xl object-cover ring-2 ring-slate-200/60 shadow-md"
             />
             <div>
               <p className="font-bold text-slate-900 text-base">Med Spa Owner</p>
@@ -116,44 +96,44 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           </div>
         </div>
 
-        {/* Single clear CTA */}
-        <div className="flex flex-col items-center gap-3 mb-10 md:mb-12">
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 md:mb-12">
           <button
             type="button"
             onClick={onBookDemo}
-            className="group relative px-6 py-4 md:px-10 md:py-5 bg-slate-900 text-white rounded-full font-bold text-base md:text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-900/30 hover:shadow-3xl hover:shadow-slate-900/40 hover:scale-[1.03] active:scale-[0.98] overflow-hidden w-full sm:w-auto max-w-md"
+            className="group relative px-8 py-4 md:px-10 md:py-5 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white rounded-full font-bold text-base md:text-lg hover:from-rose-600 hover:via-pink-600 hover:to-rose-700 transition-all duration-300 shadow-2xl shadow-rose-500/40 hover:shadow-rose-500/50 hover:scale-[1.03] active:scale-[0.98] overflow-hidden w-full sm:w-auto max-w-sm"
           >
-            {/* Shimmer effect on hover */}
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-            <span className="relative z-10 flex items-center gap-2">
-              See Your Lost Revenue (Free Calculator)
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              [ DEPLOY RECOVERY ENGINE ]
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
           </button>
-          <p className="text-sm text-slate-600 font-medium flex items-center gap-2">
-            <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            No credit card • 2-minute setup • See results in 48 hours
-          </p>
+
+          <button
+            type="button"
+            onClick={onCalculateROI}
+            className="px-8 py-4 rounded-full font-bold text-base text-slate-700 border border-rose-200/60 hover:border-rose-300 hover:bg-white/60 bg-white/40 backdrop-blur-sm transition-all duration-300 w-full sm:w-auto max-w-sm"
+          >
+            See My Revenue Leak (Free Audit)
+          </button>
         </div>
 
-        {/* Clean stats - premium presentation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto pt-8 md:pt-10 border-t border-slate-200/60">
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto pt-8 md:pt-10 border-t border-rose-200/50">
           {[
             { value: '24/7', label: 'Always Available' },
             { value: '98%', label: 'Capture Rate' },
             { value: '$27k', label: 'Avg Monthly Lift' },
             { value: '<1s', label: 'Response Time' },
           ].map((stat, i) => (
-            <div key={i} className="text-center group p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/60 hover:backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div key={i} className="text-center group p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/70 transition-all duration-300 hover:shadow-lg hover:shadow-rose-200/50">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 bg-clip-text text-transparent mb-1 md:mb-2">
                 {stat.value}
               </div>
-              <div className="text-xs md:text-sm font-semibold text-slate-600 uppercase tracking-wide">
+              <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wide">
                 {stat.label}
               </div>
             </div>

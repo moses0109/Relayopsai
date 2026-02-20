@@ -5,15 +5,36 @@ import Consultation from './components/Consultation';
 import MedSpaHero from './components/medspa/MedSpaHero';
 import MedSpaPainPoints from './components/medspa/MedSpaPainPoints';
 import MedSpaFeatures from './components/medspa/MedSpaFeatures';
-import MedSpaPricing from './components/medspa/MedSpaPricing';
 import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
 import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
 import MedSpaIncomingCall from './components/medspa/MedSpaIncomingCall';
+import MedSpaGodModeLogger from './components/medspa/MedSpaGodModeLogger';
+import MedSpaDashboard from './components/medspa/MedSpaDashboard';
+import MedSpaGhostCrawler from './components/medspa/MedSpaGhostCrawler';
+import MedSpaVisitorTicker from './components/medspa/MedSpaVisitorTicker';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA PAGE — Conversion Psychology Optimized Flow             */
+/*  MED SPA PAGE — Luxury Cream + Rose Gold                            */
 /* ------------------------------------------------------------------ */
+
+const CREAM = '#fdf8f5';
+const BLUSH = '#fce7f3';
+
+const WaveDown = ({ from, to }: { from: string; to: string }) => (
+  <div className="overflow-hidden -mb-px" style={{ background: from }}>
+    <svg
+      viewBox="0 0 1440 90"
+      preserveAspectRatio="none"
+      style={{ display: 'block', width: '100%', height: '90px' }}
+    >
+      <path
+        fill={to}
+        d="M0,45 C180,90 360,10 540,45 C720,80 900,5 1080,45 C1260,82 1380,18 1440,45 L1440,90 L0,90 Z"
+      />
+    </svg>
+  </div>
+);
 
 const MedSpaPage: React.FC = () => {
   const [leadSource, setLeadSource] = useState('medspa-general');
@@ -31,77 +52,113 @@ const MedSpaPage: React.FC = () => {
     scrollTo('calculator');
   };
 
-  const handleBookSetup = (tier: string) => {
-    setLeadSource(`medspa-pricing-${tier}`);
-    scrollTo('consultation');
-  };
-
   return (
-    <div className="min-h-screen text-slate-900 bg-white flex flex-col relative">
+    <div className="min-h-screen text-slate-900 flex flex-col overflow-x-hidden" style={{ background: CREAM }}>
       <Navbar />
 
-      {/* CONVERSION FLOW:
-          1. Hero - Attention + Loss Aversion ($18k/month slipping away)
-          2. Pain Points - Agitate the problem
-          3. ROI Calculator - Show them their specific loss
-          4. Social Proof - Build trust with testimonials
-          5. Features - Show how we solve it
-          6. Pricing - Make the offer
-          7. Final CTA - Last chance conversion
-          8. Consultation Form - Capture the lead
-      */}
+      {/* 1. Hero */}
+      <MedSpaHero onBookDemo={handleBookDemo} onCalculateROI={handleCalculateROI} />
 
-      <MedSpaHero
-        onBookDemo={handleBookDemo}
-        onCalculateROI={handleCalculateROI}
-      />
+      {/* Live Visitor Ticker */}
+      <MedSpaVisitorTicker />
 
+      {/* Wave cream → blush */}
+      <WaveDown from={CREAM} to={BLUSH} />
+
+      {/* 2. Pain Points */}
       <MedSpaPainPoints />
 
+      {/* Wave blush → cream */}
+      <WaveDown from={BLUSH} to={CREAM} />
+
+      {/* 3. Ghost Crawler */}
+      <MedSpaGhostCrawler />
+
+      {/* Wave cream → blush */}
+      <WaveDown from={CREAM} to={BLUSH} />
+
+      {/* 4. Phone Demo */}
       <MedSpaPhoneDemo />
 
+      {/* Wave blush → cream */}
+      <WaveDown from={BLUSH} to={CREAM} />
+
+      {/* 5. ROI Calculator */}
       <MedSpaROI onBookDemo={handleBookDemo} />
 
+      {/* Wave cream → blush */}
+      <WaveDown from={CREAM} to={BLUSH} />
+
+      {/* 6. Dashboard */}
+      <MedSpaDashboard />
+
+      {/* Wave blush → cream */}
+      <WaveDown from={BLUSH} to={CREAM} />
+
+      {/* 7. Testimonials */}
       <MedSpaTestimonials />
 
+      {/* Wave cream → blush */}
+      <WaveDown from={CREAM} to={BLUSH} />
+
+      {/* 8. Features */}
       <MedSpaFeatures />
 
-      <MedSpaPricing onBookSetup={() => handleBookSetup('premium')} />
+      {/* Wave blush → cream */}
+      <WaveDown from={BLUSH} to={CREAM} />
 
-      {/* Final CTA Section */}
-      <section className="py-24 px-6 md:px-8 text-center bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden">
-        {/* Background orbs */}
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-rose-100/30 to-transparent blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-purple-100/30 to-transparent blur-3xl pointer-events-none" />
+      {/* 9. Final CTA */}
+      <section
+        className="py-20 md:py-32 px-6 md:px-8 text-center relative overflow-hidden"
+        style={{ background: CREAM }}
+      >
+        {/* Botanical corners */}
+        <svg
+          className="absolute top-0 right-0 w-52 h-52 text-rose-300/20 pointer-events-none leaf-float-a"
+          viewBox="0 0 200 200" fill="currentColor" aria-hidden="true"
+        >
+          <path d="M200 0 C155 25 105 70 65 160 C85 172 105 145 120 115 C148 68 175 28 200 0Z"/>
+          <path d="M200 25 C168 48 125 90 95 175 C112 184 128 158 140 130 C162 88 183 52 200 25Z" opacity="0.6"/>
+        </svg>
+        <svg
+          className="absolute bottom-0 left-0 w-40 h-40 text-pink-300/20 pointer-events-none leaf-float-b"
+          viewBox="0 0 200 200" fill="currentColor" aria-hidden="true"
+        >
+          <path d="M0 200 C25 162 68 115 155 75 C165 92 140 112 110 132 C68 158 28 182 0 200Z"/>
+          <path d="M0 175 C30 145 78 100 168 65 C176 82 152 100 122 118 C82 142 40 170 0 175Z" opacity="0.7"/>
+        </svg>
 
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-5xl md:text-7xl font-black tracking-[-0.03em] leading-tight mb-8">
-            <span className="text-slate-900 drop-shadow-sm">Ready to Stop</span><br />
-            <span className="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
-              Losing Money?
-            </span>
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 border border-rose-200 mb-8">
+            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-rose-700">Only 3 Setup Slots Left This Month</span>
+          </div>
+
+          <h2 className="medspa-serif text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
+            <span className="text-slate-900">See How We Can</span><br />
+            <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              Build Your Business
+            </span><br />
+            <span className="text-slate-900">on AI.</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 font-medium leading-relaxed tracking-[-0.01em]">
-            127 missed calls per month = $228,600 lost annually.
-            <span className="block mt-3 text-slate-900 font-bold text-xl md:text-2xl">See your exact numbers below.</span>
+          <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
+            Book a free 15-minute call. We'll show you exactly how much revenue your med spa is losing — and how to recover it starting this week.
           </p>
 
           <button
             type="button"
             onClick={handleBookDemo}
-            className="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-900/30 hover:shadow-3xl hover:shadow-slate-900/40 hover:scale-[1.03] active:scale-[0.98] mb-8 overflow-hidden"
+            className="group relative px-10 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-lg hover:from-rose-600 hover:to-pink-700 transition-all duration-300 shadow-2xl shadow-rose-500/30 hover:shadow-rose-500/50 hover:scale-[1.03] active:scale-[0.98] mb-10 overflow-hidden"
           >
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <span className="relative z-10">Calculate My Lost Revenue (Free)</span>
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <span className="relative z-10">Get My Free Revenue Audit →</span>
           </button>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-600">
-            {['HIPAA-Compliant', '5-Min Setup', 'No Contract', '30-Day Guarantee'].map((badge, i) => (
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-500">
+            {['HIPAA-Compliant', 'No Contract', 'Setup in 5 Min', '14-Day ROI Guarantee'].map((badge, i) => (
               <div key={i} className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <svg className="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>{badge}</span>
@@ -112,10 +169,8 @@ const MedSpaPage: React.FC = () => {
       </section>
 
       <Consultation leadSource={leadSource} />
-
-      {/* Pain Point Animation - Shows missed calls */}
       <MedSpaIncomingCall />
-
+      <MedSpaGodModeLogger />
       <Analytics />
     </div>
   );

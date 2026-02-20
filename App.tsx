@@ -28,7 +28,7 @@ const HeroLogo = () => {
     const rect = ref.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: y * -15, y: x * 15 });
+    setTilt({ x: y * -10, y: x * 10 });
   }, []);
 
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
@@ -43,128 +43,60 @@ const HeroLogo = () => {
   return (
     <div className="relative mb-6 md:mb-8">
       <style>{`
-        @keyframes scanRotate {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-        @keyframes scanRotateReverse {
-          from { transform: rotate(360deg); }
-          to   { transform: rotate(0deg); }
-        }
-        @keyframes floatUp {
-          0%   { opacity: 0; transform: translateY(0px) scale(1); }
-          15%  { opacity: 1; }
-          100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
-        }
-        @keyframes spark {
-          0%   { opacity: 0; transform: scale(0); }
-          30%  { opacity: 1; transform: scale(1.5); }
-          100% { opacity: 0; transform: scale(0); }
-        }
         @keyframes corePulse {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50%       { opacity: 0.55; transform: scale(1.08); }
-        }
-        @keyframes outerPulse {
-          0%, 100% { opacity: 0.08; transform: scale(1); }
-          50%       { opacity: 0.22; transform: scale(1.05); }
+          0%, 100% { opacity: 0.15; transform: scale(1); }
+          50%       { opacity: 0.30; transform: scale(1.04); }
         }
         @keyframes heroRipple {
-          from { transform: scale(1); opacity: 0.5; }
-          to   { transform: scale(1.8); opacity: 0; }
-        }
-        @keyframes ringPing {
-          0%   { transform: scale(1); opacity: 0.4; }
-          100% { transform: scale(1.4); opacity: 0; }
+          from { transform: scale(1); opacity: 0.4; }
+          to   { transform: scale(1.7); opacity: 0; }
         }
       `}</style>
 
-      {/* Deep outer ambient layers */}
-      <div className="absolute inset-[-80px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, rgba(59,130,246,0.06) 50%, transparent 70%)', animation: 'outerPulse 4s ease-in-out infinite' }} />
-      <div className="absolute inset-[-40px] rounded-full pointer-events-none bg-cyan-400/8 blur-2xl animate-[pulse_3s_ease-in-out_infinite_0.5s]" />
+      {/* Subtle ambient glow behind logo */}
+      <div className="absolute inset-[-30px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)' }} />
 
-      {/* Periodic ping rings */}
-      <div className="absolute inset-[-18px] md:inset-[-22px] rounded-full border border-cyan-400/20 pointer-events-none animate-[ringPing_3s_ease-out_infinite]" />
-      <div className="absolute inset-[-18px] md:inset-[-22px] rounded-full border border-cyan-400/15 pointer-events-none animate-[ringPing_3s_ease-out_infinite_1.5s]" />
-
-      {/* Animated rotating rings */}
+      {/* Two slow rotating orbit rings */}
       <div className="absolute inset-[-18px] md:inset-[-22px] pointer-events-none">
-        <div className="absolute inset-0 border border-cyan-400/35 rounded-full animate-[spin_18s_linear_infinite]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-300 rounded-full blur-[1px] shadow-[0_0_12px_4px_rgba(6,182,212,0.9)]" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+        <div className="absolute inset-0 border border-cyan-400/20 rounded-full animate-[spin_20s_linear_infinite]">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_3px_rgba(6,182,212,0.7)]" />
         </div>
-        <div className="absolute inset-4 border border-blue-400/25 rounded-full animate-[spin_11s_linear_infinite_reverse]">
-          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-blue-300 rounded-full blur-[1px] shadow-[0_0_10px_rgba(147,197,253,1)]" />
-          <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full opacity-80" />
+        <div className="absolute inset-4 border border-blue-400/15 rounded-full animate-[spin_13s_linear_infinite_reverse]">
+          <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full shadow-[0_0_6px_rgba(147,197,253,0.8)]" />
         </div>
       </div>
 
-      {/* Logo container with 3D effects */}
+      {/* Logo container with 3D tilt */}
       <div
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleInteraction}
         onTouchStart={handleInteraction}
-        className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] mx-auto cursor-pointer group"
+        className="relative w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[480px] lg:h-[480px] mx-auto cursor-pointer group"
         style={{ perspective: '1000px' }}
       >
-        {/* Sparks at circuit endpoints — OUTSIDE image, z-20 */}
-        {[
-          { top: '8%',  left: '50%', delay: '0s',   dur: '1.4s', color: 'rgba(6,182,212,1)',   size: 10 },
-          { top: '28%', left: '88%', delay: '0.3s', dur: '1.6s', color: 'rgba(147,197,253,1)', size: 8  },
-          { top: '65%', left: '88%', delay: '0.7s', dur: '1.3s', color: 'rgba(6,182,212,1)',   size: 10 },
-          { top: '88%', left: '55%', delay: '1.0s', dur: '1.7s', color: 'rgba(99,179,237,1)',  size: 8  },
-          { top: '88%', left: '42%', delay: '0.5s', dur: '1.5s', color: 'rgba(6,182,212,1)',   size: 9  },
-          { top: '65%', left: '12%', delay: '0.9s', dur: '1.4s', color: 'rgba(147,197,253,1)', size: 8  },
-          { top: '28%', left: '12%', delay: '0.2s', dur: '1.8s', color: 'rgba(6,182,212,1)',   size: 10 },
-          { top: '50%', left: '5%',  delay: '1.2s', dur: '1.6s', color: 'rgba(99,179,237,1)',  size: 7  },
-          { top: '50%', left: '94%', delay: '0.6s', dur: '1.5s', color: 'rgba(6,182,212,1)',   size: 7  },
-        ].map((s, i) => (
-          <div key={i} className="absolute pointer-events-none z-20" style={{ top: s.top, left: s.left, width: `${s.size}px`, height: `${s.size}px`, marginLeft: `-${s.size/2}px`, marginTop: `-${s.size/2}px`, borderRadius: '50%', background: s.color, boxShadow: `0 0 14px 5px ${s.color}`, animation: `spark ${s.dur} ease-in-out infinite ${s.delay}` }} />
-        ))}
-
-        {/* Floating signal particles */}
-        {[
-          { left: '20%', bot: '35%', delay: '0s',   dur: '1.6s' },
-          { left: '33%', bot: '40%', delay: '0.25s',dur: '2.0s' },
-          { left: '46%', bot: '38%', delay: '0.6s', dur: '1.5s' },
-          { left: '58%', bot: '34%', delay: '0.15s',dur: '1.8s' },
-          { left: '71%', bot: '38%', delay: '0.8s', dur: '1.7s' },
-          { left: '28%', bot: '54%', delay: '1.0s', dur: '2.1s' },
-          { left: '52%', bot: '57%', delay: '0.4s', dur: '1.6s' },
-          { left: '67%', bot: '50%', delay: '1.3s', dur: '1.9s' },
-          { left: '40%', bot: '62%', delay: '0.7s', dur: '2.2s' },
-          { left: '60%', bot: '62%', delay: '1.5s', dur: '1.8s' },
-        ].map((p, i) => (
-          <div key={i} className="absolute pointer-events-none z-20" style={{ left: p.left, bottom: p.bot, width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(6,182,212,1)', boxShadow: '0 0 8px 3px rgba(6,182,212,0.95)', animation: `floatUp ${p.dur} ease-out infinite ${p.delay}` }} />
-        ))}
-
         <div
           className="relative w-full h-full flex items-center justify-center"
           style={{
-            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.95 : 1})`,
-            transition: isPressed ? 'transform 0.1s ease' : 'transform 0.2s ease-out',
+            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isPressed ? 0.96 : 1})`,
+            transition: isPressed ? 'transform 0.1s ease' : 'transform 0.25s ease-out',
           }}
         >
           <img
             src="/logo-hero.png"
             alt="RelayOpsAI"
-            className="w-full h-full object-contain drop-shadow-[0_0_100px_rgba(6,182,212,0.95)] group-hover:drop-shadow-[0_0_150px_rgba(6,182,212,1)] transition-all duration-500"
+            className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(6,182,212,0.55)] group-hover:drop-shadow-[0_0_80px_rgba(6,182,212,0.7)] transition-all duration-700"
             draggable={false}
-            style={{ filter: 'brightness(1.25) saturate(1.5) contrast(1.08)' }}
+            style={{ filter: 'brightness(1.1) saturate(1.2)' }}
           />
 
-          {/* Scan sweeps ON TOP of image */}
-          <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: '4px', background: 'conic-gradient(from 0deg, transparent 270deg, rgba(6,182,212,0.3) 330deg, rgba(6,182,212,0.1) 360deg)', animation: 'scanRotate 2s linear infinite', mixBlendMode: 'screen' }} />
-          <div className="absolute inset-[5%] pointer-events-none" style={{ borderRadius: '4px', background: 'conic-gradient(from 90deg, transparent 270deg, rgba(99,179,237,0.25) 330deg, transparent 360deg)', animation: 'scanRotateReverse 3s linear infinite', mixBlendMode: 'screen' }} />
-
-          {/* Core pulse ON TOP of image */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 48%, rgba(6,182,212,0.5) 0%, rgba(59,130,246,0.25) 30%, transparent 60%)', animation: 'corePulse 1.6s ease-in-out infinite', mixBlendMode: 'screen' }} />
+          {/* Subtle center pulse */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 48%, rgba(6,182,212,0.18) 0%, transparent 55%)', animation: 'corePulse 3s ease-in-out infinite' }} />
 
           {ripples.map((id) => (
             <div key={id} className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-0 bg-cyan-400/40 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
+              <div className="absolute inset-0 bg-cyan-400/25 rounded-full animate-[heroRipple_0.8s_ease-out_forwards]" />
             </div>
           ))}
         </div>
@@ -178,8 +110,6 @@ const HeroLogo = () => {
 /* ------------------------------------------------------------------ */
 
 const App: React.FC = () => {
-  const [addonsOpen, setAddonsOpen] = useState(false);
-  const [openTier, setOpenTier] = useState<string | null>(null);
   const [leadSource, setLeadSource] = useState('general');
 
   const scrollTo = (id: string) => {
@@ -192,59 +122,119 @@ const App: React.FC = () => {
       <Navbar />
 
       {/* ── 1) HERO ── */}
-      <header id="top" className="py-8 md:py-12 lg:py-16 px-4 md:px-6 flex flex-col items-center text-center relative overflow-x-hidden">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-cyan-600/8 via-blue-600/5 to-purple-600/3 blur-[80px] rounded-full pointer-events-none" />
-
-        <HeroLogo />
-
-        <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-sm">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          <span className="text-cyan-400 text-xs font-black uppercase tracking-wide break-words">
-            AI Receptionist — Live 24/7
-          </span>
+      <header id="top" className="relative flex flex-col justify-center overflow-x-hidden">
+        {/* Background glows */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-5%] right-[-5%] w-[700px] h-[700px] rounded-full blur-[130px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full blur-[100px]" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)' }} />
         </div>
 
-        <h1 className="clamp-hero font-black mb-4 md:mb-6 tracking-tighter italic uppercase relative z-10 px-2">
-          Never Miss Another <br />
-          <span className="gradient-relay">Customer Call</span>
-        </h1>
+        {/* Split content */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 md:px-8 pt-6 pb-8 md:pt-10 md:pb-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
 
-        <p className="text-slate-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 md:mb-8 font-medium leading-relaxed relative z-10 px-4">
-          RelayOpsAI answers every call, books every appointment, and captures every dollar — so you make more money starting today.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 relative z-10 px-2">
-          {[
-            { val: '24/7', label: 'Call Coverage' },
-            { val: '70+',  label: 'AI Voices' },
-            { val: '16',   label: 'Languages' },
-            { val: '<1s',  label: 'Avg Response' },
-          ].map((s, i) => (
-            <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-full bg-white/[0.04] border border-white/[0.06] backdrop-blur-sm">
-              <span className="text-white font-black text-sm whitespace-nowrap">{s.val}</span>
-              <span className="text-slate-500 text-xs font-bold uppercase tracking-wide break-words">{s.label}</span>
+          {/* LEFT: Text */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Live badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-6 rounded-full bg-emerald-500/[0.07] border border-emerald-500/20 backdrop-blur-sm">
+              <div className="relative flex-shrink-0">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <div className="absolute inset-0 w-2 h-2 bg-emerald-400 rounded-full animate-ping opacity-60" />
+              </div>
+              <span className="text-emerald-400 text-xs font-black uppercase tracking-widest">AI Receptionist — Live 24/7</span>
             </div>
-          ))}
+
+            {/* Headline */}
+            <h1 className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[82px] font-black tracking-[-0.03em] leading-[0.9] mb-5 md:mb-6">
+              <span className="block text-white">Your Phone.</span>
+              <span className="block text-white">On Autopilot.</span>
+              <span className="block bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">Starting Today.</span>
+            </h1>
+
+            {/* Sub-copy */}
+            <p className="text-slate-400 text-base md:text-lg lg:text-xl max-w-lg mb-7 leading-relaxed font-medium">
+              AI that answers every call, books every job, and follows up automatically — while you focus on the work that pays.
+            </p>
+
+            {/* Star rating trust signal */}
+            <div className="flex items-center gap-3 mb-7">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <span className="text-slate-400 text-xs font-semibold">4.9/5 — 120+ businesses live</span>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-4 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={() => scrollTo('demo')}
+                className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-black uppercase tracking-wide text-sm hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] transition-all duration-300 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 overflow-hidden"
+              >
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                <svg className="w-4 h-4 relative z-10 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <span className="relative z-10">Hear the AI in Action</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => { setLeadSource('hero'); scrollTo('consultation'); }}
+                className="px-8 py-4 border border-white/[0.12] bg-white/[0.03] rounded-full font-black uppercase tracking-wide text-sm hover:bg-white/[0.07] hover:border-white/25 transition-all duration-300 backdrop-blur-sm text-center"
+              >
+                Book a Demo
+              </button>
+            </div>
+
+            {/* Friction remover */}
+            <p className="text-slate-600 text-xs font-semibold mb-8 flex items-center justify-center lg:justify-start gap-2">
+              <svg className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+              No credit card · Setup in 5 min · Cancel anytime
+            </p>
+
+            {/* Stats row */}
+            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 md:gap-10">
+              {[
+                { val: '98%',  label: 'Answer Rate' },
+                { val: '$27k', label: 'Monthly Lift' },
+                { val: '<1s',  label: 'Response Time' },
+              ].map((s, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <div className="w-px h-8 bg-white/[0.08]" />}
+                  <div className="text-center lg:text-left">
+                    <div className="text-xl md:text-2xl font-black text-white leading-none">{s.val}</div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-wide font-bold mt-1">{s.label}</div>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT: Logo + floating call card — desktop only */}
+          <div className="hidden lg:flex relative items-center justify-center lg:justify-end">
+            <HeroLogo />
+
+            {/* Floating call captured card */}
+            <div className="hidden sm:block absolute -bottom-2 lg:bottom-6 -left-2 lg:-left-10 bg-[#0d1f35]/95 backdrop-blur-xl border border-white/[0.07] rounded-2xl p-4 shadow-2xl w-52 pointer-events-none z-30">
+              <div className="flex items-center gap-2.5 mb-2.5">
+                <div className="w-7 h-7 bg-emerald-500/15 rounded-full flex items-center justify-center flex-shrink-0 border border-emerald-500/20">
+                  <svg className="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-white text-[11px] font-bold leading-tight">Call Captured</div>
+                  <div className="text-slate-500 text-[10px]">2 min ago · HVAC Co.</div>
+                </div>
+              </div>
+              <p className="text-slate-300 text-[11px] italic leading-snug">"Booked AC repair for Thursday at 2pm"</p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full max-w-xl justify-center mb-8 md:mb-10 relative z-20 px-4">
-          <button
-            onClick={() => scrollTo('demo')}
-            className="group px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-white to-gray-100 text-black rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 border border-white/20"
-          >
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            Hear the AI in Action
-          </button>
-          <button
-            onClick={() => { setLeadSource('hero'); scrollTo('consultation'); }}
-            className="px-8 md:px-10 py-4 md:py-5 border-2 border-cyan-500/30 bg-cyan-500/5 rounded-full font-black uppercase tracking-wide text-xs md:text-sm hover:bg-cyan-500/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] transition-all duration-300 backdrop-blur-sm"
-          >
-            Book a Demo
-          </button>
-        </div>
-
-        {/* Features grid replaces Testimonials in hero */}
-        <div className="w-full max-w-7xl mx-auto border-t border-white/[0.04] pt-8">
+        {/* Features grid — full width at bottom */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 border-t border-white/[0.04] pt-8 pb-8 md:pb-12">
           <Features />
         </div>
       </header>
@@ -349,350 +339,62 @@ const App: React.FC = () => {
 
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* ── 10) PRICING ── */}
-      <section id="pricing" className="py-20 px-4 md:px-6 scroll-mt-32 relative">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
-              Investment.
-            </h2>
-            <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed fade-in-up break-words px-4">
-              One recovered job pays for the entire month. Done-for-you setup, dedicated support, no long-term contracts.
-            </p>
+      {/* ── 10) FINAL CTA ── */}
+      <section className="py-20 md:py-32 px-6 md:px-8 text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px]" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)' }} />
+        </div>
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/[0.07] border border-emerald-500/20 mb-8">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-emerald-400">Only 3 Setup Slots Left This Month</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
+            <span className="text-white">See How We Can</span><br />
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              Build Your Business
+            </span><br />
+            <span className="text-white">on AI.</span>
+          </h2>
 
-            {/* ── STARTER ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-white/[0.03] border border-white/[0.06] hover:border-slate-400/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-sm">
-              <div className="h-1 bg-gradient-to-r from-slate-400 to-slate-500" />
-
-              <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-slate-300 mb-1">Starter</h3>
-                <p className="text-xs font-semibold text-slate-600 mb-6">For Solo & Small Businesses</p>
-
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xs font-bold text-slate-500 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-white">349</span>
-                  <span className="text-sm font-bold text-slate-500 ml-1">/mo</span>
-                </div>
-
-                <p className="text-xs font-semibold text-slate-500 mb-1">Best for under 300 calls/mo</p>
-                <p className="text-xs font-bold text-amber-400 mb-5">$497 one-time setup fee</p>
-
-                {/* Minutes pill */}
-                <div className="mb-8 relative">
-                  <button
-                    onClick={() => setOpenTier(openTier === 'starter' ? null : 'starter')}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-slate-400 hover:border-slate-300 transition-all duration-300"
-                  >
-                    <svg className="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-                    <span className="text-sm font-bold text-white flex-grow text-left">300 minutes / month</span>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide mr-1">Included</span>
-                    <svg className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${openTier === 'starter' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'starter' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/[0.04]">
-                        <span className="text-xs font-semibold text-white flex-grow">300 minutes / month</span>
-                        <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-sky-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+200 minutes</span>
-                        <span className="text-xs font-bold text-sky-400">+$59/mo</span>
-                      </button>
-                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-sky-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+500 minutes</span>
-                        <span className="text-xs font-bold text-sky-400">+$129/mo</span>
-                      </button>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
-                        <div>
-                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.40/min overage</span>
-                        </div>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
-                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 flex-grow mb-8">
-                  {[
-                    'Done-for-You Setup',
-                    'Custom Knowledge Base',
-                    'Custom System Prompt',
-                    '1 Custom AI Receptionist',
-                    '1 Dedicated Phone Number',
-                    '70+ Studio-Grade AI Voices',
-                    '24/7 Call Answering',
-                    'Appointment Booking + Calendar Sync',
-                    'SMS Confirmations',
-                    'Missed Call Text-Back',
-                    'Lead Capture & Client Profiles',
-                    'Call Transcripts & Summaries',
-                    'Voicemail Transcription',
-                    'Email Notifications',
-                    'Basic Analytics Dashboard',
-                    'Monthly Support Call',
-                  ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => { setLeadSource('pricing-starter'); scrollTo('consultation'); }}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-white/10 border border-white/10 hover:bg-white/20 hover:shadow-lg"
-                >
-                  Book Your Setup Call
-                </button>
-              </div>
-            </div>
-
-            {/* ── GROWTH — featured card ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 lg:scale-[1.04] z-10 bg-gradient-to-br from-cyan-500/10 via-blue-600/8 to-cyan-400/10 border border-cyan-500/40 shadow-[0_0_80px_rgba(6,182,212,0.15)] hover:shadow-[0_0_100px_rgba(6,182,212,0.25)] backdrop-blur-sm">
-              <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-500" />
-
-              <div className="absolute top-5 right-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide shadow-xl">
-                Most Popular
-              </div>
-
-              <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-cyan-400 mb-1">Growth</h3>
-                <p className="text-xs font-semibold text-cyan-400/50 mb-6">For Growing Teams</p>
-
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xs font-bold text-cyan-400/60 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">697</span>
-                  <span className="text-sm font-bold text-cyan-400/50 ml-1">/mo</span>
-                </div>
-
-                <p className="text-xs font-semibold text-cyan-400/60 mb-1">Best for 300–700 calls/mo</p>
-                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
-
-                {/* Minutes pill */}
-                <div className="mb-8 relative">
-                  <button
-                    onClick={() => setOpenTier(openTier === 'growth' ? null : 'growth')}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-cyan-400 hover:border-cyan-300 transition-all duration-300"
-                  >
-                    <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-                    <span className="text-sm font-bold text-white flex-grow text-left">700 minutes / month</span>
-                    <span className="text-[10px] font-bold text-cyan-400/50 uppercase tracking-wide mr-1">Included</span>
-                    <svg className={`w-4 h-4 text-cyan-400/50 transition-transform duration-300 ${openTier === 'growth' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'growth' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-cyan-500/10">
-                        <span className="text-xs font-semibold text-white flex-grow">700 minutes / month</span>
-                        <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+300 minutes</span>
-                        <span className="text-xs font-bold text-cyan-400">+$79/mo</span>
-                      </button>
-                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+700 minutes</span>
-                        <span className="text-xs font-bold text-cyan-400">+$169/mo</span>
-                      </button>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
-                        <div>
-                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.35/min overage</span>
-                        </div>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
-                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 flex-grow mb-8">
-                  {[
-                    'Done-for-You Setup',
-                    'Custom Knowledge Base',
-                    'Custom System Prompt',
-                    '3 Custom AI Receptionists',
-                    '3 Dedicated Phone Numbers',
-                    'Everything in Starter, plus:',
-                    'CRM Integration (Salesforce, HubSpot, etc.)',
-                    'Call Transfer to Live Staff',
-                    'Returning Caller Recognition',
-                    'Automated Review Requests (Google/Yelp)',
-                    '16-Language Support (Auto-Detect)',
-                    'Industry-Specific Call Scripts',
-                    'Advanced Analytics & Reporting',
-                    'Automated Follow-Up Sequences',
-                    'Dedicated Account Manager',
-                    'Bi-Weekly Support Calls',
-                  ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-300 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => { setLeadSource('pricing-growth'); scrollTo('consultation'); }}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 shadow-lg shadow-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]"
-                >
-                  Book Your Setup Call
-                </button>
-              </div>
-            </div>
-
-            {/* ── ELITE ── */}
-            <div className="stagger-item group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 bg-gradient-to-br from-purple-500/8 via-purple-900/5 to-amber-500/5 border border-purple-500/30 hover:border-purple-400/50 hover:shadow-[0_0_60px_rgba(168,85,247,0.15)] backdrop-blur-sm">
-              <div className="h-1 bg-gradient-to-r from-purple-500 to-amber-500" />
-
-              <div className="absolute top-5 right-5 bg-gradient-to-r from-purple-500 to-amber-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wide shadow-xl">
-                Premium
-              </div>
-
-              <div className="p-8 md:p-10 flex flex-col flex-grow">
-                <h3 className="text-lg font-extrabold uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400 mb-1">Elite</h3>
-                <p className="text-xs font-semibold text-purple-400/50 mb-6">High-Volume & Multi-Location</p>
-
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-xs font-bold text-purple-400/60 relative -top-4">$</span>
-                  <span className="text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-amber-400">1,297</span>
-                  <span className="text-sm font-bold text-purple-400/50 ml-1">/mo</span>
-                </div>
-
-                <p className="text-xs font-semibold text-purple-400/50 mb-1">Built for 700+ calls/mo</p>
-                <p className="text-xs font-bold mb-5"><span className="line-through text-slate-600">$497 Setup</span> <span className="text-emerald-400 ml-1">WAIVED</span></p>
-
-                {/* Minutes pill */}
-                <div className="mb-8 relative">
-                  <button
-                    onClick={() => setOpenTier(openTier === 'elite' ? null : 'elite')}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0d1117] border-l-2 border-purple-400 hover:border-purple-300 transition-all duration-300"
-                  >
-                    <svg className="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-                    <span className="text-sm font-bold text-white flex-grow text-left">1,500 minutes / month</span>
-                    <span className="text-[10px] font-bold text-purple-400/50 uppercase tracking-wide mr-1">Included</span>
-                    <svg className={`w-4 h-4 text-purple-400/50 transition-transform duration-300 ${openTier === 'elite' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-400 ease-in-out ${openTier === 'elite' ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                    <div className="bg-[#0d1117] rounded-xl border border-white/[0.06] p-3 space-y-1">
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-purple-500/10">
-                        <span className="text-xs font-semibold text-white flex-grow">1,500 minutes / month</span>
-                        <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-purple-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+500 minutes</span>
-                        <span className="text-xs font-bold text-purple-400">+$99/mo</span>
-                      </button>
-                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-purple-500/10 transition-colors cursor-pointer">
-                        <span className="text-xs font-semibold text-slate-300">+1,000 minutes</span>
-                        <span className="text-xs font-bold text-purple-400">+$179/mo</span>
-                      </button>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg">
-                        <div>
-                          <span className="text-xs font-semibold text-slate-400">Extra minutes</span>
-                          <span className="text-[10px] text-slate-600 ml-2">$0.30/min overage</span>
-                        </div>
-                      </div>
-                      <button onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }} className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
-                        Need More? Let's Talk <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 flex-grow mb-8">
-                  {[
-                    'Done-for-You Setup',
-                    'Custom Knowledge Base',
-                    'Custom System Prompt',
-                    'Unlimited Custom AI Receptionists',
-                    '5 Dedicated Phone Numbers',
-                    'Everything in Growth, plus:',
-                    'Custom Voice Cloning & Personality',
-                    'Custom API & Webhook Integrations',
-                    'Outbound AI Campaigns (Recall/Follow-up)',
-                    'No-Show Recovery Automation',
-                    'Multi-Location Routing',
-                    'HIPAA-Compliant Call Handling',
-                    'White-Glove Onboarding',
-                    'Weekly Performance Reviews',
-                    'Dedicated Slack/Teams Channel',
-                    '24/7 Priority Support',
-                  ].map((f, j) => (
-                    <li key={j} className="text-xs font-semibold text-slate-400 flex items-start gap-3">
-                      <svg className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => { setLeadSource('pricing-elite'); scrollTo('consultation'); }}
-                  className="w-full py-4 rounded-full font-extrabold uppercase tracking-wide text-xs text-white transition-all duration-300 hover:scale-[1.03] bg-gradient-to-r from-purple-500 to-amber-500 hover:from-purple-400 hover:to-amber-400 shadow-lg shadow-purple-500/20 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]"
-                >
-                  Book Your Setup Call
-                </button>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Add-ons accordion */}
-          <div className="mt-14 max-w-4xl mx-auto fade-in-up">
-            <button
-              onClick={() => setAddonsOpen(!addonsOpen)}
-              className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-500/30 hover:bg-white/[0.05] transition-all duration-300 group"
-            >
-              <span className="text-sm font-black uppercase tracking-wide text-white">Available Add-Ons</span>
-              <svg
-                className={`w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-all duration-300 ${addonsOpen ? 'rotate-180' : ''}`}
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-
-            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${addonsOpen ? 'max-h-[600px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  { name: 'Outbound Campaigns', price: '+$297/mo', desc: 'Recall, reactivation & lead nurture calling' },
-                  { name: 'Extra Phone Numbers', price: '+$25/mo each', desc: 'Dedicated numbers for departments or locations' },
-                  { name: 'Custom API Workflows', price: '+$197/mo', desc: 'Zapier, webhooks, custom system integrations' },
-                  { name: 'Review Booster', price: '+$97/mo', desc: 'Automated Google & Yelp review requests post-call' },
-                  { name: 'SMS Marketing Campaigns', price: '+$147/mo', desc: 'Promotional texts, recall reminders, announcements' },
-                  { name: 'White-Label Reseller', price: 'Custom', desc: 'Brand it as your own — full reseller dashboard' },
-                ].map((addon, i) => (
-                  <div key={i} className="flex items-start justify-between gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-300">
-                    <div>
-                      <p className="text-xs font-black text-white uppercase tracking-wide mb-1">{addon.name}</p>
-                      <p className="text-[10px] font-semibold text-slate-600 leading-relaxed">{addon.desc}</p>
-                    </div>
-                    <span className="text-xs font-black text-cyan-400 whitespace-nowrap mt-0.5">{addon.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <p className="mt-10 text-center text-slate-600 text-xs font-semibold break-words px-4">
-            Extra minutes billed at discounted tiered rates &middot; No hidden fees &middot; No contracts &middot; Cancel anytime
+          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
+            Book a free 15-minute call. We'll show you exactly how much revenue you're losing — and how to recover it starting this week.
           </p>
+
+          <button
+            type="button"
+            onClick={() => { setLeadSource('hero'); scrollTo('consultation'); }}
+            className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-bold text-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.03] active:scale-[0.98] mb-10 overflow-hidden"
+          >
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <span className="relative z-10">Get My Free Revenue Audit →</span>
+          </button>
+
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-500">
+            {['No Credit Card', 'No Contract', 'Setup in 5 Min', '14-Day ROI Guarantee'].map((badge, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{badge}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* ── 11) CONSULTATION ── */}
-      <Consultation leadSource={leadSource} />
-
-      {/* ── 12) FAQ (under Capture your Growth) ── */}
+      {/* ── 11) FAQ ── */}
       <FAQ />
+
+      <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      {/* ── 12) CONSULTATION ── */}
+      <Consultation leadSource={leadSource} />
 
       {/* ── 13) FLOATING CHAT WIDGET ── */}
       <ChatWidget />

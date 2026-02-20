@@ -42,17 +42,17 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
     if (emailSent) return;
     try {
       const emailData = {
-        to: 'elironebusiness@gmail.com',
-        subject: `New Demo Request - ${getLeadLabel()}`,
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        businessType: formData.businessType,
-        weeklyCallVolume: formData.volume,
-        message: formData.message || '(none)',
-        leadSource: getLeadLabel(),
-        timestamp: new Date().toLocaleString(),
         _captcha: 'false',
+        _template: 'table',
+        _subject: `🔥 New Lead: ${formData.name} — ${formData.businessType} (${getLeadLabel()})`,
+        '01_Name': formData.name,
+        '02_Email': formData.email,
+        '03_Phone': formData.phone,
+        '04_Business_Type': formData.businessType,
+        '05_Weekly_Call_Volume': formData.volume,
+        '06_Lead_Source': getLeadLabel(),
+        '07_Message': formData.message || '(none)',
+        '08_Submitted_At': new Date().toLocaleString(),
       };
 
       const response = await fetch('https://formsubmit.co/ajax/elironebusiness@gmail.com', {
@@ -81,11 +81,11 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
   };
 
   return (
-    <section id="consultation" className="py-16 px-4 md:px-6 relative">
+    <section id="consultation" className={`py-16 px-4 md:px-6 relative ${isMedSpa ? 'bg-[#fdf8f5]' : ''}`}>
       {/* Removed gradient overlay to match page background */}
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">
-        <h2 className={`text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none fade-in-up ${isMedSpa ? 'text-slate-800' : ''}`}>
+        <h2 className={`text-4xl md:text-8xl font-black italic tracking-tighter uppercase mb-6 leading-none ${isMedSpa ? 'text-slate-800' : 'fade-in-up'}`}>
           Capture your <br />
           <span className={isMedSpa ? 'bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent' : 'gradient-relay'}>Growth.</span>
         </h2>
@@ -187,8 +187,8 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-500 text-black rounded-full flex items-center justify-center mb-4 sm:mb-6">
                   <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic tracking-tight text-white mb-3">You're Qualified!</h3>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide px-2">Select a 15-minute slot below to finalize your system design.</p>
+                <h3 className={`text-xl sm:text-2xl md:text-3xl font-black uppercase italic tracking-tight mb-3 ${isMedSpa ? 'text-slate-900' : 'text-white'}`}>You're Qualified!</h3>
+                <p className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide px-2 ${isMedSpa ? 'text-slate-600' : 'text-slate-400'}`}>Select a 15-minute slot below to finalize your system design.</p>
               </div>
               <div className="pt-4 sm:pt-6">
                 <button
@@ -200,7 +200,7 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
               </div>
               <button
                 onClick={() => { setStep(1); setEmailSent(false); }}
-                className="text-slate-400 hover:text-white text-xs font-black uppercase tracking-wide transition-colors"
+                className={`text-xs font-black uppercase tracking-wide transition-colors ${isMedSpa ? 'text-slate-500 hover:text-slate-800' : 'text-slate-400 hover:text-white'}`}
               >
                 [ Start Over ]
               </button>
@@ -208,7 +208,7 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
           )}
         </div>
 
-        <p className="mt-8 text-slate-500 text-xs font-bold uppercase tracking-wide break-words">
+        <p className={`mt-8 text-xs font-bold uppercase tracking-wide break-words ${isMedSpa ? 'text-slate-500' : 'text-slate-500'}`}>
           Limited implementation slots available each month. No credit card required.
         </p>
       </div>
