@@ -234,7 +234,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Features grid — full width at bottom */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 border-t border-white/[0.04] pt-8 pb-8 md:pb-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 border-t border-white/[0.04] pt-5 pb-5">
           <Features />
         </div>
       </header>
@@ -250,29 +250,29 @@ const App: React.FC = () => {
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
       {/* ── 4) REVENUE PAIN ── */}
-      <section className="py-16 px-6 relative">
+      <section className="py-8 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 leading-none fade-in-up">
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-none fade-in-up">
             Missed Calls Cost You <br />
             <span className="text-rose-500">Real Money</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 fade-in-up">
+          <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-3 fade-in-up">
             If you miss just 5 calls per day and your average job is $200, that's over $30,000 per year in lost revenue.
           </p>
-          <p className="text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-4 fade-in-up uppercase tracking-wide">
+          <p className="text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-3 fade-in-up uppercase tracking-wide">
             Capture $1,500+ in one week with RelayOpsAI.
           </p>
-          <p className="text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-10 fade-in-up">
+          <p className="text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-6 fade-in-up">
             We make sure every call is answered, every lead is captured, and every opportunity turns into cash.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               { label: 'Weekly Revenue', val: '$1,500+', sub: 'Captured in week one' },
               { label: 'Capture Rate', val: '98%', sub: 'Every lead secured' },
               { label: 'ROI Potential', val: '10X+', sub: 'Return on investment' },
             ].map((m, i) => (
-              <div key={i} className="stagger-item group p-10 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
+              <div key={i} className="stagger-item group p-6 rounded-2xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
                 <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-4xl sm:text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300 break-words">{m.val}</div>
                 <div className="text-xs font-black uppercase tracking-wide text-white mb-1 break-words">{m.label}</div>
                 <div className="text-xs font-bold text-slate-600 uppercase tracking-wide break-words">{m.sub}</div>
@@ -293,8 +293,8 @@ const App: React.FC = () => {
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
       {/* ── 7) TRUST / METRICS ── */}
-      <section id="customers" className="py-16 overflow-x-hidden">
-        <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
+      <section id="customers" className="py-8 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-6 mb-4 text-center">
           <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-3 fade-in-up">
             Performance Standards.
           </h2>
@@ -310,7 +310,7 @@ const App: React.FC = () => {
             { val: 'Instant', label: 'Booking + SMS', sub: 'Real-time confirmations' },
             { val: '5min',    label: 'Setup Time',    sub: 'Fully done for you' },
           ].map((item, i) => (
-            <div key={i} className="stagger-item group text-center p-8 rounded-3xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
+            <div key={i} className="stagger-item group text-center p-5 rounded-2xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:from-cyan-500/5 hover:to-blue-600/5 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
               <div className="text-2xl sm:text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white to-cyan-400 group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300 group-hover:scale-110 break-words">{item.val}</div>
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mt-1 group-hover:text-cyan-400 transition-colors duration-300 break-words">{item.label}</div>
               <div className="text-xs font-medium text-slate-700 uppercase tracking-wide mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 break-words">{item.sub}</div>
@@ -327,10 +327,10 @@ const App: React.FC = () => {
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* ── 9) TESTIMONIALS (moved here — social proof before pricing) ── */}
-      <section className="py-16 px-4 md:px-6">
+      <section className="py-8 px-4 md:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-4 fade-in-up">What Our Clients Say</p>
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-12 fade-in-up">
+          <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-3 fade-in-up">What Our Clients Say</p>
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 fade-in-up">
             Trusted by <span className="gradient-relay">Local Businesses</span>
           </h2>
           <Testimonials />
@@ -340,14 +340,14 @@ const App: React.FC = () => {
       <div className="h-px w-full max-w-4xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* ── 10) FINAL CTA ── */}
-      <section className="py-20 md:py-32 px-6 md:px-8 text-center relative overflow-hidden">
+      <section className="py-12 md:py-16 px-6 md:px-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)' }} />
           <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px]" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)' }} />
         </div>
 
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/[0.07] border border-emerald-500/20 mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/[0.07] border border-emerald-500/20 mb-4">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-emerald-400">Only 3 Setup Slots Left This Month</span>
           </div>
@@ -360,14 +360,14 @@ const App: React.FC = () => {
             <span className="text-white">on AI.</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-6 leading-relaxed font-medium">
             Book a free 30-minute call. We'll show you exactly how much revenue you're losing — and how to recover it starting this week.
           </p>
 
           <button
             type="button"
             onClick={() => { setLeadSource('hero'); scrollTo('consultation'); }}
-            className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-bold text-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.03] active:scale-[0.98] mb-10 overflow-hidden"
+            className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-bold text-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.03] active:scale-[0.98] mb-6 overflow-hidden"
           >
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
             <span className="relative z-10">Get My Free Revenue Audit →</span>

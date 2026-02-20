@@ -19,9 +19,9 @@ const integrations = [
 
 const Integrations: React.FC = () => {
   return (
-    <section className="py-16 px-6 relative">
+    <section className="py-8 px-6 relative">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
             Plugs Into Your <span className="gradient-relay">Stack.</span>
           </h2>

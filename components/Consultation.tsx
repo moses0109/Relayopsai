@@ -81,7 +81,7 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
   };
 
   return (
-    <section id="consultation" className={`py-16 px-4 md:px-6 relative ${isMedSpa ? 'bg-[#fdf8f5]' : ''}`}>
+    <section id="consultation" className={`py-8 px-4 md:px-6 relative ${isMedSpa ? 'bg-[#fdf8f5]' : ''}`}>
       {/* Removed gradient overlay to match page background */}
 
       <div className="max-w-4xl mx-auto relative z-10 text-center">

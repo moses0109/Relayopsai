@@ -29,7 +29,7 @@ const steps = [
 ];
 
 const HowItWorks: React.FC = () => (
-  <section id="about" className="py-20 md:py-28 px-4 md:px-6 scroll-mt-24 relative overflow-hidden">
+  <section id="about" className="py-10 md:py-14 px-4 md:px-6 scroll-mt-24 relative overflow-hidden">
     {/* Background glow */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-br from-sky-500/[0.04] via-violet-500/[0.03] to-emerald-500/[0.02] blur-[120px] rounded-full pointer-events-none" />
 

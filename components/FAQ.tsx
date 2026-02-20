@@ -32,9 +32,9 @@ const FAQ: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 md:py-20 px-4 md:px-6">
+    <section id="faq" className="py-8 md:py-10 px-4 md:px-6">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
             Frequently Asked <span className="gradient-relay">Questions.</span>
           </h2>

@@ -64,9 +64,9 @@ const Calculator: React.FC<CalculatorProps> = ({ onBookDemo }) => {
   };
 
   return (
-    <section id="calculator" className="py-12 px-6 scroll-mt-32">
+    <section id="calculator" className="py-8 px-6 scroll-mt-32">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 fade-in-up">
             The Missed <span className="text-cyan-400">Call Tax.</span>
           </h2>

@@ -64,8 +64,8 @@ const PhoneMockup: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 px-4 md:px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section ref={sectionRef} className="py-8 md:py-12 px-4 md:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
         {/* Left — Copy */}
         <div className="flex-1 text-center lg:text-left">
