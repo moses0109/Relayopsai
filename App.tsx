@@ -145,9 +145,9 @@ const App: React.FC = () => {
 
             {/* Headline */}
             <h1 className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[82px] font-black tracking-[-0.03em] leading-[0.9] mb-5 md:mb-6">
-              <span className="block text-white">Your Phone.</span>
-              <span className="block text-white">On Autopilot.</span>
-              <span className="block bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">Starting Today.</span>
+              <span className="block text-white">Your Business's</span>
+              <span className="block text-white">Ultimate AI Solution.</span>
+              <span className="block bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">Drive Growth Now.</span>
             </h1>
 
             {/* Sub-copy */}
