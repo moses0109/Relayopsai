@@ -143,7 +143,7 @@ const MedSpaPage: React.FC = () => {
           </h2>
 
           <p className="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
-            Book a free 15-minute call. We'll show you exactly how much revenue your med spa is losing — and how to recover it starting this week.
+            Book a free 30-minute call. We'll show you exactly how much revenue your med spa is losing — and how to recover it starting this week.
           </p>
 
           <button

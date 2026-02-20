@@ -188,7 +188,7 @@ const Consultation: React.FC<ConsultationProps> = ({ leadSource = 'general' }) =
                   <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </div>
                 <h3 className={`text-xl sm:text-2xl md:text-3xl font-black uppercase italic tracking-tight mb-3 ${isMedSpa ? 'text-slate-900' : 'text-white'}`}>You're Qualified!</h3>
-                <p className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide px-2 ${isMedSpa ? 'text-slate-600' : 'text-slate-400'}`}>Select a 15-minute slot below to finalize your system design.</p>
+                <p className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-wide px-2 ${isMedSpa ? 'text-slate-600' : 'text-slate-400'}`}>Select a 30-minute slot below to finalize your system design.</p>
               </div>
               <div className="pt-4 sm:pt-6">
                 <button
