@@ -84,28 +84,42 @@ const Navbar: React.FC = () => {
                 </button>
                 <button
                   onClick={() => { navigate('/medspa'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
-                  className="w-full px-5 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors whitespace-nowrap"
+                  className="w-full px-5 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors whitespace-nowrap border-b border-white/5"
                 >
                   💉 Med Spa
+                </button>
+                <button
+                  onClick={() => { navigate('/about'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
+                  className="w-full px-5 py-4 text-left text-sm font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap"
+                >
+                  👤 About Us
                 </button>
               </div>
             )}
           </div>
 
           <div className="hidden lg:flex items-center space-x-14 h-full">
-            {[
-              { label: 'Demo', id: 'demo' },
-              { label: 'About', id: 'about' },
-              { label: 'Pricing', id: 'pricing' }
-            ].map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollTo(item.id)}
-                className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
-              >
-                {item.label}
-              </button>
-            ))}
+            <button
+              type="button"
+              onClick={() => scrollTo('demo')}
+              className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
+            >
+              Demo
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/about')}
+              className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
+            >
+              About
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollTo('consultation')}
+              className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
+            >
+              Contact
+            </button>
           </div>
 
           <div className="flex items-center h-full">
