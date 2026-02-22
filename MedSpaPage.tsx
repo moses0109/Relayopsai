@@ -59,54 +59,34 @@ const MedSpaPage: React.FC = () => {
 
       {/* 1. Hero */}
       <MedSpaHero onBookDemo={handleBookDemo} onCalculateROI={handleCalculateROI} />
-
-      {/* Live Visitor Ticker */}
       <MedSpaVisitorTicker />
 
       {/* Wave cream → blush */}
       <WaveDown from={CREAM} to={BLUSH} />
 
-      {/* 2. Pain Points */}
+      {/* 2. Pain Points → 3. Phone Demo (both BLUSH — flow directly) */}
       <MedSpaPainPoints />
-
-      {/* Wave blush → cream */}
-      <WaveDown from={BLUSH} to={CREAM} />
-
-      {/* 3. Ghost Crawler */}
-      <MedSpaGhostCrawler />
-
-      {/* Wave cream → blush */}
-      <WaveDown from={CREAM} to={BLUSH} />
-
-      {/* 4. Phone Demo */}
       <MedSpaPhoneDemo />
 
       {/* Wave blush → cream */}
       <WaveDown from={BLUSH} to={CREAM} />
 
-      {/* 5. ROI Calculator */}
-      <MedSpaROI onBookDemo={handleBookDemo} />
-
-      {/* Wave cream → blush */}
-      <WaveDown from={CREAM} to={BLUSH} />
-
-      {/* 6. Dashboard */}
-      <MedSpaDashboard />
-
-      {/* Wave blush → cream */}
-      <WaveDown from={BLUSH} to={CREAM} />
-
-      {/* 7. Testimonials */}
+      {/* 4. Testimonials */}
       <MedSpaTestimonials />
 
       {/* Wave cream → blush */}
       <WaveDown from={CREAM} to={BLUSH} />
 
-      {/* 8. Features */}
+      {/* 5. Features */}
       <MedSpaFeatures />
 
       {/* Wave blush → cream */}
       <WaveDown from={BLUSH} to={CREAM} />
+
+      {/* 6. ROI Calculator → 7. Ghost Crawler → 8. Dashboard (all CREAM — no waves) */}
+      <MedSpaROI onBookDemo={handleBookDemo} />
+      <MedSpaGhostCrawler />
+      <MedSpaDashboard />
 
       {/* 9. About / Founder Story */}
       <section id="about" className="py-16 md:py-24 px-6 md:px-8 relative overflow-hidden" style={{ background: CREAM }}>
@@ -123,82 +103,101 @@ const MedSpaPage: React.FC = () => {
 
         <div className="max-w-4xl mx-auto relative z-10">
 
-          {/* Section label */}
-          <p className="text-rose-500 text-xs font-black uppercase tracking-widest mb-8">Our Story</p>
+          {/* ── Profile / PFP Card ── */}
+          <div className="mb-8 group/card p-7 md:p-10 rounded-3xl bg-gradient-to-br from-[#fdf8f5] via-rose-50/80 to-pink-100/60 border border-rose-200/60 shadow-xl shadow-rose-100/40 hover:shadow-2xl hover:shadow-rose-200/50 hover:-translate-y-1 transition-all duration-500">
 
-          {/* ── Premium Profile / PFP Card ── */}
-          <div className="mb-8 p-7 md:p-10 rounded-3xl bg-white/95 border border-rose-100/80 shadow-2xl shadow-rose-100/50 hover:shadow-rose-200/60 transition-all duration-500 hover:-translate-y-1">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-7 md:gap-9">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
 
-              {/* Premium avatar */}
-              <div className="relative group/av flex-shrink-0">
-                {/* Outer glow halo */}
-                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-rose-300/40 via-pink-200/30 to-purple-200/20 blur-xl group-hover/av:blur-2xl transition-all duration-500 pointer-events-none" />
-                {/* Avatar container */}
-                <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-2xl overflow-hidden shadow-2xl shadow-rose-400/40 ring-2 ring-white/60">
+              {/* Avatar */}
+              <div className="relative flex-shrink-0 group/av">
+                {/* Glow halo — intensifies on hover */}
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-rose-300/35 via-pink-200/25 to-purple-200/15 blur-lg group-hover/card:blur-xl group-hover/card:from-rose-300/50 transition-all duration-500 pointer-events-none" />
+                {/* Avatar frame */}
+                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden shadow-2xl shadow-rose-400/35 ring-2 ring-rose-100">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#1e0510] via-[#7f1234] to-rose-500" />
                   <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 38% 38%, rgba(251,113,133,0.65) 0%, transparent 65%)' }} />
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-                  {/* Botanical petal overlay */}
-                  <svg className="absolute inset-0 w-full h-full opacity-[0.14]" viewBox="0 0 96 96" fill="none">
+                  <svg className="absolute inset-0 w-full h-full opacity-[0.13]" viewBox="0 0 96 96" fill="none" aria-hidden="true">
                     <path d="M96 0 C75 18 52 40 48 72 C62 65 78 44 96 0Z" fill="white"/>
                     <path d="M96 22 C80 36 65 55 62 82 C74 75 85 58 96 22Z" fill="white" opacity="0.6"/>
                     <path d="M0 96 C18 78 40 55 72 48 C65 62 44 78 0 96Z" fill="white" opacity="0.4"/>
                   </svg>
-                  {/* Founder initial */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white font-black select-none" style={{ fontSize: '42px', fontFamily: '"Georgia", serif', textShadow: '0 0 24px rgba(255,160,180,0.9), 0 2px 8px rgba(0,0,0,0.5)', letterSpacing: '-1px' }}>
+                    <span
+                      className="text-white font-black select-none"
+                      style={{ fontSize: '40px', fontFamily: '"Georgia", serif', textShadow: '0 0 22px rgba(255,160,180,0.9), 0 2px 8px rgba(0,0,0,0.5)', letterSpacing: '-1px' }}
+                    >
                       B
                     </span>
                   </div>
-                  {/* Active indicator */}
-                  <div className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-white shadow-lg shadow-emerald-400/60" />
+                  {/* Online dot */}
+                  <div className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-white shadow-md shadow-emerald-400/60" />
                 </div>
-                {/* Verified Founder badge */}
-                <div className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-1 rounded-full bg-white border border-rose-200 shadow-md shadow-rose-100/60 whitespace-nowrap">
-                  <svg className="w-3 h-3 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
+                {/* Verified badge */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-rose-200 shadow-md whitespace-nowrap">
+                  <svg className="w-3 h-3 text-rose-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                   </svg>
-                  <span className="text-[10px] font-black text-rose-600 uppercase tracking-wide">Verified Founder</span>
+                  <span className="text-[9px] font-black text-rose-600 uppercase tracking-wide">Verified Founder</span>
                 </div>
               </div>
 
-              {/* Name / bio / CTA */}
-              <div className="flex-1 text-center sm:text-left mt-5 sm:mt-0">
-                <h2 className="medspa-serif text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-slate-900 mb-2">
+              {/* Content hierarchy */}
+              <div className="flex-1 text-center sm:text-left mt-4 sm:mt-0">
+
+                {/* H2 — Name / headline */}
+                <h2 className="medspa-serif text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight text-slate-900 mb-1">
                   We Built This Because<br />
                   <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
                     Someone We Love Needed It.
                   </span>
                 </h2>
-                <p className="text-slate-500 text-sm font-medium mb-4">
+
+                {/* H3 — Title */}
+                <h3 className="text-sm font-bold text-slate-500 mb-3 mt-1">
                   Founder, RelayOpsAI · Son of a med spa owner
+                </h3>
+
+                {/* Bio */}
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-4 max-w-lg">
+                  Built after watching my mom lose $180K/year to missed calls. RelayOpsAI is what I wish existed for her — and now it does, for 200+ med spa owners across the country.
                 </p>
-                {/* Stars */}
-                <div className="flex items-center justify-center sm:justify-start gap-2 mb-6">
-                  <div className="flex gap-0.5">
-                    {[0,1,2,3,4].map(i => (
-                      <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                    ))}
+
+                {/* Credentials */}
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mb-5">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-rose-200/70 shadow-sm">
+                    <div className="flex gap-0.5">
+                      {[0,1,2,3,4].map(i => (
+                        <svg key={i} className="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="text-xs font-bold text-slate-600">4.9/5</span>
                   </div>
-                  <span className="text-sm font-semibold text-slate-500">4.9/5 · 200+ med spas</span>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-rose-200/70 shadow-sm">
+                    <span className="text-xs font-bold text-rose-600">200+</span>
+                    <span className="text-xs font-semibold text-slate-500">med spas nationwide</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-rose-200/70 shadow-sm">
+                    <span className="text-xs font-bold text-slate-600">HIPAA-Compliant</span>
+                  </div>
                 </div>
-                {/* CTA */}
+
+                {/* CTA — Book Your Demo */}
                 <button
                   type="button"
                   onClick={handleBookDemo}
-                  className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white rounded-full font-bold text-sm hover:from-rose-600 hover:via-pink-600 hover:to-rose-700 transition-all duration-300 shadow-xl shadow-rose-400/30 hover:shadow-rose-400/50 hover:scale-[1.03] active:scale-[0.98] overflow-hidden"
+                  className="group relative inline-flex items-center gap-2 min-h-[48px] px-7 py-3 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white rounded-full font-bold text-sm hover:from-rose-600 hover:via-pink-600 hover:to-rose-700 transition-all duration-300 shadow-xl shadow-rose-400/30 hover:shadow-rose-500/40 hover:scale-[1.03] active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 overflow-hidden"
                 >
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" aria-hidden="true" />
                   <span className="relative z-10">Book Your Demo</span>
-                  <svg className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <svg className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </button>
-              </div>
 
+              </div>
             </div>
           </div>
 
@@ -209,7 +208,7 @@ const MedSpaPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setStoryOpen((v: boolean) => !v)}
-              aria-expanded={storyOpen ? 'true' : 'false'}
+              aria-expanded={storyOpen}
               className="w-full flex items-center justify-between p-6 md:p-8 text-left group hover:bg-rose-50/60 transition-colors duration-200"
             >
               <div>
