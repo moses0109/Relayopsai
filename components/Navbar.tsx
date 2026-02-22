@@ -1,9 +1,9 @@
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 /* ------------------------------------------------------------------ */
-/*  SIMPLE LOGO - Clean and functional                                */
+/*  SIMPLE LOGO                                                         */
 /* ------------------------------------------------------------------ */
 const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
   return (
@@ -18,8 +18,24 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
         />
       )}
       {isMedSpa && (
-        <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-rose-500 to-pink-600 shadow-lg flex items-center justify-center">
-          <span className="text-white font-black text-lg">R</span>
+        <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl flex items-center justify-center"
+          style={{ background: 'linear-gradient(145deg, #1e0510 0%, #7f1234 45%, #e11d48 100%)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 42% 42%, rgba(251,113,133,0.55) 0%, transparent 68%)' }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-transparent" />
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 48 48" fill="none">
+            <path d="M49 -1 C39 7 29 17 27 31 C35 27 43 15 49 -1Z" fill="rgba(255,255,255,0.16)"/>
+            <path d="M49 9 C41 15 35 23 34 35 C40 31 45 21 49 9Z" fill="rgba(255,255,255,0.09)"/>
+            <path d="M5 37 A9 9 0 0 1 12 30" stroke="rgba(125,211,252,0.55)" strokeWidth="1.3" strokeLinecap="round"/>
+            <path d="M3 40 A13 13 0 0 1 12 26" stroke="rgba(125,211,252,0.28)" strokeWidth="0.9" strokeLinecap="round"/>
+            <path d="M1 43 A17 17 0 0 1 12 22" stroke="rgba(125,211,252,0.14)" strokeWidth="0.7" strokeLinecap="round"/>
+            <line x1="8" y1="47" x2="40" y2="47" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8"/>
+          </svg>
+          <span className="relative z-10 text-white font-black select-none"
+            style={{ fontSize: '23px', lineHeight: 1, letterSpacing: '-0.5px', fontFamily: '"Arial Black","Helvetica Neue",sans-serif', textShadow: '0 0 18px rgba(255,160,180,0.9), 0 0 6px rgba(255,100,130,0.6), 0 1px 4px rgba(0,0,0,0.5)' }}>
+            R
+          </span>
+          <div className="absolute bottom-[5px] right-[5px] w-[8px] h-[8px] rounded-full"
+            style={{ background: '#7dd3fc', boxShadow: '0 0 10px 4px rgba(125,211,252,0.85)' }} />
         </div>
       )}
     </div>
@@ -27,7 +43,7 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
 };
 
 /* ------------------------------------------------------------------ */
-/*  NAVBAR                                                             */
+/*  NAVBAR                                                              */
 /* ------------------------------------------------------------------ */
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -37,24 +53,19 @@ const Navbar: React.FC = () => {
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
     <nav className="fixed top-4 md:top-6 left-0 right-0 z-[60]">
       <div className="max-w-6xl mx-auto px-3 md:px-6">
         <div className="flex justify-between items-center h-14 md:h-16 px-4 md:px-8 bg-[#0f172a]/95 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
-          {/* Logo with Dropdown */}
+
+          {/* Logo + Dropdown */}
           <div className="relative flex items-center">
             <button
-              onClick={() => {
-                if (!showDropdown) {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-                setShowDropdown(!showDropdown);
-              }}
+              type="button"
+              onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(!showDropdown); }}
               className="flex items-center gap-3 group cursor-pointer"
             >
               <SimpleLogo isMedSpa={isMedSpa} />
@@ -73,31 +84,27 @@ const Navbar: React.FC = () => {
               </svg>
             </button>
 
-            {/* Dropdown Menu */}
             {showDropdown && (
               <div className="absolute top-full left-0 mt-4 w-52 bg-[#0f172a]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
                 <button
+                  type="button"
                   onClick={() => { navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
                   className="w-full px-5 py-4 text-left text-sm font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5 whitespace-nowrap"
                 >
                   🏠 Main Site
                 </button>
                 <button
+                  type="button"
                   onClick={() => { navigate('/medspa'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
-                  className="w-full px-5 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors whitespace-nowrap border-b border-white/5"
+                  className="w-full px-5 py-4 text-left text-sm font-bold text-rose-300 hover:text-rose-200 hover:bg-rose-500/10 transition-colors whitespace-nowrap"
                 >
-                  💉 Med Spa
-                </button>
-                <button
-                  onClick={() => { navigate('/about'); window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(false); }}
-                  className="w-full px-5 py-4 text-left text-sm font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap"
-                >
-                  👤 About Us
+                  💉 Med Spa Edition
                 </button>
               </div>
             )}
           </div>
 
+          {/* Desktop nav links */}
           <div className="hidden lg:flex items-center space-x-14 h-full">
             <button
               type="button"
@@ -108,7 +115,7 @@ const Navbar: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate('/about')}
+              onClick={() => isMedSpa ? scrollTo('about') : navigate('/about')}
               className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
             >
               About
@@ -122,8 +129,10 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
+          {/* CTA */}
           <div className="flex items-center h-full">
             <button
+              type="button"
               onClick={() => scrollTo('consultation')}
               className={`group/cta relative inline-flex items-center justify-center gap-2 px-5 md:px-8 py-2.5 md:py-3 ${
                 isMedSpa
@@ -136,30 +145,12 @@ const Navbar: React.FC = () => {
               <svg className="relative z-10 w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
               </svg>
-              {/* Shimmer sweep */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700 pointer-events-none" />
             </button>
           </div>
+
         </div>
       </div>
-
-      {/* Logo interaction animations */}
-      <style>{`
-        @keyframes ripple-out {
-          0% { transform: scale(0); opacity: 1; }
-          100% { transform: scale(2.5); opacity: 0; }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.7; }
-        }
-        .animate-ripple-out {
-          animation: ripple-out 0.6s ease-out forwards;
-        }
-        .animate-pulse-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-      `}</style>
     </nav>
   );
 };

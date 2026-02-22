@@ -1,9 +1,5 @@
 import React from 'react';
 
-/* ------------------------------------------------------------------ */
-/*  MED SPA HERO — Luxury Cream + Botanical                           */
-/* ------------------------------------------------------------------ */
-
 interface MedSpaHeroProps {
   onBookDemo: () => void;
   onCalculateROI: () => void;
@@ -17,7 +13,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#fdf8f5] via-rose-50/80 to-pink-100/60" />
 
-        {/* Top-right botanical — gently drifting */}
+        {/* Top-right botanical */}
         <svg className="absolute -top-6 -right-6 w-72 h-72 md:w-96 md:h-96 text-rose-200/80 leaf-float-a" viewBox="0 0 200 200" fill="currentColor">
           <path d="M200 0 C155 25 105 70 65 160 C85 172 105 145 120 115 C148 68 175 28 200 0Z"/>
           <path d="M200 25 C168 48 125 90 95 175 C112 184 128 158 140 130 C162 88 183 52 200 25Z" opacity="0.75"/>
@@ -25,7 +21,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           <path d="M200 55 C178 75 145 110 120 185 C134 191 146 170 156 148 C170 123 188 95 200 55Z" opacity="0.4"/>
         </svg>
 
-        {/* Bottom-left botanical — drifting opposite phase */}
+        {/* Bottom-left botanical */}
         <svg className="absolute -bottom-6 -left-6 w-56 h-56 md:w-72 md:h-72 text-pink-200/70 leaf-float-b" viewBox="0 0 200 200" fill="currentColor">
           <path d="M0 200 C25 162 68 115 155 75 C165 92 140 112 110 132 C68 158 28 182 0 200Z"/>
           <path d="M0 175 C30 145 78 100 168 65 C176 82 152 100 122 118 C82 142 40 170 0 175Z" opacity="0.7"/>
@@ -37,7 +33,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
       <div className="relative z-10 max-w-5xl mx-auto">
 
-        {/* Founder story badge */}
+        {/* Founder badge */}
         <div className="flex justify-center mb-5">
           <div className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-rose-200/60 shadow-lg shadow-rose-500/10 hover:shadow-xl hover:shadow-rose-500/20 hover:border-rose-300/80 transition-all duration-300">
             <span className="text-rose-500 text-base">💛</span>
@@ -49,14 +45,14 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
         {/* Headline */}
         <h1 className="medspa-serif text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.02em] leading-tight mb-4 px-2">
-          <span className="block text-slate-900">Your Med Spa Deserves</span>
+          <span className="block text-slate-900">Turn Missed Calls Into</span>
           <span className="block bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-            a Receptionist That Never Sleeps.
+            Booked Appointments.
           </span>
         </h1>
 
-        {/* Stars */}
-        <div className="flex justify-center items-center gap-3 mb-4">
+        {/* Star rating */}
+        <div className="flex justify-center items-center gap-3 mb-5">
           <div className="flex items-center gap-0.5">
             {[0,1,2,3,4].map(i => (
               <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
@@ -64,15 +60,31 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
               </svg>
             ))}
           </div>
-          <span className="text-slate-500 text-sm font-semibold">4.9/5 — 80+ med spas nationwide</span>
+          <span className="text-slate-500 text-sm font-semibold">4.9/5 — 200+ med spas nationwide</span>
         </div>
 
-        {/* Sub-copy */}
-        <p className="text-center text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-7 leading-relaxed font-medium px-2">
-          I watched my mom lose <span className="text-slate-900 font-bold">$15,000+ every month</span> to voicemail and ghost traffic. So we built the AI that answers every call, recovers every visitor, and books every consultation — automatically.
+        {/* Subheadline */}
+        <p className="text-center text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-5 leading-relaxed font-medium px-2">
+          RelayOpsAI handles inbound calls, follows up on missed inquiries, reactivates dormant leads, and books appointments — automatically. Your staff stays focused on the room. We handle everything else.
         </p>
 
-        {/* Social proof card */}
+        {/* Benefit bullets */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-sm font-semibold text-slate-600 mb-8">
+          {[
+            '24/7 AI call answering',
+            'Automated follow-up and lead reactivation',
+            'Fewer missed revenue opportunities',
+          ].map((b, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-rose-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{b}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Social proof testimonial card */}
         <div className="max-w-2xl mx-auto mb-8 md:mb-10 p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/90 backdrop-blur-md border border-rose-200/70 shadow-xl shadow-rose-200/30 hover:shadow-2xl hover:shadow-rose-300/30 transition-all duration-500 hover:-translate-y-1">
           <p className="text-slate-700 italic mb-4 md:mb-6 leading-relaxed text-base md:text-lg">
             "We went from missing 30% of after-hours calls to zero — and Botox rebookings jumped 65% in 90 days. It paid for itself in the first week."
@@ -104,7 +116,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
           >
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <span className="relative z-10 flex items-center justify-center gap-2">
-              Recover My Revenue Now
+              Book Your Demo
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -124,7 +136,7 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto pt-8 md:pt-10 border-t border-rose-200/50">
           {[
             { value: '24/7', label: 'Always Available' },
-            { value: '98%', label: 'Capture Rate' },
+            { value: '98%', label: 'Call Capture Rate' },
             { value: '$27k', label: 'Avg Monthly Lift' },
             { value: '<1s', label: 'Response Time' },
           ].map((stat, i) => (

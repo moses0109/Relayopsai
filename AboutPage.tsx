@@ -13,119 +13,102 @@ const AboutPage: React.FC = () => {
       {/* ── HERO ── */}
       <section className="relative py-20 md:py-28 px-6 md:px-8 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[130px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)' }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] rounded-full blur-[120px]"
+            style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.09) 0%, transparent 70%)' }} />
         </div>
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/[0.07] border border-cyan-500/20 mb-6">
-            <span className="text-cyan-400 text-sm">💛</span>
-            <span className="text-sm font-semibold text-cyan-300">Our Story</span>
+            <span className="text-cyan-400 text-sm">⚡</span>
+            <span className="text-sm font-semibold text-cyan-300">AI Operations Platform</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
-            <span className="text-white">We Built This For</span><br />
+            <span className="text-white">Your Business.</span><br />
             <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
-              Our Family.
+              Running on AI.
             </span><br />
-            <span className="text-white">Now We Build It For Yours.</span>
+            <span className="text-white">Around the Clock.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-            RelayOpsAI started with one problem: a small business owner who worked too hard to lose revenue to a ringing phone no one answered.
+            RelayOpsAI is an AI operations platform that handles your calls, captures your leads, books your appointments, and follows up with customers — automatically, 24/7, without adding headcount.
           </p>
         </div>
       </section>
 
-      {/* ── FOUNDER STORY ── */}
-      <section className="py-12 md:py-16 px-6 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="rounded-3xl bg-gradient-to-br from-white/[0.04] to-cyan-500/[0.03] border border-white/[0.07] p-8 md:p-14">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center shadow-xl flex-shrink-0">
-                <span className="text-xl">👤</span>
-              </div>
-              <div>
-                <p className="font-black text-white text-base">Founder, RelayOpsAI</p>
-                <p className="text-sm text-slate-500">Son of a med spa owner</p>
-              </div>
-            </div>
-
-            <div className="space-y-6 text-slate-300 text-base md:text-lg leading-relaxed">
-              <p>
-                My mom ran a med spa for 15 years. She woke up early, stayed late, and poured everything into her clients. She was <span className="text-white font-semibold">exceptional</span> at her craft.
-              </p>
-              <p>
-                But every evening when she left, the phone kept ringing. Clients calling at 9 PM to book Botox. People browsing her website at midnight, ready to schedule — and leaving because there was no one to answer. She was losing <span className="text-cyan-400 font-bold">$15,000+ every month</span> to voicemail. Not because of anything she did wrong. Just because she was human.
-              </p>
-              <p>
-                I tried to find a solution for her. I looked at every AI tool, every answering service, every scheduling software out there. None of them were built for a real small business owner. They were too complex, too expensive, or so robotic that they would have embarrassed her in front of the luxury clients she'd spent years earning.
-              </p>
-              <p className="text-white font-semibold text-xl md:text-2xl border-l-4 border-cyan-500 pl-6 py-2">
-                So we built RelayOpsAI. For her. And for every business owner working too hard to lose revenue to a missed call.
-              </p>
-              <p>
-                Today, 200+ businesses use RelayOpsAI to answer every call, capture every lead, and grow revenue on autopilot — while they focus on the work that actually matters.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── MISSION ── */}
+      {/* ── WHAT WE DO ── */}
       <section className="py-10 md:py-14 px-6 md:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-cyan-400 text-xs font-black uppercase tracking-widest mb-4">Our Mission</p>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-6">
-            No Small Business Should Lose Revenue<br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Because They're Too Busy Doing the Work.</span>
-          </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            We exist to give independent business owners the same competitive edge as enterprise companies — without the enterprise price tag or complexity.
-          </p>
-        </div>
-      </section>
-
-      {/* ── VALUES ── */}
-      <section className="py-10 px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-cyan-400 text-xs font-black uppercase tracking-widest mb-10">What We Believe</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <p className="text-center text-cyan-400 text-xs font-black uppercase tracking-widest mb-10">What RelayOpsAI Does</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
               {
                 icon: '📞',
-                title: 'Speed wins.',
-                body: 'The first business to respond gets the booking. We respond in under one second — every time, day or night.',
+                title: 'Answers Every Call — Even at 2 AM',
+                body: "Your AI receptionist picks up before the second ring, handles FAQs, qualifies leads, and books appointments. It sounds like your best employee and never calls in sick.",
               },
               {
-                icon: '🤝',
-                title: 'AI should feel human.',
-                body: 'Technology that sounds robotic drives customers away. Ours sounds like your best employee — warm, knowledgeable, professional.',
+                icon: '📅',
+                title: 'Books Appointments Automatically',
+                body: "Connected directly to your calendar. Clients book, reschedule, and confirm — without you touching anything. Every slot filled, zero back-and-forth.",
               },
               {
-                icon: '📈',
-                title: 'ROI or nothing.',
-                body: "If we're not making you more money than we cost, we're not doing our job. That's why we back everything with a 14-day guarantee.",
+                icon: '💬',
+                title: 'Follows Up So You Don\'t Have To',
+                body: "Automated SMS and call follow-ups go out within minutes of a missed call or inquiry. No lead slips through. No manual chasing required.",
               },
               {
-                icon: '🔒',
-                title: 'Trust is earned.',
-                body: 'HIPAA compliance, transparent pricing, no lock-in contracts. We earn your business every month — or you leave.',
+                icon: '👻',
+                title: 'Recovers Anonymous Website Traffic',
+                body: "97% of website visitors leave without contacting you. Our system identifies them and triggers personalized outreach within 30 seconds — turning browsers into booked clients.",
               },
-              {
-                icon: '⚡',
-                title: 'Simple scales.',
-                body: "Five-minute setup. No IT team required. We handle the complexity so you can focus on what you're great at.",
-              },
-              {
-                icon: '🌱',
-                title: 'We grow when you grow.',
-                body: 'Our success is measured by your revenue recovery — not seats sold or contracts signed. We win together.',
-              },
-            ].map((v, i) => (
-              <div key={i} className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-cyan-500/30 hover:bg-cyan-500/[0.04] transition-all duration-300">
-                <div className="text-3xl mb-4">{v.icon}</div>
-                <h3 className="text-white font-black text-base mb-2">{v.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{v.body}</p>
+            ].map((item, i) => (
+              <div key={i} className="group p-7 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-cyan-500/30 hover:bg-cyan-500/[0.04] transition-all duration-300">
+                <div className="text-3xl mb-4">{item.icon}</div>
+                <h3 className="text-white font-black text-base mb-2">{item.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── WHY IT MATTERS ── */}
+      <section className="py-10 md:py-14 px-6 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-3xl bg-gradient-to-br from-white/[0.04] to-cyan-500/[0.03] border border-white/[0.07] p-8 md:p-12">
+            <p className="text-cyan-400 text-xs font-black uppercase tracking-widest mb-4">Why businesses use RelayOpsAI</p>
+            <h2 className="text-2xl md:text-4xl font-black tracking-tight leading-tight mb-8 text-white">
+              You Didn't Start Your Business<br />
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">To Manage Phones and Follow-Ups.</span>
+            </h2>
+            <div className="space-y-5 text-slate-300 text-base md:text-lg leading-relaxed">
+              <p>
+                Every hour your team spends answering repeat questions, chasing leads, or manually booking appointments is an hour not spent delivering your actual service. That's not just inefficient — it's <span className="text-white font-semibold">expensive.</span>
+              </p>
+              <p>
+                The average service business misses <span className="text-cyan-400 font-bold">30–40% of inbound calls</span> during busy periods and after hours. Each one is a potential client who dialed the next business on Google.
+              </p>
+              <p className="text-white font-semibold text-lg md:text-xl border-l-4 border-cyan-500 pl-6 py-2">
+                RelayOpsAI closes that gap — giving you enterprise-grade AI operations at a fraction of the cost of hiring.
+              </p>
+              <p>
+                Our clients recapture an average of <span className="text-white font-bold">$15,000–$27,000 per month</span> in revenue that was already slipping through the cracks. They save 20+ hours a week in admin time. And they do it without adding a single employee.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHO WE HELP ── */}
+      <section className="py-10 px-6 md:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-cyan-400 text-xs font-black uppercase tracking-widest mb-6">Who we work with</p>
+          <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white mb-4">
+            If Your Business Answers Phones<br />
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">and Books Appointments, We Can Help.</span>
+          </h2>
+          <p className="text-slate-400 text-lg leading-relaxed">
+            We work with service businesses across every industry. If you're losing revenue to missed calls, slow follow-up, or anonymous website traffic — the fix is the same regardless of what you sell.
+          </p>
         </div>
       </section>
 
@@ -148,15 +131,47 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ── HOW IT'S DIFFERENT ── */}
+      <section className="py-10 px-6 md:px-8">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-cyan-400 text-xs font-black uppercase tracking-widest mb-10">Why RelayOpsAI</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                icon: '🚀',
+                title: 'Live in 5 minutes.',
+                body: 'No IT team. No months-long onboarding. You give us your business info, we configure your AI, you go live. That\'s it.',
+              },
+              {
+                icon: '🧠',
+                title: 'Sounds like a human.',
+                body: 'Not a robotic phone tree. Your AI knows your services, your tone, your FAQs — and holds a real conversation with your customers.',
+              },
+              {
+                icon: '📊',
+                title: 'ROI you can measure.',
+                body: 'See every call handled, every lead captured, every booking made. Your dashboard shows exactly how much revenue your AI is recovering.',
+              },
+            ].map((v, i) => (
+              <div key={i} className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-cyan-500/30 hover:bg-cyan-500/[0.04] transition-all duration-300">
+                <div className="text-3xl mb-4">{v.icon}</div>
+                <h3 className="text-white font-black text-base mb-2">{v.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{v.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="py-14 md:py-20 px-6 md:px-8 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-4">
-            Ready to Stop Leaving<br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Revenue on the Table?</span>
+            Ready to Put Your Business<br />
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">on AI Autopilot?</span>
           </h2>
           <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-            Book a free 30-minute call and we'll show you exactly how much you're losing — and how to get it back.
+            Book a free 30-minute call. We'll show you exactly what AI can do for your specific business — and what it costs you not to have it.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

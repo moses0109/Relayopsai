@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Main background gradient: deep navy to cyan-blue -->
+    <radialGradient id="bgGrad" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="55%" stop-color="#0f1f3d"/>
+      <stop offset="100%" stop-color="#070e20"/>
+    </radialGradient>
+
+    <!-- Cyan accent gradient for the lettermark -->
+    <linearGradient id="letterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle inner shadow filter -->
+    <filter id="innerGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="18" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip to circle -->
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="196"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="200" fill="url(#bgGrad)"/>
+
+  <!-- Subtle top-left radial highlight -->
+  <circle cx="120" cy="110" r="160" fill="rgba(56,189,248,0.07)" clip-path="url(#circleClip)"/>
+
+  <!-- Ring 1 — outer faint border -->
+  <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1"/>
+  <!-- Ring 2 — inner accent ring -->
+  <circle cx="200" cy="200" r="174" fill="none" stroke="rgba(56,189,248,0.08)" stroke-width="1"/>
+
+  <!-- Signal arc top-right (decorative) -->
+  <path d="M 282 92 A 110 110 0 0 1 318 200" fill="none" stroke="rgba(56,189,248,0.35)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 296 78 A 132 132 0 0 1 340 200" fill="none" stroke="rgba(56,189,248,0.18)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 268 108 A 88 88 0 0 1 298 200"  fill="none" stroke="rgba(56,189,248,0.5)"  stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- R lettermark -->
+  <!-- Stem -->
+  <rect x="118" y="118" width="26" height="164" rx="4" fill="url(#letterGrad)" filter="url(#glow)"/>
+  <!-- Bowl top bar -->
+  <rect x="118" y="118" width="104" height="26" rx="13" fill="url(#letterGrad)" filter="url(#glow)"/>
+  <!-- Bowl bottom bar -->
+  <rect x="118" y="190" width="88" height="24" rx="12" fill="url(#letterGrad)" filter="url(#glow)"/>
+  <!-- Bowl right vertical (curves the bowl) -->
+  <rect x="196" y="118" width="26" height="96" rx="13" fill="url(#letterGrad)" filter="url(#glow)"/>
+  <!-- Leg (diagonal slash of R) -->
+  <rect
+    x="158" y="194"
+    width="26" height="100"
+    rx="4"
+    transform="rotate(34, 171, 244)"
+    fill="url(#letterGrad)"
+    filter="url(#glow)"
+  />
+
+  <!-- Small cyan dot accent -->
+  <circle cx="266" cy="200" r="5" fill="#38bdf8" opacity="0.7"/>
+
+  <!-- Bottom wordmark -->
+  <text
+    x="200" y="330"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-size="22"
+    font-weight="900"
+    letter-spacing="5"
+    text-anchor="middle"
+    fill="rgba(255,255,255,0.55)"
+  >RELAYOPS</text>
+  <text
+    x="200" y="355"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="7"
+    text-anchor="middle"
+    fill="rgba(56,189,248,0.7)"
+  >AI</text>
+
+  <!-- Outer border ring for crisp edge -->
+  <circle cx="200" cy="200" r="197" fill="none" stroke="rgba(56,189,248,0.22)" stroke-width="2"/>
+</svg>
