@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import MedSpaPage from './MedSpaPage';
 import AboutPage from './AboutPage';
+import ConfirmationPage from './ConfirmationPage';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -19,6 +20,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/medspa" element={<MedSpaPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/confirmation" element={<ConfirmationPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
