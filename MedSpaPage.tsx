@@ -8,8 +8,6 @@ import MedSpaFeatures from './components/medspa/MedSpaFeatures';
 import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
 import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
-import MedSpaIncomingCall from './components/medspa/MedSpaIncomingCall';
-import MedSpaGodModeLogger from './components/medspa/MedSpaGodModeLogger';
 import MedSpaDashboard from './components/medspa/MedSpaDashboard';
 import MedSpaGhostCrawler from './components/medspa/MedSpaGhostCrawler';
 import MedSpaVisitorTicker from './components/medspa/MedSpaVisitorTicker';
@@ -290,8 +288,6 @@ const MedSpaPage: React.FC = () => {
       </section>
 
       <Consultation leadSource={leadSource} />
-      <MedSpaIncomingCall />
-      <MedSpaGodModeLogger />
       <Analytics />
     </div>
   );
