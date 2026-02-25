@@ -18,13 +18,16 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
         />
       )}
       {isMedSpa && (
-        <div className="w-full h-full rounded-xl overflow-hidden ring-2 ring-rose-400/50 shadow-lg shadow-rose-500/20">
-          <img
-            src="/pfp-medspa.jpg"
-            alt="RelayOpsAI Med Spa"
-            className="w-full h-full object-cover"
-            draggable={false}
-          />
+        <div className="relative w-full h-full">
+          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-rose-400 via-pink-500 to-rose-600 blur-sm opacity-70" />
+          <div className="relative w-full h-full rounded-xl overflow-hidden ring-2 ring-rose-300 shadow-xl shadow-rose-500/40">
+            <img
+              src="/pfp-medspa.jpg"
+              alt="RelayOpsAI Med Spa"
+              className="w-full h-full object-cover brightness-110 saturate-110"
+              draggable={false}
+            />
+          </div>
         </div>
       )}
     </div>

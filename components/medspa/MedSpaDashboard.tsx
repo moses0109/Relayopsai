@@ -54,7 +54,7 @@ const MedSpaDashboard: React.FC = () => {
       value: "$1,800",
       time: "2 min ago",
       transcript: [
-        { role: "ai", text: "Hi Jennifer! This is Aria from Glow Med Spa. I saw you were interested in a Botox consultation — we have an opening this Thursday at 2pm. Does that work?" },
+        { role: "ai", text: "Hi Jennifer! Thanks for calling Glow Med Spa. I'd love to help you book a Botox consultation — we have an opening this Thursday at 2pm. Does that work?" },
         { role: "client", text: "Oh wow yes! How long does it take?" },
         { role: "ai", text: "The consultation is about 30 minutes. Dr. Kim will walk you through the treatment areas and pricing. We also have a first-visit package — $50 off your first treatment. Want me to lock in Thursday?" },
         { role: "client", text: "Yes please! What do I need to bring?" },
@@ -145,12 +145,12 @@ const MedSpaDashboard: React.FC = () => {
           <h2 className="medspa-serif text-4xl md:text-6xl font-black tracking-tight leading-tight mb-5 text-slate-900">
             Meet Your<br />
             <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 bg-clip-text text-transparent">
-              Invisible Employee
+              AI Receptionist
             </span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            While you're with clients, your AI receptionist captures, qualifies, and books 24/7.
-            Your dashboard shows every dollar recovered — in real time.
+            While you're with clients, your AI answers every call, books appointments, and texts back missed callers — 24/7.
+            Your dashboard shows every call and booking in real time.
           </p>
         </div>
 
@@ -204,7 +204,7 @@ const MedSpaDashboard: React.FC = () => {
                 { label: 'Calls Answered Today', value: callsToday.toString(), color: 'text-rose-400',   border: 'border-rose-500/20' },
                 { label: 'Appointments Booked',  value: '11',                  color: 'text-pink-300',   border: 'border-pink-500/20' },
                 { label: 'Missed Calls Saved',   value: '8',                   color: 'text-amber-400',  border: 'border-amber-500/20' },
-                { label: 'Upsells Captured',     value: '$3,240',              color: 'text-rose-300',   border: 'border-rose-400/20' },
+                { label: 'SMS Text-Backs Sent',   value: '23',                  color: 'text-rose-300',   border: 'border-rose-400/20' },
               ].map((m, i) => (
                 <div key={i} className={`rounded-xl bg-rose-950/30 border ${m.border} p-4`}>
                   <p className="text-[10px] text-slate-500 uppercase tracking-wide mb-2 leading-tight">{m.label}</p>
@@ -333,7 +333,7 @@ const MedSpaDashboard: React.FC = () => {
 
         {/* Tagline */}
         <p className="text-center text-slate-500 text-sm font-medium mt-8">
-          Your dashboard. Your calls. Your money. Every dollar tracked in real time.
+          Every call answered. Every booking tracked. Every missed call recovered via SMS.
         </p>
 
       </div>
