@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /* ------------------------------------------------------------------ */
-/*  MED SPA PRICING — 3 Tiers + 14-Day ROI Guarantee (cream theme)   */
+/*  MED SPA PRICING — 3 Tiers + Add-Ons                               */
 /* ------------------------------------------------------------------ */
 
 interface MedSpaPricingProps {
@@ -9,67 +9,113 @@ interface MedSpaPricingProps {
 }
 
 const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
+  const [expandedAddon, setExpandedAddon] = useState<number | null>(null);
+
   const tiers = [
     {
       name: 'Starter',
-      tagline: 'AI SMS Receptionist',
-      price: '$599',
+      tagline: 'For solo practitioners getting started',
+      price: '$297',
       period: '/mo',
-      setup: '+ $497 one-time setup',
+      minutes: '200 AI voice minutes',
       highlight: false,
       badge: null,
       checkColor: 'text-rose-400',
       btnClass: 'bg-white border-2 border-rose-200 hover:border-rose-400 text-slate-800 hover:shadow-lg hover:shadow-rose-100',
+      overage: '$1.50/min overage',
       features: [
-        'AI SMS Receptionist — answers every inquiry',
-        'Auto-Booking into your calendar',
-        'Appointment confirmations & reminders',
-        'Basic rebooking follow-ups at 90 days',
-        'Custom knowledge base for your spa',
-        'Monthly strategy call',
-        'HIPAA-compliant infrastructure',
+        '200 AI voice minutes/mo',
+        'Missed call SMS text-back',
+        '1 phone line',
+        'Google Calendar booking',
+        'Custom knowledge base',
+        'Call transcripts & summaries',
+        'Done-for-you setup',
+        'Monthly support call',
       ],
     },
     {
-      name: 'Scale',
-      tagline: 'Full Command Center',
-      price: '$1,299',
+      name: 'Growth',
+      tagline: 'For busy spas capturing every lead',
+      price: '$497',
       period: '/mo',
-      setup: '+ $497 one-time setup',
+      minutes: '500 AI voice minutes',
       highlight: true,
       badge: 'Most Popular',
       checkColor: 'text-rose-200',
       btnClass: 'bg-white text-rose-700 font-bold hover:bg-rose-50 shadow-xl shadow-rose-900/20 hover:shadow-rose-900/30',
+      overage: '$1.25/min overage',
       features: [
-        'Everything in Starter, PLUS:',
-        'Voice AI — answers calls like a real receptionist',
-        'Ghost Crawler™ — recovers anonymous visitors',
-        'Social Proof Bubbles — "Sarah just booked Botox!"',
-        'Full Command Center Dashboard',
-        'Upsell automation during every booking',
-        'Bi-weekly strategy & optimization calls',
-        'Priority 24/7 support escalation',
+        '500 AI voice minutes/mo',
+        'Missed call SMS text-back',
+        'Up to 3 phone lines',
+        'Google Calendar booking',
+        'Custom knowledge base',
+        'Call transcripts & summaries',
+        'Lead scoring (hot/warm/cold)',
+        'Automated appointment reminders',
+        'Done-for-you setup',
+        'Bi-weekly support calls',
       ],
     },
     {
-      name: 'Empire',
-      tagline: 'Strategic Partner',
-      price: '$2,499',
+      name: 'Elite',
+      tagline: 'For multi-location & high-volume spas',
+      price: '$897',
       period: '/mo',
-      setup: '+ $997 one-time setup',
+      minutes: '1,200 AI voice minutes',
       highlight: false,
-      badge: 'Done-For-You',
+      badge: 'Full Coverage',
       checkColor: 'text-rose-400',
       btnClass: 'bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white shadow-xl shadow-slate-900/20 hover:shadow-slate-900/30',
+      overage: '$1.00/min overage',
       features: [
-        'Everything in Scale, PLUS:',
-        'Database Reactivation — revive dormant clients',
-        'Custom Marketing Automation sequences',
-        'Outbound AI campaigns (SMS + Voice)',
-        'Multi-location management',
-        'Dedicated Strategic Partner (weekly calls)',
-        'Custom reporting & revenue attribution',
-        'White-glove onboarding & staff training',
+        '1,200 AI voice minutes/mo',
+        'Unlimited SMS text-back',
+        'Up to 10 phone lines',
+        'Google Calendar booking',
+        'Custom knowledge base',
+        'Call transcripts & summaries',
+        'Lead scoring + auto-tagging',
+        'Reminders + no-show recovery',
+        'Monthly performance reports',
+        'Dedicated account manager',
+        'Done-for-you setup',
+        '24/7 priority support',
+      ],
+    },
+  ];
+
+  const addons = [
+    {
+      name: 'Extra Voice Minutes',
+      desc: 'Add more AI call capacity without upgrading your plan.',
+      options: [
+        { label: '+100 minutes', price: '$99/mo' },
+        { label: '+300 minutes', price: '$249/mo' },
+        { label: '+500 minutes', price: '$399/mo' },
+      ],
+    },
+    {
+      name: 'Rebooking SMS Campaigns',
+      desc: 'Automated text sequences to bring past clients back for Botox, fillers, and HydraFacial touchups.',
+      options: [
+        { label: 'Up to 500 contacts/mo', price: '$149/mo' },
+        { label: 'Up to 2,000 contacts/mo', price: '$349/mo' },
+      ],
+    },
+    {
+      name: 'Additional Phone Lines',
+      desc: 'Expand beyond your plan limit for multiple locations or departments.',
+      options: [
+        { label: 'Per additional line', price: '$49/mo each' },
+      ],
+    },
+    {
+      name: 'White-Glove Setup',
+      desc: 'We build everything for you — knowledge base, scripts, calendar, testing — live in 48 hours.',
+      options: [
+        { label: 'One-time setup', price: '$497 one-time' },
       ],
     },
   ];
@@ -79,13 +125,11 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-br from-rose-100/20 to-transparent blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-pink-100/20 to-transparent blur-3xl" />
-        {/* Botanical drifts */}
-        <svg className="absolute -top-6 -right-8 w-44 md:w-60 text-rose-200/40 leaf-float-d" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+        <svg className="absolute -top-6 -right-8 w-44 md:w-60 text-rose-200/40 leaf-float-a" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
           <path d="M200 0 C155 25 105 70 65 160 C85 172 105 145 120 115 C148 68 175 28 200 0Z"/>
           <path d="M200 25 C168 48 125 90 95 175 C112 184 128 158 140 130 C162 88 183 52 200 25Z" opacity="0.65"/>
-          <path d="M175 0 C145 35 105 82 80 170 C95 178 110 152 122 124 C144 80 162 38 175 0Z" opacity="0.4"/>
         </svg>
-        <svg className="absolute -bottom-6 -left-8 w-36 md:w-52 text-pink-200/35 leaf-float-c" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+        <svg className="absolute -bottom-6 -left-8 w-36 md:w-52 text-pink-200/35 leaf-float-b" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
           <path d="M0 200 C25 162 68 115 155 75 C165 92 140 112 110 132 C68 158 28 182 0 200Z"/>
           <path d="M0 175 C30 145 78 100 168 65 C176 82 152 100 122 118 C82 142 40 170 0 175Z" opacity="0.6"/>
         </svg>
@@ -95,13 +139,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50/80 border border-rose-200/60 shadow-lg shadow-rose-500/10 mb-6">
-            <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-rose-700">
-              February Special — 3 setup slots remaining
-            </span>
-          </div>
-
+          <p className="text-xs font-bold uppercase tracking-widest text-rose-600 mb-3">Simple Pricing</p>
           <h2 className="medspa-serif text-4xl md:text-6xl font-black tracking-tight leading-tight mb-5">
             <span className="text-slate-900">One Recovered Call</span><br />
             <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
@@ -109,17 +147,15 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
             </span>
           </h2>
           <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">
-            Most clients see ROI within 72 hours of going live.
+            Every plan includes done-for-you setup, a custom AI knowledge base, and a 14-day ROI guarantee. No contracts.
           </p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-14 items-start">
           {tiers.map((tier, i) => (
-            /* Outer wrapper gives vertical space for the badge above the card */
             <div key={i} className={`relative ${tier.badge ? 'pt-6' : ''}`}>
 
-              {/* Badge lives OUTSIDE overflow-hidden so it renders fully */}
               {tier.badge && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg shadow-rose-500/30 whitespace-nowrap">
                   {tier.badge}
@@ -133,49 +169,86 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
                     : 'bg-white border border-rose-200 hover:border-rose-300 hover:shadow-xl hover:shadow-rose-200/40'
                 }`}
               >
-              <div className="p-8 md:p-10">
-                <div className="mb-7">
-                  <h3 className={`text-xl font-black mb-1 ${tier.highlight ? 'text-white' : 'text-slate-900'}`}>{tier.name}</h3>
-                  <p className={`text-sm font-semibold ${tier.highlight ? 'text-rose-200' : 'text-rose-500'}`}>{tier.tagline}</p>
-                </div>
+                <div className="p-8 md:p-10">
+                  <div className="mb-7">
+                    <h3 className={`text-xl font-black mb-1 ${tier.highlight ? 'text-white' : 'text-slate-900'}`}>{tier.name}</h3>
+                    <p className={`text-sm font-semibold ${tier.highlight ? 'text-rose-200' : 'text-rose-500'}`}>{tier.tagline}</p>
+                  </div>
 
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className={`text-5xl font-black font-mono ${tier.highlight ? 'text-white' : 'text-slate-900'}`}>{tier.price}</span>
-                  <span className={`font-medium ${tier.highlight ? 'text-rose-200' : 'text-slate-500'}`}>{tier.period}</span>
-                </div>
-                <p className={`text-xs mb-8 ${tier.highlight ? 'text-rose-200' : 'text-slate-400'}`}>{tier.setup}</p>
+                  <div className="flex items-baseline gap-1 mb-1">
+                    <span className={`text-5xl font-black ${tier.highlight ? 'text-white' : 'text-slate-900'}`}>{tier.price}</span>
+                    <span className={`font-medium ${tier.highlight ? 'text-rose-200' : 'text-slate-500'}`}>{tier.period}</span>
+                  </div>
+                  <p className={`text-xs mb-1 ${tier.highlight ? 'text-rose-200' : 'text-slate-400'}`}>{tier.minutes} included</p>
+                  <p className={`text-xs mb-8 ${tier.highlight ? 'text-rose-200/70' : 'text-slate-400/80'}`}>{tier.overage}</p>
 
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((f, j) => (
-                    <li key={j} className={`flex items-start gap-3 text-sm ${
-                      j === 0 && i > 0
-                        ? `${tier.highlight ? 'text-rose-200' : 'text-slate-400'} font-semibold`
-                        : tier.highlight ? 'text-rose-100' : 'text-slate-700'
-                    }`}>
-                      {j === 0 && i > 0 ? (
-                        <span className="flex-shrink-0 mt-0.5">—</span>
-                      ) : (
+                  <ul className="space-y-3 mb-8">
+                    {tier.features.map((f, j) => (
+                      <li key={j} className={`flex items-start gap-3 text-sm ${tier.highlight ? 'text-rose-100' : 'text-slate-700'}`}>
                         <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.checkColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
-                      )}
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <button
-                  type="button"
-                  onClick={() => onBookSetup(tier.name.toLowerCase())}
-                  className={`group relative w-full py-4 rounded-full font-bold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden ${tier.btnClass}`}
-                >
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <span className="relative z-10">Get Started with {tier.name}</span>
-                </button>
-              </div>
+                  <button
+                    type="button"
+                    onClick={() => onBookSetup(tier.name.toLowerCase())}
+                    className={`group relative w-full py-4 rounded-full font-bold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] overflow-hidden ${tier.btnClass}`}
+                  >
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="relative z-10">Book Your Setup Call</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Add-Ons */}
+        <div className="max-w-3xl mx-auto mb-14">
+          <div className="text-center mb-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-rose-600 mb-2">Power-Ups</p>
+            <h3 className="medspa-serif text-2xl md:text-3xl font-black text-slate-900">Add-Ons & Extras</h3>
+          </div>
+
+          <div className="space-y-3">
+            {addons.map((addon, i) => (
+              <div key={i} className="rounded-2xl bg-white border border-rose-200 overflow-hidden hover:border-rose-300 transition-colors">
+                <button
+                  type="button"
+                  onClick={() => setExpandedAddon(expandedAddon === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                >
+                  <div>
+                    <h4 className="text-slate-900 font-bold text-sm">{addon.name}</h4>
+                    <p className="text-slate-500 text-xs mt-0.5">{addon.desc}</p>
+                  </div>
+                  <div className={`flex-shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                    expandedAddon === i ? 'bg-rose-100 border-rose-300 rotate-180' : 'bg-rose-50 border-rose-200'
+                  }`}>
+                    <svg className="w-3.5 h-3.5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <div style={{ maxHeight: expandedAddon === i ? '200px' : '0px', overflow: 'hidden', transition: 'max-height 0.3s ease' }}>
+                  <div className="px-5 pb-5 pt-0">
+                    <div className="flex flex-wrap gap-3">
+                      {addon.options.map((opt, j) => (
+                        <div key={j} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#fdf8f5] border border-rose-200 shadow-sm">
+                          <span className="text-sm font-semibold text-slate-700">{opt.label}</span>
+                          <span className="text-sm font-black text-rose-600">{opt.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* 14-Day Guarantee */}
@@ -191,14 +264,14 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
               <span className="text-slate-900 font-bold">you get a 100% refund. No questions. No hassle.</span>
             </p>
             <p className="text-sm text-slate-500 max-w-xl mx-auto">
-              We're confident because the average med spa recovers $8,000–$24,000 in the first month. We only win when you win.
+              We are confident because the average med spa recovers $8,000–$24,000 in the first month. We only win when you win.
             </p>
           </div>
         </div>
 
         {/* Trust badges */}
         <div className="flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-600 mt-10">
-          {['HIPAA-Compliant', '5-Min Setup', 'No Long-Term Contract', '14-Day Money-Back'].map((badge, i) => (
+          {['HIPAA-Compliant', 'Done-for-You Setup', 'No Long-Term Contract', '14-Day Money-Back'].map((badge, i) => (
             <div key={i} className="flex items-center gap-2">
               <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

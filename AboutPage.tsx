@@ -56,9 +56,9 @@ const AboutPage: React.FC = () => {
                 body: "Automated SMS and call follow-ups go out within minutes of a missed call or inquiry. No lead slips through. No manual chasing required.",
               },
               {
-                icon: '👻',
-                title: 'Recovers Anonymous Website Traffic',
-                body: "97% of website visitors leave without contacting you. Our system identifies them and triggers personalized outreach within 30 seconds — turning browsers into booked clients.",
+                icon: '📊',
+                title: 'Call Intelligence & Reporting',
+                body: "Every call is transcribed, scored, and summarized. See which leads are hot, which need follow-up, and exactly how much revenue your AI is recovering — all in a real-time dashboard.",
               },
             ].map((item, i) => (
               <div key={i} className="group p-7 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-cyan-500/30 hover:bg-cyan-500/[0.04] transition-all duration-300">
@@ -107,7 +107,7 @@ const AboutPage: React.FC = () => {
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">and Books Appointments, We Can Help.</span>
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed">
-            We work with service businesses across every industry. If you're losing revenue to missed calls, slow follow-up, or anonymous website traffic — the fix is the same regardless of what you sell.
+            We work with service businesses across every industry. If you're losing revenue to missed calls, slow follow-up, or no after-hours coverage — the fix is the same regardless of what you sell.
           </p>
         </div>
       </section>

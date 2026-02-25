@@ -42,10 +42,40 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
   const isMedSpa = location.pathname.startsWith('/medspa');
+  const isSubpage = location.pathname === '/about' || location.pathname === '/medspa/about' || location.pathname === '/confirmation';
+  const isHomePage = location.pathname === '/' || location.pathname === '/medspa';
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const goHome = () => {
+    const home = isMedSpa ? '/medspa' : '/';
+    navigate(home);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDemo = () => {
+    if (isHomePage) {
+      scrollTo('demo');
+    } else {
+      navigate(isMedSpa ? '/medspa' : '/');
+      setTimeout(() => {
+        document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  };
+
+  const handleContact = () => {
+    if (isHomePage) {
+      scrollTo('consultation');
+    } else {
+      navigate(isMedSpa ? '/medspa' : '/');
+      setTimeout(() => {
+        document.getElementById('consultation')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
   };
 
   return (
@@ -53,8 +83,23 @@ const Navbar: React.FC = () => {
       <div className="max-w-6xl mx-auto px-3 md:px-6">
         <div className="flex justify-between items-center h-14 md:h-16 px-4 md:px-8 bg-[#0f172a]/95 backdrop-blur-2xl border border-white/10 rounded-full shadow-2xl">
 
-          {/* Logo + Dropdown */}
-          <div className="relative flex items-center">
+          {/* Back button on subpages + Logo */}
+          <div className="relative flex items-center gap-2">
+
+            {/* Back arrow — only on subpages */}
+            {isSubpage && (
+              <button
+                type="button"
+                onClick={goHome}
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${isMedSpa ? 'hover:bg-rose-500/15 text-rose-400' : 'hover:bg-cyan-500/15 text-cyan-400'} transition-colors`}
+                aria-label="Go back"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowDropdown(!showDropdown); }}
@@ -100,7 +145,7 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-14 h-full">
             <button
               type="button"
-              onClick={() => scrollTo('demo')}
+              onClick={handleDemo}
               className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
             >
               Demo
@@ -108,13 +153,13 @@ const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate(isMedSpa ? '/medspa/about' : '/about')}
-              className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
+              className={`text-xs font-black uppercase tracking-wide ${isSubpage && (location.pathname === '/about' || location.pathname === '/medspa/about') ? 'text-white' : 'text-slate-400'} hover:text-white transition-colors h-full flex items-center`}
             >
               About
             </button>
             <button
               type="button"
-              onClick={() => scrollTo('consultation')}
+              onClick={handleContact}
               className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
             >
               Contact
@@ -125,7 +170,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center h-full">
             <button
               type="button"
-              onClick={() => scrollTo('consultation')}
+              onClick={handleContact}
               className={`group/cta relative inline-flex items-center justify-center gap-2 px-5 md:px-8 py-2.5 md:py-3 ${
                 isMedSpa
                   ? 'bg-gradient-to-r from-rose-400 to-pink-500 shadow-lg shadow-rose-500/25 hover:shadow-rose-500/40 border border-rose-400/30'

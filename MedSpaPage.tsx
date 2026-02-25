@@ -10,6 +10,7 @@ import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
 import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
 import MedSpaDashboard from './components/medspa/MedSpaDashboard';
 import MedSpaVisitorTicker from './components/medspa/MedSpaVisitorTicker';
+import MedSpaPricing from './components/medspa/MedSpaPricing';
 
 /* ------------------------------------------------------------------ */
 /*  MED SPA PAGE — Luxury Cream + Rose Gold                            */
@@ -83,6 +84,9 @@ const MedSpaPage: React.FC = () => {
       {/* 6. ROI Calculator → 7. Dashboard (all CREAM — no waves) */}
       <MedSpaROI onBookDemo={handleBookDemo} />
       <MedSpaDashboard />
+
+      {/* 8. Pricing */}
+      <MedSpaPricing onBookSetup={(tier) => { setLeadSource(`pricing-${tier}`); scrollTo('consultation'); }} />
 
       {/* Wave cream → blush */}
       <WaveDown from={CREAM} to={BLUSH} />
