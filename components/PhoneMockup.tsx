@@ -64,19 +64,19 @@ const PhoneMockup: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 md:py-12 px-4 md:px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+    <section ref={sectionRef} className="py-6 md:py-12 px-4 md:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
 
         {/* Left — Copy */}
         <div className="flex-1 text-center lg:text-left">
-          <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-4 fade-in-up">How It Sounds</p>
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 leading-tight fade-in-up">
+          <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-3 fade-in-up">How It Sounds</p>
+          <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-tight fade-in-up">
             Natural. <span className="gradient-relay">Professional.</span><br />Effective.
           </h2>
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-8 fade-in-up">
-            Your AI receptionist handles conversations just like your best employee would — but it never calls in sick, never puts anyone on hold, and never forgets to book the appointment.
+          <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-5 fade-in-up">
+            Your AI receptionist handles conversations just like your best employee — but it never calls in sick, never puts anyone on hold, and never misses a booking.
           </p>
-          <ul className="space-y-4 mb-8 fade-in-up">
+          <ul className="hidden lg:block space-y-4 mb-8 fade-in-up">
             {[
               'Answers in under 1 second',
               'Books appointments in real-time',

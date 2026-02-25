@@ -34,9 +34,9 @@ const HowItWorks: React.FC = () => (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-br from-sky-500/[0.04] via-violet-500/[0.03] to-emerald-500/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
     <div className="max-w-6xl mx-auto relative z-10">
-      <div className="text-center mb-16 md:mb-20">
-        <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-4 fade-in-up">The Process</p>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter mb-4 fade-in-up leading-tight">
+      <div className="text-center mb-10 md:mb-20">
+        <p className="text-sky-400 text-xs font-black uppercase tracking-widest mb-3 fade-in-up">The Process</p>
+        <h2 className="text-2xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter mb-3 fade-in-up leading-tight">
           Three Steps. <span className="gradient-relay">We Do the Work.</span>
         </h2>
         <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto fade-in-up">
@@ -55,7 +55,7 @@ const HowItWorks: React.FC = () => (
             <div className={`h-1 bg-gradient-to-r ${step.accent}`} />
 
             {/* Card body */}
-            <div className="relative bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.15] backdrop-blur-sm p-8 md:p-10 transition-all duration-500 group-hover:bg-white/[0.05]">
+            <div className="relative bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.15] backdrop-blur-sm p-5 md:p-10 transition-all duration-500 group-hover:bg-white/[0.05]">
               {/* Large faded number background */}
               <div className="absolute top-4 right-6 text-[5rem] md:text-[6rem] font-black italic text-white/[0.02] group-hover:text-white/[0.05] leading-none transition-all duration-500 pointer-events-none select-none">
                 {step.num}

@@ -144,7 +144,7 @@ const App: React.FC = () => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[82px] font-black tracking-[-0.03em] leading-[0.9] mb-5 md:mb-6">
+            <h1 className="text-[1.7rem] sm:text-4xl md:text-6xl lg:text-[82px] font-black tracking-[-0.03em] leading-[0.95] mb-4 md:mb-6">
               <span className="block text-white">Your Business's</span>
               <span className="block text-white">Ultimate AI Solution.</span>
               <span className="block bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">Drive Growth Now.</span>
@@ -233,8 +233,8 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Features grid — full width at bottom */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 border-t border-white/[0.04] pt-5 pb-5">
+        {/* Features grid — full width at bottom, desktop only */}
+        <div className="hidden md:block relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 border-t border-white/[0.04] pt-5 pb-5">
           <Features />
         </div>
       </header>
@@ -253,17 +253,17 @@ const App: React.FC = () => {
       <section className="py-8 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 leading-none fade-in-up">
+          <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-3 leading-tight fade-in-up">
             Missed Calls Cost You <br />
             <span className="text-rose-500">Real Money</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-3 fade-in-up">
-            If you miss just 5 calls per day and your average job is $200, that's over $30,000 per year in lost revenue.
+          <p className="text-slate-400 text-sm md:text-xl font-medium max-w-2xl mx-auto mb-3 fade-in-up">
+            Miss 5 calls a day at $200 avg — that's $30,000+ a year walking out the door.
           </p>
-          <p className="text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-3 fade-in-up uppercase tracking-wide">
+          <p className="hidden sm:block text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-3 fade-in-up uppercase tracking-wide">
             Capture $1,500+ in one week with RelayOpsAI.
           </p>
-          <p className="text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-6 fade-in-up">
+          <p className="hidden sm:block text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-6 fade-in-up">
             We make sure every call is answered, every lead is captured, and every opportunity turns into cash.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -273,7 +273,7 @@ const App: React.FC = () => {
               { label: 'ROI Potential', val: '10X+', sub: 'Return on investment' },
             ].map((m, i) => (
               <div key={i} className="stagger-item group p-6 rounded-2xl bg-gradient-to-br from-white/[0.02] to-cyan-500/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/[0.05] hover:shadow-[0_0_40px_rgba(6,182,212,0.1)] transition-all duration-500 backdrop-blur-sm">
-                <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-4xl sm:text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300 break-words">{m.val}</div>
+                <div className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-500 text-3xl sm:text-5xl font-black italic mb-3 tracking-tighter group-hover:scale-110 transition-transform duration-300 break-words">{m.val}</div>
                 <div className="text-xs font-black uppercase tracking-wide text-white mb-1 break-words">{m.label}</div>
                 <div className="text-xs font-bold text-slate-600 uppercase tracking-wide break-words">{m.sub}</div>
               </div>
@@ -352,7 +352,7 @@ const App: React.FC = () => {
             <span className="text-sm font-semibold text-emerald-400">Only 3 Setup Slots Left This Month</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-6">
+          <h2 className="text-3xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight mb-4 md:mb-6">
             <span className="text-white">See How We Can</span><br />
             <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
               Build Your Business
@@ -360,7 +360,7 @@ const App: React.FC = () => {
             <span className="text-white">on AI.</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-xl mx-auto mb-6 leading-relaxed font-medium">
+          <p className="text-base md:text-xl text-slate-400 max-w-xl mx-auto mb-6 leading-relaxed font-medium">
             Book a free 30-minute call. We'll show you exactly how much revenue you're losing — and how to recover it starting this week.
           </p>
 

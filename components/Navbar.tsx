@@ -18,25 +18,12 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
         />
       )}
       {isMedSpa && (
-        <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl flex items-center justify-center"
-          style={{ background: 'linear-gradient(145deg, #1e0510 0%, #7f1234 45%, #e11d48 100%)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 42% 42%, rgba(251,113,133,0.55) 0%, transparent 68%)' }} />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-transparent" />
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 48 48" fill="none">
-            <path d="M49 -1 C39 7 29 17 27 31 C35 27 43 15 49 -1Z" fill="rgba(255,255,255,0.16)"/>
-            <path d="M49 9 C41 15 35 23 34 35 C40 31 45 21 49 9Z" fill="rgba(255,255,255,0.09)"/>
-            <path d="M5 37 A9 9 0 0 1 12 30" stroke="rgba(125,211,252,0.55)" strokeWidth="1.3" strokeLinecap="round"/>
-            <path d="M3 40 A13 13 0 0 1 12 26" stroke="rgba(125,211,252,0.28)" strokeWidth="0.9" strokeLinecap="round"/>
-            <path d="M1 43 A17 17 0 0 1 12 22" stroke="rgba(125,211,252,0.14)" strokeWidth="0.7" strokeLinecap="round"/>
-            <line x1="8" y1="47" x2="40" y2="47" stroke="rgba(255,255,255,0.18)" strokeWidth="0.8"/>
-          </svg>
-          <span className="relative z-10 text-white font-black select-none"
-            style={{ fontSize: '23px', lineHeight: 1, letterSpacing: '-0.5px', fontFamily: '"Arial Black","Helvetica Neue",sans-serif', textShadow: '0 0 18px rgba(255,160,180,0.9), 0 0 6px rgba(255,100,130,0.6), 0 1px 4px rgba(0,0,0,0.5)' }}>
-            R
-          </span>
-          <div className="absolute bottom-[5px] right-[5px] w-[8px] h-[8px] rounded-full"
-            style={{ background: '#7dd3fc', boxShadow: '0 0 10px 4px rgba(125,211,252,0.85)' }} />
-        </div>
+        <img
+          src="/pfp-medspa.jpg"
+          alt="RelayOpsAI Med Spa"
+          className="w-full h-full object-cover rounded-xl shadow-lg"
+          draggable={false}
+        />
       )}
     </div>
   );

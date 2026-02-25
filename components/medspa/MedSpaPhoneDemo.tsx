@@ -104,8 +104,8 @@ const MedSpaPhoneDemo: React.FC = () => {
           <div className="space-y-6">
             {[
               { icon: '📞', title: 'After-Hours = $$$', desc: '60% of med spa calls happen after 6pm. Your AI never sleeps.' },
-              { icon: '💰', title: 'Upsells Automatically', desc: 'AI suggests add-ons during booking. $150 HydraFacial → instant revenue bump.' },
-              { icon: '🎯', title: 'Qualifies Every Lead', desc: 'Asks about experience, concerns, budget. Only serious buyers get booked.' },
+              { icon: '💰', title: 'Mentions Your Services', desc: 'AI naturally mentions relevant add-ons based on what you offer. More value per call.' },
+              { icon: '🎯', title: 'Collects Key Info', desc: 'Asks about experience, concerns, and availability. Every booking comes with context.' },
             ].map((item, i) => (
               <div key={i} className="p-6 rounded-2xl bg-[#fdf8f5] border border-rose-100 hover:border-rose-300 hover:shadow-lg hover:shadow-rose-100 transition-all duration-300">
                 <div className="text-4xl mb-3">{item.icon}</div>

@@ -27,14 +27,14 @@ const MedSpaFeatures: React.FC = () => {
     },
     {
       letter: 'C',
-      title: 'Outbound Reactivation',
+      title: 'Automated Follow-Up',
       bullets: [
-        'AI calls dormant contacts, lapsed clients, and old inquiries in your list',
-        'Navigates gatekeepers and handles objections naturally',
-        'Automatically books consultations and follow-up appointments',
-        'Generates revenue from leads you already paid to acquire — at zero additional ad spend',
+        'Sends confirmation texts immediately after every booking',
+        'Appointment reminders at 24 hours and 2 hours before — automatically',
+        'No-show recovery: follows up with a reschedule prompt the same day',
+        'Botox and filler rebooking reminders sent at the right interval (every 3–4 months)',
       ],
-      outcome: 'Result: Revenue from your existing database.',
+      outcome: 'Result: More return visits. Less chasing.',
     },
     {
       letter: 'D',
