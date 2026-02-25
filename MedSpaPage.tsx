@@ -114,22 +114,11 @@ const MedSpaPage: React.FC = () => {
                 <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-rose-300/35 via-pink-200/25 to-purple-200/15 blur-lg group-hover/card:blur-xl group-hover/card:from-rose-300/50 transition-all duration-500 pointer-events-none" />
                 {/* Avatar frame */}
                 <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden shadow-2xl shadow-rose-400/35 ring-2 ring-rose-100">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1e0510] via-[#7f1234] to-rose-500" />
-                  <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 38% 38%, rgba(251,113,133,0.65) 0%, transparent 65%)' }} />
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-                  <svg className="absolute inset-0 w-full h-full opacity-[0.13]" viewBox="0 0 96 96" fill="none" aria-hidden="true">
-                    <path d="M96 0 C75 18 52 40 48 72 C62 65 78 44 96 0Z" fill="white"/>
-                    <path d="M96 22 C80 36 65 55 62 82 C74 75 85 58 96 22Z" fill="white" opacity="0.6"/>
-                    <path d="M0 96 C18 78 40 55 72 48 C65 62 44 78 0 96Z" fill="white" opacity="0.4"/>
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span
-                      className="text-white font-black select-none"
-                      style={{ fontSize: '40px', fontFamily: '"Georgia", serif', textShadow: '0 0 22px rgba(255,160,180,0.9), 0 2px 8px rgba(0,0,0,0.5)', letterSpacing: '-1px' }}
-                    >
-                      B
-                    </span>
-                  </div>
+                  <img
+                    src="/pfp-medspa.jpg"
+                    alt="RelayOpsAI Founder"
+                    className="w-full h-full object-cover"
+                  />
                   {/* Online dot */}
                   <div className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-white shadow-md shadow-emerald-400/60" />
                 </div>
