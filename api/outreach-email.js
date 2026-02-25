@@ -1,4 +1,4 @@
-// Vercel Serverless Function — Day 3 and Day 7 follow-up emails
+// Vercel Serverless Function -Day 3 and Day 7 follow-up emails
 // Trigger manually or via cron after the auto Day 0 email from visitor-webhook
 
 const CALENDLY_LINK = 'https://calendly.com/elironebusiness/15-minute-call-capture-setup';
@@ -66,9 +66,9 @@ function getTemplate(template, { name, company }) {
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.7;">
           <p>Hey ${name},</p>
 
-          <p>Just bumping this up — totally get it if the timing wasn't right the other day.</p>
+          <p>Just bumping this up -totally get it if the timing wasn't right the other day.</p>
 
-          <p>Quick story that might hit home: one of our clients (med spa owner, similar size to ${company}) was losing about <strong>$15K a month</strong> to missed calls. Not because her team sucked — they were literally in sessions and couldn't pick up.</p>
+          <p>Quick story that might hit home: one of our clients (med spa owner, similar size to ${company}) was losing about <strong>$15K a month</strong> to missed calls. Not because her team sucked -they were literally in sessions and couldn't pick up.</p>
 
           <p>We turned on the AI voice system and within the first month:</p>
 
@@ -78,7 +78,7 @@ function getTemplate(template, { name, company }) {
             <li>Didn't hire anyone new</li>
           </ul>
 
-          <p>I keep thinking ${company} could see similar numbers. Would be happy to run through it — literally takes 15 minutes and you'll walk away knowing your exact number either way.</p>
+          <p>I keep thinking ${company} could see similar numbers. Would be happy to run through it -literally takes 15 minutes and you'll walk away knowing your exact number either way.</p>
 
           <p style="margin: 24px 0;">
             <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 14px;">
@@ -86,10 +86,10 @@ function getTemplate(template, { name, company }) {
             </a>
           </p>
 
-          <p>No worries if not — just didn't want you to miss out if it's something that could actually help.</p>
+          <p>No worries if not -just didn't want you to miss out if it's something that could actually help.</p>
 
           <p style="margin-top: 24px;">
-            — Eli
+            -Eli
           </p>
 
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
@@ -100,14 +100,14 @@ function getTemplate(template, { name, company }) {
       `,
     },
 
-    // ─── Day 7: Last touch — direct, personal, no pressure ──────
+    // ─── Day 7: Last touch -direct, personal, no pressure ──────
     roi: {
-      subject: `last thing — then I'll leave you alone, ${name}`,
+      subject: `last thing -then I'll leave you alone, ${name}`,
       html: `
         <div style="font-family: 'Inter', Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.7;">
           <p>Hey ${name},</p>
 
-          <p>Last email from me on this — I promise.</p>
+          <p>Last email from me on this -I promise.</p>
 
           <p>I'll just leave you with the napkin math:</p>
 
@@ -119,11 +119,11 @@ function getTemplate(template, { name, company }) {
             <p style="margin: 0; font-size: 13px; color: #64748b;">Most businesses we audit are 2-5x this. The system pays for itself with one booking.</p>
           </div>
 
-          <p>If those numbers bother you even a little, I'd love 15 minutes to show you your real ones. And if it turns out ${company} is actually catching everything — great, I'll tell you that too.</p>
+          <p>If those numbers bother you even a little, I'd love 15 minutes to show you your real ones. And if it turns out ${company} is actually catching everything -great, I'll tell you that too.</p>
 
           <p style="margin: 24px 0;">
             <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 14px;">
-              15 Min — See Your Numbers →
+              15 Min -See Your Numbers →
             </a>
           </p>
 
@@ -132,12 +132,12 @@ function getTemplate(template, { name, company }) {
           <p>Rooting for ${company} either way.</p>
 
           <p style="margin-top: 24px;">
-            — Eli
+            -Eli
           </p>
 
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
           <p style="font-size: 11px; color: #94a3b8;">
-            Last email — won't send any more unless you reply.
+            Last email -won't send any more unless you reply.
             <a href="mailto:hello@relayopsai.com?subject=Unsubscribe" style="color: #64748b;">Unsubscribe</a>
           </p>
         </div>
