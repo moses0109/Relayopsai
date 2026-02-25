@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import MedSpaPage from './MedSpaPage';
 import AboutPage from './AboutPage';
+import MedSpaAboutPage from './MedSpaAboutPage';
 import ConfirmationPage from './ConfirmationPage';
 
 const rootElement = document.getElementById('root');
@@ -20,6 +21,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/medspa" element={<MedSpaPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/medspa/about" element={<MedSpaAboutPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
       </Routes>
     </BrowserRouter>

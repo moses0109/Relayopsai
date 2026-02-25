@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
-  const isMedSpa = location.pathname === '/medspa';
+  const isMedSpa = location.pathname.startsWith('/medspa');
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate('/about')}
+              onClick={() => navigate(isMedSpa ? '/medspa/about' : '/about')}
               className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
             >
               About
