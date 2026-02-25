@@ -17,7 +17,7 @@ const ConfirmationPage: React.FC = () => {
       number: '02',
       title: 'Live System Demo',
       time: 'Minutes 10–20',
-      body: 'We walk through how RelayOpsAI handles inbound calls, follows up on missed inquiries, and reactivates dormant leads — all running in the background while your team stays focused on clients.',
+      body: 'We walk through how RelayOpsAI answers inbound calls, texts back missed callers, and books appointments — all running in the background while your team stays focused on clients.',
     },
     {
       number: '03',
