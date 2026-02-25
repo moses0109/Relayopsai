@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => isMedSpa ? scrollTo('about') : navigate('/about')}
+              onClick={() => navigate('/about')}
               className="text-xs font-black uppercase tracking-wide text-slate-400 hover:text-white transition-colors h-full flex items-center"
             >
               About
