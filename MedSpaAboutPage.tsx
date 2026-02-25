@@ -52,18 +52,15 @@ const MedSpaAboutPage: React.FC = () => {
           <div className="p-7 md:p-10 rounded-3xl bg-gradient-to-br from-[#fdf8f5] via-rose-50/80 to-pink-100/60 border border-rose-200/60 shadow-xl shadow-rose-100/40">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
 
-              {/* Avatar */}
+              {/* Avatar — clean founder icon */}
               <div className="relative flex-shrink-0">
-                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-rose-300/35 via-pink-200/25 to-purple-200/15 blur-lg pointer-events-none" />
-                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden shadow-2xl shadow-rose-400/35 ring-2 ring-rose-100">
-                  <img src="/pfp-medspa.jpg" alt="RelayOpsAI Founder" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-white shadow-md shadow-emerald-400/60" />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white border border-rose-200 shadow-md whitespace-nowrap">
-                  <svg className="w-3 h-3 text-rose-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-rose-300/30 via-pink-200/20 to-purple-200/10 blur-lg pointer-events-none" />
+                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-rose-500 via-pink-500 to-rose-600 shadow-2xl shadow-rose-400/35 ring-2 ring-rose-100 flex items-center justify-center">
+                  {/* Person silhouette icon */}
+                  <svg className="w-12 h-12 md:w-14 md:h-14 text-white/90" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                   </svg>
-                  <span className="text-[9px] font-black text-rose-600 uppercase tracking-wide">Verified Founder</span>
+                  <div className="absolute bottom-1 right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-white shadow-md shadow-emerald-400/60" />
                 </div>
               </div>
 

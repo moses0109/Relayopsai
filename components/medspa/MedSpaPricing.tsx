@@ -15,7 +15,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
     {
       name: 'Starter',
       tagline: 'For solo practitioners getting started',
-      price: '$297',
+      price: '$347',
       period: '/mo',
       minutes: '200 AI voice minutes',
       highlight: false,
@@ -37,7 +37,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
     {
       name: 'Growth',
       tagline: 'For busy spas capturing every lead',
-      price: '$497',
+      price: '$597',
       period: '/mo',
       minutes: '500 AI voice minutes',
       highlight: true,
@@ -61,7 +61,7 @@ const MedSpaPricing: React.FC<MedSpaPricingProps> = ({ onBookSetup }) => {
     {
       name: 'Elite',
       tagline: 'For multi-location & high-volume spas',
-      price: '$897',
+      price: '$997',
       period: '/mo',
       minutes: '1,200 AI voice minutes',
       highlight: false,
