@@ -65,19 +65,24 @@ export default async function handler(req, res) {
         leadTemp, leadEmoji, referrer, first_seen, last_seen,
       });
 
-      await fetch('https://api.resend.com/emails', {
+      const FROM_EMAIL = process.env.FROM_EMAIL || 'RelayOpsAI <onboarding@resend.dev>';
+
+      const notifRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'RelayOpsAI Visitor Alert <alerts@relayopsai.com>',
+          from: FROM_EMAIL,
           to: NOTIFY_EMAIL,
           subject: `${leadEmoji} ${leadTemp} Lead: ${companyInfo} just visited your site`,
           html: notifBody,
         }),
       });
+
+      const notifResult = await notifRes.json();
+      console.log('[NOTIFY RESULT]', JSON.stringify(notifResult));
 
       // 2) Auto-send outreach email to the VISITOR (if we have their email)
       if (email) {
@@ -99,20 +104,22 @@ export default async function handler(req, res) {
           firstName, companyInfo, pageContext, visit_count, company_industry,
         });
 
-        await fetch('https://api.resend.com/emails', {
+        const outreachRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${RESEND_API_KEY}`,
           },
           body: JSON.stringify({
-            from: 'Eli from RelayOpsAI <hello@relayopsai.com>',
+            from: FROM_EMAIL,
             to: email,
             subject: subjectLine,
             html: outreachBody,
           }),
         });
 
+        const outreachResult = await outreachRes.json();
+        console.log('[OUTREACH RESULT]', JSON.stringify(outreachResult));
         console.log(`[AUTO-OUTREACH] Sent initial email to ${email} (${companyInfo})`);
       }
     }
