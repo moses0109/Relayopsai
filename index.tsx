@@ -7,6 +7,7 @@ import MedSpaPage from './MedSpaPage';
 import AboutPage from './AboutPage';
 import MedSpaAboutPage from './MedSpaAboutPage';
 import ConfirmationPage from './ConfirmationPage';
+import PrivacyPage from './PrivacyPage';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -23,6 +24,7 @@ root.render(
         <Route path="/about" element={<AboutPage />} />
         <Route path="/medspa/about" element={<MedSpaAboutPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
