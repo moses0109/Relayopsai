@@ -5,9 +5,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 /* ------------------------------------------------------------------ */
 /*  SIMPLE LOGO                                                         */
 /* ------------------------------------------------------------------ */
-const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
+const SimpleLogo = ({ isMedSpa = false }: { size?: string; isMedSpa?: boolean }) => {
   return (
-    <div className={`relative ${size} flex items-center justify-center`}>
+    <div className={`relative ${isMedSpa ? 'w-14 h-14 md:w-16 md:h-16' : 'w-12 h-12'} flex items-center justify-center`}>
       {!isMedSpa && (
         <img
           id="mini-profile-image"
@@ -19,12 +19,12 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
       )}
       {isMedSpa && (
         <div className="relative w-full h-full">
-          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-rose-400 via-pink-500 to-rose-600 blur-sm opacity-70" />
-          <div className="relative w-full h-full rounded-xl overflow-hidden ring-2 ring-rose-300 shadow-xl shadow-rose-500/40">
+          <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-rose-400 via-pink-500 to-rose-600 blur-md opacity-80 animate-pulse" style={{ animationDuration: '3s' }} />
+          <div className="relative w-full h-full rounded-xl overflow-hidden ring-[3px] ring-rose-300/90 shadow-2xl shadow-rose-500/50">
             <img
               src="/pfp-medspa.jpg"
               alt="RelayOpsAI Med Spa"
-              className="w-full h-full object-cover brightness-110 saturate-110"
+              className="w-full h-full object-cover brightness-125 saturate-[1.3] contrast-110"
               draggable={false}
             />
           </div>
