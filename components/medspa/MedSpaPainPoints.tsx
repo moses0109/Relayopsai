@@ -49,19 +49,19 @@ const MedSpaPainPoints: React.FC = () => {
               detail: 'Every missed call is a potential booking that went to your competitor. At an average ticket of $300–$1,200, this adds up fast.',
             },
             {
-              stat: '97%',
-              label: 'of website visitors leave without contacting you',
-              detail: 'Anonymous traffic with real buying intent. Without a follow-up system, that intent disappears. You paid to acquire that traffic and got nothing back.',
+              stat: '35%',
+              label: 'of med spa calls come in after hours — when no one picks up',
+              detail: 'Evenings and weekends are when people research treatments. If your phone goes to voicemail at 7pm, they call the next spa on Google.',
             },
             {
-              stat: '0',
-              label: 'consistent follow-up on most no-shows and missed inquiries',
-              detail: 'A front desk managing in-person appointments cannot also chase outside leads. Follow-up requires a system, not a person.',
+              stat: '80%',
+              label: 'of callers will not leave a voicemail — they just hang up',
+              detail: 'No voicemail means no callback. No callback means that lead is gone. You will never know they called.',
             },
             {
               stat: '$0',
-              label: 'recovered from dormant leads sitting in your CRM',
-              detail: 'Past inquiries, old consultations, lapsed clients — most spas never re-engage them. That is untapped revenue with no acquisition cost.',
+              label: 'recovered from missed calls that never got a text-back',
+              detail: 'A simple follow-up text within 60 seconds can save that lead. Without it, they are already dialing your competitor.',
             },
           ].map((item, i) => (
             <div

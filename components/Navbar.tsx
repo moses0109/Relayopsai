@@ -18,12 +18,14 @@ const SimpleLogo = ({ size = "w-12 h-12", isMedSpa = false }: { size?: string; i
         />
       )}
       {isMedSpa && (
-        <img
-          src="/pfp-medspa.jpg"
-          alt="RelayOpsAI Med Spa"
-          className="w-full h-full object-cover rounded-xl shadow-lg"
-          draggable={false}
-        />
+        <div className="w-full h-full rounded-xl overflow-hidden ring-2 ring-rose-400/50 shadow-lg shadow-rose-500/20">
+          <img
+            src="/pfp-medspa.jpg"
+            alt="RelayOpsAI Med Spa"
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        </div>
       )}
     </div>
   );

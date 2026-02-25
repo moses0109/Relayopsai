@@ -14,7 +14,7 @@ const EVENTS = [
   { icon: '📅', text: 'Olivia H. booked Microblading consult — 42 seconds flat' },
   { icon: '💰', text: 'Natalie B. upgraded add-on during call → +$450 upsell captured' },
   { icon: '📞', text: 'AI handled 8 simultaneous inbound calls — zero hold time' },
-  { icon: '✅', text: 'Botox rebooking campaign: 65% response rate this week' },
+  { icon: '✅', text: 'Auto-reminder sent → Botox rebooking confirmed in 3 minutes' },
 ];
 
 /* Double the array so the marquee loops seamlessly */
