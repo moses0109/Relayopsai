@@ -9,7 +9,6 @@ import MedSpaROI from './components/medspa/MedSpaROI';
 import MedSpaTestimonials from './components/medspa/MedSpaTestimonials';
 import MedSpaPhoneDemo from './components/medspa/MedSpaPhoneDemo';
 import MedSpaDashboard from './components/medspa/MedSpaDashboard';
-import MedSpaGhostCrawler from './components/medspa/MedSpaGhostCrawler';
 import MedSpaVisitorTicker from './components/medspa/MedSpaVisitorTicker';
 
 /* ------------------------------------------------------------------ */
@@ -81,9 +80,8 @@ const MedSpaPage: React.FC = () => {
       {/* Wave blush → cream */}
       <WaveDown from={BLUSH} to={CREAM} />
 
-      {/* 6. ROI Calculator → 7. Ghost Crawler → 8. Dashboard (all CREAM — no waves) */}
+      {/* 6. ROI Calculator → 7. Dashboard (all CREAM — no waves) */}
       <MedSpaROI onBookDemo={handleBookDemo} />
-      <MedSpaGhostCrawler />
       <MedSpaDashboard />
 
       {/* 9. About / Founder Story */}

@@ -65,15 +65,15 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
 
         {/* Subheadline */}
         <p className="text-center text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-5 leading-relaxed font-medium px-2">
-          RelayOpsAI handles inbound calls, follows up on missed inquiries, reactivates dormant leads, and books appointments — automatically. Your staff stays focused on the room. We handle everything else.
+          RelayOpsAI puts an AI voice receptionist on your phone line — answering every call, booking appointments into your calendar, and texting back anyone who slips through. Your staff stays focused on clients in the room. We handle everything else.
         </p>
 
         {/* Benefit bullets */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-sm font-semibold text-slate-600 mb-8">
           {[
-            '24/7 AI call answering',
-            'Automated follow-up and lead reactivation',
-            'Fewer missed revenue opportunities',
+            '24/7 AI voice answering',
+            'Instant missed call SMS text-back',
+            'Google Calendar booking — automatic',
           ].map((b, i) => (
             <div key={i} className="flex items-center gap-2">
               <svg className="w-4 h-4 text-rose-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -136,9 +136,9 @@ const MedSpaHero: React.FC<MedSpaHeroProps> = ({ onBookDemo, onCalculateROI }) =
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto pt-8 md:pt-10 border-t border-rose-200/50">
           {[
             { value: '24/7', label: 'Always Available' },
-            { value: '98%', label: 'Call Capture Rate' },
-            { value: '$27k', label: 'Avg Monthly Lift' },
-            { value: '<1s', label: 'Response Time' },
+            { value: '50+', label: 'Premium AI Voices' },
+            { value: '30+', label: 'Languages Supported' },
+            { value: '<1s', label: 'SMS Response Time' },
           ].map((stat, i) => (
             <div key={i} className="text-center group p-3 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/70 transition-all duration-300 hover:shadow-lg hover:shadow-rose-200/50">
               <div className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-br from-rose-600 via-rose-500 to-pink-500 bg-clip-text text-transparent mb-1 md:mb-2">

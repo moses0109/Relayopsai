@@ -4,47 +4,48 @@ const MedSpaFeatures: React.FC = () => {
   const features = [
     {
       letter: 'A',
-      title: 'AI Receptionist',
+      title: 'AI Voice Receptionist',
       bullets: [
-        'Answers every inbound call — 24 hours a day',
-        'Handles FAQs about services, pricing, and availability',
-        'Books appointments directly into your calendar',
-        'Sounds like a trained front desk staff member',
+        'Answers every inbound call instantly — 24 hours a day, 7 days a week',
+        'Handles FAQs about services, pricing, and availability in natural conversation',
+        'Books appointments directly into Google Calendar with zero double-booking',
+        'Captures caller info and intent on every interaction — no lead lost',
+        '50+ premium voices across 30+ languages',
       ],
-      outcome: 'Result: Zero missed calls. Every inquiry handled.',
+      outcome: 'Result: Every call answered. Every lead captured.',
     },
     {
       letter: 'B',
-      title: 'Missed Call Text-Back',
+      title: 'Missed Call SMS Text-Back',
       bullets: [
-        'Detects any missed or unanswered call instantly',
-        'Sends an automated SMS within seconds',
-        'Re-engages the lead before they call a competitor',
-        'Captures contact info and booking intent automatically',
+        'Detects any missed or unanswered call within seconds',
+        'Sends an automated, personalized SMS before they hang up and call someone else',
+        'Continues the conversation via text — answers questions, sends booking links',
+        'Recaptures leads you would have lost with zero manual effort',
       ],
-      outcome: 'Result: Missed calls become recoverable leads.',
+      outcome: 'Result: Missed calls become recoverable revenue.',
     },
     {
       letter: 'C',
-      title: 'Automated Follow-Up',
+      title: 'Outbound Reactivation',
       bullets: [
-        'Post-consultation nurture sequences',
-        'No-show recovery with rebooking prompts',
-        'Botox and filler rebooking reminders at the right interval',
-        'Runs without any manual input from your team',
+        'AI calls dormant contacts, lapsed clients, and old inquiries in your list',
+        'Navigates gatekeepers and handles objections naturally',
+        'Automatically books consultations and follow-up appointments',
+        'Generates revenue from leads you already paid to acquire — at zero additional ad spend',
       ],
-      outcome: 'Result: More return visits. Less chasing.',
+      outcome: 'Result: Revenue from your existing database.',
     },
     {
       letter: 'D',
-      title: 'Lead Reactivation',
+      title: 'Call Intelligence',
       bullets: [
-        'Identifies dormant contacts in your CRM or list',
-        'Sends personalized outreach to re-engage past inquiries',
-        'Converts cold leads into booked consultations',
-        'Zero additional ad spend required',
+        'Every call scored automatically — hot, warm, cold, or spam',
+        'Full transcripts and AI-generated summaries for every conversation',
+        'Real-time dashboard with bookings, call volume, and conversion metrics',
+        'Auto-generated monthly reports so you always know your numbers',
       ],
-      outcome: 'Result: Revenue from leads you already paid for.',
+      outcome: 'Result: Complete visibility. No guessing.',
     },
   ];
 
@@ -65,11 +66,11 @@ const MedSpaFeatures: React.FC = () => {
       <div className="relative z-10 max-w-5xl mx-auto">
 
         <div className="mb-12 md:mb-16 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-rose-600 mb-3">The Solution</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-rose-600 mb-3">What's Included</p>
           <h2 className="medspa-serif text-3xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
-            How RelayOpsAI{' '}
+            Everything Your Practice Needs.{' '}
             <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-              Fixes It
+              Nothing You Don't.
             </span>
           </h2>
         </div>
@@ -106,10 +107,10 @@ const MedSpaFeatures: React.FC = () => {
         {/* Credibility bar */}
         <div className="mt-12 p-6 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-2xl shadow-md shadow-rose-100/40">
           <p className="text-slate-700 font-semibold text-sm text-center mb-4">
-            Built specifically for med spa operators — not generic software repurposed for your industry.
+            Powered by enterprise-grade voice AI — built specifically for service businesses, not repurposed generic software.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-xs font-bold text-slate-500 uppercase tracking-wide">
-            {['HIPAA-Compliant', 'No Lock-In Contract', 'Structured Onboarding', 'Dedicated Setup Support', 'Live in Under 5 Minutes'].map((b, i) => (
+            {['HIPAA-Compliant', 'Google Calendar Integration', '50+ Premium Voices', '30+ Languages', 'Live in Under 24 Hours'].map((b, i) => (
               <div key={i} className="flex items-center gap-1.5">
                 <svg className="w-3.5 h-3.5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
