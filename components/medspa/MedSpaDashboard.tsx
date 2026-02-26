@@ -149,7 +149,7 @@ const MedSpaDashboard: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            While you're with clients, your AI answers every call, books appointments, and texts back missed callers — 24/7.
+            While you're with clients, your AI answers every call, books appointments, and follows up with every caller - 24/7.
             Your dashboard shows every call and booking in real time.
           </p>
         </div>
