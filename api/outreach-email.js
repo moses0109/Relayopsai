@@ -78,7 +78,7 @@ function getTemplate(template, { name, company }) {
             <li>Didn't have to hire anyone</li>
           </ul>
 
-          <p>I keep thinking ${company} would see something similar. Happy to show you what the numbers look like on your end. Takes about 15 min.</p>
+          <p>I keep thinking ${company} would see something similar. Happy to show you what the numbers look like on your end. Takes about 30 min.</p>
 
           <p style="margin: 24px 0;">
             <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
@@ -123,7 +123,7 @@ function getTemplate(template, { name, company }) {
 
           <p style="margin: 24px 0;">
             <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
-              15 min - let's look at your numbers
+              30 min - let's look at your numbers
             </a>
           </p>
 

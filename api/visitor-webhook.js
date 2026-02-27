@@ -164,11 +164,11 @@ function buildOutreachEmail({ firstName, companyInfo, pageContext, visit_count, 
 
       ${industryLine}
 
-      <p>Real quick what we do - we set up an AI that picks up your phone 24/7. Books appointments, answers questions, follows up over text. Basically your front desk never drops a call again even at 2am or when everyone's busy.</p>
+      <p>We build custom automations for businesses - stuff like AI that answers your phones 24/7, books appointments, follows up over text, and handles the stuff that normally falls through the cracks. Every setup is different depending on what the business actually needs.</p>
 
-      <p>Most businesses don't realize how many calls they're actually losing until we show them the numbers. It's usually somewhere between $8K and $25K a month just walking out the door.</p>
+      <p>Most people we talk to don't realize how much revenue they're losing to things that could be automated. It's usually way more than they think.</p>
 
-      <p>If you want I can pull up what that looks like for ${companyInfo}. Takes like 15 min and I'm not gonna pitch you on anything weird.</p>
+      <p>If you want I can show you what that looks like for ${companyInfo}. Takes about 30 min and I'm not gonna pitch you on anything weird.</p>
 
       <p style="margin: 24px 0;">
         <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
@@ -268,7 +268,7 @@ function buildNotificationEmail({
         </div>
 
         <div style="text-align: center; margin-top: 24px;">
-          ${email ? `<a href="mailto:${email}?subject=Following up -${companyInfo}&body=Hi ${visitorName.split(' ')[0]},%0D%0A%0D%0AJust wanted to follow up on my earlier email. Would love to show you how we help businesses like ${companyInfo} recover revenue from missed calls.%0D%0A%0D%0AHere's my calendar if you'd like to grab 15 minutes: ${CALENDLY_LINK}%0D%0A%0D%0ABest,%0D%0AMoses - RelayOpsAI" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 13px; margin: 0 6px;">
+          ${email ? `<a href="mailto:${email}?subject=Following up -${companyInfo}&body=Hi ${visitorName.split(' ')[0]},%0D%0A%0D%0AJust wanted to follow up on my earlier email. Would love to show you how we help businesses like ${companyInfo} recover revenue from missed calls.%0D%0A%0D%0AHere's my calendar if you'd like to grab 30 minutes: ${CALENDLY_LINK}%0D%0A%0D%0ABest,%0D%0AMoses - RelayOpsAI" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 13px; margin: 0 6px;">
             Send Follow-Up
           </a>` : ''}
           ${linkedin_url ? `<a href="${linkedin_url}" style="display: inline-block; padding: 14px 28px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 13px; margin: 0 6px;">

@@ -140,7 +140,7 @@ const App: React.FC = () => {
                 <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                 <div className="absolute inset-0 w-2 h-2 bg-emerald-400 rounded-full animate-ping opacity-60" />
               </div>
-              <span className="text-emerald-400 text-xs font-black uppercase tracking-widest">AI Receptionist — Live 24/7</span>
+              <span className="text-emerald-400 text-xs font-black uppercase tracking-widest">Custom AI Automations - Live 24/7</span>
             </div>
 
             {/* Headline */}
@@ -152,7 +152,7 @@ const App: React.FC = () => {
 
             {/* Sub-copy */}
             <p className="text-slate-400 text-base md:text-lg lg:text-xl max-w-lg mb-7 leading-relaxed font-medium">
-              AI that answers every call, books every job, and follows up automatically — while you focus on the work that pays.
+              Custom AI automations that answer calls, book jobs, follow up with leads, and handle the busywork your team shouldn't be doing.
             </p>
 
             {/* Star rating trust signal */}
@@ -254,17 +254,17 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/[0.03] to-transparent pointer-events-none" data-parallax="0.3" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-3 leading-tight fade-in-up">
-            Missed Calls Cost You <br />
+            Manual Work Costs You <br />
             <span className="text-rose-500">Real Money</span>
           </h2>
           <p className="text-slate-400 text-sm md:text-xl font-medium max-w-2xl mx-auto mb-3 fade-in-up">
-            Miss 5 calls a day at $200 avg — that's $30,000+ a year walking out the door.
+            Missed calls, slow follow-ups, leads slipping through the cracks - it adds up to $30,000+ a year walking out the door.
           </p>
           <p className="hidden sm:block text-emerald-400 text-base md:text-lg font-black max-w-2xl mx-auto mb-3 fade-in-up uppercase tracking-wide">
             Capture $1,500+ in one week with RelayOpsAI.
           </p>
           <p className="hidden sm:block text-slate-300 text-base md:text-lg font-medium max-w-2xl mx-auto mb-6 fade-in-up">
-            We make sure every call is answered, every lead is captured, and every opportunity turns into cash.
+            We build custom automations that answer every call, capture every lead, and turn every opportunity into revenue.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
@@ -299,7 +299,7 @@ const App: React.FC = () => {
             Performance Standards.
           </h2>
           <p className="text-slate-600 text-xs font-bold uppercase tracking-wide fade-in-up break-words">
-            What you get when every call is answered
+            What you get when nothing slips through
           </p>
         </div>
 
