@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Eli from RelayOpsAI <hello@relayopsai.com>',
+        from: process.env.FROM_EMAIL || 'RelayOpsAI <onboarding@resend.dev>',
         to: to_email,
         subject: emailContent.subject,
         html: emailContent.html,
@@ -59,37 +59,37 @@ export default async function handler(req, res) {
 function getTemplate(template, { name, company }) {
   const templates = {
 
-    // ─── Day 3: Casual follow-up with proof ─────────────────────
+    // ─── Day 3: Casual follow-up ─────────────────────
     followup: {
       subject: `re: ${company}`,
       html: `
-        <div style="font-family: 'Inter', Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.7;">
+        <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.6; font-size: 15px;">
           <p>Hey ${name},</p>
 
-          <p>Just bumping this up -totally get it if the timing wasn't right the other day.</p>
+          <p>Just circling back on this. Totally get it if you were busy.</p>
 
-          <p>Quick story that might hit home: one of our clients (med spa owner, similar size to ${company}) was losing about <strong>$15K a month</strong> to missed calls. Not because her team sucked -they were literally in sessions and couldn't pick up.</p>
+          <p>Quick thing that might be relevant - we just wrapped up a project with a med spa owner, similar setup to ${company}. She was losing about $15K a month in missed calls. Not because her team was bad, they were literally with clients and couldn't get to the phone.</p>
 
-          <p>We turned on the AI voice system and within the first month:</p>
+          <p>After we set up the AI phone system:</p>
 
           <ul style="padding-left: 20px; margin: 12px 0;">
-            <li>Went from catching ~55% of calls to <strong>98%</strong></li>
-            <li>Recovered <strong>$22K in bookings</strong> that would've walked</li>
-            <li>Didn't hire anyone new</li>
+            <li>Went from catching about 55% of calls to 98%</li>
+            <li>Recovered $22K in bookings the first month</li>
+            <li>Didn't have to hire anyone</li>
           </ul>
 
-          <p>I keep thinking ${company} could see similar numbers. Would be happy to run through it -literally takes 15 minutes and you'll walk away knowing your exact number either way.</p>
+          <p>I keep thinking ${company} would see something similar. Happy to show you what the numbers look like on your end. Takes about 15 min.</p>
 
           <p style="margin: 24px 0;">
-            <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 14px;">
-              Pick a Time That Works →
+            <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
+              Grab a time here
             </a>
           </p>
 
-          <p>No worries if not -just didn't want you to miss out if it's something that could actually help.</p>
+          <p>If it's not a fit no worries at all.</p>
 
           <p style="margin-top: 24px;">
-            -Eli
+            Moses
           </p>
 
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
@@ -100,44 +100,42 @@ function getTemplate(template, { name, company }) {
       `,
     },
 
-    // ─── Day 7: Last touch -direct, personal, no pressure ──────
+    // ─── Day 7: Last touch ──────
     roi: {
-      subject: `last thing -then I'll leave you alone, ${name}`,
+      subject: `last one from me ${name}`,
       html: `
-        <div style="font-family: 'Inter', Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.7;">
+        <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.6; font-size: 15px;">
           <p>Hey ${name},</p>
 
-          <p>Last email from me on this -I promise.</p>
+          <p>Last time I'll bug you about this I promise.</p>
 
-          <p>I'll just leave you with the napkin math:</p>
+          <p>Just wanted to leave you with some quick math that might be worth thinking about:</p>
 
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin: 16px 0;">
-            <p style="margin: 0 0 8px;">If ${company} gets <strong>20 calls a week</strong> and misses even 30%:</p>
-            <p style="margin: 0 0 8px;">→ <strong>24 missed leads/month</strong></p>
-            <p style="margin: 0 0 8px;">→ Even if only 25% would've booked = <strong>6 lost clients</strong></p>
-            <p style="margin: 0 0 8px;">→ At $300 average = <strong style="color: #e11d48;">$1,800/month walking out the door</strong></p>
-            <p style="margin: 0; font-size: 13px; color: #64748b;">Most businesses we audit are 2-5x this. The system pays for itself with one booking.</p>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0;">
+            <p style="margin: 0 0 8px;">Say ${company} gets 20 calls a week and misses even 30% of them</p>
+            <p style="margin: 0 0 8px;">That's about 24 missed leads a month</p>
+            <p style="margin: 0 0 8px;">If even a quarter of those would've booked, that's 6 clients gone</p>
+            <p style="margin: 0 0 8px;">At $300 average that's <strong>$1,800/month</strong> just gone</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;">Most businesses we look at are actually 2-5x worse than this.</p>
           </div>
 
-          <p>If those numbers bother you even a little, I'd love 15 minutes to show you your real ones. And if it turns out ${company} is actually catching everything -great, I'll tell you that too.</p>
+          <p>If that number bugs you at all I can show you what the real ones look like for ${company}. And if it turns out you're actually catching everything then I'll tell you that too.</p>
 
           <p style="margin: 24px 0;">
-            <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 14px;">
-              15 Min -See Your Numbers →
+            <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
+              15 min - let's look at your numbers
             </a>
           </p>
 
-          <p>Either way, the calendar link stays open whenever you're ready. No expiration, no pressure.</p>
-
-          <p>Rooting for ${company} either way.</p>
+          <p>Link's there whenever. No expiration.</p>
 
           <p style="margin-top: 24px;">
-            -Eli
+            Moses
           </p>
 
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
           <p style="font-size: 11px; color: #94a3b8;">
-            Last email -won't send any more unless you reply.
+            Last one from me. Won't email again unless you reply.
             <a href="mailto:hello@relayopsai.com?subject=Unsubscribe" style="color: #64748b;">Unsubscribe</a>
           </p>
         </div>

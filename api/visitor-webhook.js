@@ -138,56 +138,54 @@ export default async function handler(req, res) {
 
 // ─── Auto-outreach email sent TO the visitor ────────────────────────
 function buildOutreachEmail({ firstName, companyInfo, pageContext, visit_count, company_industry }) {
-  // Build a personal opener based on what they were actually doing on the site
   let opener = '';
   if (pageContext === 'pricing') {
-    opener = `I saw you were looking at our pricing -figured I'd reach out personally instead of letting you guess which plan fits ${companyInfo}.`;
+    opener = `Saw you looking at pricing on our site. Didn't want you to bounce without at least saying what's up. Happy to walk you through what actually makes sense for ${companyInfo} if you want.`;
   } else if (pageContext === 'med spa') {
-    opener = `Noticed you were checking out what we do for med spas -wanted to reach out personally since I built this specifically for practices like ${companyInfo}.`;
+    opener = `Saw you checking out what we do for med spas. I actually built this thing specifically for practices like yours so if you have questions I'm around.`;
   } else if (pageContext === 'about') {
-    opener = `Saw you were reading about us -always nice when someone actually checks out the story behind the product. Wanted to say hey.`;
+    opener = `Saw you poking around our about page. Appreciate you actually reading that lol. Figured I'd say hey real quick.`;
   } else if (visit_count && visit_count >= 2) {
-    opener = `I noticed you've been back on our site a couple of times -figured I'd just reach out directly instead of waiting.`;
+    opener = `You've been on our site a few times now so I figured I'd just shoot you a note instead of being weird about it.`;
   } else {
-    opener = `Noticed you were checking out RelayOpsAI earlier -wanted to reach out personally while it's still fresh.`;
+    opener = `Saw you on our site earlier. Figured I'd reach out real quick while you're still thinking about it.`;
   }
 
-  // Industry-specific line if we have it
   let industryLine = '';
   if (company_industry) {
-    industryLine = `<p>We work with a lot of ${company_industry.toLowerCase()} businesses, so I have a pretty good idea of what the phones look like on your end -and how much is slipping through.</p>`;
+    industryLine = `<p>I talk to a lot of people in ${company_industry.toLowerCase()} so I already know what your phones probably look like. It's rough out here.</p>`;
   }
 
   return `
-    <div style="font-family: 'Inter', Arial, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.7;">
+    <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; color: #1e293b; line-height: 1.6; font-size: 15px;">
       <p>Hey ${firstName},</p>
 
       <p>${opener}</p>
 
       ${industryLine}
 
-      <p>Here's the short version: most businesses we talk to are losing <strong>$8K–$25K a month</strong> to calls that go unanswered -after hours, during busy periods, weekends. Not because the team doesn't care, just because there's only so many hands.</p>
+      <p>Real quick what we do - we set up an AI that picks up your phone 24/7. Books appointments, answers questions, follows up over text. Basically your front desk never drops a call again even at 2am or when everyone's busy.</p>
 
-      <p>We fix that. AI picks up every call, books appointments, texts back anyone who slips through. Your team doesn't change anything -they just stop losing leads.</p>
+      <p>Most businesses don't realize how many calls they're actually losing until we show them the numbers. It's usually somewhere between $8K and $25K a month just walking out the door.</p>
 
-      <p>If you're curious whether the numbers work for ${companyInfo}, I can run through it with you in about 15 minutes. No deck, no pitch -just your actual numbers.</p>
+      <p>If you want I can pull up what that looks like for ${companyInfo}. Takes like 15 min and I'm not gonna pitch you on anything weird.</p>
 
       <p style="margin: 24px 0;">
-        <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 14px;">
-          Grab 15 Min on My Calendar →
+        <a href="${CALENDLY_LINK}" style="display: inline-block; padding: 12px 28px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 14px;">
+          Grab a time here
         </a>
       </p>
 
-      <p>If the timing's off, no worries at all -the link's there whenever.</p>
+      <p>No pressure either way. Link's there if you want it.</p>
 
       <p style="margin-top: 24px;">
-        -Eli<br/>
-        <span style="color: #64748b; font-size: 13px;">Founder, RelayOpsAI</span>
+        Moses<br/>
+        <span style="color: #64748b; font-size: 13px;">RelayOpsAI</span>
       </p>
 
       <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
       <p style="font-size: 11px; color: #94a3b8;">
-        You visited relayopsai.com -just following up. No spam, promise.
+        You were on relayopsai.com earlier, just following up.
         <a href="mailto:hello@relayopsai.com?subject=Unsubscribe" style="color: #64748b;">Unsubscribe</a>
       </p>
     </div>
@@ -270,7 +268,7 @@ function buildNotificationEmail({
         </div>
 
         <div style="text-align: center; margin-top: 24px;">
-          ${email ? `<a href="mailto:${email}?subject=Following up -${companyInfo}&body=Hi ${visitorName.split(' ')[0]},%0D%0A%0D%0AJust wanted to follow up on my earlier email. Would love to show you how we help businesses like ${companyInfo} recover revenue from missed calls.%0D%0A%0D%0AHere's my calendar if you'd like to grab 15 minutes: ${CALENDLY_LINK}%0D%0A%0D%0ABest,%0D%0AEli -RelayOpsAI" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 13px; margin: 0 6px;">
+          ${email ? `<a href="mailto:${email}?subject=Following up -${companyInfo}&body=Hi ${visitorName.split(' ')[0]},%0D%0A%0D%0AJust wanted to follow up on my earlier email. Would love to show you how we help businesses like ${companyInfo} recover revenue from missed calls.%0D%0A%0D%0AHere's my calendar if you'd like to grab 15 minutes: ${CALENDLY_LINK}%0D%0A%0D%0ABest,%0D%0AMoses - RelayOpsAI" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #0ea5e9, #6366f1); color: white; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 13px; margin: 0 6px;">
             Send Follow-Up
           </a>` : ''}
           ${linkedin_url ? `<a href="${linkedin_url}" style="display: inline-block; padding: 14px 28px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 13px; margin: 0 6px;">
